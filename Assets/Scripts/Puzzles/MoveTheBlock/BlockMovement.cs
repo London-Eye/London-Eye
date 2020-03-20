@@ -40,6 +40,8 @@ public class BlockMovement : MonoBehaviour
         _rb.velocity = Vector2.zero;
         _rb.bodyType = RigidbodyType2D.Static;
 
+        RoundPositionToInt();
+
         // Increase collider size opposite to the block's direction back to its original size
         if (directionAxis.y > 0)
         {
@@ -60,6 +62,26 @@ public class BlockMovement : MonoBehaviour
         if (!Mathf.Approximately(relevantAxis, 0))
         {
             _rb.velocity = directionAxis * relevantAxis * speed;
+        }
+        else
+        {
+            RoundPositionToInt();
+        }
+    }
+
+    private void RoundPositionToInt()
+    {
+        // Round to closest .5 (0, 0.5, 1...)
+
+        if (directionAxis.y > 0)
+        {
+            float y = Mathf.RoundToInt(transform.position.y * 2) / 2f;
+            transform.position = new Vector3(transform.position.x, y, transform.position.z);
+        }
+        else
+        {
+            float x = Mathf.RoundToInt(transform.position.x * 2) / 2f;
+            transform.position = new Vector3(x, transform.position.y, transform.position.z);
         }
     }
 
