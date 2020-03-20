@@ -8,7 +8,10 @@ public class BlockMovement : MonoBehaviour
 
     private const float colliderSizeReductionFactor = 0.9f;
 
+
     private Vector2 directionAxis;
+    private float offset;
+
     private Rigidbody2D _rb;
     private BoxCollider2D _collider;
 
@@ -17,7 +20,10 @@ public class BlockMovement : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody2D>();
         _collider = GetComponent<BoxCollider2D>();
+
         directionAxis = transform.localScale.y > transform.localScale.x ? Vector2.up : Vector2.right;
+        offset = transform.localScale.y > transform.localScale.x ? transform.position.y : transform.position.x;
+        offset -= Mathf.FloorToInt(offset);
     }
 
     private void OnMouseDown()
@@ -63,10 +69,6 @@ public class BlockMovement : MonoBehaviour
         {
             _rb.velocity = directionAxis * relevantAxis * speed;
         }
-        else
-        {
-            RoundPositionToInt();
-        }
     }
 
     private void RoundPositionToInt()
@@ -75,12 +77,14 @@ public class BlockMovement : MonoBehaviour
 
         if (directionAxis.y > 0)
         {
-            float y = Mathf.RoundToInt(transform.position.y * 2) / 2f;
+            float y = Mathf.RoundToInt(transform.position.y + offset) - offset;
+            //float y = Mathf.RoundToInt(transform.position.y * 2) / 2f;
             transform.position = new Vector3(transform.position.x, y, transform.position.z);
         }
         else
         {
-            float x = Mathf.RoundToInt(transform.position.x * 2) / 2f;
+            float x = Mathf.RoundToInt(transform.position.x + offset) - offset;
+            //float x = Mathf.RoundToInt(transform.position.x * 2) / 2f;
             transform.position = new Vector3(x, transform.position.y, transform.position.z);
         }
     }
