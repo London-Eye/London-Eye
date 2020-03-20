@@ -6,11 +6,13 @@ public class SceneController : MonoBehaviour
 {
     [SerializeField] private MemoryCard originalCard;
     [SerializeField] private Sprite[] images;
+    [SerializeField] private TextMesh scoreLabel;
+    [SerializeField] private TextMesh movesLabel;
     private MemoryCard _firstRevealed;
     private MemoryCard _secondRevealed;
     private int _score = 0;
     private int _movimientos = 0;
-    private int _maxMV = 4;
+    public int _maxMV = 4;
 
     public int gridRows = 1;
     public int gridCols = 1;
@@ -23,6 +25,7 @@ public class SceneController : MonoBehaviour
         {
             ids[i] = i / 2;
         }
+        
         ids = ShuffleArray(ids);
 
         float totalheight = Camera.main.orthographicSize * 2;
@@ -31,10 +34,8 @@ public class SceneController : MonoBehaviour
         float cardHeight = (totalheight - header - margin) / gridRows;
         for (int j = 0; j < gridRows; j++)
         {
-            Debug.Log(j);
             for (int i = 0; i < gridCols; i++)
             {
-                Debug.Log(i);
                 MemoryCard card = Instantiate(originalCard) as MemoryCard;
                 int index = j * gridCols + i;
                 int id = ids[index];
@@ -64,10 +65,6 @@ public class SceneController : MonoBehaviour
     }
     public void CardRevealed(MemoryCard card)
     {
-        if (_movimientos >= _maxMV)
-        {
-            Debug.Log("limite máximo de mv alcanzado");
-        }
         if (_firstRevealed == null)
         {
             _firstRevealed = card; _movimientos++;
@@ -78,19 +75,31 @@ public class SceneController : MonoBehaviour
             _movimientos++;
             StartCoroutine(CheckMatch());
         }
+        StartCoroutine(CheckMoves());
         
+    }
+
+    private IEnumerator CheckMoves() {
+
+        movesLabel.text = "Moves: " + _movimientos;
+        if (_movimientos < _maxMV)
+        {
+            yield return null;
+        }
     }
     private IEnumerator CheckMatch()
     {
-        if (_firstRevealed.id == _secondRevealed.id)
+        string sp1, sp2;
+        sp1 = _firstRevealed.GetComponent<SpriteRenderer>().sprite.name;
+        sp2 = _secondRevealed.GetComponent<SpriteRenderer>().sprite.name;
+        if (/*_firstRevealed.id == _secondRevealed.id*/sp1.Equals(sp2))
         {
             _score++;
-            Debug.Log("Score: " + _score);
-            Debug.Log("Movimientos: " + _movimientos);
+            scoreLabel.text = "Score: " + _score;
         }
         else
         {
-            yield return new WaitForSeconds(.5f);
+            yield return new WaitForSeconds(.25f);
             _firstRevealed.Unreveal();
             _secondRevealed.Unreveal();
         }

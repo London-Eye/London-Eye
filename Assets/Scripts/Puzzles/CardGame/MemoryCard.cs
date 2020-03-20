@@ -22,11 +22,10 @@ public class MemoryCard : MonoBehaviour
     }
     public void OnMouseDown()
     {
-        if (cardBack.activeSelf /*&& controller.canReveal*/)
+        if (cardBack.activeSelf )
         {
             cardBack.SetActive(false);
             controller.CardRevealed(this);
-            /*src = cardBack.GetComponent<SpriteRenderer>().;*/
         }
     }
     public void Unreveal()
