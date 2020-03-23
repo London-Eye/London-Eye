@@ -886,6 +886,16 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 3323268401168792791, guid: 68f01693af15f014e841892ba837812e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.057434082
+      objectReference: {fileID: 0}
+    - target: {fileID: 3323268401168792791, guid: 68f01693af15f014e841892ba837812e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 3323268401168792792, guid: 68f01693af15f014e841892ba837812e,
         type: 3}
       propertyPath: m_Text
@@ -993,6 +1003,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Text
       value: Clon malvado de Deiv I.V.
+      objectReference: {fileID: 0}
+    - target: {fileID: 7416895494147948172, guid: 0ca1b3800a756fc49b7d3321f53a2a3d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7416895494147948173, guid: 0ca1b3800a756fc49b7d3321f53a2a3d,
         type: 3}
@@ -1741,6 +1756,11 @@ PrefabInstance:
       propertyPath: m_Text
       value: Druida Deiv I.V.
       objectReference: {fileID: 0}
+    - target: {fileID: 7416895494147948172, guid: 0ca1b3800a756fc49b7d3321f53a2a3d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7416895494147948173, guid: 0ca1b3800a756fc49b7d3321f53a2a3d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2042,6 +2062,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Text
       value: Deiv I.V.
+      objectReference: {fileID: 0}
+    - target: {fileID: 7416895494147948172, guid: 0ca1b3800a756fc49b7d3321f53a2a3d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7416895494147948172, guid: 0ca1b3800a756fc49b7d3321f53a2a3d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7416895494147948173, guid: 0ca1b3800a756fc49b7d3321f53a2a3d,
         type: 3}
