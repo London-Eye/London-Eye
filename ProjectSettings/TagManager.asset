@@ -48,3 +48,6 @@ TagManager:
   - name: cards
     uniqueID: 3592343887
     locked: 0
+  - name: Pause
+    uniqueID: 3696693279
+    locked: 0

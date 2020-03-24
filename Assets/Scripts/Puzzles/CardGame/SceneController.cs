@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using TMPro;
 
 public class SceneController : MonoBehaviour
 {
@@ -8,18 +10,66 @@ public class SceneController : MonoBehaviour
     [SerializeField] private Sprite[] images;
     [SerializeField] private TextMesh scoreLabel;
     [SerializeField] private TextMesh movesLabel;
+    [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private GameObject EndgameMenu;
+    [SerializeField] private TextMeshProUGUI finalScore;
     private MemoryCard _firstRevealed;
     private MemoryCard _secondRevealed;
     private int _score = 0;
     private int _movimientos = 0;
-    public int _maxMV = 4;
+    public int _maxMV = 0;
 
     public int gridRows = 1;
     public int gridCols = 1;
     public float header = 2f;
     public float margin = 1f;
-    void Start()
+    private bool endgame = false;
+
+    private bool _paused;
+
+    public void ShowPauseMenu(bool isPaused)
     {
+        pauseMenu.SetActive(isPaused);
+    }
+
+    public bool paused {
+        get {
+            return _paused; 
+        }
+        set {
+            _paused = !_paused;
+            ShowPauseMenu(_paused);
+        }
+    }
+
+    public void restart() {
+        SceneManager.LoadScene("CardGame");
+    }
+
+    public void goToMenu() {
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape) && !endgame)
+        {
+            Debug.Log("escape");
+            _paused = !_paused;
+            ShowPauseMenu(_paused);
+        }
+        if (_paused) return;
+
+        if (_movimientos >= _maxMV) {
+            StartCoroutine(Endgame());
+        }
+    }
+
+        void Start()
+    {
+        EndgameMenu.SetActive(false);
+        _paused = false;
+        pauseMenu.SetActive(_paused);
         int[] ids = new int[gridRows * gridCols];
         for (int i = 0; i < ids.Length; i++)
         {
@@ -41,7 +91,7 @@ public class SceneController : MonoBehaviour
                 int id = ids[index];
                 card.SetCard(id, images[id]);
                 float posX = (i + 0.5f) * cardWidth - totalwidth / 2 + margin;
-                float posY = (j + 0.5f) * cardHeight - totalheight / 2 + margin;
+                float posY = (j + 0.75f) * cardHeight - totalheight / 2 + margin;
                 card.transform.position = new Vector3(posX, posY, originalCard.transform.position.z);
             }
         }
@@ -61,7 +111,7 @@ public class SceneController : MonoBehaviour
 
     public bool canReveal
     {
-        get { return _secondRevealed == null && _movimientos < _maxMV; }
+        get { return _secondRevealed == null && _movimientos < _maxMV && !paused; }
     }
     public void CardRevealed(MemoryCard card)
     {
@@ -81,21 +131,18 @@ public class SceneController : MonoBehaviour
 
     private IEnumerator CheckMoves() {
 
-        movesLabel.text = "Moves: " + _movimientos;
-        if (_movimientos < _maxMV)
-        {
-            yield return null;
-        }
+        movesLabel.text = "Mov. restantes: " + (_maxMV - _movimientos);
+        yield return null;
     }
     private IEnumerator CheckMatch()
     {
         string sp1, sp2;
         sp1 = _firstRevealed.GetComponent<SpriteRenderer>().sprite.name;
         sp2 = _secondRevealed.GetComponent<SpriteRenderer>().sprite.name;
-        if (/*_firstRevealed.id == _secondRevealed.id*/sp1.Equals(sp2))
+        if (sp1.Equals(sp2))
         {
             _score++;
-            scoreLabel.text = "Score: " + _score;
+            scoreLabel.text = "Parejas: " + _score;
         }
         else
         {
@@ -104,5 +151,15 @@ public class SceneController : MonoBehaviour
             _secondRevealed.Unreveal();
         }
         _firstRevealed = _secondRevealed = null;
+    }
+
+    private IEnumerator Endgame() {
+        endgame = true;
+        yield return new WaitForSeconds(1.0f);
+        finalScore.color = Color.yellow;
+        if (_score >= 10) { finalScore.color = Color.green; }
+        if (_score <= 5) { finalScore.color = Color.red; }
+        finalScore.text = _score + "/" + (gridCols*gridRows/2);
+        EndgameMenu.SetActive(true);
     }
 }
