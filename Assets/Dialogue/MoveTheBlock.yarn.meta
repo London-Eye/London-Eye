@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: db3bc59aab64b2a4b91d91aef6361b74
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 94073015eacc34c1d8fc6786e43d60ca, type: 3}
+  baseLanguageID: es-ES
+  stringIDs:
+  - MoveTheBlock-MoveTheBlock-PreGame-0
+  - MoveTheBlock-MoveTheBlock-PreGame-1
+  - MoveTheBlock-MoveTheBlock-PreGame-2
+  - MoveTheBlock-MoveTheBlock-PreGame-3
+  compilationStatus: 1
+  isSuccesfullyCompiled: 1
+  compilationErrorMessage: "Error on line 1 at position 1:\nmismatched input '<EOF>'
+    expecting 'title:'\r\n\r\n"
+  baseLanguage: {fileID: 7128917941130120860, guid: db3bc59aab64b2a4b91d91aef6361b74,
+    type: 3}
+  localizations: []

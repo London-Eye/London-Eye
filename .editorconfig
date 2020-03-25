@@ -1,0 +1,4 @@
+﻿[*.cs]
+
+# IDE0066: Convertir una instrucción switch en expresión
+csharp_style_prefer_switch_expression = false:suggestion
