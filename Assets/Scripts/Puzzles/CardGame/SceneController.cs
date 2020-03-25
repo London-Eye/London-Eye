@@ -6,76 +6,37 @@ using TMPro;
 
 public class SceneController : MonoBehaviour
 {
-    [SerializeField] private MemoryCard originalCard;
-    [SerializeField] private Sprite[] images;
-    [SerializeField] private TextMesh scoreLabel;
-    [SerializeField] private TextMesh movesLabel;
-    [SerializeField] private GameObject pauseMenu;
-    [SerializeField] private GameObject EndgameMenu;
-    [SerializeField] private TextMeshProUGUI finalScore;
-    private MemoryCard _firstRevealed;
-    private MemoryCard _secondRevealed;
-    private int _score = 0;
-    private int _movimientos = 0;
     public int _maxMV = 0;
 
     public int gridRows = 1;
     public int gridCols = 1;
     public float header = 2f;
     public float margin = 1f;
-    private bool endgame = false;
 
-    private bool _paused;
+    [SerializeField] private MemoryCard originalCard;
+    [SerializeField] private Sprite[] images;
+    [SerializeField] private TextMesh scoreLabel;
+    [SerializeField] private TextMesh movesLabel;
+    [SerializeField] private PauseController pauseMenu;
+    [SerializeField] private GameObject EndgameMenu;
+    [SerializeField] private TextMeshProUGUI finalScore;
 
-    public void ShowPauseMenu(bool isPaused)
-    {
-        pauseMenu.SetActive(isPaused);
-    }
+    private MemoryCard _firstRevealed;
+    private MemoryCard _secondRevealed;
+    private int _score = 0;
+    private int _movimientos = 0;
 
-    public bool paused {
-        get {
-            return _paused; 
-        }
-        set {
-            _paused = !_paused;
-            ShowPauseMenu(_paused);
-        }
-    }
-
-    public void restart() {
-        SceneManager.LoadScene("CardGame");
-    }
-
-    public void goToMenu() {
-        SceneManager.LoadScene("MainMenu");
-    }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape) && !endgame)
-        {
-            Debug.Log("escape");
-            _paused = !_paused;
-            ShowPauseMenu(_paused);
-        }
-        if (_paused) return;
-
-        if (_movimientos >= _maxMV) {
-            StartCoroutine(Endgame());
-        }
-    }
-
-        void Start()
+    void Start()
     {
         EndgameMenu.SetActive(false);
-        _paused = false;
-        pauseMenu.SetActive(_paused);
+        pauseMenu.IsPaused = false;
+
         int[] ids = new int[gridRows * gridCols];
         for (int i = 0; i < ids.Length; i++)
         {
             ids[i] = i / 2;
         }
-        
+
         ids = ShuffleArray(ids);
 
         float totalheight = Camera.main.orthographicSize * 2;
@@ -96,6 +57,17 @@ public class SceneController : MonoBehaviour
             }
         }
     }
+
+    void LateUpdate()
+    {
+        if (pauseMenu.IsPaused) return;
+
+        if (_movimientos >= _maxMV)
+        {
+            StartCoroutine(Endgame());
+        }
+    }
+
     private int[] ShuffleArray(int[] numbers)
     {
         int[] newArray = numbers.Clone() as int[];
@@ -109,10 +81,8 @@ public class SceneController : MonoBehaviour
         return newArray;
     }
 
-    public bool canReveal
-    {
-        get { return _secondRevealed == null && _movimientos < _maxMV && !paused; }
-    }
+    public bool CanReveal => _secondRevealed == null && _movimientos < _maxMV && !pauseMenu.IsPaused;
+
     public void CardRevealed(MemoryCard card)
     {
         if (_firstRevealed == null)
@@ -126,10 +96,11 @@ public class SceneController : MonoBehaviour
             StartCoroutine(CheckMatch());
         }
         StartCoroutine(CheckMoves());
-        
+
     }
 
-    private IEnumerator CheckMoves() {
+    private IEnumerator CheckMoves()
+    {
 
         movesLabel.text = "Mov. restantes: " + (_maxMV - _movimientos);
         yield return null;
@@ -153,13 +124,18 @@ public class SceneController : MonoBehaviour
         _firstRevealed = _secondRevealed = null;
     }
 
-    private IEnumerator Endgame() {
-        endgame = true;
+    private IEnumerator Endgame()
+    {
         yield return new WaitForSeconds(1.0f);
+
         finalScore.color = Color.yellow;
         if (_score >= 10) { finalScore.color = Color.green; }
         if (_score <= 5) { finalScore.color = Color.red; }
-        finalScore.text = _score + "/" + (gridCols*gridRows/2);
+        finalScore.text = _score + "/" + (gridCols * gridRows / 2);
+
         EndgameMenu.SetActive(true);
+
+        pauseMenu.IsPaused = false;
+        pauseMenu.enabled = false;
     }
 }
