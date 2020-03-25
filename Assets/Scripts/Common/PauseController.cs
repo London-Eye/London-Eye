@@ -25,14 +25,14 @@ public class PauseController : MonoBehaviour
         }
     }
 
-    public void ShowPauseMenu(bool isPaused)
+    private void ShowPauseMenu(bool isPaused)
     {
         pausePanel.gameObject.SetActive(isPaused);
     }
 
     public void Restart()
     {
-        SceneManager.LoadScene("CardGame");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void GoToMenu()
