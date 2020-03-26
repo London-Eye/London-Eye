@@ -480,6 +480,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ca1b3800a756fc49b7d3321f53a2a3d, type: 3}
+--- !u!114 &315545897 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7416895494147948169, guid: 0ca1b3800a756fc49b7d3321f53a2a3d,
+    type: 3}
+  m_PrefabInstance: {fileID: 224993726}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ff80924cd9c85e40a5f6cb253a8ff03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &402961932
 GameObject:
   m_ObjectHideFlags: 0
@@ -516,7 +528,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.49161592, y: 0.31333718}
   m_AnchorMax: {x: 0.6646159, y: 0.638}
-  m_AnchoredPosition: {x: 0.76000214, y: -0.3999939}
+  m_AnchoredPosition: {x: 0.76000977, y: -0.3999939}
   m_SizeDelta: {x: 0.48000002, y: 0.79999995}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &402961934
@@ -1179,7 +1191,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.062307954, y: 0.20300001}
   m_AnchorMax: {x: 0.22323182, y: 0.62600005}
-  m_AnchoredPosition: {x: 0.10003662, y: -0.3999939}
+  m_AnchoredPosition: {x: 0.100097656, y: -0.3999939}
   m_SizeDelta: {x: 2.7999878, y: 0.7999878}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &928610262
@@ -2063,15 +2075,30 @@ PrefabInstance:
       propertyPath: m_Text
       value: Deiv I.V.
       objectReference: {fileID: 0}
+    - target: {fileID: 7416895494147948169, guid: 0ca1b3800a756fc49b7d3321f53a2a3d,
+        type: 3}
+      propertyPath: puzzleName
+      value: MoveTheBlock
+      objectReference: {fileID: 0}
     - target: {fileID: 7416895494147948172, guid: 0ca1b3800a756fc49b7d3321f53a2a3d,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7416895494147948172, guid: 0ca1b3800a756fc49b7d3321f53a2a3d,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadPuzzle
+      objectReference: {fileID: 0}
+    - target: {fileID: 7416895494147948172, guid: 0ca1b3800a756fc49b7d3321f53a2a3d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 315545897}
+    - target: {fileID: 7416895494147948172, guid: 0ca1b3800a756fc49b7d3321f53a2a3d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 7416895494147948173, guid: 0ca1b3800a756fc49b7d3321f53a2a3d,
         type: 3}
@@ -2189,8 +2216,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Suspect1Button
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7416895494147948169, guid: 0ca1b3800a756fc49b7d3321f53a2a3d, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ca1b3800a756fc49b7d3321f53a2a3d, type: 3}
 --- !u!1001 &1935304580
 PrefabInstance:
@@ -2436,7 +2462,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.736308, y: 0.36800003}
   m_AnchorMax: {x: 0.83430797, y: 0.53300005}
-  m_AnchoredPosition: {x: 0.6000061, y: -0.099998474}
+  m_AnchoredPosition: {x: 0.6000366, y: -0.1000061}
   m_SizeDelta: {x: 3.2999878, y: 3.4000015}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2087223756

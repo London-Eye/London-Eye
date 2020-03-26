@@ -62,7 +62,7 @@ public class SceneController : MonoBehaviour
     {
         if (pauseMenu.IsPaused) return;
 
-        if (_movimientos >= _maxMV)
+        if (_movimientos >= _maxMV || _score == (gridCols*gridRows/2))
         {
             StartCoroutine(Endgame());
         }
