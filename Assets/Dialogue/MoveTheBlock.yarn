@@ -1,8 +1,9 @@
 title: MoveTheBlock-PreGame
 tags: PreGame
 ---
-Decides que el mejor movimiento es investigar a **<NOMBRES-sospechoso>**.
-Usando tus habilidades de cracker, decides acceder a sus cuentas online para recolectar información.
+Decides que el mejor movimiento es investigar a **<NOMBRE-sospechoso>**.
+Ves que **<NOMBRE-sospechoso>** está en **<LUGAR>**, así que te acercas sin llamar la atención.
+Usando tus habilidades de hacker, decides acceder a su móvil para recolectar información.
 Pero primero tienes que saltarte su sistema de seguridad.
 <color=orange>Lleva la llave hasta la cerradura para poder acceder a sus cuentas.</color>
 ===
@@ -10,9 +11,9 @@ Pero primero tienes que saltarte su sistema de seguridad.
 title: MoveTheBlock-PostGame
 tags: PostGame
 ---
-Después de usar todo tu ingenio, consigues entrar en las cuentas online de **<NOMBRES-sospechoso>**.
-Entras en su correo electrónico. Por el tipo de mensajes que encuentras, **<NOMBRES-sospechoso>** es **<RELACION>** de la víctima.
-Consigues entrar en una de sus apps de mensajería. Por cómo habla con **<NOMBRES>**, **<NOMBRES-sospechoso>** **<EMOCION>** la víctima.
-Revisando las facturas de **<NOMBRES-sospechoso>**, te das cuenta de que su coartada es/no es válida.
+Después de usar todo tu ingenio, consigues acceder al móvil de **<NOMBRE-sospechoso>**.
+Entras en su correo electrónico. Por el tipo de mensajes que encuentras, **<NOMBRE-sospechoso>** es **<RELACION>** de la víctima.
+Consigues entrar en una de sus apps de mensajería. Por cómo habla con **<NOMBRE>**, **<NOMBRE-sospechoso>** **<EMOCION>** la víctima.
+Revisando las facturas de **<NOMBRE-sospechoso>**, te das cuenta de que su coartada **<SIONO>** es válida.
 <<BackToMainMenu PauseMenu>>
 ===

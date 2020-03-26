@@ -1,4 +1,10 @@
-NOMBRES
+SIONO
+---
+sí
+no
+===
+
+NOMBRE
 ---
 Plácido
 Carlos
@@ -43,4 +49,23 @@ padre/madre
 primo/a
 compañero/a de trabajo
 conocido/a
+===
+
+LUGAR
+---
+el restaurante
+la casa
+el trabajo
+el parque
+la escuela
+===
+
+ARMA
+---
+una pistola
+un cuchillo
+un machete
+una lanza
+un martillo
+un ladrillo
 ===
