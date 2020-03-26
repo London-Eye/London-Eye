@@ -1,0 +1,46 @@
+NOMBRES
+---
+Plácido
+Carlos
+Salvador
+Santiago
+Benito
+Fabio
+Pablo
+Angel
+Heraclio
+Godofredo
+Susana
+María
+Marisol
+Nagore
+Dorotea
+Rosario
+Laura
+Valentina
+Dolores
+Rita
+===
+
+EMOCION
+---
+estaba celoso/a de
+estaba enfadado/a con
+admiraba a
+estaba enamorado/a de
+estaba decepcionado/a con
+estaba felizmente con
+estaba orgulloso/a de
+odiaba a
+===
+
+RELACION
+---
+novio/a
+amante
+hermano/a
+padre/madre
+primo/a
+compañero/a de trabajo
+conocido/a
+===
