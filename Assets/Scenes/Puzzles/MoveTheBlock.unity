@@ -2279,7 +2279,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5816886b2b22184a857cb618a098d7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onDestroyLog: "\xA1Has ganado!"
 --- !u!213 &773007834
 Sprite:
   m_ObjectHideFlags: 0
@@ -4832,6 +4831,27 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &2133812872 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5296080504864627352, guid: f9cf9ff9943921943bbb41cab3390a11,
+    type: 3}
+  m_PrefabInstance: {fileID: 1954342738305847921}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2133812873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2133812872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23e8298250a754545b2fb7ca28fec5f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StartSeparator: '**<'
+  EndSeparator: '>**'
+  SnippetPools: {fileID: 4900000, guid: 91a40575f01d3c049bcb61de9cd0aa7f, type: 3}
 --- !u!1 &2144106829
 GameObject:
   m_ObjectHideFlags: 0
@@ -4938,6 +4958,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1788309105, guid: f9cf9ff9943921943bbb41cab3390a11, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2552118832597424446, guid: f9cf9ff9943921943bbb41cab3390a11,
         type: 3}
       propertyPath: m_Name
@@ -5188,7 +5212,8 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1788309105, guid: f9cf9ff9943921943bbb41cab3390a11, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f9cf9ff9943921943bbb41cab3390a11, type: 3}
 --- !u!1001 &4518250470072943194
 PrefabInstance:

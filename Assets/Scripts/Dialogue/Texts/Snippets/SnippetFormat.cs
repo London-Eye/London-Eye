@@ -22,6 +22,8 @@ namespace Assets.Scripts.Dialogue.Texts.Snippets
 
         public bool HasAnyTags(string text) => IndexOfNextStart(text) >= 0;
 
+        public virtual Snippet<T> CreateSnippet(string name) => new Snippet<T>(name, this);
+
         public Snippet<T> Extract(string line, out int startingIndex, out int endIndex, out string remainingText)
         {
             Snippet<T> snippet = null;
@@ -40,7 +42,7 @@ namespace Assets.Scripts.Dialogue.Texts.Snippets
 
                     endIndex = indexOfSnippetEnd + EndSeparator.Length;
                     remainingText = textSearchingForEnd.Substring(endIndex);
-                    snippet = new Snippet<T>(snippetName, this);
+                    snippet = CreateSnippet(snippetName);
                 }
                 else
                 {

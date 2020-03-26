@@ -113,7 +113,14 @@ namespace Assets.Scripts.Dialogue
             var snippets = snippetSystem.ParseSnippets(lineText, RunLineLogger);
             foreach (var snippet in snippets)
             {
-                lineText = lineText.Replace(snippet.FullName, snippet.Value.ToString());
+                // Replace only the first occurrence of the snippet (to allow different snippets being called the same)
+                int indexOfSnippet = lineText.IndexOf(snippet.FullName);
+                if (indexOfSnippet >= 0)
+                {
+                    lineText = lineText.Substring(0, indexOfSnippet)
+                        + snippet.Value.ToString()
+                        + lineText.Substring(indexOfSnippet + snippet.FullName.Length);
+                }
             }
 
             return lineText;
