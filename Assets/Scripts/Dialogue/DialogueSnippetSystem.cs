@@ -13,13 +13,6 @@ namespace Assets.Scripts.Dialogue
         public string StartSeparator = DefaultSeparator;
         public string EndSeparator = DefaultSeparator;
 
-        [Serializable]
-        public struct SimpleSnippet
-        {
-            public string name;
-            public string value;
-        }
-
         protected readonly Dictionary<string, T> snippets = new Dictionary<string, T>();
 
         public SnippetFormat<T> Format { get; set; }
@@ -36,15 +29,15 @@ namespace Assets.Scripts.Dialogue
         {
             List<Snippet<T>> result = new List<Snippet<T>>();
             string textBeingAnalyzed = text;
-            int currentIndex = 0;
 
             while (textBeingAnalyzed != null && textBeingAnalyzed.Length > 0)
             {
                 // If something went wrong with the snippet, it would skip it
-                int nextIndex = currentIndex + 1, indexOfSnippetInit = 0;
+                int indexOfSnippetInit = 0;
+                string remainingText = "";
                 try
                 {
-                    Snippet<T> snippet = Format.Extract(textBeingAnalyzed, out indexOfSnippetInit, out nextIndex, out string remainingText);
+                    Snippet<T> snippet = Format.Extract(textBeingAnalyzed, out indexOfSnippetInit, out _, out remainingText);
                     if (snippet != null)
                     {
                         result.Add(snippet);
@@ -62,12 +55,15 @@ namespace Assets.Scripts.Dialogue
                     logger?.Invoke(ex);
                     Console.WriteLine(ex.Message);
 
-                    nextIndex = (text.Length - textBeingAnalyzed.Length + indexOfSnippetInit) + 1;
+                    // Go to the next portion of the text (Skip the exception source)
+                    int nextIndex = (text.Length - textBeingAnalyzed.Length + indexOfSnippetInit) + 1;
                     textBeingAnalyzed = nextIndex >= 0 && nextIndex < textBeingAnalyzed.Length ? textBeingAnalyzed.Substring(nextIndex) : "";
                 }
-
-                // Go to the next portion of the text (Skip the exception source)
-                currentIndex = nextIndex;
+                catch (KeyNotFoundException)
+                {
+                    // If no value was found for the snippet, just leave it as text
+                    textBeingAnalyzed = remainingText;
+                }
             }
 
             return result;

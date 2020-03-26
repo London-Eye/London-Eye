@@ -2,7 +2,17 @@ title: MoveTheBlock-PreGame
 tags: PreGame
 ---
 Decides que el mejor movimiento es investigar a **<NOMBRES>**.
-Usando tus habilidades de cracker, decides acceder a sus cuentas de correo para recolectar información.
+Usando tus habilidades de cracker, decides acceder a sus cuentas online para recolectar información.
 Pero primero tienes que saltarte su sistema de seguridad.
 <color=orange>Lleva la llave hasta la cerradura para poder acceder a sus cuentas.</color>
+===
+
+title: MoveTheBlock-PostGame
+tags: PostGame
+---
+Después de usar todo tu ingenio, consigues entrar en las cuentas online de **<NOMBRES>**.
+Entras en su correo electrónico. Por el tipo de mensajes que encuentras, **<NOMBRES>** es **<RELACION>** de la víctima.
+Consigues entrar en una de sus apps de mensajería. Por cómo habla con **<NOMBRES>**, **<NOMBRES>** **<EMOCION>** la víctima.
+Revisando las facturas de **<NOMBRES>**, te das cuenta de que su coartada es/no es válida.
+<<BackToMainMenu PauseMenu>>
 ===

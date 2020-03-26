@@ -13,7 +13,7 @@ namespace Assets.Scripts.Dialogue
 
         // When true, the user has indicated that they want to proceed to
         // the next line.
-        private bool userRequestedNextLine = false;
+        private bool proceedToNextLine = false;
 
         void Start()
         {
@@ -33,8 +33,8 @@ namespace Assets.Scripts.Dialogue
         private IEnumerator DoRunLine(Yarn.Line line, IDictionary<string, string> strings, System.Action onComplete)
         {
             onLineStart?.Invoke();
-            
-            userRequestedNextLine = false;
+
+            proceedToNextLine = false;
 
             if (strings.TryGetValue(line.ID, out var text))
             {
@@ -66,7 +66,7 @@ namespace Assets.Scripts.Dialogue
                 foreach (string currentText in completeText.Parse())
                 {
                     onLineUpdate?.Invoke(currentText);
-                    if (userRequestedNextLine)
+                    if (proceedToNextLine)
                     {
                         // We've requested a skip of the entire line.
                         // Display all of the text immediately.
@@ -83,12 +83,12 @@ namespace Assets.Scripts.Dialogue
             }
 
             // We're now waiting for the player to move on to the next line
-            userRequestedNextLine = false;
+            proceedToNextLine = false;
 
             // Indicate to the rest of the game that the line has finished being delivered
             onLineFinishDisplaying?.Invoke();
 
-            while (userRequestedNextLine == false)
+            while (!proceedToNextLine)
             {
                 yield return null;
             }
@@ -105,7 +105,7 @@ namespace Assets.Scripts.Dialogue
 
         public new void MarkLineComplete()
         {
-            userRequestedNextLine = true;
+            proceedToNextLine = true;
         }
 
         private string ParseSnippetSystem<T>(string lineText, DialogueSnippetSystem<T> snippetSystem) where T : class

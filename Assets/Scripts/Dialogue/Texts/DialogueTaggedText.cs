@@ -86,7 +86,7 @@ namespace Assets.Scripts.Dialogue.Texts
                             string textSearchingForEnd = remainingTextAfterStart;
                             string taggedText = null, remainingTextAfterEnd = null;
                             TagOption endTag = null;
-                            while (taggedText == null && textSearchingForEnd.Length > 0)
+                            while (taggedText == null && textSearchingForEnd != null && textSearchingForEnd.Length > 0)
                             {
                                 endTag = format.Extract(textSearchingForEnd, out int indexOfEndTagInit, out int _, out remainingTextAfterEnd);
                                 if (endTag != null)
@@ -95,12 +95,10 @@ namespace Assets.Scripts.Dialogue.Texts
                                     {
                                         taggedText = remainingTextAfterStart.Substring(0, remainingTextAfterStart.Length - remainingTextAfterEnd.Length - endTag.Text.Length);
                                         textBeingAnalyzed = remainingTextAfterEnd; // This tag has been found correctly, go to the next portion of the text
-                                    }
-                                    else
-                                    {
-                                        textSearchingForEnd = remainingTextAfterEnd;
+                                        break;
                                     }
                                 }
+                                textSearchingForEnd = remainingTextAfterEnd;
                             }
 
                             if (taggedText == null)
@@ -149,9 +147,19 @@ namespace Assets.Scripts.Dialogue.Texts
                 {
                     // Log the exception
                     logger?.Invoke(ex);
-                    Console.WriteLine(ex.Message);
 
                     nextIndex = (text.Length - textBeingAnalyzed.Length + indexOfTagInit) + 1;
+
+                    // Add the start of the tag as raw text
+
+                    if (resultDialogueText == null)
+                    {
+                        resultDialogueText = new ComplexDialogueText(textBeingAnalyzed.Substring(0, indexOfTagInit + 1));
+                    }
+                    else
+                    {
+                        resultDialogueText.AddText(textBeingAnalyzed[indexOfTagInit].ToString());
+                    }
 
                     // Go to the next portion of the text (Skip the exception source)
                     textBeingAnalyzed = textBeingAnalyzed.Substring(nextIndex);
