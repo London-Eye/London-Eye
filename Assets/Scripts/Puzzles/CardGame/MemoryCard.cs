@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class MemoryCard : MonoBehaviour
 {
@@ -16,7 +14,7 @@ public class MemoryCard : MonoBehaviour
         _id = id;
         GetComponent<SpriteRenderer>().sprite = image;
     }
-        public void Start()
+    public void Start()
     {
         controller = GameObject.Find("GameController").GetComponent<SceneController>();
     }

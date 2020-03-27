@@ -20,9 +20,9 @@ namespace Assets.Scripts.Dialogue.Texts.Snippets
             Format = format;
             T value = TryGetValue();
 
-            if (value == null) 
+            if (value == null)
                 throw new KeyNotFoundException($"El Snippet de nombre \"{name}\" no tiene valor asociado.");
-            else 
+            else
                 Value = value;
         }
 
