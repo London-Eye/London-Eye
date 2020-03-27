@@ -6,7 +6,12 @@ using UnityEngine;
 
 namespace Assets.Scripts.Dialogue
 {
-    public class DialogueSnippetSystem<T> : MonoBehaviour
+    public abstract class DialogueSnippetSystem : MonoBehaviour
+    {
+        public abstract string ParseAndReplace(string text, Action<ParsingException> logger = null);
+    }
+
+    public class DialogueSnippetSystem<T> : DialogueSnippetSystem
     {
         public const string DefaultSeparator = "%";
 
@@ -17,12 +22,31 @@ namespace Assets.Scripts.Dialogue
 
         public SnippetFormat<T> Format { get; set; }
 
-        protected virtual void Start()
-        { 
+        protected virtual void Awake()
+        {
             Format = new SnippetFormat<T>(StartSeparator, EndSeparator)
             {
                 Snippets = snippets
             };
+        }
+
+        public override string ParseAndReplace(string text, Action<ParsingException> logger = null)
+            => ReplaceSnippets(text, ParseSnippets(text, logger));
+
+        public string ReplaceSnippets(string text, IEnumerable<Snippet<T>> snippets)
+        {
+            foreach (Snippet<T> snippet in snippets)
+            {
+                // Replace only the first occurrence of the snippet (to allow different snippets being called the same)
+                int indexOfSnippet = text.IndexOf(snippet.FullName);
+                if (indexOfSnippet >= 0)
+                {
+                    text = text.Substring(0, indexOfSnippet)
+                        + snippet.Value
+                        + text.Substring(indexOfSnippet + snippet.FullName.Length);
+                }
+            }
+            return text;
         }
 
         public List<Snippet<T>> ParseSnippets(string text, Action<ParsingException> logger = null)

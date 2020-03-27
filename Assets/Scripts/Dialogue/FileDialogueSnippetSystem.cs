@@ -1,6 +1,4 @@
-﻿using Assets.Scripts.Dialogue.Texts;
-using Assets.Scripts.Dialogue.Texts.Snippets;
-using System;
+﻿using Assets.Scripts.Dialogue.Texts.Snippets;
 using UnityEngine;
 
 namespace Assets.Scripts.Dialogue
@@ -13,7 +11,7 @@ namespace Assets.Scripts.Dialogue
 
         public TextAsset Snippets;
 
-        protected override void Start()
+        protected override void Awake()
         {
             FileSnippetFormat fileFormat = new FileSnippetFormat(StartSeparator, EndSeparator, NameValueSeparator);
             fileFormat.LoadSnippets(Snippets.text);

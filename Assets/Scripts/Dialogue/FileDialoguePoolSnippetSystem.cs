@@ -1,5 +1,4 @@
 ﻿using Assets.Scripts.Dialogue.Texts.Snippets;
-using System;
 using System.IO;
 using UnityEngine;
 
@@ -17,14 +16,9 @@ namespace Assets.Scripts.Dialogue
 
         private enum PoolsLoadState { EMPTY, NAME, POOLS };
 
-        private void Awake()
+        protected override void Awake()
         {
             Format = LoadPools();
-        }
-
-        protected override void Start()
-        {
-            
         }
 
         private SelectorPoolSnippetFormat<string> LoadPools()

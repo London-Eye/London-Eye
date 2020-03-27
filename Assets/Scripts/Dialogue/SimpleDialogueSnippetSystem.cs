@@ -7,14 +7,14 @@ namespace Assets.Scripts.Dialogue
         public List<string> Names;
         public List<string> Values;
 
-        protected override void Start()
+        protected override void Awake()
         {
             for (int i = 0; i < Names.Count; i++)
             {
                 snippets[Names[i]] = Values[i];
             }
 
-            base.Start();
+            base.Awake();
         }
     }
 }

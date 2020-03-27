@@ -9,7 +9,7 @@ namespace Assets.Scripts.Dialogue
 
         private VariableStorageYarn variableStorageYarn;
 
-        protected override void Start()
+        protected override void Awake()
         {
             variableStorageYarn = FindObjectOfType<VariableStorageYarn>();
 

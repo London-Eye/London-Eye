@@ -4852,6 +4852,20 @@ MonoBehaviour:
   StartSeparator: '**<'
   EndSeparator: '>**'
   SnippetPools: {fileID: 4900000, guid: 91a40575f01d3c049bcb61de9cd0aa7f, type: 3}
+--- !u!114 &2133812874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2133812872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 337b45a670afb54489a7686e06ba55b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StartSeparator: '**_'
+  EndSeparator: _**
 --- !u!1 &2144106829
 GameObject:
   m_ObjectHideFlags: 0
