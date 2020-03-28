@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Dialogue.Texts;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,7 +10,6 @@ namespace Assets.Scripts.Dialogue
     public class ComplexDialogueUI : DialogueUI
     {
         private DialogueSnippetSystem[] snippetSystems;
-        private VariableSnippetSystem variableSystem;
 
         // When true, the user has indicated that they want to proceed to
         // the next line.
@@ -18,7 +18,6 @@ namespace Assets.Scripts.Dialogue
         void Start()
         {
             snippetSystems = FindObjectsOfType<DialogueSnippetSystem>();
-            variableSystem = FindObjectOfType<VariableSnippetSystem>();
         }
 
         public override Yarn.Dialogue.HandlerExecutionType RunLine(Yarn.Line line, IDictionary<string, string> strings, System.Action onComplete)
@@ -45,12 +44,6 @@ namespace Assets.Scripts.Dialogue
                     {
                         text = snippetSystem.ParseAndReplace(text, RunLineLogger);
                     }
-                }
-
-                // Replace variables with real text
-                if (variableSystem != null)
-                {
-                    text = variableSystem.ParseAndReplace(text, RunLineLogger);
                 }
             }
             else
@@ -108,9 +101,9 @@ namespace Assets.Scripts.Dialogue
             proceedToNextLine = true;
         }
 
-        private void RunLineLogger(ParsingException parsingException)
+        private void RunLineLogger(Exception ex)
         {
-            Debug.LogError($"Error: {parsingException.Message}");
+            Debug.LogException(ex);
         }
     }
 

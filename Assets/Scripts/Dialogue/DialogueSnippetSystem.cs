@@ -1,57 +1,67 @@
-﻿using Assets.Scripts.Dialogue.Texts;
-using Assets.Scripts.Dialogue.Texts.Snippets;
+﻿using Assets.Scripts.Dialogue.Texts.Snippets;
+using Assets.Scripts.Dialogue.Texts.Snippets.Sources;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.Scripts.Dialogue
 {
-    public abstract class DialogueSnippetSystem : MonoBehaviour
-    {
-        public abstract string ParseAndReplace(string text, Action<ParsingException> logger = null);
-    }
-
-    public class DialogueSnippetSystem<T> : DialogueSnippetSystem
+    public class DialogueSnippetSystem : MonoBehaviour
     {
         public const string DefaultSeparator = "%";
 
         public string StartSeparator = DefaultSeparator;
         public string EndSeparator = DefaultSeparator;
 
-        protected readonly Dictionary<string, T> snippets = new Dictionary<string, T>();
+        public SnippetSource Source;
 
-        public SnippetFormat<T> Format { get; set; }
+        [Header("Object Access")]
+        public bool ObjectAccessEnabled;
+        public string StartAccessSeparator = ComplexSnippetFormat<object>.DefaultStartAccessSeparator;
+        public string EndAccessSeparator = ComplexSnippetFormat<object>.DefaultEndAccessSeparator;
+        public string AccessMemberSeparator = ComplexSnippetFormat<object>.DefaultAccessMemberSeparator;
 
-        protected virtual void Awake()
+        public SnippetFormat<object> Format { get; set; }
+
+        void Awake()
         {
-            Format = new SnippetFormat<T>(StartSeparator, EndSeparator)
+            InitFormat();
+        }
+        
+        private void InitFormat()
+        {
+            if (ObjectAccessEnabled)
             {
-                Snippets = snippets
-            };
+                Format = new ComplexSnippetFormat<object>(StartSeparator, EndSeparator, Source);
+            }
+            else
+            {
+                Format = new SnippetFormat<object>(StartSeparator, EndSeparator, Source);
+            }
         }
 
-        public override string ParseAndReplace(string text, Action<ParsingException> logger = null)
+        public string ParseAndReplace(string text, Action<Exception> logger = null)
             => ReplaceSnippets(text, ParseSnippets(text, logger));
 
-        public string ReplaceSnippets(string text, IEnumerable<Snippet<T>> snippets)
+        public string ReplaceSnippets(string text, IEnumerable<Snippet<object>> snippets)
         {
-            foreach (Snippet<T> snippet in snippets)
+            foreach (Snippet<object> snippet in snippets)
             {
                 // Replace only the first occurrence of the snippet (to allow different snippets being called the same)
                 int indexOfSnippet = text.IndexOf(snippet.FullName);
                 if (indexOfSnippet >= 0)
                 {
                     text = text.Substring(0, indexOfSnippet)
-                        + snippet.Value
+                        + snippet.Value.ToString()
                         + text.Substring(indexOfSnippet + snippet.FullName.Length);
                 }
             }
             return text;
         }
 
-        public List<Snippet<T>> ParseSnippets(string text, Action<ParsingException> logger = null)
+        public List<Snippet<object>> ParseSnippets(string text, Action<Exception> logger = null)
         {
-            List<Snippet<T>> result = new List<Snippet<T>>();
+            List<Snippet<object>> result = new List<Snippet<object>>();
             string textBeingAnalyzed = text;
 
             while (textBeingAnalyzed != null && textBeingAnalyzed.Length > 0)
@@ -61,7 +71,7 @@ namespace Assets.Scripts.Dialogue
                 string remainingText = "";
                 try
                 {
-                    Snippet<T> snippet = Format.Extract(textBeingAnalyzed, out indexOfSnippetInit, out _, out remainingText);
+                    Snippet<object> snippet = Format.Extract(textBeingAnalyzed, out indexOfSnippetInit, out _, out remainingText);
                     if (snippet != null)
                     {
                         result.Add(snippet);
@@ -73,7 +83,7 @@ namespace Assets.Scripts.Dialogue
 
                     textBeingAnalyzed = remainingText;
                 }
-                catch (ParsingException ex)
+                catch (Exception ex)
                 {
                     // Log the exception
                     logger?.Invoke(ex);
@@ -82,11 +92,6 @@ namespace Assets.Scripts.Dialogue
                     // Go to the next portion of the text (Skip the exception source)
                     int nextIndex = (text.Length - textBeingAnalyzed.Length + indexOfSnippetInit) + 1;
                     textBeingAnalyzed = nextIndex >= 0 && nextIndex < textBeingAnalyzed.Length ? textBeingAnalyzed.Substring(nextIndex) : "";
-                }
-                catch (KeyNotFoundException)
-                {
-                    // If no value was found for the snippet, just leave it as text
-                    textBeingAnalyzed = remainingText;
                 }
             }
 

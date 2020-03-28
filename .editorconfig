@@ -2,3 +2,6 @@
 
 # IDE0066: Convertir una instrucción switch en expresión
 csharp_style_prefer_switch_expression = false:suggestion
+
+# IDE0063: Use la instrucción "using" simple
+csharp_prefer_simple_using_statement = false:suggestion

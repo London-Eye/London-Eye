@@ -1,15 +1,18 @@
-﻿namespace Assets.Scripts.Dialogue.Texts.Snippets
+﻿using Assets.Scripts.Dialogue.Texts.Snippets.Sources;
+using System;
+
+namespace Assets.Scripts.Dialogue.Texts.Snippets
 {
-    public class ComplexSnippetFormat : SnippetFormat<object>
+    public class ComplexSnippetFormat<R> : SnippetFormat<object>
     {
-        private const string DefaultStartAccessSeparator = "[", DefaultEndAccessSeparator = "]",
+        public const string DefaultStartAccessSeparator = "[", DefaultEndAccessSeparator = "]",
             DefaultAccessMemberSeparator = ".";
 
         public string StartAccessSeparator { get; set; }
         public string EndAccessSeparator { get; set; }
         public string AccessMemberSeparator { get; set; }
 
-        public ComplexSnippetFormat(string startSeparator, string endSeparator, string startAccessSeparator = DefaultStartAccessSeparator, string endAccessSeparator = DefaultEndAccessSeparator, string accessMemberSeparator = DefaultAccessMemberSeparator) : base(startSeparator, endSeparator)
+        public ComplexSnippetFormat(string startSeparator, string endSeparator, SnippetSource source, string startAccessSeparator = DefaultStartAccessSeparator, string endAccessSeparator = DefaultEndAccessSeparator, string accessMemberSeparator = DefaultAccessMemberSeparator) : base(startSeparator, endSeparator, source)
         {
             StartAccessSeparator = startAccessSeparator;
             EndAccessSeparator = endAccessSeparator;
@@ -19,7 +22,7 @@
         public override Snippet<object> CreateSnippet(string name)
         {
             int indexOfStartAccess = name.IndexOf(StartAccessSeparator);
-            if (indexOfStartAccess >= 0 && Snippets.TryGetValue(name.Substring(0, indexOfStartAccess), out object value))
+            if (indexOfStartAccess >= 0 && Source.TryGetValue(name.Substring(0, indexOfStartAccess), out object value))
             {
                 int indexOfEndAccess = name.IndexOf(EndAccessSeparator);
                 if (indexOfEndAccess >= 0)
@@ -31,7 +34,7 @@
 
                     foreach (string member in memberAccesses)
                     {
-                        System.Type currentType = currentValue.GetType();
+                        Type currentType = currentValue.GetType();
                         currentValue = currentType.GetProperty(member)?.GetValue(currentValue) ?? currentType.GetField(member)?.GetValue(currentValue);
                         if (currentValue == null) { throw new ParsingException(indexOfStartAccess, "Cannot find access"); }
                     }
@@ -43,7 +46,17 @@
                     throw new ParsingException(indexOfStartAccess, "Start access without end access");
                 }
             }
-            return base.CreateSnippet(name);
+            else
+            {
+                if (Source.TryGetValue(name, out value))
+                {
+                    return new Snippet<object>(name, value, this);
+                }
+                else
+                {
+                    throw NameWithoutValueException(name);
+                }
+            }
         }
     }
 }

@@ -1,19 +1,16 @@
 ﻿using System.IO;
 
-namespace Assets.Scripts.Dialogue.Texts.Snippets
+namespace Assets.Scripts.Dialogue.Texts.Snippets.Sources
 {
-    public class FileSnippetFormat : SnippetFormat<string>
+    public class SimpleTextFileSnippetSource : TextFileSnippetSource
     {
-        public string NameValueSeparator { get; set; }
+        public const string DefaultNameValueSeparator = "===";
 
-        public FileSnippetFormat(string startSeparator, string endSeparator, string nameValueSeparator) : base(startSeparator, endSeparator)
-        {
-            NameValueSeparator = nameValueSeparator;
-        }
+        public string NameValueSeparator = DefaultNameValueSeparator;
 
         public int IndexOfNextNameValueSeparator(string text) => text.IndexOf(NameValueSeparator);
 
-        public void LoadSnippets(string text)
+        protected override void LoadSnippets(string text)
         {
             using (StringReader textReader = new StringReader(text))
             {

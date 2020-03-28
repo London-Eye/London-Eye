@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Assets.Scripts.Dialogue.Texts.Snippets.Sources;
+using System.Collections.Generic;
 
 namespace Assets.Scripts.Dialogue.Texts.Snippets
 {
@@ -7,14 +8,14 @@ namespace Assets.Scripts.Dialogue.Texts.Snippets
         public string StartSeparator { get; }
         public string EndSeparator { get; }
 
-        public Dictionary<string, T> Snippets { get; set; }
+        public SnippetSource<T> Source { get; set; }
 
-        public SnippetFormat(string startSeparator, string endSeparator)
+        public SnippetFormat(string startSeparator, string endSeparator, SnippetSource<T> source)
         {
             StartSeparator = startSeparator;
             EndSeparator = endSeparator;
 
-            Snippets = new Dictionary<string, T>();
+            Source = source;
         }
 
         public int IndexOfNextStart(string text) => text.IndexOf(StartSeparator);
@@ -22,7 +23,19 @@ namespace Assets.Scripts.Dialogue.Texts.Snippets
 
         public bool HasAnyTags(string text) => IndexOfNextStart(text) >= 0;
 
-        public virtual Snippet<T> CreateSnippet(string name) => new Snippet<T>(name, this);
+        public string GetFullName(string name) => $"{StartSeparator}{name}{EndSeparator}".Trim();
+
+        public virtual Snippet<T> CreateSnippet(string name)
+        {
+            if (Source.TryGetValue(name, out T value))
+            {
+                return new Snippet<T>(name, value, this);
+            }
+            else
+            {
+                throw NameWithoutValueException(name);
+            }
+        }
 
         public Snippet<T> Extract(string line, out int startingIndex, out int endIndex, out string remainingText)
         {
@@ -57,5 +70,8 @@ namespace Assets.Scripts.Dialogue.Texts.Snippets
 
             return snippet;
         }
+
+        protected static KeyNotFoundException NameWithoutValueException(string name)
+            => new KeyNotFoundException($"Snippet of name \"{name}\" does not have an associated value.");
     }
 }
