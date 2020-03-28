@@ -4846,12 +4846,45 @@ MonoBehaviour:
   m_GameObject: {fileID: 2133812872}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23e8298250a754545b2fb7ca28fec5f4, type: 3}
+  m_Script: {fileID: 11500000, guid: 5542a93f76a312840a4f4cf357ee759a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SnippetsFile: {fileID: 4900000, guid: 91a40575f01d3c049bcb61de9cd0aa7f, type: 3}
+  PoolSource: {fileID: 2133812875}
+--- !u!114 &2133812874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2133812872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0117f404ac22eae4a8786a04ac058e9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   StartSeparator: '**<'
   EndSeparator: '>**'
-  SnippetPools: {fileID: 4900000, guid: 91a40575f01d3c049bcb61de9cd0aa7f, type: 3}
+  Source: {fileID: 2133812873}
+  ObjectAccessEnabled: 0
+  StartAccessSeparator: '['
+  EndAccessSeparator: ']'
+  AccessMemberSeparator: .
+--- !u!114 &2133812875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2133812872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d28fb4ae84b7b8d4294cc809263a6e32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NameValuesSeparator: '---'
+  PoolSeparator: ===
+  NameIDSeparator: '-'
 --- !u!1 &2144106829
 GameObject:
   m_ObjectHideFlags: 0
