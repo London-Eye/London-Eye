@@ -1,12 +1,20 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using UnityEngine;
 
 namespace Assets.Scripts.Dialogue.Texts.Snippets.Sources
 {
+    [RequireComponent(typeof(PoolSnippetSource))]
     public class TextFilePoolSnippetSource : TextFileSnippetSource
     {
-        public PoolSnippetSource PoolSource;
+        private PoolSnippetSource PoolSource;
         private enum PoolsLoadState { EMPTY, NAME, POOLS };
+
+        protected override void Awake()
+        {
+            PoolSource = GetComponent<PoolSnippetSource>();
+            base.Awake();
+        }
 
         public override bool TryGetValue(string name, out object value)
             => PoolSource.TryGetValue(name, out value);

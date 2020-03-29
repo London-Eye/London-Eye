@@ -6,7 +6,7 @@ namespace Assets.Scripts.Dialogue.Texts.Snippets.Sources
     {
         public TextAsset SnippetsFile;
 
-        void Awake()
+        protected virtual void Awake()
         {
             LoadSnippets(SnippetsFile.text);
         }

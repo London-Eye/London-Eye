@@ -4850,7 +4850,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SnippetsFile: {fileID: 4900000, guid: 91a40575f01d3c049bcb61de9cd0aa7f, type: 3}
-  PoolSource: {fileID: 2133812875}
 --- !u!114 &2133812874
 MonoBehaviour:
   m_ObjectHideFlags: 0
