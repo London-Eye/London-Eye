@@ -48,14 +48,7 @@ namespace Assets.Scripts.Dialogue.Texts.Snippets
             }
             else
             {
-                if (Source.TryGetValue(name, out value))
-                {
-                    return new Snippet<object>(name, value, this);
-                }
-                else
-                {
-                    throw NameWithoutValueException(name);
-                }
+                return base.CreateSnippet(name);
             }
         }
     }
