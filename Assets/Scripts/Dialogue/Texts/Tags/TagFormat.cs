@@ -34,7 +34,7 @@ namespace Assets.Scripts.Dialogue.Texts.Tags
         public int IndexOfNextOptionEnd(string text) => text.IndexOf(EndOptionSeparator);
         public int IndexOfNextEnd(string text) => text.IndexOf(EndSeparator);
 
-        public bool HasAnyTags(string text) => IndexOfNextStart(text) >= 0;
+        public bool HasAny(string text) => IndexOfNextStart(text) >= 0;
 
 
         public TagOption Extract(string line, out int indexOfTagStart, out int endIndex, out string remainingText)

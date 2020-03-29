@@ -21,7 +21,7 @@ namespace Assets.Scripts.Dialogue.Texts.Snippets
         public int IndexOfNextStart(string text) => text.IndexOf(StartSeparator);
         public int IndexOfNextEnd(string text) => text.IndexOf(EndSeparator);
 
-        public bool HasAnyTags(string text) => IndexOfNextStart(text) >= 0;
+        public bool HasAny(string text) => IndexOfNextStart(text) >= 0;
 
         public string GetFullName(string name) => $"{StartSeparator}{name}{EndSeparator}".Trim();
 
