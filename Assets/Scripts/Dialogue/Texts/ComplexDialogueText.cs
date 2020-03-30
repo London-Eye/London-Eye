@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Assets.Scripts.Dialogue.Texts
 {
@@ -78,7 +77,7 @@ namespace Assets.Scripts.Dialogue.Texts
         {
             IDialogueText resultDialogueText;
 
-            if (TagFormat.RichTextTagFormat.HasAnyTags(text))
+            if (TagFormat.RichTextTagFormat.HasAny(text))
             {
                 resultDialogueText = DialogueTaggedText.AnalyzeText(text, TagFormat.RichTextTagFormat, logger);
             }

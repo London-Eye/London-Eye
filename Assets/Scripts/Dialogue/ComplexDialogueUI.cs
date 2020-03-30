@@ -1,15 +1,15 @@
-﻿using UnityEngine;
-using Yarn.Unity;
-using Assets.Scripts.Dialogue.Texts;
-using System.Collections.Generic;
+﻿using Assets.Scripts.Dialogue.Texts;
+using System;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using Yarn.Unity;
 
 namespace Assets.Scripts.Dialogue
 {
     public class ComplexDialogueUI : DialogueUI
     {
-        private DialogueSnippetSystem<string>[] snippetSystems;
-        private VariableSnippetSystem variableSystem;
+        private DialogueSnippetSystem[] snippetSystems;
 
         // When true, the user has indicated that they want to proceed to
         // the next line.
@@ -17,8 +17,7 @@ namespace Assets.Scripts.Dialogue
 
         void Start()
         {
-            snippetSystems = FindObjectsOfType<DialogueSnippetSystem<string>>();
-            variableSystem = FindObjectOfType<VariableSnippetSystem>();
+            snippetSystems = FindObjectsOfType<DialogueSnippetSystem>();
         }
 
         public override Yarn.Dialogue.HandlerExecutionType RunLine(Yarn.Line line, IDictionary<string, string> strings, System.Action onComplete)
@@ -43,14 +42,8 @@ namespace Assets.Scripts.Dialogue
                 {
                     foreach (var snippetSystem in snippetSystems)
                     {
-                        text = ParseSnippetSystem(text, snippetSystem);
+                        text = snippetSystem.ParseAndReplace(text, RunLineLogger);
                     }
-                }
-
-                // Replace variables with real text
-                if (variableSystem != null)
-                {
-                    text = ParseSnippetSystem(text, variableSystem);
                 }
             }
             else
@@ -108,27 +101,9 @@ namespace Assets.Scripts.Dialogue
             proceedToNextLine = true;
         }
 
-        private string ParseSnippetSystem<T>(string lineText, DialogueSnippetSystem<T> snippetSystem) where T : class
+        private void RunLineLogger(Exception ex)
         {
-            var snippets = snippetSystem.ParseSnippets(lineText, RunLineLogger);
-            foreach (var snippet in snippets)
-            {
-                // Replace only the first occurrence of the snippet (to allow different snippets being called the same)
-                int indexOfSnippet = lineText.IndexOf(snippet.FullName);
-                if (indexOfSnippet >= 0)
-                {
-                    lineText = lineText.Substring(0, indexOfSnippet)
-                        + snippet.Value.ToString()
-                        + lineText.Substring(indexOfSnippet + snippet.FullName.Length);
-                }
-            }
-
-            return lineText;
-        }
-
-        private void RunLineLogger(ParsingException parsingException)
-        {
-            Debug.LogError($"Error: {parsingException.Message}");
+            Debug.LogException(ex);
         }
     }
 

@@ -1,7 +1,6 @@
 ﻿using Assets.Scripts.Dialogue.Texts.Tags;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Assets.Scripts.Dialogue.Texts
 {
@@ -90,7 +89,7 @@ namespace Assets.Scripts.Dialogue.Texts
                             {
                                 endTag = format.Extract(textSearchingForEnd, out int indexOfEndTagInit, out int _, out remainingTextAfterEnd);
                                 if (endTag != null)
-                                {                               
+                                {
                                     if (TagOption.Matches(tag, endTag))
                                     {
                                         taggedText = remainingTextAfterStart.Substring(0, remainingTextAfterStart.Length - remainingTextAfterEnd.Length - endTag.Text.Length);

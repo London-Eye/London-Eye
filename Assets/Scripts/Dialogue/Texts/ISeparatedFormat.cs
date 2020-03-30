@@ -6,7 +6,7 @@
         string StartSeparator { get; }
 
         T Extract(string line, out int startingIndex, out int endIndex, out string remainingText);
-        bool HasAnyTags(string text);
+        bool HasAny(string text);
         int IndexOfNextEnd(string text);
         int IndexOfNextStart(string text);
     }
