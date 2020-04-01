@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Scripts.Common;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -30,7 +31,7 @@ public class Set_images : MonoBehaviour
 
         Debug.Log("----------------");
         */
-        reshuffle(images);
+        images.Shuffle();
         
         for (int i = 0; i < images.Length; i++)
         {
@@ -44,19 +45,6 @@ public class Set_images : MonoBehaviour
     void Update()
     {
         check_solution();
-    }
-
-
-    void reshuffle(Sprite[] sprites)
-    {
-        // Knuth shuffle algorithm :: courtesy of Wikipedia :)
-        for (int t = 0; t < sprites.Length; t++)
-        {
-            Sprite tmp = sprites[t];
-            int r = Random.Range(t, sprites.Length);
-            sprites[t] = sprites[r];
-            sprites[r] = tmp;
-        }
     }
 
     private void check_solution() {

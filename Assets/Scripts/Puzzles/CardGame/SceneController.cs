@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Scripts.Common;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -35,7 +36,7 @@ public class SceneController : MonoBehaviour
             ids[i] = i / 2;
         }
 
-        ids = ShuffleArray(ids);
+        ids.Shuffle();
 
         float totalheight = Camera.main.orthographicSize * 2;
         float totalwidth = totalheight * Camera.main.aspect;
@@ -64,19 +65,6 @@ public class SceneController : MonoBehaviour
         {
             StartCoroutine(Endgame());
         }
-    }
-
-    private int[] ShuffleArray(int[] numbers)
-    {
-        int[] newArray = numbers.Clone() as int[];
-        for (int i = 0; i < newArray.Length - 1; i++)
-        {
-            int r = Random.Range(i, newArray.Length);
-            int tmp = newArray[i];
-            newArray[i] = newArray[r];
-            newArray[r] = tmp;
-        }
-        return newArray;
     }
 
     public bool CanReveal => _secondRevealed == null && _movimientos < _maxMV && !pauseMenu.IsPaused;
