@@ -4,15 +4,12 @@ namespace Assets.Scripts.Dialogue.Texts.Snippets.Sources
 {
     public class PoolSnippetSource : DictionarySnippetSource
     {
-        public const string DefaultNameValuesSeparator = "---", DefaultPoolSeparator = "===", DefaultNameIDSeparator = "-";
-
-        public string NameValuesSeparator = DefaultNameValuesSeparator;
-
-        public string PoolSeparator = DefaultPoolSeparator;
+        public const string DefaultNameIDSeparator = "-";
 
         public string NameIDSeparator = DefaultNameIDSeparator;
 
         public Dictionary<string, SelectorPool<object>> SelectorPools { get; set; }
+            = new Dictionary<string, SelectorPool<object>>();
 
         public override bool TryGetValue(string name, out object value)
         {

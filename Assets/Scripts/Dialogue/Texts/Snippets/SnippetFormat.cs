@@ -8,14 +8,14 @@ namespace Assets.Scripts.Dialogue.Texts.Snippets
         public string StartSeparator { get; }
         public string EndSeparator { get; }
 
-        public SnippetSource<T> Source { get; set; }
+        public List<SnippetSource<T>> Sources { get; set; }
 
-        public SnippetFormat(string startSeparator, string endSeparator, SnippetSource<T> source)
+        public SnippetFormat(string startSeparator, string endSeparator, IEnumerable<SnippetSource<T>> sources)
         {
             StartSeparator = startSeparator;
             EndSeparator = endSeparator;
 
-            Source = source;
+            Sources = new List<SnippetSource<T>>(sources);
         }
 
         public int IndexOfNextStart(string text) => text.IndexOf(StartSeparator);
@@ -27,7 +27,7 @@ namespace Assets.Scripts.Dialogue.Texts.Snippets
 
         public virtual Snippet<T> CreateSnippet(string name)
         {
-            if (Source.TryGetValue(name, out T value))
+            if (TryGetValue(name, out T value))
             {
                 return new Snippet<T>(name, value, this);
             }
@@ -35,6 +35,19 @@ namespace Assets.Scripts.Dialogue.Texts.Snippets
             {
                 throw NameWithoutValueException(name);
             }
+        }
+
+        protected bool TryGetValue(string name, out T value)
+        {
+            foreach (SnippetSource<T> source in Sources)
+            {
+                if (source.TryGetValue(name, out value))
+                {
+                    return true;
+                }
+            }
+            value = default;
+            return false;
         }
 
         public Snippet<T> Extract(string line, out int startingIndex, out int endIndex, out string remainingText)

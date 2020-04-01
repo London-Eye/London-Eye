@@ -1,23 +1,39 @@
 ﻿using Assets.Scripts.Common;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace Assets.Scripts.Dialogue.Texts.Snippets
 {
     public class SelectorPool<T>
     {
-        public List<T> Pool { get; }
+        public IList<T> Pool
+        {
+            get => new ReadOnlyCollection<T>(pool);
+            set
+            {
+                if (currentPool.Count == 0)
+                {
+                    pool = value;
+                }
+                else
+                {
+                    throw new System.InvalidOperationException("Cannot change the pool while the current one is not empty");
+                }
+            }
+        }
 
         private readonly Stack<T> currentPool;
+        private IList<T> pool;
 
         public SelectorPool()
         {
-            Pool = new List<T>();
+            pool = new List<T>();
             currentPool = new Stack<T>();
         }
 
-        public SelectorPool(IEnumerable<T> pool)
+        public SelectorPool(IEnumerable<T> startingPool)
         {
-            Pool = new List<T>(pool);
+            pool = new List<T>(startingPool);
             currentPool = new Stack<T>();
         }
 
@@ -31,9 +47,14 @@ namespace Assets.Scripts.Dialogue.Texts.Snippets
             return currentPool.Pop();
         }
 
+        public void Empty()
+        {
+            currentPool.Clear();
+        }
+
         private void Fill()
         {
-            foreach (T item in Pool.GetShuffle())
+            foreach (T item in pool.GetShuffle())
             {
                 currentPool.Push(item);
             }

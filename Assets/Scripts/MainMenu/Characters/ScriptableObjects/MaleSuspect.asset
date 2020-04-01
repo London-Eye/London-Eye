@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38b0bd1636e356d47b03dc60b2c9b579, type: 3}
+  m_Name: MaleSuspect
+  m_EditorClassIdentifier: 
+  characterName:
+  - Placido
+  - Carlos
+  - Salvador
+  - Santiago
+  - benito
+  - Fabio
+  - Pablo
+  - Angel
+  - Heraclito
+  - Godofredo
+  relation:
+  - novio
+  - padre
+  - hermano
+  - amante
+  - primo
+  - "compa\xF1ero de trabajo"
+  - conocido
+  emotion:
+  - estaba celoso de
+  - estaba enfadado con
+  - admiraba a
+  - estaba enamorado de
+  - estaba decepcionado con
+  - estaba felizmente con
+  - estaba orgulloso de
+  - odiaba a

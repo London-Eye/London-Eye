@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.Dialogue.Texts.Snippets.Sources;
 using System;
+using System.Collections.Generic;
 
 namespace Assets.Scripts.Dialogue.Texts.Snippets
 {
@@ -12,7 +13,7 @@ namespace Assets.Scripts.Dialogue.Texts.Snippets
         public string EndAccessSeparator { get; set; }
         public string AccessMemberSeparator { get; set; }
 
-        public ComplexSnippetFormat(string startSeparator, string endSeparator, SnippetSource source, string startAccessSeparator = DefaultStartAccessSeparator, string endAccessSeparator = DefaultEndAccessSeparator, string accessMemberSeparator = DefaultAccessMemberSeparator) : base(startSeparator, endSeparator, source)
+        public ComplexSnippetFormat(string startSeparator, string endSeparator, IEnumerable<SnippetSource> sources, string startAccessSeparator = DefaultStartAccessSeparator, string endAccessSeparator = DefaultEndAccessSeparator, string accessMemberSeparator = DefaultAccessMemberSeparator) : base(startSeparator, endSeparator, sources)
         {
             StartAccessSeparator = startAccessSeparator;
             EndAccessSeparator = endAccessSeparator;
@@ -22,7 +23,7 @@ namespace Assets.Scripts.Dialogue.Texts.Snippets
         public override Snippet<object> CreateSnippet(string name)
         {
             int indexOfStartAccess = name.IndexOf(StartAccessSeparator);
-            if (indexOfStartAccess >= 0 && Source.TryGetValue(name.Substring(0, indexOfStartAccess), out object value))
+            if (indexOfStartAccess >= 0 && TryGetValue(name.Substring(0, indexOfStartAccess), out object value))
             {
                 int indexOfEndAccess = name.IndexOf(EndAccessSeparator);
                 if (indexOfEndAccess >= 0)
