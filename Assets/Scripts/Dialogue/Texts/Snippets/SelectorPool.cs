@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using Assets.Scripts.Common;
+using System.Collections.Generic;
 
 namespace Assets.Scripts.Dialogue.Texts.Snippets
 {
@@ -33,25 +33,10 @@ namespace Assets.Scripts.Dialogue.Texts.Snippets
 
         private void Fill()
         {
-            IEnumerable<T> shuffledPool = ShufflePool();
-            foreach (T item in shuffledPool)
+            foreach (T item in Pool.GetShuffle())
             {
                 currentPool.Push(item);
             }
-        }
-
-        private IEnumerable<T> ShufflePool()
-        {
-            T[] newArray = new T[Pool.Count];
-            Pool.CopyTo(newArray);
-            for (int i = 0; i < newArray.Length - 1; i++)
-            {
-                int r = Random.Range(i, newArray.Length);
-                T tmp = newArray[i];
-                newArray[i] = newArray[r];
-                newArray[r] = tmp;
-            }
-            return newArray;
         }
     }
 }

@@ -51,3 +51,9 @@ TagManager:
   - name: Pause
     uniqueID: 3696693279
     locked: 0
+  - name: bolas
+    uniqueID: 686913661
+    locked: 0
+  - name: probetas
+    uniqueID: 3995191881
+    locked: 0
