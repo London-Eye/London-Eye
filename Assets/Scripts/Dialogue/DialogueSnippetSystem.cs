@@ -13,7 +13,7 @@ namespace Assets.Scripts.Dialogue
         public string StartSeparator = DefaultSeparator;
         public string EndSeparator = DefaultSeparator;
 
-        public SnippetSource Source;
+        public List<SnippetSource> Sources;
 
         [Header("Object Access")]
         public bool ObjectAccessEnabled;
@@ -32,11 +32,11 @@ namespace Assets.Scripts.Dialogue
         {
             if (ObjectAccessEnabled)
             {
-                Format = new ComplexSnippetFormat<object>(StartSeparator, EndSeparator, Source);
+                Format = new ComplexSnippetFormat<object>(StartSeparator, EndSeparator, Sources);
             }
             else
             {
-                Format = new SnippetFormat<object>(StartSeparator, EndSeparator, Source);
+                Format = new SnippetFormat<object>(StartSeparator, EndSeparator, Sources);
             }
         }
 

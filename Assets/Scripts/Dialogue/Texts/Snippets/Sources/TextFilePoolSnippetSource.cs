@@ -7,6 +7,12 @@ namespace Assets.Scripts.Dialogue.Texts.Snippets.Sources
     [RequireComponent(typeof(PoolSnippetSource))]
     public class TextFilePoolSnippetSource : TextFileSnippetSource
     {
+        public const string DefaultNameValuesSeparator = "---", DefaultPoolSeparator = "===";
+
+        public string NameValuesSeparator = DefaultNameValuesSeparator;
+
+        public string PoolSeparator = DefaultPoolSeparator;
+
         private PoolSnippetSource PoolSource;
         private enum PoolsLoadState { EMPTY, NAME, POOLS };
 
@@ -27,27 +33,37 @@ namespace Assets.Scripts.Dialogue.Texts.Snippets.Sources
                 string line, name = "";
                 PoolsLoadState state = PoolsLoadState.EMPTY;
                 SelectorPool<object> selectorPool = null;
+                List<object> currentPool = null;
                 while ((line = textReader.ReadLine()) != null)
                 {
                     switch (state)
                     {
                         case PoolsLoadState.EMPTY:
-                            if (selectorPool == null) { selectorPool = new SelectorPool<object>(); }
-                            if (!string.IsNullOrEmpty(line)) { name = line.Trim(); state = PoolsLoadState.NAME; }
+                            if (selectorPool == null)
+                            {
+                                selectorPool = new SelectorPool<object>();
+                                currentPool = new List<object>();
+                            }
+                            if (!string.IsNullOrEmpty(line))
+                            {
+                                name = line.Trim();
+                                state = PoolsLoadState.NAME;
+                            }
                             break;
                         case PoolsLoadState.NAME:
-                            if (line == PoolSource.NameValuesSeparator) { state = PoolsLoadState.POOLS; }
+                            if (line == NameValuesSeparator) { state = PoolsLoadState.POOLS; }
                             break;
                         case PoolsLoadState.POOLS:
-                            if (line == PoolSource.PoolSeparator)
+                            if (line == PoolSeparator)
                             {
+                                selectorPool.Pool = currentPool;
                                 PoolSource.SelectorPools.Add(name, selectorPool);
                                 state = PoolsLoadState.EMPTY;
                                 selectorPool = null;
                             }
                             else
                             {
-                                selectorPool.Pool.Add(line);
+                                currentPool.Add(line);
                             }
                             break;
                     }
