@@ -11,12 +11,13 @@ public class CharacterCreation : MonoBehaviour
     [SerializeField] public CharacterStats femaleCharacterStats;
 
     public int suspectsGiven = 5;
-    public string suspectKey, victimKey, murdererKey;
+    public string suspectKey, victimKey, murdererKey, randomNameKey;
 
     private List<int> mNames = new List<int>(), fNames = new List<int>();
     private List<int> mRelation = new List<int>(), fRelation = new List<int>();
 
     private DictionarySnippetSource characterDictionary;
+    private PoolSnippetSource namePool;
 
     void Start()
     {
@@ -66,37 +67,8 @@ public class CharacterCreation : MonoBehaviour
             {
                 isMale = rnd.NextDouble() > 0.5;
 
-                if(isMale)
-                {
-                    name = rnd.Next(0, 9);
-                    relation = rnd.Next(0, 6);
-                    while (mNames.Contains(name) || mRelation.Contains(relation))
-                    {
-                        name = rnd.Next(0, 9);
-                        relation = rnd.Next(0, 6);
-                    }
-
-                    mNames.Add(name);
-                    if (relation > 1)
-                    {
-                        mRelation.Add(relation);
-                    }
-                } else
-                {
-                    name = rnd.Next(0, 9);
-                    relation = rnd.Next(0, 6);
-                    while (fNames.Contains(name) || fRelation.Contains(relation))
-                    {
-                        name = rnd.Next(0, 9);
-                        relation = rnd.Next(0, 6);
-                    }
-
-                    fNames.Add(name);
-                    if (relation > 1)
-                    {
-                        fRelation.Add(relation);
-                    }
-                }
+                name = setName(rnd, isMale);
+                relation = setRelation(rnd, isMale);
 
                 emotion = rnd.Next(0, 7);
                 hasAlibi = rnd.NextDouble() > 0.5;
@@ -110,38 +82,8 @@ public class CharacterCreation : MonoBehaviour
 
         isMale = rnd.NextDouble() > 0.5;
 
-        if (isMale)
-        {
-            name = rnd.Next(0, 9);
-            relation = rnd.Next(0, 6);
-            while (mNames.Contains(name) || mRelation.Contains(relation))
-            {
-                name = rnd.Next(0, 9);
-                relation = rnd.Next(0, 6);
-            }
-
-            mNames.Add(name);
-            if (relation > 1)
-            {
-                mRelation.Add(relation);
-            }
-        }
-        else
-        {
-            name = rnd.Next(0, 9);
-            relation = rnd.Next(0, 6);
-            while (fNames.Contains(name) || fRelation.Contains(relation))
-            {
-                name = rnd.Next(0, 9);
-                relation = rnd.Next(0, 6);
-            }
-
-            fNames.Add(name);
-            if (relation > 1)
-            {
-                fRelation.Add(relation);
-            }
-        }
+        name = setName(rnd, isMale);
+        relation = setRelation(rnd, isMale);
 
         emotion = rnd.Next(0, 7);
         hasAlibi = rnd.NextDouble() > 0.5;
@@ -149,6 +91,8 @@ public class CharacterCreation : MonoBehaviour
         current = InitializeCharacter(isMale, name, relation, emotion, hasAlibi);
 
         characterDictionary.Snippets[victimKey] = current;
+
+        fillNamePool();
 
     }
 
@@ -175,4 +119,83 @@ public class CharacterCreation : MonoBehaviour
         return current;
     }
 
+    private int setName(System.Random rnd, bool isMale)
+    {
+        int name;
+        if (isMale)
+        {
+            name = rnd.Next(0, 9);
+            while (mNames.Contains(name))
+            {
+                name = rnd.Next(0, 9);
+            }
+
+            mNames.Add(name);
+        }
+        else
+        {
+            name = rnd.Next(0, 9);
+            while (fNames.Contains(name))
+            {
+                name = rnd.Next(0, 9);
+            }
+
+            fNames.Add(name);
+        }
+        return name;
+    }
+
+    private int setRelation(System.Random rnd, bool isMale)
+    {
+        int relation;
+        if (isMale)
+        {
+            relation = rnd.Next(0, 6);
+            while (mRelation.Contains(relation))
+            {
+                relation = rnd.Next(0, 6);
+            }
+
+            if (relation > 1)
+            {
+                mRelation.Add(relation);
+            }
+        }
+        else
+        {
+            relation = rnd.Next(0, 6);
+            while (fRelation.Contains(relation))
+            {
+
+                relation = rnd.Next(0, 6);
+            }
+
+            if (relation > 1)
+            {
+                fRelation.Add(relation);
+            }
+        }
+        return relation;
+    }
+
+    private void fillNamePool()
+    {
+        namePool = GetComponent<PoolSnippetSource>();
+        
+        for(int i = 0; i < maleCharacterStats.characterName.Length; i++)
+        {
+            if(!mRelation.Contains(i))
+            {
+                namePool.Snippets[randomNameKey] = maleCharacterStats.characterName[i];
+            }
+        }
+
+        for (int i = 0; i < femaleCharacterStats.characterName.Length; i++)
+        {
+            if (!fRelation.Contains(i))
+            {
+                namePool.Snippets[randomNameKey] = femaleCharacterStats.characterName[i];
+            }
+        }
+    }
 }
