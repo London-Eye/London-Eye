@@ -1,13 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [System.Serializable]
 public class Character : ScriptableObject
 {
+    public const string AffirmativeAlibi = "sí", NegativeAlibi = "no";
+
     public bool isMale;
-    public string characterName;
-    public string characterRelation;
-    public string characterEmotion;
+    public string cname;
+    public string relation;
+    public string emotion;
     public bool hasAlibi;
+
+    public string HasAlibiAsString => hasAlibi ? AffirmativeAlibi : NegativeAlibi;
 }

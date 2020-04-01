@@ -1768,6 +1768,7 @@ GameObject:
   - component: {fileID: 1276836353}
   - component: {fileID: 1276836352}
   - component: {fileID: 1276836351}
+  - component: {fileID: 1276836355}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -1799,10 +1800,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0117f404ac22eae4a8786a04ac058e9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartSeparator: '%'
-  EndSeparator: '%'
+  StartSeparator: '**<'
+  EndSeparator: '>**'
   Source: {fileID: 1276836351}
-  ObjectAccessEnabled: 0
+  ObjectAccessEnabled: 1
   StartAccessSeparator: '['
   EndAccessSeparator: ']'
   AccessMemberSeparator: .
@@ -1822,9 +1823,9 @@ MonoBehaviour:
   femaleCharacterStats: {fileID: 11400000, guid: aa4137f4306fab74ea5f47d1c36fc539,
     type: 2}
   suspectsGiven: 5
-  suspectKey: 
-  victimKey: 
-  murdererKey: 
+  suspectKey: SOSPECHOSO
+  victimKey: VICTIMA
+  murdererKey: ASESINO
 --- !u!4 &1276836354
 Transform:
   m_ObjectHideFlags: 0
@@ -1839,6 +1840,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1276836355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1276836350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d28fb4ae84b7b8d4294cc809263a6e32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NameValuesSeparator: '---'
+  PoolSeparator: ===
+  NameIDSeparator: '-'
 --- !u!1001 &1493139562
 PrefabInstance:
   m_ObjectHideFlags: 0

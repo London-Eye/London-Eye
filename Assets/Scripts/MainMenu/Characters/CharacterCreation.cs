@@ -160,14 +160,14 @@ public class CharacterCreation : MonoBehaviour
 
         if(isMale)
         {
-            current.characterName = maleCharacterStats.characterName[name];
-            current.characterRelation = maleCharacterStats.relation[relation];
-            current.characterEmotion = maleCharacterStats.emotion[emotion];
+            current.cname = maleCharacterStats.characterName[name];
+            current.relation = maleCharacterStats.relation[relation];
+            current.emotion = maleCharacterStats.emotion[emotion];
         } else
         {
-            current.characterName = femaleCharacterStats.characterName[name];
-            current.characterRelation = femaleCharacterStats.relation[relation];
-            current.characterEmotion = femaleCharacterStats.emotion[emotion];
+            current.cname = femaleCharacterStats.characterName[name];
+            current.relation = femaleCharacterStats.relation[relation];
+            current.emotion = femaleCharacterStats.emotion[emotion];
         }
 
         current.hasAlibi = hasAlibi;
