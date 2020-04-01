@@ -6,7 +6,7 @@ public class Partial_image : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] Sprite subImage;
-    private Vector3 ini,fin;
+    private Vector2 ini,fin;
     private Partial_image source;
 
     public object x { get; private set; }
@@ -21,9 +21,9 @@ public class Partial_image : MonoBehaviour
 
 
 
-    public Vector3 GetSector(float x, float y) {
+    public Vector2 GetSector(float x, float y) {
 
-        Vector3 point;
+        Vector2 point;
 
         if (x < -0.045)
         {
@@ -31,17 +31,17 @@ public class Partial_image : MonoBehaviour
             if (y < -1.54)
             {
                 //fila de inferior
-                point = new Vector3(-1.09f, -3.04f, transform.position.z);
+                point = new Vector2(-1.09f, -3.04f);
             }
             else {
                 if (y < 1.43)
                 {
                     //fila central
-                    point = new Vector3(-1.09f, -0.07f, transform.position.z);
+                    point = new Vector2(-1.09f, -0.07f);
                 }
                 else {
                     //fila superior
-                    point = new Vector3(-1.09f, 2.9f, transform.position.z);
+                    point = new Vector2(-1.09f, 2.9f);
                 }
             }
         }
@@ -52,19 +52,19 @@ public class Partial_image : MonoBehaviour
                 if (y < -1.54)
                 {
                     //fila de inferior
-                    point = new Vector3(1, -3.04f, transform.position.z);
+                    point = new Vector2(1, -3.04f);
                 }
                 else
                 {
                     if (y < 1.43)
                     {
                         //fila central
-                        point = new Vector3(1, -0.07f, transform.position.z);
+                        point = new Vector2(1, -0.07f);
                     }
                     else
                     {
                         //fila superior
-                        point = new Vector3(1, 2.9f, transform.position.z);
+                        point = new Vector2(1, 2.9f);
                     }
                 }
             }
@@ -73,19 +73,19 @@ public class Partial_image : MonoBehaviour
                 if (y < -1.54)
                 {
                     //fila de inferior
-                    point = new Vector3(3.09f, -3.04f, transform.position.z);
+                    point = new Vector2(3.09f, -3.04f);
                 }
                 else
                 {
                     if (y < 1.43)
                     {
                         //fila central
-                        point = new Vector3(3.09f, -0.07f, transform.position.z);
+                        point = new Vector2(3.09f, -0.07f);
                     }
                     else
                     {
                         //fila superior
-                        point = new Vector3(3.09f, 2.9f, transform.position.z);
+                        point = new Vector2(3.09f, 2.9f);
                     }
                 }
             }
@@ -97,11 +97,12 @@ public class Partial_image : MonoBehaviour
         source = this;
         Vector2 mouseMove = GetMousePosition();
         ini = GetSector(mouseMove.x,mouseMove.y);
+        transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, transform.localPosition.z - 1);
     }
     private void OnMouseDrag()
     {
         Vector2 mousePos = GetMousePosition();
-        this.gameObject.transform.localPosition = new Vector3(mousePos.x,mousePos.y,this.gameObject.transform.localPosition.z );
+        transform.localPosition = new Vector3(mousePos.x, mousePos.y, transform.localPosition.z);
 
     }
 
@@ -109,11 +110,11 @@ public class Partial_image : MonoBehaviour
         Vector2 mouseMove = GetMousePosition();
 
         fin = GetSector(mouseMove.x, mouseMove.y);
-        this.gameObject.transform.localPosition = new Vector3(fin.x, fin.y, fin.z);
+        transform.localPosition = new Vector3(fin.x, fin.y, transform.localPosition.z + 1);
 
-        Partial_image[] allObjects = UnityEngine.Object.FindObjectsOfType<Partial_image>();
+        Partial_image[] allObjects = FindObjectsOfType<Partial_image>();
         foreach (Partial_image go in allObjects)
-            if (go.transform.localPosition == fin && go.Equals(this) == false) {
+            if (((Vector2) go.transform.localPosition) == fin && this != go) {
                 go.setPosition(ini.x, ini.y);
                 break;
             } 
