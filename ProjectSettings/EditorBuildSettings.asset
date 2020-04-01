@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Puzzles/CompletaElCamino.unity
     guid: 510a6b1b93cc0304a8127f825d913490
+  - enabled: 1
+    path: Assets/Scenes/Puzzles/9-puzzle.unity
+    guid: 313b141fa323132469822ed4268d315b
   m_configObjects: {}
