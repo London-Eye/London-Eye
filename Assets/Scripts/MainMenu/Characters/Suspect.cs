@@ -4,27 +4,28 @@ using UnityEngine;
 
 public class Suspect : MonoBehaviour
 {
-    [SerializeField] public CharacterStats characterStats;
+    [SerializeField] public CharacterStats maleCharacterStats;
+    [SerializeField] public CharacterStats femaleCharacterStats;
 
     public bool isMale;
-    public int nameIndex;
-    public int relationIndex;
-    public int emotionIndex;
+    public string characterName;
+    public string relation;
+    public string emotion;
     public bool hasAlibi;
 
-    public void startSuspect(bool male, int name, int relation, int emotion, bool alibi)
+    public void startSuspect(bool male, int nameIndex, int relationIndex, int emotionIndex, bool alibi)
     {
         isMale = male;
-        nameIndex = name;
-        relationIndex = relation;
-        emotionIndex = emotion;
-        hasAlibi = alibi;
-        if(male)
+        name = char.ToString(maleCharacterStats.name[nameIndex]);
+        Debug.Log("Suspect name: " + name);
+
+        if (male)
         {
-            characterStats = Resources.Load<CharacterStats>("MaleSuspect");
+            
         } else
         {
-            characterStats = Resources.Load<CharacterStats>("FemaleSuspect");
+            
         }
+        hasAlibi = alibi;
     }
 }

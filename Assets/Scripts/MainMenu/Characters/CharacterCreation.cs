@@ -2,39 +2,49 @@
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using Assets.Scripts.Dialogue.Texts.Snippets.Sources;
 
-
+[RequireComponent(typeof(DictionarySnippetSource))]
 public class CharacterCreation : MonoBehaviour
 {
-    private Suspect suspect;
-    private Suspect victim;
-    private Suspect murderer;
+    [SerializeField] public CharacterStats maleCharacterStats;
+    [SerializeField] public CharacterStats femaleCharacterStats;
 
     public int suspectsGiven = 5;
+    public string suspectKey, victimKey, murdererKey;
 
-    public List<int> mNames = new List<int>(), fNames = new List<int>();
-    public List<int> mRelation = new List<int>(), fRelation = new List<int>();
+    private List<int> mNames = new List<int>(), fNames = new List<int>();
+    private List<int> mRelation = new List<int>(), fRelation = new List<int>();
+
+    private DictionarySnippetSource characterDictionary;
 
     void Start()
     {
+        DontDestroyOnLoad(this);
+        characterDictionary = GetComponent<DictionarySnippetSource>();
+
         int generateSuspects = suspectsGiven + 2;
         System.Random rnd = new System.Random();
 
         bool isMale, hasAlibi;
         int name, relation, emotion;
 
+        Character current;
+
         for (int i = 0; i < generateSuspects; i++)
         {
-            Suspect currentSuspect = Instantiate(suspect) as Suspect;
-            if(i == 0)
+
+            if (i == 0)
             {
                 isMale = rnd.NextDouble() > 0.5;
                 name = rnd.Next(0, 9);
                 relation = rnd.Next(0, 6);
                 emotion = rnd.Next(0, 7);
                 hasAlibi = false;
-                currentSuspect.startSuspect(isMale, name, relation, emotion, hasAlibi);
-                murderer = currentSuspect;
+
+                current = InitializeCharacter(isMale, name, relation, emotion, hasAlibi);
+
+                characterDictionary.Snippets[murdererKey] = current;
 
                 if(isMale)
                 {
@@ -91,15 +101,78 @@ public class CharacterCreation : MonoBehaviour
                 emotion = rnd.Next(0, 7);
                 hasAlibi = rnd.NextDouble() > 0.5;
 
-                currentSuspect.startSuspect(isMale, name, relation, emotion, hasAlibi);
+                current = InitializeCharacter(isMale, name, relation, emotion, hasAlibi);
+
+                characterDictionary.Snippets[suspectKey] = current;
             }
             
         }
+
+        isMale = rnd.NextDouble() > 0.5;
+
+        if (isMale)
+        {
+            name = rnd.Next(0, 9);
+            relation = rnd.Next(0, 6);
+            while (mNames.Contains(name) || mRelation.Contains(relation))
+            {
+                name = rnd.Next(0, 9);
+                relation = rnd.Next(0, 6);
+            }
+
+            mNames.Add(name);
+            if (relation > 1)
+            {
+                mRelation.Add(relation);
+            }
+        }
+        else
+        {
+            name = rnd.Next(0, 9);
+            relation = rnd.Next(0, 6);
+            while (fNames.Contains(name) || fRelation.Contains(relation))
+            {
+                name = rnd.Next(0, 9);
+                relation = rnd.Next(0, 6);
+            }
+
+            fNames.Add(name);
+            if (relation > 1)
+            {
+                fRelation.Add(relation);
+            }
+        }
+
+        emotion = rnd.Next(0, 7);
+        hasAlibi = rnd.NextDouble() > 0.5;
+
+        current = InitializeCharacter(isMale, name, relation, emotion, hasAlibi);
+
+        characterDictionary.Snippets[victimKey] = current;
+
     }
 
-    // Update is called once per frame
-    void Update()
+    private Character InitializeCharacter(bool isMale, int name, int relation, int emotion, bool hasAlibi)
     {
-        
+        Character current = ScriptableObject.CreateInstance<Character>();
+
+        current.isMale = isMale;
+
+        if(isMale)
+        {
+            current.characterName = maleCharacterStats.characterName[name];
+            current.characterRelation = maleCharacterStats.relation[relation];
+            current.characterEmotion = maleCharacterStats.emotion[emotion];
+        } else
+        {
+            current.characterName = femaleCharacterStats.characterName[name];
+            current.characterRelation = femaleCharacterStats.relation[relation];
+            current.characterEmotion = femaleCharacterStats.emotion[emotion];
+        }
+
+        current.hasAlibi = hasAlibi;
+
+        return current;
     }
+
 }

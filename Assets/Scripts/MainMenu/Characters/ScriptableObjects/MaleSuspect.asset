@@ -25,9 +25,9 @@ MonoBehaviour:
   - Godofredo
   relation:
   - novio
-  - amante
-  - hermano
   - padre
+  - hermano
+  - amante
   - primo
   - "compa\xF1ero de trabajo"
   - conocido
