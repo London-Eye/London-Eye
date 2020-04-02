@@ -9,20 +9,17 @@ namespace Assets.Scripts.Dialogue.Texts.Tags
 
         public TagOption Tag { get; set; }
 
-        public TagException(TagOption tag, int? index = null, string message = null) : base(index, message)
+        public TagException(TagOption tag, int? index = null, int? lineNumber = null, string message = null) : base(message, index, lineNumber, END_ACTION_MESSAGE)
         {
             this.Tag = tag;
         }
-
-        public override string GetFullMessage(int currentLineNumber)
-            => GetFullMessage(currentLineNumber, END_ACTION_MESSAGE);
 
         [Serializable]
         public class EndTagBeforeStartException : TagException
         {
             public const string DEFAULT_MESSAGE = "End tag before start";
 
-            public EndTagBeforeStartException(TagOption tag, int? index = null) : base(tag, index, DEFAULT_MESSAGE)
+            public EndTagBeforeStartException(TagOption tag, int? index = null, int? lineNumber = null) : base(tag, index, lineNumber, DEFAULT_MESSAGE)
             {
             }
         }
@@ -31,7 +28,7 @@ namespace Assets.Scripts.Dialogue.Texts.Tags
         public class StartTagWithoutEndException : TagException
         {
             public const string DEFAULT_MESSAGE = "Start tag without end";
-            public StartTagWithoutEndException(TagOption tag, int? index = null) : base(tag, index, DEFAULT_MESSAGE)
+            public StartTagWithoutEndException(TagOption tag, int? index = null, int? lineNumber = null) : base(tag, index, lineNumber, DEFAULT_MESSAGE)
             {
             }
         }

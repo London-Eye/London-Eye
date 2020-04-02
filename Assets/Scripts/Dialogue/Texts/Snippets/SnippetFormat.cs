@@ -72,7 +72,7 @@ namespace Assets.Scripts.Dialogue.Texts.Snippets
                 }
                 else
                 {
-                    throw new ParsingException(line.Length - textSearchingForEnd.Length + startingIndex, "Snippet init without end");
+                    throw new ParsingException("Snippet init without end", line.Length - textSearchingForEnd.Length + startingIndex);
                 }
             }
             else

@@ -37,14 +37,14 @@ namespace Assets.Scripts.Dialogue.Texts.Snippets
                     {
                         Type currentType = currentValue.GetType();
                         currentValue = currentType.GetProperty(member)?.GetValue(currentValue) ?? currentType.GetField(member)?.GetValue(currentValue);
-                        if (currentValue == null) { throw new ParsingException(indexOfStartAccess, "Cannot find access"); }
+                        if (currentValue == null) { throw new ParsingException("Cannot find access", indexOfStartAccess); }
                     }
 
                     return new Snippet<object>(name, currentValue, this);
                 }
                 else
                 {
-                    throw new ParsingException(indexOfStartAccess, "Start access without end access");
+                    throw new ParsingException("Start access without end access", indexOfStartAccess);
                 }
             }
             else

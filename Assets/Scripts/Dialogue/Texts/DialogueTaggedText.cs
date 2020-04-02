@@ -55,18 +55,15 @@ namespace Assets.Scripts.Dialogue.Texts
             IDialogueText resultDialogueText = null;
 
             string textBeingAnalyzed = text;
-            int currentIndex = 0;
 
-            while (textBeingAnalyzed.Length > 0)
+            while (textBeingAnalyzed != null && textBeingAnalyzed.Length > 0)
             {
-                int nextIndex = currentIndex, indexOfTagInit = 0;
+                int indexOfTagInit = 0;
                 try
                 {
                     TagOption tag = format.Extract(textBeingAnalyzed, out indexOfTagInit, out int _, out string remainingTextAfterStart);
                     if (tag != null)
                     {
-                        // If something went wrong with the tag, it would skip it
-                        nextIndex = (text.Length - textBeingAnalyzed.Length + indexOfTagInit) + tag.Text.Length;
                         if (indexOfTagInit > 0)
                         {
                             string textBeforeTag = textBeingAnalyzed.Substring(0, indexOfTagInit);
@@ -102,7 +99,7 @@ namespace Assets.Scripts.Dialogue.Texts
 
                             if (taggedText == null)
                             {
-                                throw new TagException.StartTagWithoutEndException(tag, indexOfTagInit);
+                                throw new TagException.StartTagWithoutEndException(tag, index: text.Length - textBeingAnalyzed.Length + indexOfTagInit);
                             }
                             else
                             {
@@ -126,7 +123,7 @@ namespace Assets.Scripts.Dialogue.Texts
                         }
                         else
                         {
-                            throw new TagException.EndTagBeforeStartException(tag, currentIndex);
+                            throw new TagException.EndTagBeforeStartException(tag, index: text.Length - textBeingAnalyzed.Length + indexOfTagInit);
                         }
                     }
                     else
@@ -147,13 +144,13 @@ namespace Assets.Scripts.Dialogue.Texts
                     // Log the exception
                     logger?.Invoke(ex);
 
-                    nextIndex = (text.Length - textBeingAnalyzed.Length + indexOfTagInit) + 1;
+                    int nextIndex = indexOfTagInit + 1;
 
                     // Add the start of the tag as raw text
 
                     if (resultDialogueText == null)
                     {
-                        resultDialogueText = new ComplexDialogueText(textBeingAnalyzed.Substring(0, indexOfTagInit + 1));
+                        resultDialogueText = new ComplexDialogueText(textBeingAnalyzed.Substring(0, nextIndex));
                     }
                     else
                     {
@@ -161,8 +158,7 @@ namespace Assets.Scripts.Dialogue.Texts
                     }
 
                     // Go to the next portion of the text (Skip the exception source)
-                    textBeingAnalyzed = textBeingAnalyzed.Substring(nextIndex);
-                    currentIndex = nextIndex;
+                    textBeingAnalyzed = nextIndex < textBeingAnalyzed.Length ? textBeingAnalyzed.Substring(nextIndex) : null;
                 }
             }
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace Assets.Scripts.Dialogue.Texts
 {
@@ -7,24 +8,48 @@ namespace Assets.Scripts.Dialogue.Texts
     {
         public const string END_ACTION_MESSAGE = "Skipping source.";
 
-        public int? Index { get; set; }
+        public int? Index { get; }
+        public int? LineNumber { get; }
 
-        public ParsingException(int? index = null, string message = null) : base(message)
+        public ParsingException(string message = null, int? index = null, int? lineNumber = null, string endActionMessage = END_ACTION_MESSAGE) : base(GetFullMessage(message, lineNumber, index, endActionMessage))
         {
             this.Index = index;
+            this.LineNumber = lineNumber;
         }
 
-        public virtual string GetFullMessage(int currentLineNumber)
-            => GetFullMessage(currentLineNumber, END_ACTION_MESSAGE);
-
-        protected string GetFullMessage(int currentLineNumber, string endActionMessage)
-            => $"{Message} (line {currentLineNumber}, position {Index}). {endActionMessage}";
+        protected static string GetFullMessage(string message, int? lineNumber, int? index, string endMessage = null)
+        {
+            StringBuilder builder = new StringBuilder();
+            builder.Append(message);
+            if (lineNumber.HasValue || index.HasValue)
+            {
+                builder.Append(" (");
+                if (lineNumber.HasValue)
+                {
+                    builder.Append($"line {lineNumber}");
+                    if (index.HasValue)
+                    {
+                        builder.Append(", ");
+                    }
+                }
+                if (index.HasValue)
+                {
+                    builder.Append($"position {index}");
+                }
+                builder.Append(").");
+            }
+            if (endMessage != null)
+            {
+                builder.Append($" {endMessage}");
+            }
+            return builder.ToString();
+        }
 
         [Serializable]
         public class StartTagSeparatorWithoutEndException : ParsingException
         {
             public const string DEFAULT_MESSAGE = "Start tag separator without end";
-            public StartTagSeparatorWithoutEndException(int? index = null) : base(index, DEFAULT_MESSAGE)
+            public StartTagSeparatorWithoutEndException(int? index = null, int? lineNumber = null) : base(DEFAULT_MESSAGE, index, lineNumber)
             {
             }
         }

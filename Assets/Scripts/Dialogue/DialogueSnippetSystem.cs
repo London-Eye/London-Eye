@@ -90,8 +90,8 @@ namespace Assets.Scripts.Dialogue
                     Console.WriteLine(ex.Message);
 
                     // Go to the next portion of the text (Skip the exception source)
-                    int nextIndex = (text.Length - textBeingAnalyzed.Length + indexOfSnippetInit) + 1;
-                    textBeingAnalyzed = nextIndex >= 0 && nextIndex < textBeingAnalyzed.Length ? textBeingAnalyzed.Substring(nextIndex) : "";
+                    int nextIndex = indexOfSnippetInit + 1;
+                    textBeingAnalyzed = nextIndex < textBeingAnalyzed.Length ? textBeingAnalyzed.Substring(nextIndex) : null;
                 }
             }
 
