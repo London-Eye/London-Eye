@@ -13,15 +13,15 @@ MonoBehaviour:
   m_Name: MaleSuspect
   m_EditorClassIdentifier: 
   characterName:
-  - Placido
+  - "Pl\xE1cido"
   - Carlos
   - Salvador
   - Santiago
-  - benito
+  - Benito
   - Fabio
   - Pablo
-  - Angel
-  - Heraclito
+  - "\xC1ngel"
+  - "Her\xE1clito"
   - Godofredo
   relation:
   - novio

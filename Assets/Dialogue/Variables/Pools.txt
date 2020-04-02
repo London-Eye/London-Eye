@@ -4,30 +4,6 @@ sí
 no
 ===
 
-NOMBRE
----
-Plácido
-Carlos
-Salvador
-Santiago
-Benito
-Fabio
-Pablo
-Angel
-Heraclio
-Godofredo
-Susana
-María
-Marisol
-Nagore
-Dorotea
-Rosario
-Laura
-Valentina
-Dolores
-Rita
-===
-
 EMOCION
 ---
 estaba celoso/a de

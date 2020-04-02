@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName:
   - Susana
-  - Maria
+  - "Mar\xEDa"
   - Marisol
   - Nagore
   - Dorotea

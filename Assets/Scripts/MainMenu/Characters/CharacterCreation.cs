@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using Assets.Scripts.Dialogue.Texts.Snippets.Sources;
+using Assets.Scripts.Common;
+using System.Linq;
 
 [RequireComponent(typeof(DictionarySnippetSource), typeof(PoolSnippetSource))]
 public class CharacterCreation : MonoBehaviour
@@ -23,14 +25,22 @@ public class CharacterCreation : MonoBehaviour
     public CharacterStats maleCharacterStats;
     public CharacterStats femaleCharacterStats;
 
+    // Max suspects must always be 'min(numberOfNames, numberOfRelations, numberOfEmotions) - 1'
+    [Range(2, 5)]
     public int suspectsGiven = 5;
+
     public string suspectKey, victimKey, murdererKey, randomNameKey;
 
-    private readonly List<int> mNames = new List<int>(), fNames = new List<int>();
-    private readonly List<int> mRelation = new List<int>(), fRelation = new List<int>();
+    public const int numberOfNames = 9, numberOfRelations = 6, numberOfEmotions = 7;
+
+    private readonly HashSet<Character> suspects = new HashSet<Character>();
+    public IReadOnlyCollection<Character> Suspects => suspects;
+
+    private SelectorPool<int> mNames, fNames;
+    private SelectorPool<int> mRelation, fRelation;
 
     private DictionarySnippetSource characterDictionary;
-    private PoolSnippetSource namePool;
+    private PoolSnippetSource randomNamePoolSource;
 
     private CharacterCreation() { }
 
@@ -43,76 +53,71 @@ public class CharacterCreation : MonoBehaviour
     {
         characterDictionary = GetComponent<DictionarySnippetSource>();
 
-        int generateSuspects = suspectsGiven + 2;
-        System.Random rnd = new System.Random();
+        InitializePools();
 
-        bool isMale, hasAlibi;
-        int name, relation, emotion;
+        // Create the murderer
+        characterDictionary.Snippets[murdererKey] = InitializeCharacter(hasAlibi: false);
 
-        Character current;
-
-        for (int i = 0; i < generateSuspects; i++)
+        // Create other suspects
+        for (int i = 0; i < suspectsGiven - 1; i++)
         {
-
-            if (i == 0)
-            {
-                isMale = rnd.NextDouble() > 0.5;
-                name = rnd.Next(0, 9);
-                relation = rnd.Next(0, 6);
-                emotion = rnd.Next(0, 7);
-                hasAlibi = false;
-
-                current = InitializeCharacter(isMale, name, relation, emotion, hasAlibi);
-
-                characterDictionary.Snippets[murdererKey] = current;
-
-                if(isMale)
-                {
-                    mNames.Add(name);
-                    if(relation > 1)
-                    {
-                        mRelation.Add(relation);
-                    }
-                } else
-                {
-                    fNames.Add(name);
-                    if (relation > 1)
-                    {
-                        fRelation.Add(relation);
-                    }
-                }
-
-            } else
-            {
-                isMale = rnd.NextDouble() > 0.5;
-
-                name = SetName(rnd, isMale);
-                relation = SetRelation(rnd, isMale);
-
-                emotion = rnd.Next(0, 7);
-                hasAlibi = rnd.NextDouble() > 0.5;
-
-                current = InitializeCharacter(isMale, name, relation, emotion, hasAlibi);
-
-                characterDictionary.Snippets[suspectKey] = current;
-            }
-            
+            suspects.Add(InitializeCharacter());
         }
 
-        isMale = rnd.NextDouble() > 0.5;
+        // By default, set the current suspect to the first one
+        // TODO: When the selecting suspect system is done, this should probably be removed to improve efficiency
+        SetCurrentSuspectImpl(suspects.First());
 
-        name = SetName(rnd, isMale);
-        relation = SetRelation(rnd, isMale);
+        // Create the victim
+        characterDictionary.Snippets[victimKey] = InitializeCharacter();
 
-        emotion = rnd.Next(0, 7);
-        hasAlibi = rnd.NextDouble() > 0.5;
-
-        current = InitializeCharacter(isMale, name, relation, emotion, hasAlibi);
-
-        characterDictionary.Snippets[victimKey] = current;
-
+        // Fill the remaining names in a pool as random radiant ones
         FillNamePool();
+    }
 
+    public void SetCurrentSuspect(Character suspect)
+    {
+        if (suspects.Contains(suspect))
+        {
+            SetCurrentSuspectImpl(suspect);
+        }
+        else
+        {
+            throw new System.ArgumentException($"The suspect must be in the {nameof(Suspects)} list");
+        }
+    }
+
+    private void SetCurrentSuspectImpl(Character suspect) => characterDictionary.Snippets[suspectKey] = suspect;
+
+    private void InitializePools()
+    {
+        InitializePool(numberOfNames, out mNames, out fNames);
+        InitializePool(numberOfRelations, out mRelation, out fRelation);
+    }
+
+    private static void InitializePool(int numberOfElements, out SelectorPool<int> malePool, out SelectorPool<int> femalePool)
+    {
+        List<int> elements = new List<int>();
+        Utilities.AddIntRange(elements, 0, numberOfElements);
+
+        malePool = new SelectorPool<int>(elements);
+        femalePool = new SelectorPool<int>(elements);
+    }
+
+    private Character InitializeCharacter()
+    {
+        bool hasAlibi = Utilities.RandomBool();
+        return InitializeCharacter(hasAlibi);
+    }
+
+    private Character InitializeCharacter(bool hasAlibi)
+    {
+        bool isMale = Utilities.RandomBool();
+        int name = isMale ? mNames.Select() : fNames.Select();
+        int relation = isMale ? mRelation.Select() : fRelation.Select();
+        int emotion = Random.Range(0, numberOfEmotions);
+
+        return InitializeCharacter(isMale, name, relation, emotion, hasAlibi);
     }
 
     private Character InitializeCharacter(bool isMale, int name, int relation, int emotion, bool hasAlibi)
@@ -121,100 +126,36 @@ public class CharacterCreation : MonoBehaviour
 
         current.isMale = isMale;
 
-        if(isMale)
-        {
-            current.cname = maleCharacterStats.characterName[name];
-            current.relation = maleCharacterStats.relation[relation];
-            current.emotion = maleCharacterStats.emotion[emotion];
-        } else
-        {
-            current.cname = femaleCharacterStats.characterName[name];
-            current.relation = femaleCharacterStats.relation[relation];
-            current.emotion = femaleCharacterStats.emotion[emotion];
-        }
+        FillCharacterWithStats(current, isMale ? maleCharacterStats : femaleCharacterStats, name, relation, emotion);
 
         current.hasAlibi = hasAlibi;
 
         return current;
     }
 
-    private int SetName(System.Random rnd, bool isMale)
+    private void FillCharacterWithStats(Character character, CharacterStats stats, int nameIndex, int relationIndex, int emotionIndex)
     {
-        int name;
-        if (isMale)
-        {
-            name = rnd.Next(0, 9);
-            while (mNames.Contains(name))
-            {
-                name = rnd.Next(0, 9);
-            }
-
-            mNames.Add(name);
-        }
-        else
-        {
-            name = rnd.Next(0, 9);
-            while (fNames.Contains(name))
-            {
-                name = rnd.Next(0, 9);
-            }
-
-            fNames.Add(name);
-        }
-        return name;
-    }
-
-    private int SetRelation(System.Random rnd, bool isMale)
-    {
-        int relation;
-        if (isMale)
-        {
-            relation = rnd.Next(0, 6);
-            while (mRelation.Contains(relation))
-            {
-                relation = rnd.Next(0, 6);
-            }
-
-            if (relation > 1)
-            {
-                mRelation.Add(relation);
-            }
-        }
-        else
-        {
-            relation = rnd.Next(0, 6);
-            while (fRelation.Contains(relation))
-            {
-
-                relation = rnd.Next(0, 6);
-            }
-
-            if (relation > 1)
-            {
-                fRelation.Add(relation);
-            }
-        }
-        return relation;
+        character.cname = stats.characterName[nameIndex];
+        character.relation = stats.relation[relationIndex];
+        character.emotion = stats.emotion[emotionIndex];
     }
 
     private void FillNamePool()
     {
-        namePool = GetComponent<PoolSnippetSource>();
+        randomNamePoolSource = GetComponent<PoolSnippetSource>();
+
+        SelectorPool<object> randomNamePool = new SelectorPool<object>();
         
-        for(int i = 0; i < maleCharacterStats.characterName.Length; i++)
+        while (mNames.Count > 0)
         {
-            if(!mRelation.Contains(i))
-            {
-                namePool.Snippets[randomNameKey] = maleCharacterStats.characterName[i];
-            }
+            randomNamePool.Pool.Add(maleCharacterStats.characterName[mNames.Select()]);
         }
 
-        for (int i = 0; i < femaleCharacterStats.characterName.Length; i++)
+        while (fNames.Count > 0)
         {
-            if (!fRelation.Contains(i))
-            {
-                namePool.Snippets[randomNameKey] = femaleCharacterStats.characterName[i];
-            }
+            randomNamePool.Pool.Add(femaleCharacterStats.characterName[fNames.Select()]);
         }
+
+        randomNamePoolSource.SelectorPools[randomNameKey] = randomNamePool;
     }
 }

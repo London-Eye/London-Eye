@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Assets.Scripts.Common;
+using System.Collections.Generic;
 
 namespace Assets.Scripts.Dialogue.Texts.Snippets.Sources
 {

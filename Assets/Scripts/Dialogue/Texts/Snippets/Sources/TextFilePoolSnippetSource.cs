@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Assets.Scripts.Common;
+using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
@@ -33,7 +34,6 @@ namespace Assets.Scripts.Dialogue.Texts.Snippets.Sources
                 string line, name = "";
                 PoolsLoadState state = PoolsLoadState.EMPTY;
                 SelectorPool<object> selectorPool = null;
-                List<object> currentPool = null;
                 while ((line = textReader.ReadLine()) != null)
                 {
                     switch (state)
@@ -42,7 +42,6 @@ namespace Assets.Scripts.Dialogue.Texts.Snippets.Sources
                             if (selectorPool == null)
                             {
                                 selectorPool = new SelectorPool<object>();
-                                currentPool = new List<object>();
                             }
                             if (!string.IsNullOrEmpty(line))
                             {
@@ -56,14 +55,13 @@ namespace Assets.Scripts.Dialogue.Texts.Snippets.Sources
                         case PoolsLoadState.POOLS:
                             if (line == PoolSeparator)
                             {
-                                selectorPool.Pool = currentPool;
                                 PoolSource.SelectorPools.Add(name, selectorPool);
                                 state = PoolsLoadState.EMPTY;
                                 selectorPool = null;
                             }
                             else
                             {
-                                currentPool.Add(line);
+                                selectorPool.Pool.Add(line);
                             }
                             break;
                     }
