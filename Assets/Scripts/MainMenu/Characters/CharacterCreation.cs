@@ -1,27 +1,46 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using Assets.Scripts.Dialogue.Texts.Snippets.Sources;
 
-[RequireComponent(typeof(DictionarySnippetSource))]
+[RequireComponent(typeof(DictionarySnippetSource), typeof(PoolSnippetSource))]
 public class CharacterCreation : MonoBehaviour
 {
-    [SerializeField] public CharacterStats maleCharacterStats;
-    [SerializeField] public CharacterStats femaleCharacterStats;
+    public static CharacterCreation Instance { get; private set; }
+
+    private void MakeSingleton()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
+    public CharacterStats maleCharacterStats;
+    public CharacterStats femaleCharacterStats;
 
     public int suspectsGiven = 5;
     public string suspectKey, victimKey, murdererKey, randomNameKey;
 
-    private List<int> mNames = new List<int>(), fNames = new List<int>();
-    private List<int> mRelation = new List<int>(), fRelation = new List<int>();
+    private readonly List<int> mNames = new List<int>(), fNames = new List<int>();
+    private readonly List<int> mRelation = new List<int>(), fRelation = new List<int>();
 
     private DictionarySnippetSource characterDictionary;
     private PoolSnippetSource namePool;
 
+    private CharacterCreation() { }
+
+    void Awake()
+    {
+        MakeSingleton();
+    }
+
     void Start()
     {
-        DontDestroyOnLoad(this);
         characterDictionary = GetComponent<DictionarySnippetSource>();
 
         int generateSuspects = suspectsGiven + 2;
@@ -67,8 +86,8 @@ public class CharacterCreation : MonoBehaviour
             {
                 isMale = rnd.NextDouble() > 0.5;
 
-                name = setName(rnd, isMale);
-                relation = setRelation(rnd, isMale);
+                name = SetName(rnd, isMale);
+                relation = SetRelation(rnd, isMale);
 
                 emotion = rnd.Next(0, 7);
                 hasAlibi = rnd.NextDouble() > 0.5;
@@ -82,8 +101,8 @@ public class CharacterCreation : MonoBehaviour
 
         isMale = rnd.NextDouble() > 0.5;
 
-        name = setName(rnd, isMale);
-        relation = setRelation(rnd, isMale);
+        name = SetName(rnd, isMale);
+        relation = SetRelation(rnd, isMale);
 
         emotion = rnd.Next(0, 7);
         hasAlibi = rnd.NextDouble() > 0.5;
@@ -92,7 +111,7 @@ public class CharacterCreation : MonoBehaviour
 
         characterDictionary.Snippets[victimKey] = current;
 
-        fillNamePool();
+        FillNamePool();
 
     }
 
@@ -119,7 +138,7 @@ public class CharacterCreation : MonoBehaviour
         return current;
     }
 
-    private int setName(System.Random rnd, bool isMale)
+    private int SetName(System.Random rnd, bool isMale)
     {
         int name;
         if (isMale)
@@ -145,7 +164,7 @@ public class CharacterCreation : MonoBehaviour
         return name;
     }
 
-    private int setRelation(System.Random rnd, bool isMale)
+    private int SetRelation(System.Random rnd, bool isMale)
     {
         int relation;
         if (isMale)
@@ -178,7 +197,7 @@ public class CharacterCreation : MonoBehaviour
         return relation;
     }
 
-    private void fillNamePool()
+    private void FillNamePool()
     {
         namePool = GetComponent<PoolSnippetSource>();
         
