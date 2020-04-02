@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     [SerializeField] public PauseController ps;
+    [SerializeField] public Color[] c ;
     public bool first;
     public Color ballTomove;
     public initially_full_tube sourceTube;
@@ -32,5 +33,24 @@ public class GameController : MonoBehaviour
         }
         return true;
 
+    }
+
+    public void setTubes() {
+        tubes = GameObject.FindObjectsOfType<initially_full_tube>();
+        int empty_tubes = tubes.Length - (c.Length / 4);
+        for (int i = 0; i < empty_tubes; i++) {
+            Debug.Log(i);
+            tubes[i].initial_status = "empty";
+        }
+        int k = 0;
+        for (int j = empty_tubes; j < tubes.Length; j++) {
+            Debug.Log("In");
+            tubes[j].initial_status = "full";
+            tubes[j].transform.GetChild(3).GetComponent<SpriteRenderer>().color = c[k++];
+            tubes[j].transform.GetChild(2).GetComponent<SpriteRenderer>().color = c[k++];
+            tubes[j].transform.GetChild(1).GetComponent<SpriteRenderer>().color = c[k++];
+            tubes[j].transform.GetChild(0).GetComponent<SpriteRenderer>().color = c[k++];
+            
+        }
     }
 }

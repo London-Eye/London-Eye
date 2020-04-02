@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class initially_full_tube : MonoBehaviour
 {
-    [SerializeField] string initial_status;
+    [SerializeField] public string initial_status;
     private GameController controller;
     public Stack<Color> pila;
     private int max_size = 4;
-    private GameObject basse;
-    private GameObject middleBase;
-    private GameObject middleTop;
-    private GameObject top;
+    public GameObject basse;
+    public GameObject middleBase;
+    public GameObject middleTop;
+    public GameObject top;
     private float oldY;
     // Start is called before the first frame update
     void Start()
@@ -22,6 +22,7 @@ public class initially_full_tube : MonoBehaviour
         middleBase = this.gameObject.transform.GetChild(1).gameObject;
         middleTop = this.gameObject.transform.GetChild(2).gameObject;
         top = this.gameObject.transform.GetChild(3).gameObject;
+        controller.setTubes();
 
         if (initial_status == "full")
         {
