@@ -6,6 +6,7 @@ public class GameController : MonoBehaviour
 {
     [SerializeField] public PauseController ps;
     [SerializeField] public Color[] c ;
+    [SerializeField] private GameObject EndgameMenu;
     public bool first;
     public Color ballTomove;
     public initially_full_tube sourceTube;
@@ -16,12 +17,16 @@ public class GameController : MonoBehaviour
     {
         first = true;
         endgame = false;
+        EndgameMenu.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
         endgame = isEndgame();
+        if (endgame) {
+            EndgameMenu.SetActive(true);
+        }
     }
 
     private bool isEndgame() {
