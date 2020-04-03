@@ -20,10 +20,6 @@ public class SuspectManager : MonoBehaviour
         return null;
     }
 
-    private static readonly HashSet<string> activePuzzles = new HashSet<string>();
-
-    public static bool IsPuzzleActive(string puzzle) => activePuzzles.Contains(puzzle);
-
     public Text suspectText;
 
     private int Id => transform.GetSiblingIndex();
@@ -71,11 +67,11 @@ public class SuspectManager : MonoBehaviour
         {
             string puzzle = FindObjectOfType<PoolPuzzleLoader>().LoadPuzzle();
             Suspect.Puzzle = puzzle;
-            activePuzzles.Add(puzzle);
+            PoolPuzzleLoader.ActivePuzzle(puzzle);
         }
-        else if (IsPuzzleActive(Suspect.Puzzle))
+        else if (PoolPuzzleLoader.IsPuzzleActive(Suspect.Puzzle))
         {
-            PuzzleLoader.LoadPuzzle(Suspect.Puzzle);
+            PoolPuzzleLoader.LoadPuzzle(Suspect.Puzzle);
         }
     }
 }

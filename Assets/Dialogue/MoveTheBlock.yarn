@@ -11,6 +11,7 @@ Pero primero tienes que saltarte su sistema de seguridad.
 title: MoveTheBlock-PostGame
 tags: PostGame
 ---
+<<CompletePuzzle GameManager>>
 Después de usar todo tu ingenio, consigues acceder al móvil de **<SOSPECHOSO[cname]>**.
 Entras en su correo electrónico. Por el tipo de mensajes que encuentras, **<SOSPECHOSO[cname]>** es **<SOSPECHOSO[relation]>** de la víctima (**<VICTIMA[cname]>**).
 Consigues entrar en una de sus apps de mensajería. Por cómo habla con **<NOMBRE>**, **<SOSPECHOSO[cname]>** **<SOSPECHOSO[emotion]>** la víctima (**<VICTIMA[cname]>**).

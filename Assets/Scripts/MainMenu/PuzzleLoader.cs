@@ -35,17 +35,12 @@ public class PuzzleLoader : MonoBehaviour
 
     private void Start()
     {
-        gameObject.SetActive(SuspectManager.IsPuzzleActive(Puzzle));
+        gameObject.SetActive(PoolPuzzleLoader.IsPuzzleActive(Puzzle));
     }
 
     public void LoadPuzzle()
     {
         CharacterCreation.Instance.SetCurrentSuspect(Suspect);
-        LoadPuzzle(Puzzle);
-    }
-
-    public static void LoadPuzzle(string puzzleName)
-    {
-        SceneManager.LoadScene(puzzleName);
+        PoolPuzzleLoader.LoadPuzzle(Puzzle);
     }
 }
