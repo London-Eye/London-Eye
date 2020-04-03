@@ -1,15 +1,11 @@
 ﻿using UnityEngine;
 
-[System.Serializable]
-public class Character : ScriptableObject
+namespace Assets.Scripts.MainMenu.Characters
 {
-    public const string AffirmativeAlibi = "sí", NegativeAlibi = "no";
-
-    public bool isMale;
-    public string cname;
-    public string relation;
-    public string emotion;
-    public bool hasAlibi;
-
-    public string HasAlibiAsString => hasAlibi ? AffirmativeAlibi : NegativeAlibi;
+    [System.Serializable]
+    public class Character : ScriptableObject
+    {
+        public bool isMale;
+        public string cname;
+    }
 }

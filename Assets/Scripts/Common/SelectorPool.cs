@@ -19,9 +19,9 @@ namespace Assets.Scripts.Common
             Pool = new List<T>();
         }
 
-        public SelectorPool(List<T> startingPool)
+        public SelectorPool(List<T> pool)
         {
-            Pool = startingPool;
+            Pool = pool;
         }
 
         public T Select()

@@ -2,7 +2,7 @@
 using UnityEngine;
 using Assets.Scripts.Dialogue.Texts.Snippets.Sources;
 using Assets.Scripts.Common;
-using System.Linq;
+using Assets.Scripts.MainMenu.Characters;
 
 [RequireComponent(typeof(DictionarySnippetSource), typeof(PoolSnippetSource))]
 public class CharacterCreation : MonoBehaviour
@@ -22,19 +22,20 @@ public class CharacterCreation : MonoBehaviour
         }
     }
 
+    public const int numberOfNames = 9, numberOfRelations = 6, numberOfEmotions = 7;
+
     public CharacterStats maleCharacterStats;
     public CharacterStats femaleCharacterStats;
 
-    // Max suspects must always be 'min(numberOfNames, numberOfRelations, numberOfEmotions) - 1'
-    [Range(2, 5)]
-    public int suspectsGiven = 5;
+    [Range(2, 6)]
+    public int suspectsGiven = 6;
 
     public string suspectKey, victimKey, murdererKey, randomNameKey;
 
-    public const int numberOfNames = 9, numberOfRelations = 6, numberOfEmotions = 7;
+    public List<SuspectManager> suspectSelectors;
 
-    private readonly HashSet<Character> suspects = new HashSet<Character>();
-    public IReadOnlyCollection<Character> Suspects => suspects;
+    private readonly HashSet<Suspect> suspects = new HashSet<Suspect>();
+    public IReadOnlyCollection<Suspect> Suspects => suspects;
 
     private SelectorPool<int> mNames, fNames;
     private SelectorPool<int> mRelation, fRelation;
@@ -56,17 +57,16 @@ public class CharacterCreation : MonoBehaviour
         InitializePools();
 
         // Create the murderer
-        characterDictionary.Snippets[murdererKey] = InitializeCharacter(hasAlibi: false);
+        characterDictionary.Snippets[murdererKey] = InitializeSuspect(hasAlibi: false);
 
         // Create other suspects
         for (int i = 0; i < suspectsGiven - 1; i++)
         {
-            suspects.Add(InitializeCharacter());
-        }
+            Suspect suspect = InitializeSuspect();
+            suspects.Add(suspect);
 
-        // By default, set the current suspect to the first one
-        // TODO: When the selecting suspect system is done, this should probably be removed to improve efficiency
-        SetCurrentSuspectImpl(suspects.First());
+            suspectSelectors[i].Suspect = suspect;
+        }
 
         // Create the victim
         characterDictionary.Snippets[victimKey] = InitializeCharacter();
@@ -75,7 +75,7 @@ public class CharacterCreation : MonoBehaviour
         FillNamePool();
     }
 
-    public void SetCurrentSuspect(Character suspect)
+    public void SetCurrentSuspect(Suspect suspect)
     {
         if (suspects.Contains(suspect))
         {
@@ -87,7 +87,7 @@ public class CharacterCreation : MonoBehaviour
         }
     }
 
-    private void SetCurrentSuspectImpl(Character suspect) => characterDictionary.Snippets[suspectKey] = suspect;
+    private void SetCurrentSuspectImpl(Suspect suspect) => characterDictionary.Snippets[suspectKey] = suspect;
 
     private void InitializePools()
     {
@@ -106,38 +106,54 @@ public class CharacterCreation : MonoBehaviour
 
     private Character InitializeCharacter()
     {
-        bool hasAlibi = Utilities.RandomBool();
-        return InitializeCharacter(hasAlibi);
+        bool isMale = Utilities.RandomBool();
+        int name = isMale ? mNames.Select() : fNames.Select();
+
+        return InitializeCharacter(isMale, name);
     }
 
-    private Character InitializeCharacter(bool hasAlibi)
+    private Character InitializeCharacter(bool isMale, int name)
+    {
+        Character character = ScriptableObject.CreateInstance<Character>();
+        character.isMale = isMale;
+        character.cname = (isMale ? maleCharacterStats : femaleCharacterStats).characterName[name];
+        return character;
+    }
+
+    private Suspect InitializeSuspect()
+    {
+        bool hasAlibi = Utilities.RandomBool();
+        return InitializeSuspect(hasAlibi);
+    }
+
+    private Suspect InitializeSuspect(bool hasAlibi)
     {
         bool isMale = Utilities.RandomBool();
         int name = isMale ? mNames.Select() : fNames.Select();
         int relation = isMale ? mRelation.Select() : fRelation.Select();
         int emotion = Random.Range(0, numberOfEmotions);
 
-        return InitializeCharacter(isMale, name, relation, emotion, hasAlibi);
+        return InitializeSuspect(isMale, name, relation, emotion, hasAlibi);
     }
 
-    private Character InitializeCharacter(bool isMale, int name, int relation, int emotion, bool hasAlibi)
+    private Suspect InitializeSuspect(bool isMale, int name, int relation, int emotion, bool hasAlibi)
     {
-        Character current = ScriptableObject.CreateInstance<Character>();
+        Suspect suspect = ScriptableObject.CreateInstance<Suspect>();
 
-        current.isMale = isMale;
+        suspect.isMale = isMale;
 
-        FillCharacterWithStats(current, isMale ? maleCharacterStats : femaleCharacterStats, name, relation, emotion);
+        FillSuspectWithStats(suspect, isMale ? maleCharacterStats : femaleCharacterStats, name, relation, emotion);
 
-        current.hasAlibi = hasAlibi;
+        suspect.hasAlibi = hasAlibi;
 
-        return current;
+        return suspect;
     }
 
-    private void FillCharacterWithStats(Character character, CharacterStats stats, int nameIndex, int relationIndex, int emotionIndex)
+    private void FillSuspectWithStats(Suspect suspect, CharacterStats stats, int nameIndex, int relationIndex, int emotionIndex)
     {
-        character.cname = stats.characterName[nameIndex];
-        character.relation = stats.relation[relationIndex];
-        character.emotion = stats.emotion[emotionIndex];
+        suspect.cname = stats.characterName[nameIndex];
+        suspect.relation = stats.relation[relationIndex];
+        suspect.emotion = stats.emotion[emotionIndex];
     }
 
     private void FillNamePool()

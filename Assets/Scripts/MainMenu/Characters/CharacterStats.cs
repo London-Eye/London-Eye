@@ -1,11 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-[CreateAssetMenu(fileName = "CharacterStats", menuName = "CharacterStats")]
-public class CharacterStats : ScriptableObject
+namespace Assets.Scripts.MainMenu.Characters
 {
-    public string[] characterName;
-    public string[] relation;
-    public string[] emotion;
+    [CreateAssetMenu(fileName = "CharacterStats", menuName = "CharacterStats")]
+    public class CharacterStats : ScriptableObject
+    {
+        public string[] characterName;
+        public string[] relation;
+        public string[] emotion;
+    }
 }
