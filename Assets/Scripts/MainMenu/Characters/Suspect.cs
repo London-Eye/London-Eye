@@ -10,5 +10,7 @@
         public bool hasAlibi;
 
         public string HasAlibiAsString => hasAlibi ? AffirmativeAlibi : NegativeAlibi;
+
+        public string Puzzle { get; set; }
     }
 }

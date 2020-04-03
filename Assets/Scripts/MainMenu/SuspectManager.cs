@@ -6,9 +6,27 @@ using UnityEngine.UI;
 public class SuspectManager : MonoBehaviour
 {
     // This is able to persist the suspects references, and restore them in the appropiate instances
-    private static readonly Dictionary<int, SuspectManager> suspectManagerSafe = new Dictionary<int, SuspectManager>();
+    private static readonly Dictionary<int, Suspect> suspectSafe = new Dictionary<int, Suspect>();
+
+    public static Suspect GetSuspectByPuzzle(string puzzle)
+    {
+        foreach (Suspect suspect in suspectSafe.Values)
+        {
+            if (suspect.Puzzle == puzzle)
+            {
+                return suspect;
+            }
+        }
+        return null;
+    }
+
+    private static readonly HashSet<string> activePuzzles = new HashSet<string>();
+
+    public static bool IsPuzzleActive(string puzzle) => activePuzzles.Contains(puzzle);
 
     public Text suspectText;
+
+    private int Id => transform.GetSiblingIndex();
 
     private Suspect suspect;
 
@@ -19,6 +37,8 @@ public class SuspectManager : MonoBehaviour
         {
             suspect = value;
 
+            suspectSafe[Id] = value;
+
             if (suspect != null)
             {
                 suspectText.text = suspect.cname;
@@ -28,23 +48,16 @@ public class SuspectManager : MonoBehaviour
         }
     }
 
-    public string Puzzle { get; private set; }
-
     private void Awake()
     {
-        int id = transform.GetSiblingIndex();
-
-        if (suspectManagerSafe.TryGetValue(id, out SuspectManager suspectManager))
+        if (suspectSafe.TryGetValue(Id, out Suspect suspect))
         {
-            Suspect = suspectManager.Suspect;
-            Puzzle = suspectManager.Puzzle;
+            Suspect = suspect;
         }
         else
         {
             gameObject.SetActive(Suspect != null);
         }
-
-        suspectManagerSafe[id] = this;
     }
 
     public void SelectSuspect()
@@ -54,7 +67,15 @@ public class SuspectManager : MonoBehaviour
 
     public void LoadPuzzle()
     {
-        if (Puzzle == null) { Puzzle = FindObjectOfType<PoolPuzzleLoader>().LoadPuzzle(); }
-        else { PuzzleLoader.LoadPuzzle(Puzzle); }
+        if (Suspect.Puzzle == null)
+        {
+            string puzzle = FindObjectOfType<PoolPuzzleLoader>().LoadPuzzle();
+            Suspect.Puzzle = puzzle;
+            activePuzzles.Add(puzzle);
+        }
+        else if (IsPuzzleActive(Suspect.Puzzle))
+        {
+            PuzzleLoader.LoadPuzzle(Suspect.Puzzle);
+        }
     }
 }

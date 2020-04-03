@@ -1187,6 +1187,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: MoveTheBlockButton
       objectReference: {fileID: 0}
+    - target: {fileID: 7331617269074269135, guid: 14516dc1e119ca14ab2ee8998c7bf600,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7331617269074269136, guid: 14516dc1e119ca14ab2ee8998c7bf600,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1901,6 +1906,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: NinePuzzleButton
       objectReference: {fileID: 0}
+    - target: {fileID: 7331617269074269135, guid: 14516dc1e119ca14ab2ee8998c7bf600,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7331617269074269136, guid: 14516dc1e119ca14ab2ee8998c7bf600,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2108,7 +2118,7 @@ MonoBehaviour:
   maleCharacterStats: {fileID: 11400000, guid: c88b9c0ce8a6e1745a5264a9a3197df6, type: 2}
   femaleCharacterStats: {fileID: 11400000, guid: aa4137f4306fab74ea5f47d1c36fc539,
     type: 2}
-  suspectsGiven: 5
+  suspectsGiven: 6
   suspectKey: SOSPECHOSO
   victimKey: VICTIMA
   murdererKey: ASESINO
@@ -2198,6 +2208,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CardGameButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 7331617269074269135, guid: 14516dc1e119ca14ab2ee8998c7bf600,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7331617269074269136, guid: 14516dc1e119ca14ab2ee8998c7bf600,
         type: 3}
@@ -2623,6 +2638,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CompletaElCaminoButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 7331617269074269135, guid: 14516dc1e119ca14ab2ee8998c7bf600,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7331617269074269136, guid: 14516dc1e119ca14ab2ee8998c7bf600,
         type: 3}

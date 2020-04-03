@@ -57,7 +57,9 @@ public class CharacterCreation : MonoBehaviour
         InitializePools();
 
         // Create the murderer
-        characterDictionary.Snippets[murdererKey] = InitializeSuspect(hasAlibi: false);
+        Suspect murderer = InitializeSuspect(hasAlibi: false);
+        characterDictionary.Snippets[murdererKey] = murderer;
+        suspects.Add(murderer);
 
         // Create other suspects
         for (int i = 0; i < suspectsGiven - 1; i++)
