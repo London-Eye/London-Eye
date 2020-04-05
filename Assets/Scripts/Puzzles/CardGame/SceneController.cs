@@ -20,6 +20,7 @@ public class SceneController : MonoBehaviour
     [SerializeField] private PauseController pauseMenu;
     [SerializeField] private GameObject EndgameMenu;
     [SerializeField] private TextMeshProUGUI finalScore;
+    [SerializeField] private TextMeshProUGUI finalMessage;
 
     private int MaxScore => gridCols * gridRows / 2;
 
@@ -118,21 +119,23 @@ public class SceneController : MonoBehaviour
     struct ScoreRank
     {
         public string Name { get; }
+        public string Message { get; }
         public Color Color { get; }
         public int NumberOfSuspects { get; }
 
-        public ScoreRank(string name, Color color, int numberOfSuspects)
+        public ScoreRank(string name, string message, Color color, int numberOfSuspects)
         {
             Name = name;
+            Message = message;
             Color = color;
             NumberOfSuspects = numberOfSuspects;
         }
     }
 
     private static readonly ScoreRank
-        GoodRank = new ScoreRank("Good", Color.green, CharacterCreation.maxNumberOfSuspects / 3),
-        BadRank = new ScoreRank("Bad", Color.red, CharacterCreation.maxNumberOfSuspects),
-        NormalRank = new ScoreRank("Normal", Color.yellow, Mathf.FloorToInt(CharacterCreation.maxNumberOfSuspects / 1.5f));
+        GoodRank = new ScoreRank("Good", "¡Enhorabuena!", Color.green, CharacterCreation.maxNumberOfSuspects / 3),
+        BadRank = new ScoreRank("Bad", "Ups...", Color.red, CharacterCreation.maxNumberOfSuspects),
+        NormalRank = new ScoreRank("Normal", "No está mal", Color.yellow, Mathf.FloorToInt(CharacterCreation.maxNumberOfSuspects / 1.5f));
 
     private ScoreRank? currentScoreRank;
 
@@ -151,7 +154,11 @@ public class SceneController : MonoBehaviour
     {
         yield return new WaitForSeconds(1.0f);
 
-        finalScore.color = GetScoreRank(true).Color;
+        ScoreRank scoreRank = GetScoreRank(true);
+
+        finalMessage.text = scoreRank.Message;
+
+        finalScore.color = scoreRank.Color;
         finalScore.text = _score + "/" + MaxScore;
 
         EndgameMenu.SetActive(true);
