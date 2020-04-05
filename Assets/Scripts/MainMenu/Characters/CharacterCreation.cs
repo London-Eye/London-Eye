@@ -39,14 +39,12 @@ public class CharacterCreation : MonoBehaviour
         set => numberOfSuspects = value < maxNumberOfSuspects ? value : maxNumberOfSuspects;
     }
 
-    public bool Created { get; private set; }
-
     public CharacterStats maleCharacterStats;
     public CharacterStats femaleCharacterStats;
 
     public string suspectKey, victimKey, murdererKey, randomNameKey;
 
-    private readonly HashSet<Suspect> suspects = new HashSet<Suspect>();
+    private HashSet<Suspect> suspects;
     public IReadOnlyCollection<Suspect> Suspects => suspects;
 
     private SelectorPool<int> mNames, fNames;
@@ -64,8 +62,6 @@ public class CharacterCreation : MonoBehaviour
 
     public void Create()
     {
-        if (Created) return;
-
         SuspectManager[] suspectManagers = GameObject.Find(MainMenuMenusGameObjectName)
                                                      .GetComponentsInChildren<SuspectManager>(true);
 
@@ -82,6 +78,8 @@ public class CharacterCreation : MonoBehaviour
         characterDictionary = GetComponent<DictionarySnippetSource>();
 
         InitializePools();
+
+        suspects = new HashSet<Suspect>();
 
         // Create the murderer
         Suspect murderer = InitializeSuspect(hasAlibi: false);
@@ -107,8 +105,6 @@ public class CharacterCreation : MonoBehaviour
 
         // Fill the remaining names in a pool as random radiant ones
         FillNamePool();
-
-        Created = true;
     }
 
     public void SetCurrentSuspect(Suspect suspect)
