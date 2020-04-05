@@ -3,10 +3,13 @@ using UnityEngine;
 using Assets.Scripts.Dialogue.Texts.Snippets.Sources;
 using Assets.Scripts.Common;
 using Assets.Scripts.MainMenu.Characters;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(DictionarySnippetSource), typeof(PoolSnippetSource))]
 public class CharacterCreation : MonoBehaviour
 {
+    public const string InitialPuzzle = "CardGame";
+
     public static CharacterCreation Instance { get; private set; }
 
     private void MakeSingleton()
@@ -15,6 +18,8 @@ public class CharacterCreation : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(this.gameObject);
+
+            SceneManager.LoadScene(InitialPuzzle);
         }
         else
         {
@@ -22,17 +27,24 @@ public class CharacterCreation : MonoBehaviour
         }
     }
 
-    public const int numberOfNames = 9, numberOfRelations = 6, numberOfEmotions = 7;
+    // maxNumberOfSuspects = min(numberOfNames, numberOfRelations, numberOfEmotions);
+    public const int maxNumberOfSuspects = 6, numberOfNames = 9, numberOfRelations = 6, numberOfEmotions = 7;
+
+    public const string MainMenuMenusGameObjectName = "Menus";
+
+    private int numberOfSuspects;
+    public int NumberOfSuspects
+    {
+        get => numberOfSuspects;
+        set => numberOfSuspects = value < maxNumberOfSuspects ? value : maxNumberOfSuspects;
+    }
+
+    public bool Created { get; private set; }
 
     public CharacterStats maleCharacterStats;
     public CharacterStats femaleCharacterStats;
 
-    [Range(2, 6)]
-    public int suspectsGiven = 6;
-
     public string suspectKey, victimKey, murdererKey, randomNameKey;
-
-    public List<SuspectManager> suspectSelectors;
 
     private readonly HashSet<Suspect> suspects = new HashSet<Suspect>();
     public IReadOnlyCollection<Suspect> Suspects => suspects;
@@ -50,8 +62,23 @@ public class CharacterCreation : MonoBehaviour
         MakeSingleton();
     }
 
-    void Start()
+    public void Create()
     {
+        if (Created) return;
+
+        SuspectManager[] suspectManagers = GameObject.Find(MainMenuMenusGameObjectName)
+                                                     .GetComponentsInChildren<SuspectManager>(true);
+
+        if (NumberOfSuspects > suspectManagers.Length)
+        {
+            // If there are not enough managers for all the suspects, log a warning, and use the maximum space available
+            Debug.LogWarning($"No space for all suspects ({NumberOfSuspects}). Using max space instead ({suspectManagers.Length})");
+            numberOfSuspects = suspectManagers.Length;
+        }
+
+        // Sort the managers by its position
+        System.Array.Sort(suspectManagers);
+
         characterDictionary = GetComponent<DictionarySnippetSource>();
 
         InitializePools();
@@ -62,12 +89,17 @@ public class CharacterCreation : MonoBehaviour
         suspects.Add(murderer);
 
         // Create other suspects
-        for (int i = 0; i < suspectsGiven - 1; i++)
+        for (int i = 0; i < NumberOfSuspects - 1; i++)
         {
             Suspect suspect = InitializeSuspect();
             suspects.Add(suspect);
+        }
 
-            suspectSelectors[i].Suspect = suspect;
+        // Shuffle the suspects and put them in the scene
+        Suspect[] suspectsShuffled = suspects.GetShuffle();
+        for (int i = 0; i < NumberOfSuspects; i++)
+        {
+            suspectManagers[i].Suspect = suspectsShuffled[i];
         }
 
         // Create the victim
@@ -75,6 +107,8 @@ public class CharacterCreation : MonoBehaviour
 
         // Fill the remaining names in a pool as random radiant ones
         FillNamePool();
+
+        Created = true;
     }
 
     public void SetCurrentSuspect(Suspect suspect)
@@ -163,7 +197,7 @@ public class CharacterCreation : MonoBehaviour
         randomNamePoolSource = GetComponent<PoolSnippetSource>();
 
         SelectorPool<object> randomNamePool = new SelectorPool<object>();
-        
+
         while (mNames.Count > 0)
         {
             randomNamePool.Pool.Add(maleCharacterStats.characterName[mNames.Select()]);

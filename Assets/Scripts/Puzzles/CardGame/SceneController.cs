@@ -2,6 +2,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
 {
@@ -19,6 +20,8 @@ public class SceneController : MonoBehaviour
     [SerializeField] private PauseController pauseMenu;
     [SerializeField] private GameObject EndgameMenu;
     [SerializeField] private TextMeshProUGUI finalScore;
+
+    private int MaxScore => gridCols * gridRows / 2;
 
     private MemoryCard _firstRevealed;
     private MemoryCard _secondRevealed;
@@ -61,9 +64,9 @@ public class SceneController : MonoBehaviour
     {
         if (pauseMenu.IsPaused) return;
 
-        if (_movimientos >= _maxMV || _score == (gridCols*gridRows/2))
+        if (_movimientos >= _maxMV || _score == MaxScore)
         {
-            StartCoroutine(Endgame());
+            StartCoroutine(EndGame());
         }
     }
 
@@ -110,18 +113,57 @@ public class SceneController : MonoBehaviour
         _firstRevealed = _secondRevealed = null;
     }
 
-    private IEnumerator Endgame()
+    // ENDGAME
+
+    struct ScoreRank
+    {
+        public string Name { get; }
+        public Color Color { get; }
+        public int NumberOfSuspects { get; }
+
+        public ScoreRank(string name, Color color, int numberOfSuspects)
+        {
+            Name = name;
+            Color = color;
+            NumberOfSuspects = numberOfSuspects;
+        }
+    }
+
+    private static readonly ScoreRank
+        GoodRank = new ScoreRank("Good", Color.green, CharacterCreation.maxNumberOfSuspects / 3),
+        BadRank = new ScoreRank("Bad", Color.red, CharacterCreation.maxNumberOfSuspects),
+        NormalRank = new ScoreRank("Normal", Color.yellow, Mathf.FloorToInt(CharacterCreation.maxNumberOfSuspects / 1.5f));
+
+    private ScoreRank? currentScoreRank;
+
+    private ScoreRank GetScoreRank(bool recalculate = false)
+    {
+        if (recalculate || !currentScoreRank.HasValue)
+        {
+            if (_score >= 2 * MaxScore / 3) currentScoreRank = GoodRank;
+            else if (_score <= MaxScore / 3) currentScoreRank = BadRank;
+            else currentScoreRank = NormalRank;
+        }
+        return currentScoreRank.Value;
+    }
+
+    private IEnumerator EndGame()
     {
         yield return new WaitForSeconds(1.0f);
 
-        finalScore.color = Color.yellow;
-        if (_score >= 10) { finalScore.color = Color.green; }
-        if (_score <= 5) { finalScore.color = Color.red; }
-        finalScore.text = _score + "/" + (gridCols * gridRows / 2);
+        finalScore.color = GetScoreRank(true).Color;
+        finalScore.text = _score + "/" + MaxScore;
 
         EndgameMenu.SetActive(true);
 
         pauseMenu.IsPaused = false;
         pauseMenu.enabled = false;
+    }
+
+    public void StartGame()
+    {
+        CharacterCreation.Instance.NumberOfSuspects = GetScoreRank().NumberOfSuspects;
+        AsyncOperation loadSceneOperation = SceneManager.LoadSceneAsync(0); // Load Main Menu
+        loadSceneOperation.completed += op => FindObjectOfType<CharacterCreation>().Create();
     }
 }

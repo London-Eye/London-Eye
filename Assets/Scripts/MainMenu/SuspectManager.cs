@@ -1,9 +1,10 @@
 ﻿using Assets.Scripts.MainMenu.Characters;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SuspectManager : MonoBehaviour
+public class SuspectManager : MonoBehaviour, IComparable<SuspectManager>
 {
     // This is able to persist the suspects references, and restore them in the appropiate instances
     private static readonly Dictionary<int, Suspect> suspectSafe = new Dictionary<int, Suspect>();
@@ -74,4 +75,6 @@ public class SuspectManager : MonoBehaviour
             PoolPuzzleLoader.LoadPuzzle(Suspect.Puzzle);
         }
     }
+
+    public int CompareTo(SuspectManager other) => Id.CompareTo(other.Id);
 }

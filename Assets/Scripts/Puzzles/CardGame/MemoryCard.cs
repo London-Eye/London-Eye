@@ -4,20 +4,20 @@ public class MemoryCard : MonoBehaviour
 {
     [SerializeField] private GameObject cardBack;
     private SceneController controller;
-    private int _id;
-    public int id
-    {
-        get { return _id; }
-    }
+
+    public int Id { get; private set; }
+
     public void SetCard(int id, Sprite image)
     {
-        _id = id;
+        this.Id = id;
         GetComponent<SpriteRenderer>().sprite = image;
     }
+
     public void Start()
     {
-        controller = GameObject.Find("GameController").GetComponent<SceneController>();
+        controller = FindObjectOfType<SceneController>();
     }
+
     public void OnMouseDown()
     {
         if (cardBack.activeSelf && controller.CanReveal)
@@ -26,6 +26,7 @@ public class MemoryCard : MonoBehaviour
             controller.CardRevealed(this);
         }
     }
+
     public void Unreveal()
     {
         cardBack.SetActive(true);
