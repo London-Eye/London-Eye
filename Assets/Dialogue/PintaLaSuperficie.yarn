@@ -1,0 +1,19 @@
+title: PintaLaSuperficie-PreGame
+tags: PreGame
+---
+Conforme están las cosas, decides ir a hablar personalmente con **<SOSPECHOSO[cname]>**.
+Pero no sabes si te va a decir toda la verdad mientras lo interrogas.
+Así que decides estar atento a su lenguaje corporal para detectar solo la verdad de entre todo lo que te dice.
+<color=orange>Para ello pasa los ojos por encima del sospechoso sin dejar nada.</color>
+===
+
+title: PintaLaSuperficie-PostGame
+tags: PostGame
+---
+<<CompletePuzzle GameManager>>
+Despues de casi una hora de interrogatorio con **<SOSPECHOSO[cname]>**, has conseguido averiguar alguna cosa útil.
+**<SOSPECHOSO[cname]>** es **<SOSPECHOSO[relation]>** de la víctima (**<VICTIMA[cname]>**).
+Realmente, muy en su interior, **<SOSPECHOSO[cname]>** **<SOSPECHOSO[emotion]>** la víctima (**<VICTIMA[cname]>**).
+Lo que te ha contado **<SOSPECHOSO[cname]>** confirma tu sospecha de que **<SOSPECHOSO[HasAlibiAsString]>** tiene una coartada válida.
+<<BackToMainMenu PauseMenu>>
+===

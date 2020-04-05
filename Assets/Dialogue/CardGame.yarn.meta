@@ -1,0 +1,25 @@
+fileFormatVersion: 2
+guid: 3c95d01bd8f92264fafe1780f31feb1e
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 94073015eacc34c1d8fc6786e43d60ca, type: 3}
+  baseLanguageID: es-ES
+  stringIDs:
+  - CardGame-CardGame-PreGame-0
+  - CardGame-CardGame-PreGame-1
+  - CardGame-CardGame-PreGame-2
+  - CardGame-CardGame-PreGame-3
+  - CardGame-CardGame-PostGame-4
+  - CardGame-CardGame-PostGame-5
+  - CardGame-CardGame-PostGame-6
+  compilationStatus: 1
+  isSuccesfullyCompiled: 1
+  compilationErrorMessage: 
+  baseLanguage: {fileID: 7128917941130120860, guid: 3c95d01bd8f92264fafe1780f31feb1e,
+    type: 3}
+  localizations: []

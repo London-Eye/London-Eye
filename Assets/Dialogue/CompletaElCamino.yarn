@@ -1,0 +1,19 @@
+title: CompletaElCamino-PreGame
+tags: PreGame
+---
+Has investigado los conocidos y conocidas de **<SOSPECHOSO[cname]>**, así como sus movimientos.
+Es hora de ordenar estas ideas para averiguar algo mas sobre su relación con el crímen.
+Decides ponerte a hacer suposiciones y cavilar sobre el tema.
+<color=orange>Gira las partes de los caminos para llegar de la suposición a la conclusión y descubrir una nueva pista sobre **<SOSPECHOSO[cname]>**.</color>
+===
+
+title: CompletaElCamino-PostGame
+tags: PostGame
+---
+<<CompletePuzzle GameManager>>
+Has conseguido llegar a una conclusión sobre **<SOSPECHOSO[cname]>**.
+Es una persona misteriosa y no haber podido hacer contacto directo te ha retrasado, pero has llegado a la conclusión de que **<SOSPECHOSO[cname]>** es **<SOSPECHOSO[relation]>** de la víctima(**<VICTIMA[cname]>**).
+Después de ver algunas conversaciones con la víctima y fotos juntos determinas que la verdad es que  **<SOSPECHOSO[cname]>** **<SOSPECHOSO[emotion]>** la víctima (**<VICTIMA[cname]>**).
+Una vez consideradas detenidamente todas las pruebas obtenidas determinas que la coartada de **<SOSPECHOSO[cname]>** **<SOSPECHOSO[HasAlibiAsString]>** es válida.
+<<BackToMainMenu PauseMenu>>
+===

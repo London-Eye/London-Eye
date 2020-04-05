@@ -1,0 +1,26 @@
+fileFormatVersion: 2
+guid: 2b0d98a721f5ca948aaf68abcfc9a882
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 94073015eacc34c1d8fc6786e43d60ca, type: 3}
+  baseLanguageID: es-ES
+  stringIDs:
+  - CompletaElCamino-CompletaElCamino-PreGame-0
+  - CompletaElCamino-CompletaElCamino-PreGame-1
+  - CompletaElCamino-CompletaElCamino-PreGame-2
+  - CompletaElCamino-CompletaElCamino-PreGame-3
+  - CompletaElCamino-CompletaElCamino-PostGame-4
+  - CompletaElCamino-CompletaElCamino-PostGame-5
+  - CompletaElCamino-CompletaElCamino-PostGame-6
+  - CompletaElCamino-CompletaElCamino-PostGame-7
+  compilationStatus: 1
+  isSuccesfullyCompiled: 1
+  compilationErrorMessage: 
+  baseLanguage: {fileID: 7128917941130120860, guid: 2b0d98a721f5ca948aaf68abcfc9a882,
+    type: 3}
+  localizations: []

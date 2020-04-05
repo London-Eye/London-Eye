@@ -2,8 +2,8 @@ title: MoveTheBlock-PreGame
 tags: PreGame
 ---
 Decides que el mejor movimiento es investigar a **<SOSPECHOSO[cname]>**.
-Ves que **<SOSPECHOSO[cname]>** está en **<LUGAR>**, así que te acercas sin llamar la atención.
-Usando tus habilidades de hacker, decides acceder a su móvil para recolectar información.
+Ves que **<SOSPECHOSO[cname]>** está en **<LUGAR>**, así que decides que es buen momento para actuar.
+Usando tus habilidades de cracker, decides acceder a sus cuentas online para recolectar información.
 Pero primero tienes que saltarte su sistema de seguridad.
 <color=orange>Lleva la llave hasta la cerradura para poder acceder a sus cuentas.</color>
 ===
@@ -12,7 +12,7 @@ title: MoveTheBlock-PostGame
 tags: PostGame
 ---
 <<CompletePuzzle GameManager>>
-Después de usar todo tu ingenio, consigues acceder al móvil de **<SOSPECHOSO[cname]>**.
+Después de usar todo tu ingenio, consigues acceder a las cuentas de **<SOSPECHOSO[cname]>**.
 Entras en su correo electrónico. Por el tipo de mensajes que encuentras, **<SOSPECHOSO[cname]>** es **<SOSPECHOSO[relation]>** de la víctima (**<VICTIMA[cname]>**).
 Consigues entrar en una de sus apps de mensajería. Por cómo habla con **<NOMBRE>**, **<SOSPECHOSO[cname]>** **<SOSPECHOSO[emotion]>** la víctima (**<VICTIMA[cname]>**).
 Revisando las facturas de **<SOSPECHOSO[cname]>**, te das cuenta de que su coartada **<SOSPECHOSO[HasAlibiAsString]>** es válida.

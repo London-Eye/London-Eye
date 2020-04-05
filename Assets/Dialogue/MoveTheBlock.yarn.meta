@@ -14,10 +14,14 @@ ScriptedImporter:
   - MoveTheBlock-MoveTheBlock-PreGame-1
   - MoveTheBlock-MoveTheBlock-PreGame-2
   - MoveTheBlock-MoveTheBlock-PreGame-3
+  - MoveTheBlock-MoveTheBlock-PreGame-4
+  - MoveTheBlock-MoveTheBlock-PostGame-5
+  - MoveTheBlock-MoveTheBlock-PostGame-6
+  - MoveTheBlock-MoveTheBlock-PostGame-7
+  - MoveTheBlock-MoveTheBlock-PostGame-8
   compilationStatus: 1
   isSuccesfullyCompiled: 1
   compilationErrorMessage: "Error on line 1 at position 1:\nmismatched input '<EOF>'
     expecting 'title:'\r\n\r\n"
-  baseLanguage: {fileID: 7128917941130120860, guid: db3bc59aab64b2a4b91d91aef6361b74,
-    type: 3}
+  baseLanguage: {instanceID: 0}
   localizations: []

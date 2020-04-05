@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: fc8dbf45e60850842b19610b61c27ac9
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 94073015eacc34c1d8fc6786e43d60ca, type: 3}
+  baseLanguageID: es-ES
+  stringIDs: []
+  compilationStatus: 0
+  isSuccesfullyCompiled: 0
+  compilationErrorMessage: "Error on line 19 at position 1:\nextraneous input '<EOF>'
+    expecting {'===', TEXT_STRING, SHORTCUT_ENTER, COMMAND_IF, COMMAND_SET, COMMAND_FUNC,
+    '[[', TEXT, ACTION}\r\n\r\n"
+  baseLanguage: {instanceID: 0}
+  localizations: []
