@@ -1,0 +1,25 @@
+fileFormatVersion: 2
+guid: 8c1d2f4af32cae44aba144c725ac1b9e
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 94073015eacc34c1d8fc6786e43d60ca, type: 3}
+  baseLanguageID: 
+  stringIDs:
+  - InicioPartida-InicioPartida-0
+  - InicioPartida-InicioPartida-1
+  - InicioPartida-InicioPartida-2
+  - InicioPartida-InicioPartida-3
+  - InicioPartida-InicioPartida-4
+  - InicioPartida-InicioPartida-5
+  - InicioPartida-InicioPartida-6
+  - InicioPartida-InicioPartida-7
+  compilationStatus: 1
+  isSuccesfullyCompiled: 1
+  compilationErrorMessage: 
+  baseLanguage: {instanceID: 0}
+  localizations: []

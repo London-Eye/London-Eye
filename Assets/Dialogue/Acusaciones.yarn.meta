@@ -1,0 +1,29 @@
+fileFormatVersion: 2
+guid: d98e686f38d54714ca476c184aaf7676
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 94073015eacc34c1d8fc6786e43d60ca, type: 3}
+  baseLanguageID: 
+  stringIDs:
+  - Acusaciones-Acusacion-SinPruebas-0
+  - Acusaciones-Acusacion-SinPruebas-1
+  - Acusaciones-Acusacion-SinPruebas-2
+  - Acusaciones-Acusacion-SinPruebas-3
+  - Acusaciones-Acusacion-Inocente-4
+  - Acusaciones-Acusacion-Inocente-5
+  - Acusaciones-Acusacion-Inocente-6
+  - Acusaciones-Acusacion-Inocente-7
+  - Acusaciones-Acusacion-Criminal-8
+  - Acusaciones-Acusacion-Criminal-9
+  - Acusaciones-Acusacion-Criminal-10
+  - Acusaciones-Acusacion-Criminal-11
+  compilationStatus: 1
+  isSuccesfullyCompiled: 1
+  compilationErrorMessage: 
+  baseLanguage: {instanceID: 0}
+  localizations: []

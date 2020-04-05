@@ -1,0 +1,26 @@
+title: Acusacion-SinPruebas
+tags: SinPruebas
+---
+**<SOSPECHOSO[cname]>** ha sido acusado de asesinato pero el jurado ha declarado que no tiene suficientes pruevas para procesarlo.
+El jurado no ha podido decidirse en el caso de **<SOSPECHOSO[cname]>** por falta de pruevas y, por tanto, queda libre.
+El juez ha declarado inocente a **<SOSPECHOSO[cname]>** por falta de pruevas que lo incriminen.
+<color=orange>Sigue investigando sospechosos para conseguir más pruebas y poder acusarlos más acertadametne.</color>
+===
+
+title: Acusacion-Inocente
+tags: Inocente
+---
+Después de un juicio justo se ha declarado que **<SOSPECHOSO[cname]>** es inocente.
+El jurado ha declarado la inocencia de **<SOSPECHOSO[cname]>** en el caso de asesinato.
+**<SOSPECHOSO[cname]>** queda libre por resultar inocente en el caso de asesinato que se le acusaba.
+<color=orange>No te desanimes, sigue investigando sospechososo para poder encontrar al criminal, pero cuidado con las acusaciones sin pruebas o perderas el caso.</color>
+===
+
+title:Acusacion-Criminal
+tags: Criminal
+---
+El juez ha declarado culpable a **<SOSPECHOSO[cname]>** del asesinato de **<VICTIMA[cname]>**.
+**<SOSPECHOSO[cname]>**, **<SOSPECHOSO[relation]>** de **<VICTIMA[cname]>**, es culpable de su asesinato.
+Gracias a Deiv I.D. se ha arrestado a **<SOSPECHOSO[cname]>**, culpable del asesinato de **<VICTIMA[cname]>**.
+<color=orange>Enhorabuena, has atrapado al criminal y con ello has aumentado tu reputación como investigador.</color>
+===
