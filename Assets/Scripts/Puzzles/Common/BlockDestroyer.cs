@@ -6,17 +6,7 @@ public class BlockDestroyer : MonoBehaviour
 {
     private const string PostGameDialogueTag = "PostGame";
 
-    // Start is called before the first frame update
-    //void Start()
-    //{
-
-    //}
-
-    //// Update is called once per frame
-    //void Update()
-    //{
-
-    //}
+    public bool StartDialogue = true;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -25,7 +15,14 @@ public class BlockDestroyer : MonoBehaviour
             // TODO: Add end animation before destroying the block
             Destroy(collision.gameObject);
 
-            FindObjectOfType<DialogueRunner>().StartDialogue($"{SceneManager.GetActiveScene().name}-{PostGameDialogueTag}");
+            if (StartDialogue)
+            {
+                FindObjectOfType<DialogueRunner>().StartDialogue($"{SceneManager.GetActiveScene().name}-{PostGameDialogueTag}");
+            }
+            else
+            {
+                Debug.Log("Block destroyed");
+            }
         }
     }
 }
