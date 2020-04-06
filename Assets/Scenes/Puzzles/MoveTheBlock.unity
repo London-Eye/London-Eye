@@ -2279,6 +2279,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5816886b2b22184a857cb618a098d7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StartDialogue: 1
 --- !u!213 &773007834
 Sprite:
   m_ObjectHideFlags: 0
@@ -5041,6 +5042,12 @@ PrefabInstance:
       propertyPath: startNode
       value: MoveTheBlock-PreGame
       objectReference: {fileID: 0}
+    - target: {fileID: 5296080504864627357, guid: f9cf9ff9943921943bbb41cab3390a11,
+        type: 3}
+      propertyPath: yarnScripts.Array.data[0]
+      value: 
+      objectReference: {fileID: 2480198943629176163, guid: db3bc59aab64b2a4b91d91aef6361b74,
+        type: 3}
     - target: {fileID: 5296080504925131752, guid: f9cf9ff9943921943bbb41cab3390a11,
         type: 3}
       propertyPath: m_AnchorMin.y

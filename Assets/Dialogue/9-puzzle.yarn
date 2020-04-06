@@ -1,19 +1,19 @@
 title: 9-puzzle-PreGame
 tags: PreGame
 ---
-Investigando a **<SOSPECHOSO[cname]>** descubres una nota con pinta algo sospechosa.
-Por desgracia, más que una nota son los restos que quedan despues de romper un papel.
+Investigando a **<SOSPECHOSO[cname]>**, descubres una nota con pinta algo sospechosa.
+Por desgracia, más que una nota son los restos que quedan después de romper un papel.
 Así que decides reconstruirla para poder descifrar su contenido.
-<color=orange>Intercambia las piezas de lugar con sus adyacentes para reparar la nota.</color>
+<color=orange>Coloca las piezas en el orden correcto para reparar la nota.</color>
 ===
 
 title: 9-puzzle-PostGame
 tags: PostGame
 ---
 <<CompletePuzzle GameManager>>
-Enhorabuena, has conseguido reparar la nota que parecia insalvable.
-Por la forma en que **<NOMBRES>** escribe puedes concluir que **<SOSPECHOSO[cname]>** es **<SOSPECHOSO[relation]>** de la víctima (**<VICTIMA[cname]>**).
-Debido al tono en que esta escrita la carta entre **<SOSPECHOSO[cname]>** y **<VICTIMA[cname]>**, claramente, **<SOSPECHOSO[cname]>** **<SOSPECHOSO[emotion]>** la víctima (**<VICTIMA[cname]>**).
+Enhorabuena, has conseguido reparar la nota que parecía insalvable.
+Por la forma en que **<NOMBRE>** escribe, puedes concluir que **<SOSPECHOSO[cname]>** es **<SOSPECHOSO[relation]>** de la víctima (**<VICTIMA[cname]>**).
+Debido al tono en que está escrita la carta entre **<SOSPECHOSO[cname]>** y **<VICTIMA[cname]>**, claramente, **<SOSPECHOSO[cname]>** **<SOSPECHOSO[emotion]>** la víctima (**<VICTIMA[cname]>**).
 Como sospechabas, el contenido de la carta confirma que **<SOSPECHOSO[cname]>** **<SOSPECHOSO[HasAlibiAsString]>** tiene coartada válida para el crimen.
 <<BackToMainMenu PauseMenu>>
 ===

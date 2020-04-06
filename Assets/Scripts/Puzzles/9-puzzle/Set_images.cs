@@ -38,6 +38,7 @@ public class Set_images : MonoBehaviour
             Partial_image subImage = Instantiate(partial_im) as Partial_image;
             subImage.setSubImage(images[i]);
             subImage.setPosition(posX[i], posY[i]);
+            subImage.transform.SetParent(transform);
         }
     }
 
