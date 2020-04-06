@@ -19,6 +19,8 @@ public class CharacterCreation : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(this.gameObject);
 
+            characterDictionary = GetComponent<DictionarySnippetSource>();
+
             SceneManager.LoadScene(InitialPuzzle);
         }
         else
@@ -36,13 +38,17 @@ public class CharacterCreation : MonoBehaviour
     public int NumberOfSuspects
     {
         get => numberOfSuspects;
-        set => numberOfSuspects = value < maxNumberOfSuspects ? value : maxNumberOfSuspects;
+        set
+        {
+            numberOfSuspects = value < maxNumberOfSuspects ? value : maxNumberOfSuspects;
+            characterDictionary.Snippets[numberOfSuspectsKey] = numberOfSuspects;
+        }
     }
 
     public CharacterStats maleCharacterStats;
     public CharacterStats femaleCharacterStats;
 
-    public string suspectKey, victimKey, murdererKey, randomNameKey;
+    public string suspectKey, victimKey, murdererKey, randomNameKey, numberOfSuspectsKey;
 
     private HashSet<Suspect> suspects;
     public IReadOnlyCollection<Suspect> Suspects => suspects;
@@ -52,8 +58,6 @@ public class CharacterCreation : MonoBehaviour
 
     private DictionarySnippetSource characterDictionary;
     private PoolSnippetSource randomNamePoolSource;
-
-    private CharacterCreation() { }
 
     void Awake()
     {
@@ -74,8 +78,6 @@ public class CharacterCreation : MonoBehaviour
 
         // Sort the managers by its position
         System.Array.Sort(suspectManagers);
-
-        characterDictionary = GetComponent<DictionarySnippetSource>();
 
         InitializePools();
 

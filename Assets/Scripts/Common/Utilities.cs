@@ -1,11 +1,24 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using Yarn.Unity;
 
 namespace Assets.Scripts.Common
 {
     public static class Utilities
-    {   
+    {
+        public const string PostGameDialogueTag = "PostGame";
+
+        public static string PostGameDialogueNode => $"{SceneManager.GetActiveScene().name}-{PostGameDialogueTag}";
+
+        public static void StartPostGameDialogue()
+            => StartPostGameDialogue(Object.FindObjectOfType<DialogueRunner>());
+
+        public static void StartPostGameDialogue(DialogueRunner dialogueRunner)
+            => dialogueRunner.StartDialogue(PostGameDialogueNode);
+
+
         public static T[] GetShuffle<T>(this IEnumerable<T> arr)
         {
             T[] newArray = arr.ToArray();

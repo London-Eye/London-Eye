@@ -1,11 +1,8 @@
-﻿using UnityEngine;
-using UnityEngine.SceneManagement;
-using Yarn.Unity;
+﻿using Assets.Scripts.Common;
+using UnityEngine;
 
 public class BlockDestroyer : MonoBehaviour
 {
-    private const string PostGameDialogueTag = "PostGame";
-
     public bool StartDialogue = true;
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -17,7 +14,7 @@ public class BlockDestroyer : MonoBehaviour
 
             if (StartDialogue)
             {
-                FindObjectOfType<DialogueRunner>().StartDialogue($"{SceneManager.GetActiveScene().name}-{PostGameDialogueTag}");
+                Utilities.StartPostGameDialogue();
             }
             else
             {

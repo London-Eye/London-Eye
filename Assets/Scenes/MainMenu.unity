@@ -2098,6 +2098,7 @@ MonoBehaviour:
   victimKey: VICTIMA
   murdererKey: ASESINO
   randomNameKey: NOMBRE
+  numberOfSuspectsKey: NUMERO_SOSPECHOSOS
 --- !u!4 &1276836354
 Transform:
   m_ObjectHideFlags: 0

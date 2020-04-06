@@ -3,6 +3,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Yarn.Unity;
 
 public class SceneController : MonoBehaviour
 {
@@ -29,10 +30,13 @@ public class SceneController : MonoBehaviour
     private int _score = 0;
     private int _movimientos = 0;
 
+    private bool gameEnded;
+
     void Start()
     {
         EndgameMenu.SetActive(false);
         pauseMenu.IsPaused = false;
+        gameEnded = false;
 
         int[] ids = new int[gridRows * gridCols];
         for (int i = 0; i < ids.Length; i++)
@@ -65,7 +69,7 @@ public class SceneController : MonoBehaviour
     {
         if (pauseMenu.IsPaused) return;
 
-        if (_movimientos >= _maxMV || _score == MaxScore)
+        if (!gameEnded && (_movimientos >= _maxMV || _score == MaxScore))
         {
             StartCoroutine(EndGame());
         }
@@ -133,9 +137,9 @@ public class SceneController : MonoBehaviour
     }
 
     private static readonly ScoreRank
-        GoodRank = new ScoreRank("Good", "¡Enhorabuena!", Color.green, CharacterCreation.maxNumberOfSuspects / 3),
+        GoodRank = new ScoreRank("Good", "¡Enhorabuena!", Color.green, CharacterCreation.maxNumberOfSuspects - 2),
         BadRank = new ScoreRank("Bad", "Ups...", Color.red, CharacterCreation.maxNumberOfSuspects),
-        NormalRank = new ScoreRank("Normal", "No está mal", Color.yellow, Mathf.FloorToInt(CharacterCreation.maxNumberOfSuspects / 1.5f));
+        NormalRank = new ScoreRank("Normal", "No está mal", Color.yellow, CharacterCreation.maxNumberOfSuspects - 1);
 
     private ScoreRank? currentScoreRank;
 
@@ -152,6 +156,8 @@ public class SceneController : MonoBehaviour
 
     private IEnumerator EndGame()
     {
+        gameEnded = true;
+
         yield return new WaitForSeconds(1.0f);
 
         ScoreRank scoreRank = GetScoreRank(true);
@@ -161,16 +167,24 @@ public class SceneController : MonoBehaviour
         finalScore.color = scoreRank.Color;
         finalScore.text = _score + "/" + MaxScore;
 
-        EndgameMenu.SetActive(true);
-
         pauseMenu.IsPaused = false;
         pauseMenu.enabled = false;
+
+        EndgameMenu.SetActive(true);
     }
 
     public void StartGame()
     {
+        EndgameMenu.SetActive(false);
+
         CharacterCreation.Instance.NumberOfSuspects = GetScoreRank().NumberOfSuspects;
-        AsyncOperation loadSceneOperation = SceneManager.LoadSceneAsync(0); // Load Main Menu
-        loadSceneOperation.completed += op => FindObjectOfType<CharacterCreation>().Create();
+
+        FindObjectOfType<DialogueUI>().onDialogueEnd.AddListener(() =>
+        {
+            AsyncOperation loadSceneOperation = SceneManager.LoadSceneAsync(0); // Load Main Menu
+            loadSceneOperation.completed += op => FindObjectOfType<CharacterCreation>().Create();
+        });
+
+        Utilities.StartPostGameDialogue();
     }
 }
