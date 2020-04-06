@@ -5,6 +5,7 @@ Decides hablar con amigos y familiares para encontrar posibles culpables.
 Después de una ligera investigación, tienes una lista de todas las personas con posible relación con la víctima.
 Lo primero que tienes que hacer es reducir esta lista con los que realmente pueden ser sospechosos.
 <color=orange>Empareja los retratos de personas con las imágenes que demuestran que no se encontraban en el lugar del asesinato para descartar posibles sospechosos.</color>
+<<StartCardGame CardGameController>>
 ===
 
 title: CardGame-PostGame

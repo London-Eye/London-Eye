@@ -22,6 +22,8 @@ public class SceneController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI finalScore;
     [SerializeField] private TextMeshProUGUI finalMessage;
 
+    public bool GameRunning { get; set; }
+
     private int MaxScore => gridCols * gridRows / 2;
 
     private MemoryCard _firstRevealed;
@@ -29,13 +31,22 @@ public class SceneController : MonoBehaviour
     private int _score = 0;
     private int _movimientos = 0;
 
-    private bool gameEnded;
-
-    void Start()
+    private void Start()
     {
         EndgameMenu.SetActive(false);
-        gameEnded = false;
+        PutCardsOnTable();
+    }
 
+    [YarnCommand("StartCardGame")]
+    public void StartCardGame()
+    {
+        GameRunning = true;
+        scoreLabel.gameObject.SetActive(true);
+        movesLabel.gameObject.SetActive(true);
+    }
+
+    private void PutCardsOnTable()
+    {
         int[] ids = new int[gridRows * gridCols];
         for (int i = 0; i < ids.Length; i++)
         {
@@ -65,13 +76,13 @@ public class SceneController : MonoBehaviour
 
     void LateUpdate()
     {
-        if (!gameEnded && (_movimientos >= _maxMV || _score == MaxScore))
+        if (GameRunning && (_movimientos >= _maxMV || _score == MaxScore))
         {
             StartCoroutine(EndGame());
         }
     }
 
-    public bool CanReveal => _secondRevealed == null && _movimientos < _maxMV && !gameEnded;
+    public bool CanReveal => _secondRevealed == null && _movimientos < _maxMV && GameRunning;
 
     public void CardRevealed(MemoryCard card)
     {
@@ -91,7 +102,6 @@ public class SceneController : MonoBehaviour
 
     private IEnumerator CheckMoves()
     {
-
         movesLabel.text = "Mov. restantes: " + (_maxMV - _movimientos);
         yield return null;
     }
@@ -152,7 +162,7 @@ public class SceneController : MonoBehaviour
 
     private IEnumerator EndGame()
     {
-        gameEnded = true;
+        GameRunning = false;
 
         yield return new WaitForSeconds(1.0f);
 
