@@ -4,6 +4,7 @@ using Assets.Scripts.Dialogue.Texts.Snippets.Sources;
 using Assets.Scripts.Common;
 using Assets.Scripts.MainMenu.Characters;
 using UnityEngine.SceneManagement;
+using Yarn.Unity;
 
 [RequireComponent(typeof(DictionarySnippetSource), typeof(PoolSnippetSource))]
 public class CharacterCreation : MonoBehaviour
@@ -20,8 +21,12 @@ public class CharacterCreation : MonoBehaviour
             DontDestroyOnLoad(this.gameObject);
 
             characterDictionary = GetComponent<DictionarySnippetSource>();
+            InitializePools();
 
-            SceneManager.LoadScene(InitialPuzzle);
+            CreateVictim();
+
+            // When the start of game dialogue ends, load the initial puzzle
+            FindObjectOfType<DialogueUI>().onDialogueEnd.AddListener(() => SceneManager.LoadScene(InitialPuzzle));
         }
         else
         {
@@ -45,6 +50,17 @@ public class CharacterCreation : MonoBehaviour
         }
     }
 
+    private Character victim;
+    public Character Victim
+    {
+        get => victim;
+        private set
+        {
+            victim = value;
+            characterDictionary.Snippets[victimKey] = value;
+        }
+    }
+
     public CharacterStats maleCharacterStats;
     public CharacterStats femaleCharacterStats;
 
@@ -64,7 +80,15 @@ public class CharacterCreation : MonoBehaviour
         MakeSingleton();
     }
 
-    public void Create()
+    void Start()
+    {
+        // Show the start of game dialogue.
+        FindObjectOfType<DialogueRunner>().StartDialogue();
+    }
+
+    public void CreateVictim() => Victim = InitializeCharacter();
+
+    public void CreateSuspects()
     {
         SuspectManager[] suspectManagers = GameObject.Find(MainMenuMenusGameObjectName)
                                                      .GetComponentsInChildren<SuspectManager>(true);
@@ -78,8 +102,6 @@ public class CharacterCreation : MonoBehaviour
 
         // Sort the managers by its position
         System.Array.Sort(suspectManagers);
-
-        InitializePools();
 
         suspects = new HashSet<Suspect>();
 
@@ -102,8 +124,8 @@ public class CharacterCreation : MonoBehaviour
             suspectManagers[i].Suspect = suspectsShuffled[i];
         }
 
-        // Create the victim
-        characterDictionary.Snippets[victimKey] = InitializeCharacter();
+        // If the victim wasn't created yet, do it now
+        if (Victim == null) CreateVictim();
 
         // Fill the remaining names in a pool as random radiant ones
         FillNamePool();
