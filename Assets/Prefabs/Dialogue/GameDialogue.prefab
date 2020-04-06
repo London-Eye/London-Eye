@@ -144,7 +144,7 @@ PrefabInstance:
     - target: {fileID: 4068380849537614946, guid: 4ec3df5875e7347beb6176b545b8fb39,
         type: 3}
       propertyPath: m_Name
-      value: Dialogue Variant
+      value: GameDialogue
       objectReference: {fileID: 0}
     - target: {fileID: 5935829474028046594, guid: 4ec3df5875e7347beb6176b545b8fb39,
         type: 3}

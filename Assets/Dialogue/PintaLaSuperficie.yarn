@@ -12,8 +12,15 @@ tags: PostGame
 ---
 <<CompletePuzzle GameManager>>
 Despues de casi una hora de interrogatorio con **<SOSPECHOSO[cname]>**, has conseguido averiguar alguna cosa útil.
+
 **<SOSPECHOSO[cname]>** es **<SOSPECHOSO[relation]>** de la víctima (**<VICTIMA[cname]>**).
+<<set $numero_pruebas to $numero_pruebas + 1>>
+
 Realmente, muy en su interior, **<SOSPECHOSO[cname]>** **<SOSPECHOSO[emotion]>** la víctima (**<VICTIMA[cname]>**).
+<<set $numero_pruebas to $numero_pruebas + 1>>
+
 Lo que te ha contado **<SOSPECHOSO[cname]>** confirma tu sospecha de que **<SOSPECHOSO[HasAlibiAsString]>** tiene una coartada válida.
-<<BackToMainMenu PauseMenu>>
+<<set $numero_pruebas to $numero_pruebas + 1>>
+
+<<BackToMainMenu GameDialogue>>
 ===

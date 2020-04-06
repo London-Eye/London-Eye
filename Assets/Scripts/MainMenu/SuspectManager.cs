@@ -2,10 +2,16 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Yarn.Unity;
 
 public class SuspectManager : MonoBehaviour, IComparable<SuspectManager>
 {
+    public const string AccusationSceneName = "Accusation";
+
+    public static bool IsInAccusationMenu = false;
+
     // This is able to persist the suspects references, and restore them in the appropiate instances
     private static readonly Dictionary<int, Suspect> suspectSafe = new Dictionary<int, Suspect>();
 
@@ -62,6 +68,14 @@ public class SuspectManager : MonoBehaviour, IComparable<SuspectManager>
         CharacterCreation.Instance.SetCurrentSuspect(Suspect);
     }
 
+    public void SetIsInAccusationMenu(bool value) => IsInAccusationMenu = value;
+
+    public void LoadPuzzleOrAccuse()
+    {
+        if (IsInAccusationMenu) Accuse();
+        else LoadPuzzle();
+    }
+
     public void LoadPuzzle()
     {
         if (Suspect.Puzzle == null)
@@ -74,6 +88,12 @@ public class SuspectManager : MonoBehaviour, IComparable<SuspectManager>
         {
             PoolPuzzleLoader.LoadPuzzle(Suspect.Puzzle);
         }
+    }
+
+    public void Accuse()
+    {
+        AsyncOperation loadSceneOperation = SceneManager.LoadSceneAsync(AccusationSceneName);
+        loadSceneOperation.completed += op => FindObjectOfType<DialogueRunner>().startNode = "Acusacion-" + CharacterCreation.Instance.CurrentSuspect.AccusationState;
     }
 
     public int CompareTo(SuspectManager other) => Id.CompareTo(other.Id);

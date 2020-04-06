@@ -1,6 +1,5 @@
 ﻿using Assets.Scripts.MainMenu.Characters;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PuzzleLoader : MonoBehaviour

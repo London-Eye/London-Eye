@@ -61,6 +61,10 @@ public class CharacterCreation : MonoBehaviour
         }
     }
 
+    public Suspect Murderer { get; private set; }
+
+    public Suspect CurrentSuspect { get; private set; }
+
     public CharacterStats maleCharacterStats;
     public CharacterStats femaleCharacterStats;
 
@@ -107,6 +111,7 @@ public class CharacterCreation : MonoBehaviour
 
         // Create the murderer
         Suspect murderer = InitializeSuspect(hasAlibi: false);
+        Murderer = murderer;
         characterDictionary.Snippets[murdererKey] = murderer;
         suspects.Add(murderer);
 
@@ -143,7 +148,11 @@ public class CharacterCreation : MonoBehaviour
         }
     }
 
-    private void SetCurrentSuspectImpl(Suspect suspect) => characterDictionary.Snippets[suspectKey] = suspect;
+    private void SetCurrentSuspectImpl(Suspect suspect)
+    {
+        CurrentSuspect = suspect;
+        characterDictionary.Snippets[suspectKey] = suspect;
+    }
 
     private void InitializePools()
     {

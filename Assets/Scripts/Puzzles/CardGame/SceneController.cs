@@ -18,7 +18,6 @@ public class SceneController : MonoBehaviour
     [SerializeField] private Sprite[] images;
     [SerializeField] private TextMesh scoreLabel;
     [SerializeField] private TextMesh movesLabel;
-    [SerializeField] private PauseController pauseMenu;
     [SerializeField] private GameObject EndgameMenu;
     [SerializeField] private TextMeshProUGUI finalScore;
     [SerializeField] private TextMeshProUGUI finalMessage;
@@ -35,7 +34,6 @@ public class SceneController : MonoBehaviour
     void Start()
     {
         EndgameMenu.SetActive(false);
-        pauseMenu.IsPaused = false;
         gameEnded = false;
 
         int[] ids = new int[gridRows * gridCols];
@@ -67,15 +65,13 @@ public class SceneController : MonoBehaviour
 
     void LateUpdate()
     {
-        if (pauseMenu.IsPaused) return;
-
         if (!gameEnded && (_movimientos >= _maxMV || _score == MaxScore))
         {
             StartCoroutine(EndGame());
         }
     }
 
-    public bool CanReveal => _secondRevealed == null && _movimientos < _maxMV && !pauseMenu.IsPaused;
+    public bool CanReveal => _secondRevealed == null && _movimientos < _maxMV && !gameEnded;
 
     public void CardRevealed(MemoryCard card)
     {
@@ -166,9 +162,6 @@ public class SceneController : MonoBehaviour
 
         finalScore.color = scoreRank.Color;
         finalScore.text = _score + "/" + MaxScore;
-
-        pauseMenu.IsPaused = false;
-        pauseMenu.enabled = false;
 
         EndgameMenu.SetActive(true);
     }

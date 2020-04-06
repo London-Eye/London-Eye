@@ -73,7 +73,7 @@ PrefabInstance:
     - target: {fileID: 7416895494147948172, guid: 0ca1b3800a756fc49b7d3321f53a2a3d,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: LoadPuzzle
+      value: LoadPuzzleOrAccuse
       objectReference: {fileID: 0}
     - target: {fileID: 7416895494147948172, guid: 0ca1b3800a756fc49b7d3321f53a2a3d,
         type: 3}

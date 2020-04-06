@@ -13,8 +13,15 @@ tags: PostGame
 ---
 <<CompletePuzzle GameManager>>
 Después de usar todo tu ingenio, consigues acceder a las cuentas de **<SOSPECHOSO[cname]>**.
+
 Entras en su correo electrónico. Por el tipo de mensajes que encuentras, **<SOSPECHOSO[cname]>** es **<SOSPECHOSO[relation]>** de la víctima (**<VICTIMA[cname]>**).
+<<set $numero_pruebas to $numero_pruebas + 1>>
+
 Consigues entrar en una de sus apps de mensajería. Por cómo habla con **<NOMBRE>**, **<SOSPECHOSO[cname]>** **<SOSPECHOSO[emotion]>** la víctima (**<VICTIMA[cname]>**).
+<<set $numero_pruebas to $numero_pruebas + 1>>
+
 Revisando las facturas de **<SOSPECHOSO[cname]>**, te das cuenta de que su coartada **<SOSPECHOSO[HasAlibiAsString]>** es válida.
-<<BackToMainMenu PauseMenu>>
+<<set $numero_pruebas to $numero_pruebas + 1>>
+
+<<BackToMainMenu GameDialogue>>
 ===

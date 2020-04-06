@@ -12,8 +12,15 @@ tags: PostGame
 ---
 <<CompletePuzzle GameManager>>
 Has conseguido llegar a una conclusión sobre **<SOSPECHOSO[cname]>**.
+
 Es una persona misteriosa, y no haber podido hacer contacto directo te ha retrasado, pero has llegado a la conclusión de que **<SOSPECHOSO[cname]>** es **<SOSPECHOSO[relation]>** de la víctima (**<VICTIMA[cname]>**).
+<<set $numero_pruebas to $numero_pruebas + 1>>
+
 Después de ver algunas conversaciones con la víctima y fotos juntos, determinas que la verdad es que **<SOSPECHOSO[cname]>** **<SOSPECHOSO[emotion]>** la víctima (**<VICTIMA[cname]>**).
+<<set $numero_pruebas to $numero_pruebas + 1>>
+
 Una vez consideradas detenidamente todas las pruebas obtenidas, determinas que la coartada de **<SOSPECHOSO[cname]>** **<SOSPECHOSO[HasAlibiAsString]>** es válida.
-<<BackToMainMenu PauseMenu>>
+<<set $numero_pruebas to $numero_pruebas + 1>>
+
+<<BackToMainMenu GameDialogue>>
 ===

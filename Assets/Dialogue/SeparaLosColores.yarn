@@ -6,7 +6,7 @@ Ves que **<SOSPECHOSO[cname]>** está en **<LUGAR>**, así que decides que es bu
 Usando tus habilidades de cracker, decides acceder a sus cuentas online para recolectar información.
 Pero primero tienes que saltarte su sistema de seguridad.
 
-En la escena del crímen hay restos de huellas y ADN que puede que sean del asesino.
+En la escena del crimen hay restos de huellas y ADN que puede que sean del asesino.
 Así que decides conseguir una muestra de ADN a **<SOSPECHOSO[cname]>** así como tomar sus huellas.
 Una vez conseguidas las muestras es hora de enviarlas al laboratorio para ver si esclarecen algo sobre el crimen.
 <color=orange>Mueve las bolas entre las probetas para que cada probeta se quede con un solo color. Solo puedes mover las bolas si las colocas en una probeta vacia o sobre una bola de su mismo color</color>
@@ -17,8 +17,15 @@ tags: PostGame
 ---
 <<CompletePuzzle GameManager>>
 Es hora de analizar los datos sacados de las pruebas a **<SOSPECHOSO[cname]>**.
+
 No has conseguido saber nada respecto al asesino pero el análisis de sangre y la cantidad de huellas en la casa de la víctima concluyen que **<SOSPECHOSO[cname]>** es **<SOSPECHOSO[relation]>** de la víctima (**<VICTIMA[cname]>**).
+<<set $numero_pruebas to $numero_pruebas + 1>>
+
 Sobre los objetos que se encuentran las huellas y la forma en que reaccionó cuando le pediste las muestras determinas que **<SOSPECHOSO[cname]>** **<SOSPECHOSO[emotion]>** la víctima (**<VICTIMA[cname]>**).
+<<set $numero_pruebas to $numero_pruebas + 1>>
+
 Los restos de ADN de la escena del crímen **<SOSPECHOSO[!HasAlibiAsString]>** coinciden con los de **<SOSPECHOSO[cname]>**, por tanto, su coartada **<SOSPECHOSO[!HasAlibiAsString]>**.
-<<BackToMainMenu PauseMenu>>
+<<set $numero_pruebas to $numero_pruebas + 1>>
+
+<<BackToMainMenu GameDialogue>>
 ===

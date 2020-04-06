@@ -35,6 +35,7 @@ public class PauseController : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    [Yarn.Unity.YarnCommand("BackToMainMenu")]
-    public void GoToMenu() => SceneManager.LoadScene(0);
+    public void GoToMenu() => GoToMainMenu();
+
+    public static void GoToMainMenu() => SceneManager.LoadScene(0);
 }
