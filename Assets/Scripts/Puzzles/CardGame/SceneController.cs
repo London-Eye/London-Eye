@@ -72,7 +72,7 @@ public class SceneController : MonoBehaviour
                 int id = ids[index];
                 card.SetCard(id, images[id]);
                 float posX = (i + 0.5f) * cardWidth - totalwidth / 2 + margin;
-                float posY = (j + 0.75f) * cardHeight - totalheight / 2 + margin;
+                float posY = (j + 0.55f) * cardHeight - totalheight / 2 + margin;
                 card.transform.position = new Vector3(posX, posY, originalCard.transform.position.z);
             }
         }
