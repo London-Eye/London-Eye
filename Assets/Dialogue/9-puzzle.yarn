@@ -14,7 +14,7 @@ tags: PostGame
 <<CompletePuzzle GameManager>>
 Enhorabuena, has conseguido unir todos los trozos de la nota.
 
-Por la forma en que **<NOMBRE>** escribe sobre **<SOSPECHOSO[cname]>**, puedes concluir que este es **<SOSPECHOSO[relation]>** de la víctima (**<VICTIMA[cname]>**).
+Por la forma en que **<NOMBRE>** escribe sobre **<SOSPECHOSO[cname]>**, puedes concluir que es **<SOSPECHOSO[relation]>** de la víctima (**<VICTIMA[cname]>**).
 <<set $numero_pruebas to $numero_pruebas + 1>>
 
 Te das cuenta de que lo que parecía un nombre, era en realidad una firma. Por lo tanto, viendo el tono de la carta, claramente, **<SOSPECHOSO[cname]>** **<SOSPECHOSO[emotion]>** la víctima (**<VICTIMA[cname]>**).
