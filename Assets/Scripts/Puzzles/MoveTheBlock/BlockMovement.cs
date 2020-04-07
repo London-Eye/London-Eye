@@ -9,6 +9,8 @@ public class BlockMovement : MonoBehaviour
 
     private const float colliderSizeReductionFactor = 0.9f;
 
+    private bool isBeingMoved;
+
     private Vector2 directionAxis;
     private float offset;
 
@@ -26,6 +28,7 @@ public class BlockMovement : MonoBehaviour
 
     private void OnMouseDown()
     {
+        isBeingMoved = true;
         _rb.bodyType = RigidbodyType2D.Dynamic;
 
         // Reduce a bit the collider size opposite to the block's direction, to avoid unwanted collisions
@@ -41,26 +44,33 @@ public class BlockMovement : MonoBehaviour
 
     private void OnMouseUp()
     {
-        if (moveCollider == null) return;
-
-        _rb.velocity = Vector2.zero;
-        _rb.bodyType = RigidbodyType2D.Static;
-
-        RoundPositionToInt();
-
-        // Increase collider size opposite to the block's direction back to its original size
-        if (directionAxis.y > 0)
+        if (isBeingMoved)
         {
-            moveCollider.size = new Vector2(moveCollider.size.x / colliderSizeReductionFactor, moveCollider.size.y);
-        }
-        else
-        {
-            moveCollider.size = new Vector2(moveCollider.size.x, moveCollider.size.y / colliderSizeReductionFactor);
+            Stop();
+
+            if (moveCollider != null)
+            {
+                // Increase collider size opposite to the block's direction back to its original size
+                if (directionAxis.y > 0)
+                {
+                    moveCollider.size = new Vector2(moveCollider.size.x / colliderSizeReductionFactor, moveCollider.size.y);
+                }
+                else
+                {
+                    moveCollider.size = new Vector2(moveCollider.size.x, moveCollider.size.y / colliderSizeReductionFactor);
+                }
+            }
         }
     }
 
     private void OnMouseDrag()
     {
+        if (moveCollider == null)
+        {
+            if (isBeingMoved) Stop();
+            return;
+        }
+
         Vector2 mouseMove = (GetMousePosition() - (Vector2)transform.position);
 
         float relevantAxis = directionAxis.y > 0 ? mouseMove.y : mouseMove.x;
@@ -69,6 +79,18 @@ public class BlockMovement : MonoBehaviour
         {
             _rb.velocity = directionAxis * relevantAxis * speed;
         }
+    }
+
+    public void Stop()
+    {
+        if (_rb != null && _rb.bodyType != RigidbodyType2D.Static)
+        {
+            _rb.velocity = Vector2.zero;
+            _rb.bodyType = RigidbodyType2D.Static;
+        }
+        isBeingMoved = false;
+
+        RoundPositionToInt();
     }
 
     private void RoundPositionToInt()
