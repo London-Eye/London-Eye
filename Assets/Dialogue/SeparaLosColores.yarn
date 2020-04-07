@@ -1,4 +1,4 @@
-title: SeparaLosColores-PreGame
+title: probetas-PreGame
 tags: PreGame
 ---
 Según el informe policial, en la escena del crimen había restos de huellas y ADN de diferentes personas; así como en la casa de la víctima.
@@ -7,7 +7,7 @@ También te gustaría comparar el ADN, pero esto resulta más difícil, puesto q
 <color=orange>Mueve las bolas entre las probetas para que cada probeta se quede con un solo color. <i>Solo puedes mover las bolas si las colocas en una probeta vacía o sobre una bola de su mismo color.</i></color>
 ===
 
-title: SeparaLosColores-PostGame
+title: probetas-PostGame
 tags: PostGame
 ---
 <<CompletePuzzle GameManager>>
