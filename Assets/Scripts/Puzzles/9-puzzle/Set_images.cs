@@ -7,30 +7,41 @@ public class Set_images : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] private Partial_image partial_im;
-    [SerializeField] private Sprite[] images;
-    private static Random rng = new Random();
+    [SerializeField] private Sprite[] letterBroken;
+    [SerializeField] private Sprite[] letterBurned;
+    [SerializeField] private Sprite[] letterScrached;
     private float[] posX = new float[9] { -1.09f, 1, 3.09f, -1.09f, 1, 3.09f, -1.09f, 1, 3.09f };
     private float[] posY = new float[9] { 2.9f, 2.9f, 2.9f, -0.07f,  -0.07f, -0.07f, -3.04f, -3.04f, -3.04f };
     public Dictionary<string, Vector3> correct = new Dictionary<string, Vector3>();
+    public int selector;
 
     [SerializeField] private GameObject EndgameMenu;
 
     // Start is called before the first frame update
     void Start()
     {
+        EndgameMenu.SetActive(true);
+        Sprite[] images;
+        selector = Random.Range(0, 9);
+        if (selector > 5)
+        {
+            images = letterBroken;
+        }
+        else {
+            if (selector > 2)
+            {
+                images = letterBurned;
+            }
+            else {
+                images = letterScrached;
+            }
+        }
         EndgameMenu.SetActive(false);
         for (int i = 0; i < images.Length; i++)
         {
             Vector3 aux = new Vector3(posX[i], posY[i], 0);
             correct.Add(images[i].name,aux);
         }
-        /*
-        foreach (string s in correct.Keys) {
-            Debug.Log(correct[s]);
-        }
-
-        Debug.Log("----------------");
-        */
         images.Shuffle();
         
         for (int i = 0; i < images.Length; i++)
