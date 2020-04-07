@@ -84,12 +84,6 @@ public class CharacterCreation : MonoBehaviour
         MakeSingleton();
     }
 
-    void Start()
-    {
-        // Show the start of game dialogue.
-        FindObjectOfType<DialogueRunner>().StartDialogue();
-    }
-
     public void CreateVictim() => Victim = InitializeCharacter();
 
     public void CreateSuspects()
