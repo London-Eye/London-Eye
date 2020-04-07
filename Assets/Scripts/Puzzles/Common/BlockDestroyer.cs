@@ -4,6 +4,7 @@ using UnityEngine;
 public class BlockDestroyer : MonoBehaviour
 {
     public bool StartDialogue = true;
+    public bool InactiveAfterDestroy = true;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -19,6 +20,11 @@ public class BlockDestroyer : MonoBehaviour
             else
             {
                 Debug.Log("Block destroyed");
+            }
+
+            if (InactiveAfterDestroy)
+            {
+                this.gameObject.SetActive(false);
             }
         }
     }
