@@ -65,7 +65,7 @@ public class BlockMovement : MonoBehaviour
 
     private void OnMouseDrag()
     {
-        if (moveCollider == null)
+        if (moveCollider == null || !isBeingMoved)
         {
             if (isBeingMoved) Stop();
             return;
