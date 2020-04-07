@@ -41,6 +41,8 @@ public class BlockMovement : MonoBehaviour
 
     private void OnMouseUp()
     {
+        if (moveCollider == null) return;
+
         _rb.velocity = Vector2.zero;
         _rb.bodyType = RigidbodyType2D.Static;
 
