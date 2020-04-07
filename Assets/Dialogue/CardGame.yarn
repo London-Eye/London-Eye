@@ -1,9 +1,9 @@
 title: CardGame-PreGame
 tags: PreGame
 ---
-Decides hablar con amigos y familiares para encontrar posibles culpables.
-Después de una ligera investigación, tienes una lista de todas las personas con posible relación con la víctima.
-Lo primero que tienes que hacer es reducir esta lista con los que realmente pueden ser sospechosos.
+Además de las pruebas encontradas en la escena del crímen la policia te ha enviado una lista de posibles sospechosos.
+Esta lista la crearon antes del confinamiento pero no llegaron a investigar a los integrantes.
+Lo primero que haces es una investigación rápida para descartar a todos los que puedas antes de entrar a una investigación más exhaustiva.
 <color=orange>Empareja los retratos de personas con las imágenes que demuestran que no se encontraban en el lugar del asesinato para descartar posibles sospechosos.</color>
 <<StartCardGame CardGameController>>
 ===
@@ -12,7 +12,7 @@ title: CardGame-PostGame
 tags: PostGame
 ---
 <<CompletePuzzle GameManager>>
-Después de una investigación algo más exhaustiva, consigues reducir el número de sospechosos.
+Después de una investigación ligera sobre la lista consigues reducir el número de integrantes.
 Te has quedado con **<NUMERO_SOSPECHOSOS>** sospechosos.
 Hora de investigar más profundamente a la víctima y a los sospechosos para encontrar al culpable.
 ===

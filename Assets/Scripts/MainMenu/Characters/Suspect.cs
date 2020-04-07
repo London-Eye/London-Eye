@@ -11,6 +11,7 @@
         public bool hasAlibi;
 
         public string HasAlibiAsString => hasAlibi ? AffirmativeAlibi : NegativeAlibi;
+        public string NotHasAlibiAsString => hasAlibi ? NegativeAlibi : AffirmativeAlibi;
 
         public int evidencesFound;
 

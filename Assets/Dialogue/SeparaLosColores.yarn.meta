@@ -8,10 +8,18 @@ ScriptedImporter:
   assetBundleName: 
   assetBundleVariant: 
   script: {fileID: 11500000, guid: 94073015eacc34c1d8fc6786e43d60ca, type: 3}
-  baseLanguageID: 
-  stringIDs: []
-  compilationStatus: 0
-  isSuccesfullyCompiled: 0
+  baseLanguageID: es-ES
+  stringIDs:
+  - SeparaLosColores-SeparaLosColores-PreGame-0
+  - SeparaLosColores-SeparaLosColores-PreGame-1
+  - SeparaLosColores-SeparaLosColores-PreGame-2
+  - SeparaLosColores-SeparaLosColores-PreGame-3
+  - SeparaLosColores-SeparaLosColores-PostGame-4
+  - SeparaLosColores-SeparaLosColores-PostGame-5
+  - SeparaLosColores-SeparaLosColores-PostGame-6
+  - SeparaLosColores-SeparaLosColores-PostGame-7
+  compilationStatus: 1
+  isSuccesfullyCompiled: 1
   compilationErrorMessage: "Error on line 1 at position 1:\nmismatched input '<EOF>'
     expecting 'title:'\r\n\r\n"
   baseLanguage: {instanceID: 0}

@@ -1,22 +1,23 @@
 title: 9-puzzle-PreGame
 tags: PreGame
 ---
-Investigando a **<SOSPECHOSO[cname]>**, descubres una nota con pinta algo sospechosa.
-Por desgracia, más que una nota son los restos que quedan después de romper un papel.
-Así que decides reconstruirla para poder descifrar su contenido.
-<color=orange>Coloca las piezas en el orden correcto para reparar la nota.</color>
+Investigando las imágenes de la escena del crímen encuentras un trozo de una nota con el nombre **<SOSPECHOSO[cname]>** escrito en ella. 
+Por desgracia, se ve poco más que el nombre en esta imágen.
+Después de observar mejor las fotografias descubres que hay más imágenes que contienen diferentes partes de la que parece la misma nota.
+Decides completar la nota usando las partes de las diferentes imágenes para descubrir su contenido.
+<color=orange>Intercambia las piezas de posición para que esten en el orden correcto y completar la nota.</color>
 ===
 
 title: 9-puzzle-PostGame
 tags: PostGame
 ---
 <<CompletePuzzle GameManager>>
-Enhorabuena, has conseguido reparar la nota que parecía insalvable.
+Enhorabuena, has conseguido unir todos los trozos de la nota.
 
-Por la forma en que **<NOMBRE>** escribe, puedes concluir que **<SOSPECHOSO[cname]>** es **<SOSPECHOSO[relation]>** de la víctima (**<VICTIMA[cname]>**).
+Por la forma en que **<NOMBRE>** escribe sobre **<SOSPECHOSO[cname]>**, puedes concluir que este es **<SOSPECHOSO[relation]>** de la víctima (**<VICTIMA[cname]>**).
 <<set $numero_pruebas to $numero_pruebas + 1>>
 
-Debido al tono en que está escrita la carta entre **<SOSPECHOSO[cname]>** y **<VICTIMA[cname]>**, claramente, **<SOSPECHOSO[cname]>** **<SOSPECHOSO[emotion]>** la víctima (**<VICTIMA[cname]>**).
+Encuentras que el nombre era la firma, y por el tono que se usa en la carta, claramente, **<SOSPECHOSO[cname]>** **<SOSPECHOSO[emotion]>** la víctima (**<VICTIMA[cname]>**).
 <<set $numero_pruebas to $numero_pruebas + 1>>
 
 Como sospechabas, el contenido de la carta confirma que **<SOSPECHOSO[cname]>** **<SOSPECHOSO[HasAlibiAsString]>** tiene coartada válida para el crimen.
