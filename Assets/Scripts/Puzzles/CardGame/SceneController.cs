@@ -1,5 +1,7 @@
 ﻿using Assets.Scripts.Common;
+using Assets.Scripts.Dialogue.Texts.Snippets.Sources;
 using System.Collections;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -21,6 +23,8 @@ public class SceneController : MonoBehaviour
     [SerializeField] private GameObject EndgameMenu;
     [SerializeField] private TextMeshProUGUI finalScore;
     [SerializeField] private TextMeshProUGUI finalMessage;
+
+    public string ScoreColorName;
 
     public bool GameRunning { get; set; }
 
@@ -180,7 +184,14 @@ public class SceneController : MonoBehaviour
     {
         EndgameMenu.SetActive(false);
 
-        CharacterCreation.Instance.NumberOfSuspects = GetScoreRank().NumberOfSuspects;
+        ScoreRank scoreRank = GetScoreRank();
+
+        CharacterCreation.Instance.NumberOfSuspects = scoreRank.NumberOfSuspects;
+
+        // Temporary code for storing Score Color. TODO: Change this when updating snippet system
+        var dictionary = FindObjectsOfType<DictionarySnippetSource>().Where(s => s.GetType() == typeof(DictionarySnippetSource)).First();
+        string scoreColorAsString = ColorUtility.ToHtmlStringRGBA(scoreRank.Color);
+        dictionary.Snippets[ScoreColorName] = '#' + scoreColorAsString;
 
         FindObjectOfType<DialogueUI>().onDialogueEnd.AddListener(() =>
         {
