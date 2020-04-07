@@ -1,10 +1,10 @@
 title: MoveTheBlock-PreGame
 tags: PreGame
 ---
-Decides que lo mejor que puedes hacer es investigar a **<SOSPECHOSO[cname]>**, pero no podeis hablar directamente.
-Aún así sigues queriendo saber más cosas así que decides usar tus habilidades de hacker para entrar en sus diferentes cuentas.
-Pero para ello tienes que atravesar su firewall y meterle un virus en su ordenador.
-<color=orange>Mueve los bloques del Firewall para poder introducir el archivo con el virus en su ordenador.</color>
+Decides que lo mejor que puedes hacer es investigar a **<SOSPECHOSO[cname]>**, pero no podéis hablar directamente.
+Aún así, sigues queriendo saber más cosas; así que decides usar tus habilidades de hacker para entrar en sus diferentes cuentas.
+Pero para ello tienes que atravesar su <i>cortafuegos</i> para poder infectar su ordenador con un <i>virus</i>.
+<color=orange>Mueve los bloques del <i>cortafuegos</i> para poder introducir el archivo con el <i>virus</i> en su ordenador.</color>
 ===
 
 title: MoveTheBlock-PostGame

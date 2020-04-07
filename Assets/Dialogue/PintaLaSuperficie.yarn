@@ -1,17 +1,17 @@
 title: PintaLaSuperficie-PreGame
 tags: PreGame
 ---
-Conforme están las cosas, decides ir a hablar personalmente con **<SOSPECHOSO[cname]>**.
-Pero no sabes si te va a decir toda la verdad mientras lo interrogas.
-Así que decides estar atento a su lenguaje corporal para detectar solo la verdad de entre todo lo que te dice.
-<color=orange>Para ello pasa los ojos por encima del sospechoso sin dejar nada.</color>
+Conforme están las cosas, decides realizar una videoconferencia con **<SOSPECHOSO[cname]>**.
+Pero no sabes si va a decir toda la verdad durante el interrogatorio.
+Así que decides estar atento a su lenguaje corporal para detectar solo la verdad de entre todo lo que dice.
+<color=orange>Para ello, pasa los ojos por encima del sospechoso sin dejar nada.</color>
 ===
 
 title: PintaLaSuperficie-PostGame
 tags: PostGame
 ---
 <<CompletePuzzle GameManager>>
-Despues de casi una hora de interrogatorio con **<SOSPECHOSO[cname]>**, has conseguido averiguar alguna cosa útil.
+Después de casi una hora de interrogatorio con **<SOSPECHOSO[cname]>**, has conseguido averiguar alguna cosa útil.
 
 **<SOSPECHOSO[cname]>** es **<SOSPECHOSO[relation]>** de la víctima (**<VICTIMA[cname]>**).
 <<set $numero_pruebas to $numero_pruebas + 1>>

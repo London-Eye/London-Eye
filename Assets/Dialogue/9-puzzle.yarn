@@ -1,11 +1,11 @@
 title: 9-puzzle-PreGame
 tags: PreGame
 ---
-Investigando las imágenes de la escena del crímen encuentras un trozo de una nota con el nombre **<SOSPECHOSO[cname]>** escrito en ella. 
-Por desgracia, se ve poco más que el nombre en esta imágen.
-Después de observar mejor las fotografias descubres que hay más imágenes que contienen diferentes partes de la que parece la misma nota.
+Investigando las imágenes de la escena del crimen, encuentras un trozo de una nota con el nombre '**<SOSPECHOSO[cname]>**' escrito en ella. 
+Por desgracia, se ve poco más que el nombre en esta imagen.
+Después de observar mejor las fotografías, descubres que hay más imágenes que contienen diferentes partes de la que parece la misma nota.
 Decides completar la nota usando las partes de las diferentes imágenes para descubrir su contenido.
-<color=orange>Intercambia las piezas de posición para que esten en el orden correcto y completar la nota.</color>
+<color=orange>Intercambia las piezas de posición hasta que estén en el orden correcto, para poder leer la nota.</color>
 ===
 
 title: 9-puzzle-PostGame
@@ -17,7 +17,7 @@ Enhorabuena, has conseguido unir todos los trozos de la nota.
 Por la forma en que **<NOMBRE>** escribe sobre **<SOSPECHOSO[cname]>**, puedes concluir que este es **<SOSPECHOSO[relation]>** de la víctima (**<VICTIMA[cname]>**).
 <<set $numero_pruebas to $numero_pruebas + 1>>
 
-Encuentras que el nombre era la firma, y por el tono que se usa en la carta, claramente, **<SOSPECHOSO[cname]>** **<SOSPECHOSO[emotion]>** la víctima (**<VICTIMA[cname]>**).
+Te das cuenta de que lo que parecía un nombre, era en realidad una firma. Por lo tanto, viendo el tono de la carta, claramente, **<SOSPECHOSO[cname]>** **<SOSPECHOSO[emotion]>** la víctima (**<VICTIMA[cname]>**).
 <<set $numero_pruebas to $numero_pruebas + 1>>
 
 Como sospechabas, el contenido de la carta confirma que **<SOSPECHOSO[cname]>** **<SOSPECHOSO[HasAlibiAsString]>** tiene coartada válida para el crimen.
