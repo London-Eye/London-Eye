@@ -16,7 +16,7 @@ Has conseguido llegar a una conclusión sobre **<SOSPECHOSO[cname]>**.
 Es una persona misteriosa, y no haber podido hacer contacto directo te ha retrasado, pero has descubierto que **<SOSPECHOSO[cname]>** es **<SOSPECHOSO[relation]>** de la víctima (**<VICTIMA[cname]>**).
 <<set $numero_pruebas to $numero_pruebas + 1>>
 
-Después de ver algunas conversaciones con la víctima y fotos juntos, determinas que la verdad es que **<SOSPECHOSO[cname]>** **<SOSPECHOSO[emotion]>** la víctima (**<VICTIMA[cname]>**).
+Después de ver algunas conversaciones y fotos junto a la víctima, determinas que la verdad es que **<SOSPECHOSO[cname]>** **<SOSPECHOSO[emotion]>** la víctima (**<VICTIMA[cname]>**).
 <<set $numero_pruebas to $numero_pruebas + 1>>
 
 Una vez consultados el registro de ubicaciones de ciertas aplicaciones, determinas que la coartada de **<SOSPECHOSO[cname]>** **<SOSPECHOSO[HasAlibiAsString]>** es válida.
