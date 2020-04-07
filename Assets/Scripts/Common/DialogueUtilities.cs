@@ -4,8 +4,13 @@ using Yarn.Unity;
 
 public class DialogueUtilities : MonoBehaviour
 {
-    public void StartPostGameDialogue()
-            => Utilities.StartPostGameDialogue();
+    public void StartPostGameDialogue(GameObject gameObjectToDeactivate = null)
+    {
+        gameObjectToDeactivate.SetActive(false);
+        StartPostGameDialogue();
+    }
+
+    public void StartPostGameDialogue() => Utilities.StartPostGameDialogue();
 
     [YarnCommand("BackToMainMenu")]
     public void BackToMainMenu()
