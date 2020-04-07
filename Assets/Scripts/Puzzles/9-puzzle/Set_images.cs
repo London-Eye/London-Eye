@@ -17,6 +17,8 @@ public class Set_images : MonoBehaviour
 
     [SerializeField] private GameObject EndgameMenu;
 
+    public bool GameRunning { get; private set; }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -51,12 +53,14 @@ public class Set_images : MonoBehaviour
             subImage.setPosition(posX[i], posY[i]);
             subImage.transform.SetParent(transform);
         }
+
+        GameRunning = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        check_solution();
+        if (GameRunning) check_solution();
     }
 
     private void check_solution() {
@@ -76,9 +80,10 @@ public class Set_images : MonoBehaviour
     }
 
     private IEnumerator puzzle_completed() {
+        GameRunning = false;
+
         yield return new WaitForSeconds(0.75f);
 
         EndgameMenu.SetActive(true);
-
     }
 }

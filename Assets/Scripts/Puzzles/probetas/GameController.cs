@@ -10,21 +10,24 @@ public class GameController : MonoBehaviour
     public bool first;
     public Color ballTomove;
     public initially_full_tube sourceTube;
-    public bool endgame;
     private initially_full_tube[] tubes;
+
+    public bool GameRunning { get; private set; }
+
     // Start is called before the first frame update
     void Start()
     {
         first = true;
-        endgame = false;
+        GameRunning = true;
         EndgameMenu.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        endgame = isEndgame();
-        if (endgame) {
+        if (GameRunning && isEndgame())
+        {
+            GameRunning = false;
             EndgameMenu.SetActive(true);
         }
     }
