@@ -4,7 +4,7 @@ using Yarn.Unity;
 
 public class DialogueUtilities : MonoBehaviour
 {
-    public void StartPostGameDialogue(GameObject gameObjectToDeactivate = null)
+    public void StartPostGameDialogue(GameObject gameObjectToDeactivate)
     {
         gameObjectToDeactivate.SetActive(false);
         StartPostGameDialogue();
