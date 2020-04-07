@@ -2430,6 +2430,7 @@ MonoBehaviour:
   - CompletaElCamino
   - MoveTheBlock
   - 9-puzzle
+  - probetas
 --- !u!1001 &1591043089
 PrefabInstance:
   m_ObjectHideFlags: 0
