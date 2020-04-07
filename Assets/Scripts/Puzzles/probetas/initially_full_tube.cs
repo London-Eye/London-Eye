@@ -46,7 +46,7 @@ public class initially_full_tube : MonoBehaviour
     }
     private void OnMouseDown() {
 
-        if (!controller.ps.IsPaused && !controller.endgame) {
+        if (!controller.ps.IsPaused && controller.GameRunning) {
 
             if (controller.first) //primera bola que pillas
             {

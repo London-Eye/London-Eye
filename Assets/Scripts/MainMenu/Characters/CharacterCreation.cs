@@ -27,6 +27,8 @@ public class CharacterCreation : MonoBehaviour
 
             // When the start of game dialogue ends, load the initial puzzle
             FindObjectOfType<DialogueUI>().onDialogueEnd.AddListener(() => SceneManager.LoadScene(InitialPuzzle));
+
+            FindObjectOfType<DialogueRunner>().startAutomatically = true;
         }
         else
         {
