@@ -22,7 +22,6 @@ public class Set_images : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        EndgameMenu.SetActive(true);
         Sprite[] images;
         selector = Random.Range(0, 9);
         if (selector > 5)
