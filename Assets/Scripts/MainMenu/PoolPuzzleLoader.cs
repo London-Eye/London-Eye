@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Common;
+using Assets.Scripts.MainMenu.Characters;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -42,8 +43,23 @@ public class PoolPuzzleLoader : MonoBehaviour
     [YarnCommand("CompletePuzzle")]
     public static void CompleteCurrentPuzzle()
     {
-        activePuzzles.Remove(CurrentPuzzle);
-        SuspectManager.GetSuspectByPuzzle(CurrentPuzzle).Puzzle = null;
+        CompletePuzzle(CurrentPuzzle, false);
+        if (CharacterCreation.Instance != null)
+        {
+            Suspect currentSuspect = CharacterCreation.Instance.CurrentSuspect;
+            if (currentSuspect != null) currentSuspect.Puzzle = null;
+        }
         CurrentPuzzle = null;
+    }
+
+    public static void CompletePuzzle(string puzzle, bool updateSuspect)
+    {
+        activePuzzles.Remove(puzzle);
+
+        if (updateSuspect)
+        {
+            Suspect currentSuspect = SuspectManager.GetSuspectByPuzzle(puzzle);
+            if (currentSuspect != null) currentSuspect.Puzzle = null;
+        }
     }
 }

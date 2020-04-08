@@ -25,7 +25,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueContainer: {fileID: 5296080505399609465}
-  textSpeed: 0.025
+  textSpeed: 0.01
   optionButtons:
   - {fileID: 5296080504600186014}
   - {fileID: 5296080504230024272}
@@ -376,6 +376,12 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5935829475522760375, guid: 4ec3df5875e7347beb6176b545b8fb39,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 512198e9e47411345b6e886d666d9090,
+        type: 3}
     - target: {fileID: 7026213150748300958, guid: 4ec3df5875e7347beb6176b545b8fb39,
         type: 3}
       propertyPath: m_Text

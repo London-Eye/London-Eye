@@ -9,11 +9,26 @@
         public string relation;
         public string emotion;
         public bool hasAlibi;
+        private int evidencesFound;
 
         public string HasAlibiAsString => hasAlibi ? AffirmativeAlibi : NegativeAlibi;
         public string NotHasAlibiAsString => hasAlibi ? NegativeAlibi : AffirmativeAlibi;
 
-        public int evidencesFound;
+        public int EvidencesFound
+        {
+            get => evidencesFound;
+            set
+            {
+                evidencesFound = value;
+                if (HasFoundAllEvidences)
+                {
+                    PoolPuzzleLoader.CompletePuzzle(Puzzle, false);
+                    Puzzle = null;
+                }
+            }
+        }
+
+        public bool HasFoundAllEvidences => EvidencesFound == numberOfEvidences;
 
         public string Puzzle { get; set; }
 
@@ -21,7 +36,7 @@
         {
             get
             {
-                if (evidencesFound < numberOfEvidences) return "SinPruebas";
+                if (EvidencesFound < numberOfEvidences) return "SinPruebas";
                 else return this == CharacterCreation.Instance.Murderer ? "Criminal" : "Inocente";
             }
         }

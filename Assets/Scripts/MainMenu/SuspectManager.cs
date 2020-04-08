@@ -78,15 +78,18 @@ public class SuspectManager : MonoBehaviour, IComparable<SuspectManager>
 
     public void LoadPuzzle()
     {
-        if (Suspect.Puzzle == null)
+        if (!Suspect.HasFoundAllEvidences)
         {
-            string puzzle = FindObjectOfType<PoolPuzzleLoader>().LoadPuzzle();
-            Suspect.Puzzle = puzzle;
-            PoolPuzzleLoader.ActivePuzzle(puzzle);
-        }
-        else if (PoolPuzzleLoader.IsPuzzleActive(Suspect.Puzzle))
-        {
-            PoolPuzzleLoader.LoadPuzzle(Suspect.Puzzle);
+            if (Suspect.Puzzle == null)
+            {
+                string puzzle = FindObjectOfType<PoolPuzzleLoader>().LoadPuzzle();
+                Suspect.Puzzle = puzzle;
+                PoolPuzzleLoader.ActivePuzzle(puzzle);
+            }
+            else if (PoolPuzzleLoader.IsPuzzleActive(Suspect.Puzzle))
+            {
+                PoolPuzzleLoader.LoadPuzzle(Suspect.Puzzle);
+            }
         }
     }
 

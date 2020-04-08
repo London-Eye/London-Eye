@@ -17,7 +17,7 @@ public class DialogueUtilities : MonoBehaviour
     {
         // Temporary solution to update the number of evidences.
         // TODO: When updating Yarn, use our new Variable Storage solution to store the variable accordingly.
-        CharacterCreation.Instance.CurrentSuspect.evidencesFound
+        CharacterCreation.Instance.CurrentSuspect.EvidencesFound
             += (int) GetComponentInChildren<VariableStorageBehaviour>().GetValue("$numero_pruebas").AsNumber;
         
         PauseController.GoToMainMenu();
