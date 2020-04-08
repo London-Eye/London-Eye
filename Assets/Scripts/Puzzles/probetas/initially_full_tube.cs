@@ -194,19 +194,19 @@ public class initially_full_tube : MonoBehaviour
         switch (size(tb.pila)) {
             case 1:
                 oldY = tb.basse.transform.position.y;
-                tb.basse.transform.position = new Vector3(tb.basse.transform.position.x, tb.oldY + 0.65f, tb.basse.transform.position.z);
+                tb.basse.transform.position = new Vector3(tb.basse.transform.position.x, tb.oldY + 0.5f, tb.basse.transform.position.z);
                 break;
             case 2:
                 oldY = tb.middleBase.transform.position.y;
-                tb.middleBase.transform.position = new Vector3(tb.middleBase.transform.position.x, tb.oldY + 0.65f, tb.middleBase.transform.position.z);
+                tb.middleBase.transform.position = new Vector3(tb.middleBase.transform.position.x, tb.oldY + 0.5f, tb.middleBase.transform.position.z);
                 break;
             case 3:
                 oldY = tb.middleTop.transform.position.y;
-                tb.middleTop.transform.position = new Vector3(tb.middleTop.transform.position.x, tb.oldY + 0.65f, tb.middleTop.transform.position.z);
+                tb.middleTop.transform.position = new Vector3(tb.middleTop.transform.position.x, tb.oldY + 0.5f, tb.middleTop.transform.position.z);
                 break;
             case 4:
                 oldY = tb.top.transform.position.y;
-                tb.top.transform.position = new Vector3(tb.top.transform.position.x, tb.oldY + 0.65f, tb.top.transform.position.z);
+                tb.top.transform.position = new Vector3(tb.top.transform.position.x, tb.oldY + 0.5f, tb.top.transform.position.z);
                 break;
         }
     }
