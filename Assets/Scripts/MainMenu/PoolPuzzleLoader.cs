@@ -43,6 +43,7 @@ public class PoolPuzzleLoader : MonoBehaviour
     public static void CompleteCurrentPuzzle()
     {
         activePuzzles.Remove(CurrentPuzzle);
+        SuspectManager.GetSuspectByPuzzle(CurrentPuzzle).Puzzle = null;
         CurrentPuzzle = null;
     }
 }
