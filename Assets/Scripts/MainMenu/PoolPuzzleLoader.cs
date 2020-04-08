@@ -1,5 +1,5 @@
-﻿using Assets.Scripts.Common;
-using Assets.Scripts.MainMenu.Characters;
+﻿using Assets.Scripts.Characters;
+using Assets.Scripts.Common;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;

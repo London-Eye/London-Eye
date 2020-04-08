@@ -2,34 +2,31 @@
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using Yarn;
 
-namespace Assets.Scripts.Dialogue.Texts.Snippets.Sources
+namespace Assets.Scripts.Dialogue.Texts.Variables
 {
-    [RequireComponent(typeof(PoolSnippetSource))]
-    public class TextFilePoolSnippetSource : TextFileSnippetSource
+    public class TextAssetPoolVariableStorage : VariableStorageWithFallback<PoolVariableStorage>
     {
+        public TextAsset textAsset;
+
         public const string DefaultNameValuesSeparator = "---", DefaultPoolSeparator = "===";
 
         public string NameValuesSeparator = DefaultNameValuesSeparator;
 
         public string PoolSeparator = DefaultPoolSeparator;
 
-        private PoolSnippetSource PoolSource;
         private enum PoolsLoadState { EMPTY, NAME, POOLS };
 
-        protected override void Awake()
+        protected override bool SetValueNoFallback(string variableName, Value value)
         {
-            PoolSource = GetComponent<PoolSnippetSource>();
-            base.Awake();
+            throw new System.InvalidOperationException(VariableStorageGroup.ReadOnlyVariableStorageMessage);
         }
 
-        public override bool TryGetValue(string name, out object value)
-            => PoolSource.TryGetValue(name, out value);
-
-        protected override void LoadSnippets(string text)
+        protected override void ResetToDefaultsAfterFallback()
         {
-            PoolSource.SelectorPools = new Dictionary<string, SelectorPool<object>>();
-            using (StringReader textReader = new StringReader(text))
+            Fallback.SelectorPools = new Dictionary<string, SelectorPool<object>>();
+            using (StringReader textReader = new StringReader(textAsset.text))
             {
                 string line, name = "";
                 PoolsLoadState state = PoolsLoadState.EMPTY;
@@ -55,7 +52,7 @@ namespace Assets.Scripts.Dialogue.Texts.Snippets.Sources
                         case PoolsLoadState.POOLS:
                             if (line == PoolSeparator)
                             {
-                                PoolSource.SelectorPools.Add(name, selectorPool);
+                                Fallback.SelectorPools.Add(name, selectorPool);
                                 state = PoolsLoadState.EMPTY;
                                 selectorPool = null;
                             }

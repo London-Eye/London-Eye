@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using Assets.Scripts.Dialogue.Texts.Snippets.Sources;
 using Assets.Scripts.Common;
-using Assets.Scripts.MainMenu.Characters;
 using UnityEngine.SceneManagement;
 using Yarn.Unity;
+using Assets.Scripts.Characters;
+using Assets.Scripts.Dialogue.Texts.Variables;
 
-[RequireComponent(typeof(DictionarySnippetSource), typeof(PoolSnippetSource))]
+[RequireComponent(typeof(DictionarySnippetSource), typeof(PoolVariableStorage))]
 public class CharacterCreation : MonoBehaviour
 {
     public const string InitialPuzzle = "CardGame";
@@ -79,7 +79,7 @@ public class CharacterCreation : MonoBehaviour
     private SelectorPool<int> mRelation, fRelation;
 
     private DictionarySnippetSource characterDictionary;
-    private PoolSnippetSource randomNamePoolSource;
+    private PoolVariableStorage randomNamePoolSource;
 
     void Awake()
     {
@@ -219,7 +219,7 @@ public class CharacterCreation : MonoBehaviour
 
     private void FillNamePool()
     {
-        randomNamePoolSource = GetComponent<PoolSnippetSource>();
+        randomNamePoolSource = GetComponent<PoolVariableStorage>();
 
         SelectorPool<object> randomNamePool = new SelectorPool<object>();
 
