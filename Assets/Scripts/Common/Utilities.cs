@@ -2,12 +2,14 @@
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Yarn;
 using Yarn.Unity;
 
 namespace Assets.Scripts.Common
 {
     public static class Utilities
     {
+        #region Variable Storage Leading
         public const string variableLeading = "$";
 
         public static string AddLeadingIfNeeded(this VariableStorageBehaviour _, string text)
@@ -16,7 +18,21 @@ namespace Assets.Scripts.Common
         public static string AddLeadingIfNeeded(string text)
             => (text == null || text.StartsWith(variableLeading)) ? text : (variableLeading + text);
 
+        public static Value GetValueNoLeading(this VariableStorageBehaviour v, string variableNameNoLeading)
+            => v.GetValue(AddLeadingIfNeeded(variableNameNoLeading));
 
+        public static void SetValueNoLeading(this VariableStorageBehaviour v, string variableNameNoLeading, bool boolValue)
+            => v.SetValue(AddLeadingIfNeeded(variableNameNoLeading), boolValue);
+        public static void SetValueNoLeading(this VariableStorageBehaviour v, string variableNameNoLeading, float floatValue)
+            => v.SetValue(AddLeadingIfNeeded(variableNameNoLeading), floatValue);
+        public static void SetValueNoLeading(this VariableStorageBehaviour v, string variableNameNoLeading, string stringValue)
+            => v.SetValue(AddLeadingIfNeeded(variableNameNoLeading), stringValue);
+        public static void SetValueNoLeading(this VariableStorageBehaviour v, string variableNameNoLeading, Value value)
+            => v.SetValue(AddLeadingIfNeeded(variableNameNoLeading), value);
+        #endregion
+
+
+        #region Post Game Dialogue
         public const string PostGameDialogueTag = "PostGame";
 
         public static string PostGameDialogueNode => $"{SceneManager.GetActiveScene().name}-{PostGameDialogueTag}";
@@ -26,8 +42,10 @@ namespace Assets.Scripts.Common
 
         public static void StartPostGameDialogue(DialogueRunner dialogueRunner)
             => dialogueRunner.StartDialogue(PostGameDialogueNode);
+        #endregion
 
 
+        #region Randomizers and other math utilities
         public static T[] GetShuffle<T>(this IEnumerable<T> arr)
         {
             T[] newArray = arr.ToArray();
@@ -64,6 +82,7 @@ namespace Assets.Scripts.Common
                 collection.Add(i);
             }
             return collection;
-        }
+        } 
+        #endregion
     }
 }

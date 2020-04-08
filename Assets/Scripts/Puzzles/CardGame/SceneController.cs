@@ -188,7 +188,7 @@ public class SceneController : MonoBehaviour
 
         var variableStorage = FindObjectOfType<VariableStorageBehaviour>();
         string scoreColorAsString = '#' + ColorUtility.ToHtmlStringRGBA(scoreRank.Color);
-        variableStorage.SetValue(variableStorage.AddLeadingIfNeeded(ScoreColorName), scoreColorAsString);
+        variableStorage.SetValueNoLeading(ScoreColorName, scoreColorAsString);
 
         FindObjectOfType<DialogueUI>().onDialogueEnd.AddListener(() =>
         {
