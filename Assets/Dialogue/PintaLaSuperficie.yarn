@@ -1,7 +1,7 @@
 title: PintaLaSuperficie-PreGame
 tags: PreGame
 ---
-Conforme están las cosas, decides realizar una videoconferencia con **<SOSPECHOSO[cname]>**.
+Conforme están las cosas, decides realizar una videoconferencia con **<SOSPECHOSO(cname)>**.
 Pero no sabes si va a decir toda la verdad durante el interrogatorio.
 Así que decides estar atento a su lenguaje corporal para detectar solo la verdad de entre todo lo que dice.
 <color=orange>Para ello, pasa los ojos por encima del sospechoso sin dejar nada.</color>
@@ -11,15 +11,15 @@ title: PintaLaSuperficie-PostGame
 tags: PostGame
 ---
 <<CompletePuzzle GameManager>>
-Después de casi una hora de interrogatorio con **<SOSPECHOSO[cname]>**, has conseguido averiguar alguna cosa útil.
+Después de casi una hora de interrogatorio con **<SOSPECHOSO(cname)>**, has conseguido averiguar alguna cosa útil.
 
-**<SOSPECHOSO[cname]>** es **<SOSPECHOSO[relation]>** de la víctima (**<VICTIMA[cname]>**).
+**<SOSPECHOSO(cname)>** es **<SOSPECHOSO(relation)>** de la víctima (**<VICTIMA(cname)>**).
 <<set $numero_pruebas to $numero_pruebas + 1>>
 
-Realmente, muy en su interior, **<SOSPECHOSO[cname]>** **<SOSPECHOSO[emotion]>** la víctima (**<VICTIMA[cname]>**).
+Realmente, muy en su interior, **<SOSPECHOSO(cname)>** **<SOSPECHOSO(emotion)>** la víctima (**<VICTIMA(cname)>**).
 <<set $numero_pruebas to $numero_pruebas + 1>>
 
-Lo que te ha contado **<SOSPECHOSO[cname]>** confirma tu sospecha de que **<SOSPECHOSO[HasAlibiAsString]>** tiene una coartada válida.
+Lo que te ha contado **<SOSPECHOSO(cname)>** confirma tu sospecha de que **<SOSPECHOSO(HasAlibiAsString)>** tiene una coartada válida.
 <<set $numero_pruebas to $numero_pruebas + 1>>
 
 <<BackToMainMenu GameDialogue>>

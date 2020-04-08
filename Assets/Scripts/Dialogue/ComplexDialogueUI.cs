@@ -1,7 +1,6 @@
 ﻿using Assets.Scripts.Dialogue.Texts;
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Yarn.Unity;
 
@@ -20,22 +19,25 @@ namespace Assets.Scripts.Dialogue
             snippetSystems = FindObjectsOfType<DialogueSnippetSystem>();
         }
 
-        public override Yarn.Dialogue.HandlerExecutionType RunLine(Yarn.Line line, IDictionary<string, string> strings, System.Action onComplete)
+        public override Yarn.Dialogue.HandlerExecutionType RunLine(Yarn.Line line, ILineLocalisationProvider localisationProvider, Action onComplete)
         {
             // Start displaying the line; it will call onComplete later
             // which will tell the dialogue to continue
-            StartCoroutine(DoRunLine(line, strings, onComplete));
+            StartCoroutine(DoRunLine(line, localisationProvider, onComplete));
             return Yarn.Dialogue.HandlerExecutionType.PauseExecution;
         }
 
         /// Show a line of dialogue, gradually        
-        private IEnumerator DoRunLine(Yarn.Line line, IDictionary<string, string> strings, System.Action onComplete)
+        private IEnumerator DoRunLine(Yarn.Line line, ILineLocalisationProvider localisationProvider, Action onComplete)
         {
             onLineStart?.Invoke();
 
             proceedToNextLine = false;
 
-            if (strings.TryGetValue(line.ID, out var text))
+            // The final text we'll be showing for this line.
+            string text = localisationProvider.GetLocalisedTextForLine(line);
+
+            if (text != null)
             {
                 // Replace snippets with real text
                 if (snippetSystems != null && snippetSystems.Length > 0)

@@ -2499,8 +2499,8 @@ MonoBehaviour:
   - {fileID: 1276836355}
   - {fileID: 353420489}
   ObjectAccessEnabled: 1
-  StartAccessSeparator: '['
-  EndAccessSeparator: ']'
+  StartAccessSeparator: (
+  EndAccessSeparator: )
   AccessMemberSeparator: .
 --- !u!114 &1276836353
 MonoBehaviour:

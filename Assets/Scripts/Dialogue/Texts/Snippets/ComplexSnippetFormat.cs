@@ -6,7 +6,7 @@ namespace Assets.Scripts.Dialogue.Texts.Snippets
 {
     public class ComplexSnippetFormat<R> : SnippetFormat<object>
     {
-        public const string DefaultStartAccessSeparator = "[", DefaultEndAccessSeparator = "]",
+        public const string DefaultStartAccessSeparator = "(", DefaultEndAccessSeparator = ")",
             DefaultAccessMemberSeparator = ".";
 
         public string StartAccessSeparator { get; set; }

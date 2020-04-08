@@ -7,6 +7,6 @@ Para empeorar más aún las cosas, la ciudad se ha visto azotada por una pandemi
 Por suerte, tienes una amiga que trabaja en el departamento de policía, <color=magenta>Diana</color>, quien puede ayudarte a conseguir uno.
 Después de una larga conversación, <color=magenta>Diana</color> te cede uno de los casos que se han producido hace poco, pero que debido a la pandemia aún no han podido investigar.
 Sin embargo, te ha puesto una condición. Esta es que, como cualquier otro ciudadano, no puedes salir de casa. Así que no podrás acceder a la escena del crimen para recopilar más información que la que te ha proporcionado el departamento.
-La víctima del caso se llama **<VICTIMA[cname]>**, trabajaba en un supermercado y murió hace apenas unos días, antes del inicio del confinamiento.
+La víctima del caso se llama **<VICTIMA(cname)>**, trabajaba en un supermercado y murió hace apenas unos días, antes del inicio del confinamiento.
 La policía no puede hacerse cargo, así que es tu trabajo llevar a su asesino ante la justicia.
 ===

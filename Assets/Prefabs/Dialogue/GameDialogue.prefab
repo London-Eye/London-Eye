@@ -27,10 +27,10 @@ MonoBehaviour:
   dialogueContainer: {fileID: 5296080505399609465}
   textSpeed: 0.01
   optionButtons:
-  - {fileID: 5296080504600186014}
-  - {fileID: 5296080504230024272}
-  - {fileID: 5296080503983468561}
-  - {fileID: 5296080505645049506}
+  - {fileID: 1020394552292798831}
+  - {fileID: 1140641128354077046}
+  - {fileID: 7852824722580549517}
+  - {fileID: 8449663511421600021}
   onDialogueStart:
     m_PersistentCalls:
       m_Calls:
@@ -62,6 +62,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 7363312580719556204}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onLineFinishDisplaying:
     m_PersistentCalls:
       m_Calls:
@@ -79,7 +90,7 @@ MonoBehaviour:
   onLineUpdate:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5296080504925131755}
+      - m_Target: {fileID: 6331986464369380911}
         m_MethodName: set_text
         m_Mode: 0
         m_Arguments:
@@ -140,6 +151,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: MarkLineComplete
+      objectReference: {fileID: 0}
+    - target: {fileID: 3745714145007653460, guid: 4ec3df5875e7347beb6176b545b8fb39,
+        type: 3}
+      propertyPath: m_Text
+      value: Continuar
       objectReference: {fileID: 0}
     - target: {fileID: 4068380849537614946, guid: 4ec3df5875e7347beb6176b545b8fb39,
         type: 3}
@@ -417,6 +433,16 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7849352976167254762, guid: 4ec3df5875e7347beb6176b545b8fb39,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1788309106}
+    - target: {fileID: 7849352976167254762, guid: 4ec3df5875e7347beb6176b545b8fb39,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MarkLineComplete
+      objectReference: {fileID: 0}
     - target: {fileID: 8245181055515182852, guid: 4ec3df5875e7347beb6176b545b8fb39,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -499,9 +525,9 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1954342738241314140}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5296080504925131755 stripped
+--- !u!114 &6331986464369380911 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5935829475522760375, guid: 4ec3df5875e7347beb6176b545b8fb39,
+  m_CorrespondingSourceObject: {fileID: 5530566000613610355, guid: 4ec3df5875e7347beb6176b545b8fb39,
     type: 3}
   m_PrefabInstance: {fileID: 1954342738241314140}
   m_PrefabAsset: {fileID: 0}
@@ -511,9 +537,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5296080504600186014 stripped
+--- !u!114 &1020394552292798831 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5935829474060538306, guid: 4ec3df5875e7347beb6176b545b8fb39,
+  m_CorrespondingSourceObject: {fileID: 1528430210991205427, guid: 4ec3df5875e7347beb6176b545b8fb39,
     type: 3}
   m_PrefabInstance: {fileID: 1954342738241314140}
   m_PrefabAsset: {fileID: 0}
@@ -523,9 +549,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5296080504230024272 stripped
+--- !u!114 &1140641128354077046 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5935829474028046604, guid: 4ec3df5875e7347beb6176b545b8fb39,
+  m_CorrespondingSourceObject: {fileID: 1498404884620379178, guid: 4ec3df5875e7347beb6176b545b8fb39,
     type: 3}
   m_PrefabInstance: {fileID: 1954342738241314140}
   m_PrefabAsset: {fileID: 0}
@@ -535,9 +561,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5296080503983468561 stripped
+--- !u!114 &7852824722580549517 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5935829474853694797, guid: 4ec3df5875e7347beb6176b545b8fb39,
+  m_CorrespondingSourceObject: {fileID: 8639573311500415697, guid: 4ec3df5875e7347beb6176b545b8fb39,
     type: 3}
   m_PrefabInstance: {fileID: 1954342738241314140}
   m_PrefabAsset: {fileID: 0}
@@ -547,9 +573,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5296080505645049506 stripped
+--- !u!114 &8449663511421600021 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5935829475171564542, guid: 4ec3df5875e7347beb6176b545b8fb39,
+  m_CorrespondingSourceObject: {fileID: 7952235919768132681, guid: 4ec3df5875e7347beb6176b545b8fb39,
     type: 3}
   m_PrefabInstance: {fileID: 1954342738241314140}
   m_PrefabAsset: {fileID: 0}

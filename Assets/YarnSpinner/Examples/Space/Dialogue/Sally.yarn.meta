@@ -8,7 +8,7 @@ ScriptedImporter:
   assetBundleName: 
   assetBundleVariant: 
   script: {fileID: 11500000, guid: 94073015eacc34c1d8fc6786e43d60ca, type: 3}
-  baseLanguageID: en-AU
+  baseLanguageID: 
   stringIDs:
   - line:794945
   - line:2dc39b
@@ -28,15 +28,6 @@ ScriptedImporter:
   - line:d7df49
   compilationStatus: 0
   isSuccesfullyCompiled: 1
-  compilationErrorMessage: 'Error on line 23 at position 1:
-
-    missing COMMAND_ENDIF at ''===''
-
-    ===
-
-    ^^^'
-  baseLanguage: {fileID: 7128917941130120860, guid: 8b6ae1e8d32e840f0b3fd0b033e52253,
-    type: 3}
-  localizations:
-  - languageName: de
-    text: {fileID: 4900000, guid: 816b6de293b849a4fad13d5caca52524, type: 3}
+  compilationErrorMessage: 
+  baseLanguage: {instanceID: 0}
+  localizations: []
