@@ -8,6 +8,15 @@ namespace Assets.Scripts.Common
 {
     public static class Utilities
     {
+        public const string variableLeading = "$";
+
+        public static string AddLeadingIfNeeded(this VariableStorageBehaviour _, string text)
+            => AddLeadingIfNeeded(text);
+
+        public static string AddLeadingIfNeeded(string text)
+            => (text == null || text.StartsWith(variableLeading)) ? text : (variableLeading + text);
+
+
         public const string PostGameDialogueTag = "PostGame";
 
         public static string PostGameDialogueNode => $"{SceneManager.GetActiveScene().name}-{PostGameDialogueTag}";

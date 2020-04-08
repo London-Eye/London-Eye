@@ -1,7 +1,5 @@
 ﻿using Assets.Scripts.Common;
-using Assets.Scripts.Dialogue.Texts.Snippets.Sources;
 using System.Collections;
-using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -188,10 +186,9 @@ public class SceneController : MonoBehaviour
 
         CharacterCreation.Instance.NumberOfSuspects = scoreRank.NumberOfSuspects;
 
-        // Temporary code for storing Score Color. TODO: Change this when updating snippet system
-        var dictionary = FindObjectsOfType<DictionarySnippetSource>().Where(s => s.GetType() == typeof(DictionarySnippetSource)).First();
-        string scoreColorAsString = ColorUtility.ToHtmlStringRGBA(scoreRank.Color);
-        dictionary.Snippets[ScoreColorName] = '#' + scoreColorAsString;
+        var variableStorage = FindObjectOfType<VariableStorageBehaviour>();
+        string scoreColorAsString = '#' + ColorUtility.ToHtmlStringRGBA(scoreRank.Color);
+        variableStorage.SetValue(variableStorage.AddLeadingIfNeeded(ScoreColorName), scoreColorAsString);
 
         FindObjectOfType<DialogueUI>().onDialogueEnd.AddListener(() =>
         {

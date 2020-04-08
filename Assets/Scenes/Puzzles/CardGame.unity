@@ -1241,7 +1241,7 @@ MonoBehaviour:
   EndgameMenu: {fileID: 1447375499}
   finalScore: {fileID: 59841791}
   finalMessage: {fileID: 1751742064}
-  ScoreColorName: SCORE_COLOR
+  ScoreColorName: scoreColor
 --- !u!4 &1153968361
 Transform:
   m_ObjectHideFlags: 0
