@@ -10,6 +10,30 @@ namespace Assets.Scripts.Common
 {
     public static class Utilities
     {
+        public static object As(this Value yarnValue, System.Type targetType)
+        {
+            if (targetType.IsAssignableFrom(typeof(float)))
+            {
+                return yarnValue.AsNumber;
+            }
+            else if (targetType.IsAssignableFrom(typeof(int)))
+            {
+                return (int) yarnValue.AsNumber;
+            }
+            else if (targetType.IsAssignableFrom(typeof(bool)))
+            {
+                return yarnValue.AsBool;
+            }
+            else if (targetType.IsAssignableFrom(typeof(string)))
+            {
+                return yarnValue.AsString;
+            }
+            else
+            {
+                return yarnValue;
+            }
+        }
+
         public static Value AsYarnValue(object obj)
         {
             Value value;
