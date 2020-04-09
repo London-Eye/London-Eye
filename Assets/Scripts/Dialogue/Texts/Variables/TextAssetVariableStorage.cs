@@ -6,7 +6,7 @@ using Yarn.Unity;
 namespace Assets.Scripts.Dialogue.Texts.Variables
 {
 
-    public class TextAssetVariableStorage : VariableStorageWithFallback<InMemoryVariableStorage>
+    public class TextAssetVariableStorage : VariableStorageDecorator<InMemoryVariableStorage>
     {
         public TextAsset textAsset;
 
@@ -21,12 +21,12 @@ namespace Assets.Scripts.Dialogue.Texts.Variables
 
         public int IndexOfNextNameValueSeparator(string text) => text.IndexOf(NameValueSeparator);
 
-        protected override bool SetValueNoFallback(string variableName, Value value)
+        protected override bool SetValueNoStorage(string variableName, Value value)
         {
             throw new System.InvalidOperationException(VariableStorageGroup.ReadOnlyVariableStorageMessage);
         }
 
-        protected override void ResetToDefaultsAfterFallback()
+        protected override void ResetToDefaultsAfterStorage()
         {
             using (StringReader textReader = new StringReader(textAsset.text))
             {
@@ -35,7 +35,7 @@ namespace Assets.Scripts.Dialogue.Texts.Variables
                 {
                     int splitIndex = IndexOfNextNameValueSeparator(line);
                     string name = line.Substring(0, splitIndex), value = line.Substring(splitIndex + NameValueSeparator.Length);
-                    Fallback.SetValue(name, value);
+                    Storage.SetValue(name, value);
                 }
             }
         }

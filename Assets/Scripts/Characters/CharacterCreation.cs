@@ -6,7 +6,7 @@ using Yarn.Unity;
 using Assets.Scripts.Characters;
 using Assets.Scripts.Dialogue.Texts.Variables;
 
-[RequireComponent(typeof(DictionarySnippetSource), typeof(PoolVariableStorage))]
+[RequireComponent(typeof(PoolVariableStorage))]
 public class CharacterCreation : MonoBehaviour
 {
     public const string InitialPuzzle = "CardGame";
@@ -20,7 +20,7 @@ public class CharacterCreation : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(this.gameObject);
 
-            characterDictionary = GetComponent<DictionarySnippetSource>();
+            characterDictionary = gameObject.AddComponent<AccessibleVariableStorage<InMemoryVariableStorage>>();
             InitializePools();
 
             CreateVictim();
@@ -48,7 +48,7 @@ public class CharacterCreation : MonoBehaviour
         set
         {
             numberOfSuspects = value < maxNumberOfSuspects ? value : maxNumberOfSuspects;
-            characterDictionary.Snippets[numberOfSuspectsKey] = numberOfSuspects;
+            characterDictionary.SetValue(numberOfSuspectsKey, numberOfSuspects);
         }
     }
 
@@ -59,7 +59,7 @@ public class CharacterCreation : MonoBehaviour
         private set
         {
             victim = value;
-            characterDictionary.Snippets[victimKey] = value;
+            characterDictionary.SetValue(victimKey, value);
         }
     }
 
@@ -78,7 +78,7 @@ public class CharacterCreation : MonoBehaviour
     private SelectorPool<int> mNames, fNames;
     private SelectorPool<int> mRelation, fRelation;
 
-    private DictionarySnippetSource characterDictionary;
+    private AccessibleVariableStorage<InMemoryVariableStorage> characterDictionary;
     private PoolVariableStorage randomNamePoolSource;
 
     void Awake()
@@ -108,7 +108,7 @@ public class CharacterCreation : MonoBehaviour
         // Create the murderer
         Suspect murderer = InitializeSuspect(hasAlibi: false);
         Murderer = murderer;
-        characterDictionary.Snippets[murdererKey] = murderer;
+        characterDictionary.SetValue(murdererKey, murderer);
         suspects.Add(murderer);
 
         // Create other suspects
@@ -147,7 +147,7 @@ public class CharacterCreation : MonoBehaviour
     private void SetCurrentSuspectImpl(Suspect suspect)
     {
         CurrentSuspect = suspect;
-        characterDictionary.Snippets[suspectKey] = suspect;
+        characterDictionary.SetValue(suspectKey, suspect);
     }
 
     private void InitializePools()
@@ -176,7 +176,7 @@ public class CharacterCreation : MonoBehaviour
     private Character InitializeCharacter(bool isMale, int name)
     {
         Character character = ScriptableObject.CreateInstance<Character>();
-        character.isMale = isMale;
+        character.IsMale = isMale;
         character.cname = (isMale ? maleCharacterStats : femaleCharacterStats).characterName[name];
         return character;
     }
@@ -201,11 +201,11 @@ public class CharacterCreation : MonoBehaviour
     {
         Suspect suspect = ScriptableObject.CreateInstance<Suspect>();
 
-        suspect.isMale = isMale;
+        suspect.IsMale = isMale;
 
         FillSuspectWithStats(suspect, isMale ? maleCharacterStats : femaleCharacterStats, name, relation, emotion);
 
-        suspect.hasAlibi = hasAlibi;
+        suspect.HasAlibi = hasAlibi;
 
         return suspect;
     }
@@ -213,8 +213,8 @@ public class CharacterCreation : MonoBehaviour
     private void FillSuspectWithStats(Suspect suspect, CharacterStats stats, int nameIndex, int relationIndex, int emotionIndex)
     {
         suspect.cname = stats.characterName[nameIndex];
-        suspect.relation = stats.relation[relationIndex];
-        suspect.emotion = stats.emotion[emotionIndex];
+        suspect.Relation = stats.relation[relationIndex];
+        suspect.Emotion = stats.emotion[emotionIndex];
     }
 
     private void FillNamePool()

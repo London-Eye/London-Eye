@@ -1,7 +1,7 @@
 title: 9-puzzle-PreGame
 tags: PreGame
 ---
-Investigando las imágenes de la escena del crimen, encuentras un trozo de una nota con el nombre '**<SOSPECHOSO(cname)>**' escrito en ella. 
+Investigando las imágenes de la escena del crimen, encuentras un trozo de una nota con el nombre '{$SuspectName}' escrito en ella. 
 Por desgracia, se ve poco más que el nombre en esta imagen.
 Después de observar mejor las fotografías, descubres que hay más imágenes que contienen diferentes partes de la que parece la misma nota.
 Decides completar la nota usando las partes de las diferentes imágenes para descubrir su contenido.
@@ -14,14 +14,14 @@ tags: PostGame
 <<CompletePuzzle GameManager>>
 Enhorabuena, has conseguido unir todos los trozos de la nota.
 
-Por la forma en que **<NOMBRE>** escribe sobre **<SOSPECHOSO(cname)>**, puedes concluir que es **<SOSPECHOSO(relation)>** de la víctima (**<VICTIMA(cname)>**).
-<<set $numero_pruebas to $numero_pruebas + 1>>
+Por la forma en que {$RandomName} escribe sobre {$SuspectName}, puedes concluir que es {$SuspectRelation} de la víctima ({$VictimName}).
+<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
 
-Te das cuenta de que lo que parecía un nombre, era en realidad una firma. Por lo tanto, viendo el tono de la carta, claramente, **<SOSPECHOSO(cname)>** **<SOSPECHOSO(emotion)>** la víctima (**<VICTIMA(cname)>**).
-<<set $numero_pruebas to $numero_pruebas + 1>>
+Te das cuenta de que lo que parecía un nombre, era en realidad una firma. Por lo tanto, viendo el tono de la carta, claramente, {$SuspectName} {$SuspectEmotion} la víctima ({$VictimName}).
+<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
 
-Como sospechabas, el contenido de la carta confirma que **<SOSPECHOSO(cname)>** **<SOSPECHOSO(HasAlibiAsString)>** tiene coartada válida para el crimen.
-<<set $numero_pruebas to $numero_pruebas + 1>>
+Como sospechabas, el contenido de la carta confirma que {$SuspectName} {$SuspectHasAlibiAsString} tiene coartada válida para el crimen.
+<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
 
 <<BackToMainMenu GameDialogue>>
 ===

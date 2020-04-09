@@ -8,16 +8,9 @@ namespace Assets.Scripts.Dialogue
 {
     public class ComplexDialogueUI : DialogueUI
     {
-        private DialogueSnippetSystem[] snippetSystems;
-
         // When true, the user has indicated that they want to proceed to
         // the next line.
         private bool proceedToNextLine = false;
-
-        void Start()
-        {
-            snippetSystems = FindObjectsOfType<DialogueSnippetSystem>();
-        }
 
         public override Yarn.Dialogue.HandlerExecutionType RunLine(Yarn.Line line, ILineLocalisationProvider localisationProvider, Action onComplete)
         {
@@ -37,18 +30,7 @@ namespace Assets.Scripts.Dialogue
             // The final text we'll be showing for this line.
             string text = localisationProvider.GetLocalisedTextForLine(line);
 
-            if (text != null)
-            {
-                // Replace snippets with real text
-                if (snippetSystems != null && snippetSystems.Length > 0)
-                {
-                    foreach (var snippetSystem in snippetSystems)
-                    {
-                        text = snippetSystem.ParseAndReplace(text, RunLineLogger);
-                    }
-                }
-            }
-            else
+            if (text == null)
             {
                 Debug.LogWarning($"Line {line.ID} doesn't have any localised text.");
                 text = line.ID;

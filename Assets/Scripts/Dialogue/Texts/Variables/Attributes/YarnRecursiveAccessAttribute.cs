@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Assets.Scripts.Dialogue.Texts.Snippets
+namespace Assets.Scripts.Dialogue.Texts.Variables.Attributes
 {
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct, AllowMultiple = true)]
     public class YarnRecursiveAccessAttribute : Attribute

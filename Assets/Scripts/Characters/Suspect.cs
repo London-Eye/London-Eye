@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.Dialogue.Texts.Variables;
+﻿using Assets.Scripts.Dialogue.Texts.Variables.Attributes;
 
 namespace Assets.Scripts.Characters
 {
@@ -9,21 +9,21 @@ namespace Assets.Scripts.Characters
         public const int numberOfEvidences = 3;
 
         [YarnAccess]
-        public string relation;
+        public string Relation;
 
         [YarnAccess]
-        public string emotion;
+        public string Emotion;
 
         [YarnAccess]
-        public bool hasAlibi;
+        public bool HasAlibi;
 
         private int evidencesFound;
 
         [YarnAccess]
-        public string HasAlibiAsString => hasAlibi ? AffirmativeAlibi : NegativeAlibi;
+        public string HasAlibiAsString => HasAlibi ? AffirmativeAlibi : NegativeAlibi;
 
         [YarnAccess]
-        public string NotHasAlibiAsString => hasAlibi ? NegativeAlibi : AffirmativeAlibi;
+        public string NotHasAlibiAsString => HasAlibi ? NegativeAlibi : AffirmativeAlibi;
 
         [YarnAccess]
         public int EvidencesFound

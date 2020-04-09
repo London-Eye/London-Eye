@@ -677,8 +677,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 353420488}
-  - component: {fileID: 353420489}
-  - component: {fileID: 353420490}
   m_Layer: 0
   m_Name: TextFilePool
   m_TagString: Untagged
@@ -700,34 +698,6 @@ Transform:
   m_Father: {fileID: 1276836354}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &353420489
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 353420487}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5542a93f76a312840a4f4cf357ee759a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SnippetsFile: {fileID: 4900000, guid: 91a40575f01d3c049bcb61de9cd0aa7f, type: 3}
-  NameValuesSeparator: '---'
-  PoolSeparator: ===
---- !u!114 &353420490
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 353420487}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d28fb4ae84b7b8d4294cc809263a6e32, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NameIDSeparator: '-'
 --- !u!1001 &355736024
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2457,9 +2427,6 @@ GameObject:
   - component: {fileID: 1276836354}
   - component: {fileID: 1276836357}
   - component: {fileID: 1276836353}
-  - component: {fileID: 1276836352}
-  - component: {fileID: 1276836351}
-  - component: {fileID: 1276836355}
   - component: {fileID: 1276836356}
   m_Layer: 0
   m_Name: GameManager
@@ -2468,40 +2435,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1276836351
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1276836350}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af47aa4bf9bb4ff40a3c1ef3ab40ccbe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1276836352
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1276836350}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0117f404ac22eae4a8786a04ac058e9d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  StartSeparator: '**<'
-  EndSeparator: '>**'
-  Sources:
-  - {fileID: 1276836351}
-  - {fileID: 1276836355}
-  - {fileID: 353420489}
-  ObjectAccessEnabled: 1
-  StartAccessSeparator: (
-  EndAccessSeparator: )
-  AccessMemberSeparator: .
 --- !u!114 &1276836353
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2517,11 +2450,11 @@ MonoBehaviour:
   maleCharacterStats: {fileID: 11400000, guid: c88b9c0ce8a6e1745a5264a9a3197df6, type: 2}
   femaleCharacterStats: {fileID: 11400000, guid: aa4137f4306fab74ea5f47d1c36fc539,
     type: 2}
-  suspectKey: SOSPECHOSO
-  victimKey: VICTIMA
-  murdererKey: ASESINO
-  randomNameKey: NOMBRE
-  numberOfSuspectsKey: NUMERO_SOSPECHOSOS
+  suspectKey: Suspect
+  victimKey: Victim
+  murdererKey: Criminal
+  randomNameKey: RandomName
+  numberOfSuspectsKey: NumberOfSuspects
 --- !u!4 &1276836354
 Transform:
   m_ObjectHideFlags: 0
@@ -2537,19 +2470,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1276836355
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1276836350}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d28fb4ae84b7b8d4294cc809263a6e32, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NameIDSeparator: '-'
 --- !u!114 &1276836356
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -23,6 +23,7 @@ public class SceneController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI finalMessage;
 
     public string ScoreColorName;
+    [SerializeField] private VariableStorageBehaviour scoreColorVariableStorage;
 
     public bool GameRunning { get; set; }
 
@@ -186,9 +187,8 @@ public class SceneController : MonoBehaviour
 
         CharacterCreation.Instance.NumberOfSuspects = scoreRank.NumberOfSuspects;
 
-        var variableStorage = FindObjectOfType<VariableStorageBehaviour>();
         string scoreColorAsString = '#' + ColorUtility.ToHtmlStringRGBA(scoreRank.Color);
-        variableStorage.SetValueNoLeading(ScoreColorName, scoreColorAsString);
+        scoreColorVariableStorage.SetValueNoLeading(ScoreColorName, scoreColorAsString);
 
         FindObjectOfType<DialogueUI>().onDialogueEnd.AddListener(() =>
         {

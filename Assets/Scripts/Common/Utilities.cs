@@ -9,6 +9,16 @@ namespace Assets.Scripts.Common
 {
     public static class Utilities
     {
+        public static Value AsYarnValue(object obj)
+        {
+            Value value;
+
+            if (obj is Value) value = obj as Value;
+            else value = new Value(obj);
+
+            return value;
+        }
+
         #region Variable Storage Leading
         public const string variableLeading = "$";
 

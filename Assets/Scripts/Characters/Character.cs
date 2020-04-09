@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.Dialogue.Texts.Variables;
+﻿using Assets.Scripts.Dialogue.Texts.Variables.Attributes;
 using UnityEngine;
 
 namespace Assets.Scripts.Characters
@@ -7,9 +7,9 @@ namespace Assets.Scripts.Characters
     public class Character : ScriptableObject
     {
         [YarnAccess]
-        public bool isMale;
+        public bool IsMale;
 
-        [YarnAccess]
+        [YarnAccess(name = "Name")]
         public string cname;
     }
 }

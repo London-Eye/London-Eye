@@ -1,25 +1,24 @@
-﻿using Assets.Scripts.Common;
+﻿using Assets.Scripts.Dialogue.Texts.Variables;
 using UnityEngine;
 using Yarn.Unity;
 
-public class DialogueUtilities : MonoBehaviour
+namespace Assets.Scripts.Common
 {
-    public void StartPostGameDialogue(GameObject gameObjectToDeactivate)
+    public class DialogueUtilities : MonoBehaviour
     {
-        gameObjectToDeactivate.SetActive(false);
-        StartPostGameDialogue();
-    }
+        public void BindPersistentStorage(CodeRelayVariableStorage relay)
+            => relay.BindStorage(CharacterCreation.Instance.gameObject.GetComponent<VariableStorageBehaviour>());
 
-    public void StartPostGameDialogue() => Utilities.StartPostGameDialogue();
 
-    [YarnCommand("BackToMainMenu")]
-    public void BackToMainMenu()
-    {
-        // Temporary solution to update the number of evidences.
-        // TODO: When updating Yarn, use our new Variable Storage solution to store the variable accordingly.
-        CharacterCreation.Instance.CurrentSuspect.EvidencesFound
-            += (int) GetComponentInChildren<VariableStorageBehaviour>().GetValue("$numero_pruebas").AsNumber;
-        
-        PauseController.GoToMainMenu();
+        public void StartPostGameDialogue(GameObject gameObjectToDeactivate)
+        {
+            gameObjectToDeactivate.SetActive(false);
+            StartPostGameDialogue();
+        }
+
+        public void StartPostGameDialogue() => Utilities.StartPostGameDialogue();
+
+        [YarnCommand("BackToMainMenu")]
+        public void BackToMainMenu() => PauseController.GoToMainMenu();
     }
 }

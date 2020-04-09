@@ -1,26 +1,26 @@
 title: CompletaElCamino-PreGame
 tags: PreGame
 ---
-Has investigado todo lo que has podido encontrar a simple vista sobre **<SOSPECHOSO(cname)>**.
+Has investigado todo lo que has podido encontrar a simple vista sobre {$SuspectName}.
 Has visitado todas sus redes sociales, así como las de sus parientes y amigos.
 Es hora de que ordenes toda la información encontrada; así que decides empezar a hacer suposiciones para ver si alguna te lleva a una conclusión útil.
-<color=orange>Gira las partes de los caminos para llevar la suposición inicial hasta la conclusión y poder descubrir una nueva pista sobre **<SOSPECHOSO(cname)>**.</color>
+<color=orange>Gira las partes de los caminos para llevar la suposición inicial hasta la conclusión y poder descubrir una nueva pista sobre {$SuspectName}.</color>
 ===
 
 title: CompletaElCamino-PostGame
 tags: PostGame
 ---
 <<CompletePuzzle GameManager>>
-Has conseguido llegar a una conclusión sobre **<SOSPECHOSO(cname)>**.
+Has conseguido llegar a una conclusión sobre {$SuspectName}.
 
-Es una persona misteriosa, y no haber podido ver sus movimientos en persona te ha retrasado, pero has descubierto que **<SOSPECHOSO(cname)>** es **<SOSPECHOSO(relation)>** de la víctima (**<VICTIMA(cname)>**).
-<<set $numero_pruebas to $numero_pruebas + 1>>
+Es una persona misteriosa, y no haber podido ver sus movimientos en persona te ha retrasado, pero has descubierto que {$SuspectName} es {$SuspectRelation} de la víctima ({$VictimName}).
+<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
 
-Después de ver algunas conversaciones y fotos junto a la víctima, determinas que **<SOSPECHOSO(cname)>** **<SOSPECHOSO(emotion)>** la víctima (**<VICTIMA(cname)>**).
-<<set $numero_pruebas to $numero_pruebas + 1>>
+Después de ver algunas conversaciones y fotos junto a la víctima, determinas que {$SuspectName} {$SuspectEmotion} la víctima ({$VictimName}).
+<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
 
-Una vez consultadas sus publicaciones en redes sociales en horas próximas a la del crimen, determinas que la coartada de **<SOSPECHOSO(cname)>** **<SOSPECHOSO(HasAlibiAsString)>** es válida.
-<<set $numero_pruebas to $numero_pruebas + 1>>
+Una vez consultadas sus publicaciones en redes sociales en horas próximas a la del crimen, determinas que la coartada de {$SuspectName} {$SuspectHasAlibiAsString} es válida.
+<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
 
 <<BackToMainMenu GameDialogue>>
 ===

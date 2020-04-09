@@ -6,7 +6,7 @@ using Yarn;
 
 namespace Assets.Scripts.Dialogue.Texts.Variables
 {
-    public class TextAssetPoolVariableStorage : VariableStorageWithFallback<PoolVariableStorage>
+    public class TextAssetPoolVariableStorage : VariableStorageDecorator<PoolVariableStorage>
     {
         public TextAsset textAsset;
 
@@ -18,14 +18,14 @@ namespace Assets.Scripts.Dialogue.Texts.Variables
 
         private enum PoolsLoadState { EMPTY, NAME, POOLS };
 
-        protected override bool SetValueNoFallback(string variableName, Value value)
+        protected override bool SetValueNoStorage(string variableName, Value value)
         {
             throw new System.InvalidOperationException(VariableStorageGroup.ReadOnlyVariableStorageMessage);
         }
 
-        protected override void ResetToDefaultsAfterFallback()
+        protected override void ResetToDefaultsAfterStorage()
         {
-            Fallback.SelectorPools = new Dictionary<string, SelectorPool<object>>();
+            Storage.SelectorPools = new Dictionary<string, SelectorPool<object>>();
             using (StringReader textReader = new StringReader(textAsset.text))
             {
                 string line, name = "";
@@ -52,7 +52,7 @@ namespace Assets.Scripts.Dialogue.Texts.Variables
                         case PoolsLoadState.POOLS:
                             if (line == PoolSeparator)
                             {
-                                Fallback.SelectorPools.Add(name, selectorPool);
+                                Storage.SelectorPools.Add(name, selectorPool);
                                 state = PoolsLoadState.EMPTY;
                                 selectorPool = null;
                             }

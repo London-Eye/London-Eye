@@ -2,7 +2,7 @@ title: probetas-PreGame
 tags: PreGame
 ---
 Según el informe policial, en la escena del crimen había restos de huellas y ADN de diferentes personas; así como en la casa de la víctima.
-Es por ello que decides comparar las huellas con las del registro para ver si consigues algo más sobre **<SOSPECHOSO(cname)>**.
+Es por ello que decides comparar las huellas con las del registro para ver si consigues algo más sobre {$SuspectName}.
 También te gustaría comparar el ADN, pero esto resulta más difícil, puesto que tendrá que haber estado antes en el registro para poder encontrar algo.
 <color=orange>Mueve las bolas entre las probetas para que cada probeta se quede con un solo color. <i>Solo puedes mover las bolas si las colocas en una probeta vacía o sobre una bola de su mismo color.</i></color>
 ===
@@ -11,16 +11,16 @@ title: probetas-PostGame
 tags: PostGame
 ---
 <<CompletePuzzle GameManager>>
-Es hora de analizar los datos obtenidos gracias a las pruebas sobre **<SOSPECHOSO(cname)>**.
+Es hora de analizar los datos obtenidos gracias a las pruebas sobre {$SuspectName}.
 
-Has conseguido encontrar algunas pruebas de ADN suyas. Después de comparar ese ADN con el de la víctima, y observando el número de huellas suyas que había en casa de esta, concluyes que **<SOSPECHOSO(cname)>** es **<SOSPECHOSO(relation)>** de la víctima (**<VICTIMA(cname)>**).
-<<set $numero_pruebas to $numero_pruebas + 1>>
+Has conseguido encontrar algunas pruebas de ADN suyas. Después de comparar ese ADN con el de la víctima, y observando el número de huellas suyas que había en casa de esta, concluyes que {$SuspectName} es {$SuspectRelation} de la víctima ({$VictimName}).
+<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
 
-Por la distribución de las huellas de **<SOSPECHOSO(cname)>** en casa de la víctima y los objetos sobre los que están, lo más probable es que **<SOSPECHOSO(cname)>** **<SOSPECHOSO(emotion)>** la víctima (**<VICTIMA(cname)>**).
-<<set $numero_pruebas to $numero_pruebas + 1>>
+Por la distribución de las huellas de {$SuspectName} en casa de la víctima y los objetos sobre los que están, lo más probable es que {$SuspectName} {$SuspectEmotion} la víctima ({$VictimName}).
+<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
 
-Los restos más recientes de ADN de la escena del crimen **<SOSPECHOSO(NotHasAlibiAsString)>** coinciden con los de **<SOSPECHOSO(cname)>**, por tanto, su coartada **<SOSPECHOSO(HasAlibiAsString)>** es válida.
-<<set $numero_pruebas to $numero_pruebas + 1>>
+Los restos más recientes de ADN de la escena del crimen {$SuspectNotHasAlibiAsString} coinciden con los de {$SuspectName}, por tanto, su coartada {$SuspectHasAlibiAsString} es válida.
+<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
 
 <<BackToMainMenu GameDialogue>>
 ===
