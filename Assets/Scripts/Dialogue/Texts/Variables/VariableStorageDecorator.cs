@@ -5,6 +5,8 @@ namespace Assets.Scripts.Dialogue.Texts.Variables
 {
     public abstract class VariableStorageDecorator<T> : VariableStorageBehaviour where T : VariableStorageBehaviour
     {
+        public bool persistStorage;
+
         public T Storage { get; private set; }
 
         /// Reset to our default values when the game starts
@@ -52,7 +54,7 @@ namespace Assets.Scripts.Dialogue.Texts.Variables
         public override void ResetToDefaults()
         {
             ResetToDefaultsBeforeStorage();
-            Storage.ResetToDefaults();
+            if (!persistStorage) Storage.ResetToDefaults();
             ResetToDefaultsAfterStorage();
         }
 

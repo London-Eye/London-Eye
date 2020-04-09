@@ -13,7 +13,13 @@ public class CharacterCreation : MonoBehaviour
     public const string InitialPuzzle = "CardGame";
 
     [System.Serializable]
-    private class SimpleAccesibleVariableStorage : AccessibleVariableStorage<InMemoryVariableStorage> { }
+    private class SimpleAccesibleVariableStorage : AccessibleVariableStorage<InMemoryVariableStorage>
+    {
+        public SimpleAccesibleVariableStorage()
+        {
+            persistStorage = true;
+        }
+    }
 
     public UnityEvent OnMakeSingleton;
 
@@ -26,7 +32,7 @@ public class CharacterCreation : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(this.gameObject);
 
-            characterDictionary = gameObject.AddComponent<SimpleAccesibleVariableStorage>();
+            CharacterVariableStorage = gameObject.AddComponent<SimpleAccesibleVariableStorage>();
             InitializePools();
 
             CreateVictim();
@@ -56,7 +62,7 @@ public class CharacterCreation : MonoBehaviour
         set
         {
             numberOfSuspects = value < maxNumberOfSuspects ? value : maxNumberOfSuspects;
-            characterDictionary.SetValue(numberOfSuspectsKey, numberOfSuspects);
+            CharacterVariableStorage.SetValueNoLeading(numberOfSuspectsKey, value: numberOfSuspects);
         }
     }
 
@@ -67,7 +73,7 @@ public class CharacterCreation : MonoBehaviour
         private set
         {
             victim = value;
-            characterDictionary.SetValue(victimKey, value);
+            CharacterVariableStorage.SetValueNoLeading(victimKey, value: value);
         }
     }
 
@@ -83,10 +89,10 @@ public class CharacterCreation : MonoBehaviour
     private HashSet<Suspect> suspects;
     public IReadOnlyCollection<Suspect> Suspects => suspects;
 
+    public AccessibleVariableStorage<InMemoryVariableStorage> CharacterVariableStorage { get; private set; }
+
     private SelectorPool<int> mNames, fNames;
     private SelectorPool<int> mRelation, fRelation;
-
-    private AccessibleVariableStorage<InMemoryVariableStorage> characterDictionary;
     private PoolVariableStorage randomNamePoolSource;
 
     void Awake()
@@ -116,7 +122,7 @@ public class CharacterCreation : MonoBehaviour
         // Create the murderer
         Suspect murderer = InitializeSuspect(hasAlibi: false);
         Murderer = murderer;
-        characterDictionary.SetValue(murdererKey, murderer);
+        CharacterVariableStorage.SetValueNoLeading(murdererKey, value: murderer);
         suspects.Add(murderer);
 
         // Create other suspects
@@ -155,7 +161,7 @@ public class CharacterCreation : MonoBehaviour
     private void SetCurrentSuspectImpl(Suspect suspect)
     {
         CurrentSuspect = suspect;
-        characterDictionary.SetValue(suspectKey, suspect);
+        CharacterVariableStorage.SetValueNoLeading(suspectKey, value: suspect);
     }
 
     private void InitializePools()

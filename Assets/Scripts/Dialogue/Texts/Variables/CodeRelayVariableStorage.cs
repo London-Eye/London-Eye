@@ -6,8 +6,6 @@ namespace Assets.Scripts.Dialogue.Texts.Variables
 {
     public class CodeRelayVariableStorage : VariableStorageDecorator<VariableStorageBehaviour>
     {
-        public bool persistStorage = true;
-
         [System.Serializable]
         private class CodeRelayUnityEvent : UnityEvent<CodeRelayVariableStorage> { }
 
@@ -30,9 +28,7 @@ namespace Assets.Scripts.Dialogue.Texts.Variables
         {
             if (Storage == storageToBind)
             {
-                ResetToDefaultsBeforeStorage();
-                if (!persistStorage) Storage.ResetToDefaults();
-                ResetToDefaultsAfterStorage();
+                base.ResetToDefaults();
             }
             else
             {

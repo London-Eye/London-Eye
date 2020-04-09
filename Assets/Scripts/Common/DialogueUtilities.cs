@@ -10,7 +10,7 @@ namespace Assets.Scripts.Common
         {
             if (CharacterCreation.Instance != null)
             {
-                relay.BindStorage(CharacterCreation.Instance.gameObject.GetComponent<VariableStorageBehaviour>());
+                relay.BindStorage(CharacterCreation.Instance.CharacterVariableStorage);
             }
         }
 

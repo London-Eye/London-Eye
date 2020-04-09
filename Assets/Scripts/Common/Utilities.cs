@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Assets.Scripts.Dialogue.Texts.Variables;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -38,6 +39,9 @@ namespace Assets.Scripts.Common
         public static void SetValueNoLeading(this VariableStorageBehaviour v, string variableNameNoLeading, string stringValue)
             => v.SetValue(AddLeadingIfNeeded(variableNameNoLeading), stringValue);
         public static void SetValueNoLeading(this VariableStorageBehaviour v, string variableNameNoLeading, Value value)
+            => v.SetValue(AddLeadingIfNeeded(variableNameNoLeading), value);
+
+        public static void SetValueNoLeading<T>(this AccessibleVariableStorage<T> v, string variableNameNoLeading, object value) where T : VariableStorageBehaviour
             => v.SetValue(AddLeadingIfNeeded(variableNameNoLeading), value);
         #endregion
 

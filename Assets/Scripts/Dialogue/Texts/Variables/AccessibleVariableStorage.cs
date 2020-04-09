@@ -44,6 +44,22 @@ namespace Assets.Scripts.Dialogue.Texts.Variables
             {
                 CheckYarnAccess(variableName, value, fieldInfo);
             }
+
+            Value yarnValue = null;
+            try
+            {
+                yarnValue = Utilities.AsYarnValue(value);
+            }
+            catch (ArgumentException)
+            {
+                // If the yarn Value couldn't be created, then the type is not supported by Yarn.
+                // In that case, just omit it.
+            }
+
+            if (yarnValue != null)
+            {
+                base.SetValue(variableName, yarnValue);
+            }
         }
 
         /// <summary>
