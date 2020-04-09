@@ -1,6 +1,7 @@
 title: InicioPartida
 tags: Inicio
 ---
+<<StartNewGame GameManager>>
 Eres <color=lightblue>Deiv I.D.</color>, un investigador de prestigio mundial que recientemente se ha mudado a Londres debido a que la ciudad está llena de crímenes sin resolver.
 Sin embargo, llegaste hace dos semanas y aún no te han contratado para ningún caso.
 Para empeorar más aún las cosas, la ciudad se ha visto azotada por una pandemia y te has visto obligado a permanecer en casa, cosa que no te ayuda a resolver casos para aumentar tu prestigio.

@@ -21,7 +21,7 @@ public class CharacterCreation : MonoBehaviour
         }
     }
 
-    public UnityEvent OnInitInstance;
+    public UnityEvent OnNewGame;
 
     public static CharacterCreation Instance { get; private set; }
 
@@ -31,16 +31,9 @@ public class CharacterCreation : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(this.gameObject);
-            
-
-            DialogueUI dialogueUI = FindObjectOfType<DialogueUI>();
-
-            // Init the instance when the dialogue is about to start
-            // This allows other components to load first on their Awake methods
-            dialogueUI.onDialogueStart.AddListener(() => InitInstance());
 
             // When the start of game dialogue ends, load the initial puzzle
-            dialogueUI.onDialogueEnd.AddListener(() => SceneManager.LoadScene(InitialPuzzle));
+            FindObjectOfType<DialogueUI>().onDialogueEnd.AddListener(() => SceneManager.LoadScene(InitialPuzzle));
 
             FindObjectOfType<DialogueRunner>().startAutomatically = true;
         }
@@ -50,7 +43,8 @@ public class CharacterCreation : MonoBehaviour
         }
     }
 
-    private void InitInstance()
+    [YarnCommand("StartNewGame")]
+    public void NewGame()
     {
         characterVariableStorage = gameObject.AddComponent<SimpleAccesibleVariableStorage>();
         InitializePools();
@@ -64,7 +58,17 @@ public class CharacterCreation : MonoBehaviour
 
         VariableStorage = variableStorage;
 
-        OnInitInstance.Invoke();
+        OnNewGame.Invoke();
+    }
+
+    private void LoadGame()
+    {
+        // TODO: Add Game Loading
+    }
+
+    private void SaveGame()
+    {
+        // TODO: Add Game Saving
     }
 
     // maxNumberOfSuspects = min(numberOfNames, numberOfRelations, numberOfEmotions);

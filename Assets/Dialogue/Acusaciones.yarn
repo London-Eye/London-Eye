@@ -1,9 +1,9 @@
 title: Acusacion-SinPruebas
 tags: SinPruebas
 ---
-{$SuspectName} ha sido acusado de asesinato, pero el jurado ha declarado que no tiene suficientes pruebas para procesarlo.
+{$SuspectName} ha sido [select {$SuspectIsMale} True="acusado" False="acusada"] de asesinato, pero el jurado ha declarado que no tiene suficientes pruebas para [select {$SuspectIsMale} True="procesarlo" False="procesarla"].
 El jurado no ha podido decidirse en el caso de {$SuspectName} por falta de pruebas y, por tanto, queda libre.
-El juez ha declarado inocente a {$SuspectName} por falta de pruebas que lo incriminen.
+El juez ha declarado inocente a {$SuspectName} por falta de pruebas que [select {$SuspectIsMale} True="lo" False="la"] incriminen.
 <color=orange>Sigue investigando sospechosos para conseguir más pruebas y poder acusarlos más acertadamente.</color>
 <<BackToMainMenu GameDialogue>>
 ===
