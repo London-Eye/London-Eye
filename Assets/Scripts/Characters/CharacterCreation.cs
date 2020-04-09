@@ -21,7 +21,7 @@ public class CharacterCreation : MonoBehaviour
         }
     }
 
-    public UnityEvent OnMakeSingleton;
+    public UnityEvent OnInitInstance;
 
     public static CharacterCreation Instance { get; private set; }
 
@@ -31,14 +31,16 @@ public class CharacterCreation : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(this.gameObject);
+            
 
-            CharacterVariableStorage = gameObject.AddComponent<SimpleAccesibleVariableStorage>();
-            InitializePools();
+            DialogueUI dialogueUI = FindObjectOfType<DialogueUI>();
 
-            CreateVictim();
+            // Init the instance when the dialogue is about to start
+            // This allows other components to load first on their Awake methods
+            dialogueUI.onDialogueStart.AddListener(() => InitInstance());
 
             // When the start of game dialogue ends, load the initial puzzle
-            FindObjectOfType<DialogueUI>().onDialogueEnd.AddListener(() => SceneManager.LoadScene(InitialPuzzle));
+            dialogueUI.onDialogueEnd.AddListener(() => SceneManager.LoadScene(InitialPuzzle));
 
             FindObjectOfType<DialogueRunner>().startAutomatically = true;
         }
@@ -46,8 +48,23 @@ public class CharacterCreation : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+    }
 
-        OnMakeSingleton.Invoke();
+    private void InitInstance()
+    {
+        characterVariableStorage = gameObject.AddComponent<SimpleAccesibleVariableStorage>();
+        InitializePools();
+
+        CreateVictim();
+
+        randomNamePoolSource = GetComponent<PoolVariableStorage>();
+
+        VariableStorageGroup variableStorage = gameObject.AddComponent<VariableStorageGroup>();
+        variableStorage.sources = new List<VariableStorageBehaviour>() { characterVariableStorage, randomNamePoolSource };
+
+        VariableStorage = variableStorage;
+
+        OnInitInstance.Invoke();
     }
 
     // maxNumberOfSuspects = min(numberOfNames, numberOfRelations, numberOfEmotions);
@@ -62,7 +79,7 @@ public class CharacterCreation : MonoBehaviour
         set
         {
             numberOfSuspects = value < maxNumberOfSuspects ? value : maxNumberOfSuspects;
-            CharacterVariableStorage.SetValueNoLeading(numberOfSuspectsKey, value: numberOfSuspects);
+            characterVariableStorage.SetValueNoLeading(numberOfSuspectsKey, value: numberOfSuspects);
         }
     }
 
@@ -73,7 +90,7 @@ public class CharacterCreation : MonoBehaviour
         private set
         {
             victim = value;
-            CharacterVariableStorage.SetValueNoLeading(victimKey, value: value);
+            characterVariableStorage.SetValueNoLeading(victimKey, value: value);
         }
     }
 
@@ -89,7 +106,9 @@ public class CharacterCreation : MonoBehaviour
     private HashSet<Suspect> suspects;
     public IReadOnlyCollection<Suspect> Suspects => suspects;
 
-    public AccessibleVariableStorage<InMemoryVariableStorage> CharacterVariableStorage { get; private set; }
+    public VariableStorageBehaviour VariableStorage { get; private set; }
+
+    private AccessibleVariableStorage<InMemoryVariableStorage> characterVariableStorage;
 
     private SelectorPool<int> mNames, fNames;
     private SelectorPool<int> mRelation, fRelation;
@@ -122,7 +141,7 @@ public class CharacterCreation : MonoBehaviour
         // Create the murderer
         Suspect murderer = InitializeSuspect(hasAlibi: false);
         Murderer = murderer;
-        CharacterVariableStorage.SetValueNoLeading(murdererKey, value: murderer);
+        characterVariableStorage.SetValueNoLeading(murdererKey, value: murderer);
         suspects.Add(murderer);
 
         // Create other suspects
@@ -161,7 +180,7 @@ public class CharacterCreation : MonoBehaviour
     private void SetCurrentSuspectImpl(Suspect suspect)
     {
         CurrentSuspect = suspect;
-        CharacterVariableStorage.SetValueNoLeading(suspectKey, value: suspect);
+        characterVariableStorage.SetValueNoLeading(suspectKey, value: suspect);
     }
 
     private void InitializePools()
@@ -233,8 +252,6 @@ public class CharacterCreation : MonoBehaviour
 
     private void FillNamePool()
     {
-        randomNamePoolSource = GetComponent<PoolVariableStorage>();
-
         SelectorPool<object> randomNamePool = new SelectorPool<object>();
 
         while (mNames.Count > 0)

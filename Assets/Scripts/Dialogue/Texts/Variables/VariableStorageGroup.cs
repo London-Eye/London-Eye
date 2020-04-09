@@ -26,9 +26,12 @@ namespace Assets.Scripts.Dialogue.Texts.Variables
 
         protected override void ResetToDefaultsBeforeStorage()
         {
-            foreach (var source in sources)
+            if (sources != null)
             {
-                source.ResetToDefaults();
+                foreach (var source in sources)
+                {
+                    source.ResetToDefaults();
+                }
             }
         }
 

@@ -29,6 +29,13 @@ namespace Assets.Scripts.Common
         public static string AddLeadingIfNeeded(string text)
             => (text == null || text.StartsWith(variableLeading)) ? text : (variableLeading + text);
 
+        public static string RemoveLeadingIfPresent(this VariableStorageBehaviour _, string text)
+            => RemoveLeadingIfPresent(text);
+
+        public static string RemoveLeadingIfPresent(string text)
+            => text.StartsWith(variableLeading) ? text.Remove(0, variableLeading.Length) : text;
+
+
         public static Value GetValueNoLeading(this VariableStorageBehaviour v, string variableNameNoLeading)
             => v.GetValue(AddLeadingIfNeeded(variableNameNoLeading));
 

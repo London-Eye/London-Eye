@@ -2410,6 +2410,7 @@ GameObject:
   - component: {fileID: 1276836357}
   - component: {fileID: 1276836353}
   - component: {fileID: 1276836356}
+  - component: {fileID: 1276836351}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2417,6 +2418,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1276836351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1276836350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d057aecc9fabab44bccf888eca528d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  persistStorage: 1
+  textAsset: {fileID: 4900000, guid: 91a40575f01d3c049bcb61de9cd0aa7f, type: 3}
+  NameValuesSeparator: '---'
+  PoolSeparator: ===
 --- !u!114 &1276836353
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2429,7 +2446,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 841f782ad886c094b8f0cf07b090e7ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnMakeSingleton:
+  OnInitInstance:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 688476741}
