@@ -15,7 +15,22 @@ namespace Assets.Scripts.Dialogue.Texts.Variables
         }
 
         protected virtual T InitStorage()
-            => gameObject.AddComponent<T>();
+        {
+            this.gameObject.SetActive(false);
+
+            T storage = gameObject.AddComponent<T>();
+
+            // This boilerplate code is needed to avoid InMemoryVariableStorage to throw a NullReferenceException
+            // The SetActive(false) and SetActive(true) are needed too in order for this to work
+            if (storage is InMemoryVariableStorage memoryStorage)
+            {
+                memoryStorage.defaultVariables = new InMemoryVariableStorage.DefaultVariable[0];
+            }
+
+            this.gameObject.SetActive(true);
+
+            return storage;
+        }
 
         public override Value GetValue(string variableName)
         {
@@ -39,6 +54,12 @@ namespace Assets.Scripts.Dialogue.Texts.Variables
             ResetToDefaultsBeforeStorage();
             Storage.ResetToDefaults();
             ResetToDefaultsAfterStorage();
+        }
+
+        protected void ResetToDefaults(T defaultStorage)
+        {
+            Storage = defaultStorage;
+            ResetToDefaults();
         }
 
         protected virtual void ResetToDefaultsBeforeStorage() { }

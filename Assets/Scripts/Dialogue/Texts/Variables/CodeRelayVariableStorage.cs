@@ -11,7 +11,7 @@ namespace Assets.Scripts.Dialogue.Texts.Variables
         [System.Serializable]
         private class CodeRelayUnityEvent : UnityEvent<CodeRelayVariableStorage> { }
 
-        [SerializeField] private CodeRelayUnityEvent StorageBind;
+        [SerializeField] private CodeRelayUnityEvent OnInitStorage;
 
         private VariableStorageBehaviour storageToBind;
 
@@ -22,15 +22,22 @@ namespace Assets.Scripts.Dialogue.Texts.Variables
 
         protected override VariableStorageBehaviour InitStorage()
         {
-            StorageBind.Invoke(this);
+            OnInitStorage.Invoke(this);
             return storageToBind;
         }
 
         public override void ResetToDefaults()
         {
-            ResetToDefaultsBeforeStorage();
-            if (!persistStorage) Storage.ResetToDefaults();
-            ResetToDefaultsAfterStorage();
+            if (Storage == storageToBind)
+            {
+                ResetToDefaultsBeforeStorage();
+                if (!persistStorage) Storage.ResetToDefaults();
+                ResetToDefaultsAfterStorage();
+            }
+            else
+            {
+                ResetToDefaults(storageToBind);
+            }
         }
     }
 }

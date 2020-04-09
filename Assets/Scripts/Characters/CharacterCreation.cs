@@ -5,11 +5,17 @@ using UnityEngine.SceneManagement;
 using Yarn.Unity;
 using Assets.Scripts.Characters;
 using Assets.Scripts.Dialogue.Texts.Variables;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(PoolVariableStorage))]
 public class CharacterCreation : MonoBehaviour
 {
     public const string InitialPuzzle = "CardGame";
+
+    [System.Serializable]
+    private class SimpleAccesibleVariableStorage : AccessibleVariableStorage<InMemoryVariableStorage> { }
+
+    public UnityEvent OnMakeSingleton;
 
     public static CharacterCreation Instance { get; private set; }
 
@@ -20,7 +26,7 @@ public class CharacterCreation : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(this.gameObject);
 
-            characterDictionary = gameObject.AddComponent<AccessibleVariableStorage<InMemoryVariableStorage>>();
+            characterDictionary = gameObject.AddComponent<SimpleAccesibleVariableStorage>();
             InitializePools();
 
             CreateVictim();
@@ -34,6 +40,8 @@ public class CharacterCreation : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+
+        OnMakeSingleton.Invoke();
     }
 
     // maxNumberOfSuspects = min(numberOfNames, numberOfRelations, numberOfEmotions);

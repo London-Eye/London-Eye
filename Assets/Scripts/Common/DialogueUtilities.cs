@@ -7,8 +7,18 @@ namespace Assets.Scripts.Common
     public class DialogueUtilities : MonoBehaviour
     {
         public void BindPersistentStorage(CodeRelayVariableStorage relay)
-            => relay.BindStorage(CharacterCreation.Instance.gameObject.GetComponent<VariableStorageBehaviour>());
+        {
+            if (CharacterCreation.Instance != null)
+            {
+                relay.BindStorage(CharacterCreation.Instance.gameObject.GetComponent<VariableStorageBehaviour>());
+            }
+        }
 
+        public void ResetBindingPersistentStorage(CodeRelayVariableStorage relay)
+        {
+            BindPersistentStorage(relay);
+            relay.ResetToDefaults();
+        }
 
         public void StartPostGameDialogue(GameObject gameObjectToDeactivate)
         {
