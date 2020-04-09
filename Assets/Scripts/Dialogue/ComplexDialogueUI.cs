@@ -8,6 +8,8 @@ namespace Assets.Scripts.Dialogue
 {
     public class ComplexDialogueUI : DialogueUI
     {
+        public const char LineStartPlaceHolder = ':';
+
         // When true, the user has indicated that they want to proceed to
         // the next line.
         private bool proceedToNextLine = false;
@@ -34,6 +36,10 @@ namespace Assets.Scripts.Dialogue
             {
                 Debug.LogWarning($"Line {line.ID} doesn't have any localised text.");
                 text = line.ID;
+            }
+            else if (text[0] == LineStartPlaceHolder)
+            {
+                text = text.Remove(0, 1);
             }
 
             if (textSpeed > 0.0f)

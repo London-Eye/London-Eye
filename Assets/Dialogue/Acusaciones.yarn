@@ -1,7 +1,7 @@
 title: Acusacion-SinPruebas
 tags: SinPruebas
 ---
-{$SuspectName} ha sido [select {$SuspectIsMale} True="acusado" False="acusada"] de asesinato, pero el jurado ha declarado que no tiene suficientes pruebas para [select {$SuspectIsMale} True="procesarlo" False="procesarla"].
+:{$SuspectName} ha sido [select {$SuspectIsMale} True="acusado" False="acusada"] de asesinato, pero el jurado ha declarado que no tiene suficientes pruebas para [select {$SuspectIsMale} True="procesarlo" False="procesarla"].
 El jurado no ha podido decidirse en el caso de {$SuspectName} por falta de pruebas y, por tanto, queda libre.
 El juez ha declarado inocente a {$SuspectName} por falta de pruebas que [select {$SuspectIsMale} True="lo" False="la"] incriminen.
 <color=orange>Sigue investigando sospechosos para conseguir más pruebas y poder acusarlos más acertadamente.</color>
@@ -13,7 +13,7 @@ tags: Inocente
 ---
 Después de un juicio justo, se ha declarado que {$SuspectName} es inocente.
 El jurado ha declarado la inocencia de {$SuspectName} en el caso de asesinato.
-{$SuspectName} queda libre por resultar inocente en el caso de asesinato que se le acusaba.
+:{$SuspectName} queda libre por resultar inocente en el caso de asesinato que se le acusaba.
 <color=orange>No te desanimes, sigue investigando sospechosos para poder encontrar al criminal, pero cuidado con las acusaciones sin pruebas o perderás el caso.</color>
 <<BackToMainMenu GameDialogue>>
 ===
@@ -22,7 +22,7 @@ title:Acusacion-Criminal
 tags: Criminal
 ---
 El juez ha declarado culpable a {$SuspectName} del asesinato de {$VictimName}.
-{$SuspectName}, {$SuspectRelation} de {$VictimName}, es culpable de su asesinato.
+:{$SuspectName}, {$SuspectRelation} de {$VictimName}, es culpable de su asesinato.
 Gracias a Deiv I.D., se ha arrestado a {$SuspectName}, culpable del asesinato de {$VictimName}.
 <color=orange>Enhorabuena, has atrapado al criminal y con ello has aumentado tu reputación como investigador.</color>
 <<BackToMainMenu GameDialogue>>
