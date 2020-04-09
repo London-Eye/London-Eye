@@ -13,7 +13,7 @@ tags: PostGame
 <<CompletePuzzle GameManager>>
 Después de casi una hora de interrogatorio con {$SuspectName}, has conseguido averiguar alguna cosa útil.
 
-{$SuspectName} es {$SuspectRelation} de la víctima ({$VictimName}).
+:{$SuspectName} es {$SuspectRelation} de la víctima ({$VictimName}).
 <<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
 
 Realmente, muy en su interior, {$SuspectName} {$SuspectEmotion} la víctima ({$VictimName}).
