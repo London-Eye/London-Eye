@@ -12,7 +12,8 @@ namespace Assets.Scripts.Dialogue.Texts.Variables
 
         public List<VariableStorageBehaviour> sources;
 
-        public bool logKnownExceptionsOnSet;
+        [Header("Optional debugging options")]
+        public bool logSetKnownErrors = true;
 
         protected override Value GetValueBeforeStorage(string variableName)
         {
@@ -49,7 +50,7 @@ namespace Assets.Scripts.Dialogue.Texts.Variables
                     // The source was not compatible with the value. Try another.
 
                     // Log the exception if the flag is set to true
-                    if (logKnownExceptionsOnSet)
+                    if (logSetKnownErrors)
                     {
                         Debug.LogException(ex);
                     }
