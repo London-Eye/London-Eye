@@ -42,7 +42,7 @@ namespace Assets.Scripts.Dialogue.Variables.Storages
             {
                 if (objectValue is Value yarnValue)
                 {
-                    Type targetType = accessIndex.MemberType;
+                    Type targetType = accessIndex.AccessType;
                     objectValue = yarnValue.As(targetType);
                 }
                 accessIndex.SetValue(objectValue);
@@ -70,6 +70,12 @@ namespace Assets.Scripts.Dialogue.Variables.Storages
         public void AddIndicesFrom(object target)
             => AddIndices(GetYarnAccesses(target));
 
+        public void AddIndexFrom(object target, PropertyInfo propertyInfo)
+            => AddIndex(GetYarnAccess(target, propertyInfo));
+
+        public void AddIndexFrom(object target, FieldInfo fieldInfo)
+            => AddIndex(GetYarnAccess(target, fieldInfo));
+
         public void AddIndices(IEnumerable<AccessIndex> accessIndices)
         {
             foreach (AccessIndex index in accessIndices)
@@ -92,7 +98,7 @@ namespace Assets.Scripts.Dialogue.Variables.Storages
             YarnRecursiveAccessAttribute[] recursiveAttributes = (YarnRecursiveAccessAttribute[])Attribute.GetCustomAttributes(t, typeof(YarnRecursiveAccessAttribute));
             foreach (YarnRecursiveAccessAttribute attribute in recursiveAttributes)
             {
-                res.Add(new AccessIndex(value, attribute));
+                res.Add(new RecursiveAccessIndex(value, attribute));
             }
 
             foreach (PropertyInfo propertyInfo in t.GetProperties())
@@ -110,34 +116,16 @@ namespace Assets.Scripts.Dialogue.Variables.Storages
             return res;
         }
 
-        /// <summary>
-        /// Important: Use only instances of <see cref="PropertyInfo"/> or <see cref="FieldInfo"/> for the <paramref name="memberInfo"/> parameter.
-        /// </summary>
-        /// <param name="value"></param>
-        /// <param name="memberInfo"></param>
-        public static AccessIndex GetYarnAccess(object value, MemberInfo memberInfo)
+        public static AccessIndex GetYarnAccess(object value, PropertyInfo propertyInfo)
         {
-            YarnAccessAttribute attribute = (YarnAccessAttribute)Attribute.GetCustomAttribute(memberInfo, typeof(YarnAccessAttribute));
-            if (attribute != null)
-            {
-                AccessIndex accessIndex;
-                if (memberInfo is PropertyInfo propertyInfo)
-                {
-                    accessIndex = new AccessIndex(value, propertyInfo, attribute.name);
-                }
-                else if (memberInfo is FieldInfo fieldInfo)
-                {
-                    accessIndex = new AccessIndex(value, fieldInfo, attribute.name);
-                }
-                else
-                {
-                    throw new ArgumentException($"The subtype used for {nameof(memberInfo)} is not valid. Check the documentation for details.");
-                }
+            YarnAccessAttribute attribute = (YarnAccessAttribute)Attribute.GetCustomAttribute(propertyInfo, typeof(YarnAccessAttribute));
+            return attribute == null ? null : new PropertyAccessIndex(value, propertyInfo, attribute.name);
+        }
 
-                return accessIndex;
-            }
-
-            return null;
+        public static AccessIndex GetYarnAccess(object value, FieldInfo fieldInfo)
+        {
+            YarnAccessAttribute attribute = (YarnAccessAttribute)Attribute.GetCustomAttribute(fieldInfo, typeof(YarnAccessAttribute));
+            return attribute == null ? null : new FieldAccessIndex(value, fieldInfo, attribute.name);
         }
 
         public static string GetAccessVariableName(string variableName, string accessName)
