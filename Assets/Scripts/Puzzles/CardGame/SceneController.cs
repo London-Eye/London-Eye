@@ -46,6 +46,7 @@ public class SceneController : MonoBehaviour
     {
         GameRunning = true;
         scoreLabel.gameObject.SetActive(true);
+        scoreLabel.color = Color.red;
         movesLabel.gameObject.SetActive(true);
     }
 
@@ -106,7 +107,14 @@ public class SceneController : MonoBehaviour
 
     private IEnumerator CheckMoves()
     {
-        movesLabel.text = "Mov. restantes: " + (_maxMV - _movimientos);
+        int movRest = _maxMV - _movimientos;
+        movesLabel.text = "" + movRest;
+        if (movRest < movRest/2) {
+            movesLabel.color = Color.yellow;
+        }
+        if (movRest < movRest/5) {
+            movesLabel.color = Color.red;
+        }
         yield return null;
     }
     private IEnumerator CheckMatch()
@@ -117,7 +125,9 @@ public class SceneController : MonoBehaviour
         if (sp1.Equals(sp2))
         {
             _score++;
-            scoreLabel.text = "Parejas: " + _score;
+            ScoreRank scoreRank = GetScoreRank(true);
+            scoreLabel.color = scoreRank.Color;
+            scoreLabel.text = "" + _score;
         }
         else
         {
