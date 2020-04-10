@@ -26,16 +26,18 @@ namespace Assets.Scripts.Dialogue.Texts.Variables
 
         public void SetValue(string variableName, object objectValue)
         {
+            string variableNameNoLeading = this.RemoveLeadingIfPresent(variableName);
+
             var yarnAccessIndices = GetYarnAccesses(objectValue);
 
             foreach (AccessIndex index in yarnAccessIndices)
             {
-                index.Name = GetAccessVariableName(variableName, index.Name);
+                index.Name = GetAccessVariableName(variableNameNoLeading, index.Name);
             }
 
             AddIndices(yarnAccessIndices);
 
-            if (accessIndices.TryGetValue(this.RemoveLeadingIfPresent(variableName), out AccessIndex accessIndex))
+            if (accessIndices.TryGetValue(variableNameNoLeading, out AccessIndex accessIndex))
             {
                 if (objectValue is Value yarnValue)
                 {
