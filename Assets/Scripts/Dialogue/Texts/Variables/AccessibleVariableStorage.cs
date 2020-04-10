@@ -10,70 +10,11 @@ namespace Assets.Scripts.Dialogue.Texts.Variables
 {
     public class AccessibleVariableStorage<T> : VariableStorageDecorator<T> where T : VariableStorageBehaviour
     {
-        private struct AccessIndex
-        {
-            public object Target { get; private set; }
-
-            public MemberInfo TargetMemberInfo { get; private set; }
-
-            public Type MemberType
-            {
-                get
-                {
-                    if (TargetMemberInfo is PropertyInfo propertyInfo)
-                    {
-                        return propertyInfo.PropertyType;
-                    }
-                    else if (TargetMemberInfo is FieldInfo fieldInfo)
-                    {
-                        return fieldInfo.FieldType;
-                    }
-                    else
-                    {
-                        return null;
-                    }
-                }
-            }
-
-            private readonly Func<Value> getValue;
-            private readonly Action<object> setValue;
-
-            public AccessIndex(object target, PropertyInfo propertyInfo)
-            {
-                Target = target;
-                TargetMemberInfo = propertyInfo;
-
-                getValue = () => Utilities.AsYarnValue(propertyInfo.GetValue(target));
-                setValue = (value) => propertyInfo.SetValue(target, value);
-            }
-
-            public AccessIndex(object target, FieldInfo fieldInfo)
-            {
-                Target = target;
-                TargetMemberInfo = fieldInfo;
-
-                getValue = () => Utilities.AsYarnValue(fieldInfo.GetValue(target));
-                setValue = (value) => fieldInfo.SetValue(target, value);
-            }
-
-            public AccessIndex(object target, YarnRecursiveAccessAttribute attribute)
-            {
-                Target = target;
-                TargetMemberInfo = null;
-
-                getValue = () => Utilities.AsYarnValue(attribute.GetValue(target));
-                setValue = (value) => attribute.SetValue(target, value);
-            }
-
-            public Value GetValue() => getValue();
-            public void SetValue(object value) => setValue(value);
-        }
-
-        private readonly Dictionary<string, AccessIndex> accessIndexes = new Dictionary<string, AccessIndex>();
+        private readonly Dictionary<string, AccessIndex> accessIndices = new Dictionary<string, AccessIndex>();
 
         protected override Value GetValueAfterStorage(string variableName)
         {
-            if (accessIndexes.TryGetValue(variableName, out AccessIndex accessIndex))
+            if (accessIndices.TryGetValue(variableName, out AccessIndex accessIndex))
             {
                 return accessIndex.GetValue();
             }
@@ -85,9 +26,16 @@ namespace Assets.Scripts.Dialogue.Texts.Variables
 
         public void SetValue(string variableName, object objectValue)
         {
-            CheckYarnAccesses(variableName, objectValue);
+            var yarnAccessIndices = CheckYarnAccesses(objectValue);
 
-            if (accessIndexes.TryGetValue(variableName, out AccessIndex accessIndex))
+            foreach (AccessIndex index in yarnAccessIndices)
+            {
+                index.Name = GetAccessVariableName(variableName, index.Name);
+            }
+
+            AddIndices(yarnAccessIndices);
+
+            if (accessIndices.TryGetValue(variableName, out AccessIndex accessIndex))
             {
                 if (objectValue is Value yarnValue)
                 {
@@ -116,60 +64,77 @@ namespace Assets.Scripts.Dialogue.Texts.Variables
             }
         }
 
-        private void CheckYarnAccesses(string variableName, object value)
+        public void AddIndices(IEnumerable<AccessIndex> accessIndices)
         {
+            foreach (AccessIndex index in accessIndices)
+            {
+                AddIndex(index);
+            }
+        }
+
+        public void AddIndex(AccessIndex accessIndex)
+        {
+            accessIndices[accessIndex.Name] = accessIndex;
+        }
+
+        public static List<AccessIndex> CheckYarnAccesses(object value)
+        {
+            List<AccessIndex> res = new List<AccessIndex>();
+
             Type t = value.GetType();
 
             YarnRecursiveAccessAttribute[] recursiveAttributes = (YarnRecursiveAccessAttribute[])Attribute.GetCustomAttributes(t, typeof(YarnRecursiveAccessAttribute));
             foreach (YarnRecursiveAccessAttribute attribute in recursiveAttributes)
             {
-                string accessVariableName = GetAccessVariableName(variableName, (attribute.name ?? t.Name));
-                accessIndexes[accessVariableName] = new AccessIndex(value, attribute);
+                res.Add(new AccessIndex(value, attribute));
             }
 
             foreach (PropertyInfo propertyInfo in t.GetProperties())
             {
-                CheckYarnAccess(variableName, value, propertyInfo);
+                var yarnAccess = CheckYarnAccess(value, propertyInfo);
+                if (yarnAccess != null) res.Add(yarnAccess);
             }
 
             foreach (FieldInfo fieldInfo in t.GetFields())
             {
-                CheckYarnAccess(variableName, value, fieldInfo);
+                var yarnAccess = CheckYarnAccess(value, fieldInfo);
+                if (yarnAccess != null) res.Add(yarnAccess);
             }
+
+            return res;
         }
 
         /// <summary>
         /// Important: Use only instances of <see cref="PropertyInfo"/> or <see cref="FieldInfo"/> for the <paramref name="memberInfo"/> parameter.
         /// </summary>
-        /// <param name="variableName"></param>
         /// <param name="value"></param>
         /// <param name="memberInfo"></param>
-        private void CheckYarnAccess(string variableName, object value, MemberInfo memberInfo)
+        public static AccessIndex CheckYarnAccess(object value, MemberInfo memberInfo)
         {
             YarnAccessAttribute attribute = (YarnAccessAttribute)Attribute.GetCustomAttribute(memberInfo, typeof(YarnAccessAttribute));
             if (attribute != null)
             {
-                string accessVariableName = GetAccessVariableName(variableName, (attribute.name ?? memberInfo.Name));
-
                 AccessIndex accessIndex;
                 if (memberInfo is PropertyInfo propertyInfo)
                 {
-                    accessIndex = new AccessIndex(value, propertyInfo);
+                    accessIndex = new AccessIndex(value, propertyInfo, attribute.name);
                 }
                 else if (memberInfo is FieldInfo fieldInfo)
                 {
-                    accessIndex = new AccessIndex(value, fieldInfo);
+                    accessIndex = new AccessIndex(value, fieldInfo, attribute.name);
                 }
                 else
                 {
                     throw new ArgumentException($"The subtype used for {nameof(memberInfo)} is not valid. Check the documentation for details.");
                 }
 
-                accessIndexes[accessVariableName] = accessIndex;
+                return accessIndex;
             }
+
+            return null;
         }
 
-        private static string GetAccessVariableName(string variableName, string accessName)
+        public static string GetAccessVariableName(string variableName, string accessName)
             => variableName + accessName;
 
         /// <summary>
@@ -182,7 +147,7 @@ namespace Assets.Scripts.Dialogue.Texts.Variables
 
         protected override void ResetToDefaultsAfterStorage()
         {
-            accessIndexes.Clear();
+            accessIndices.Clear();
         }
     }
 }
