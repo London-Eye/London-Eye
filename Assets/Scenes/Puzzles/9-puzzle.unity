@@ -351,35 +351,22 @@ MonoBehaviour:
   partial_im: {fileID: 7368752284640281770, guid: 6198ac81cb2776243ae582d1e88a005b,
     type: 3}
   letterBroken:
-  - {fileID: -2374222918679686493, guid: 536af41b2081bd545a39b4ac4e901cca, type: 3}
-  - {fileID: -761933863725385812, guid: 536af41b2081bd545a39b4ac4e901cca, type: 3}
-  - {fileID: -5906598218874874896, guid: 536af41b2081bd545a39b4ac4e901cca, type: 3}
-  - {fileID: -1816755548282093316, guid: 536af41b2081bd545a39b4ac4e901cca, type: 3}
-  - {fileID: 2008176328888099268, guid: 536af41b2081bd545a39b4ac4e901cca, type: 3}
-  - {fileID: 6967745887157389618, guid: 536af41b2081bd545a39b4ac4e901cca, type: 3}
-  - {fileID: 6501298950303736333, guid: 536af41b2081bd545a39b4ac4e901cca, type: 3}
-  - {fileID: -3181606171480048652, guid: 536af41b2081bd545a39b4ac4e901cca, type: 3}
-  - {fileID: -7010260848350730462, guid: 536af41b2081bd545a39b4ac4e901cca, type: 3}
-  letterBurned:
-  - {fileID: -2374222918679686493, guid: 47be06556900873438503296b0fdd175, type: 3}
-  - {fileID: -761933863725385812, guid: 47be06556900873438503296b0fdd175, type: 3}
-  - {fileID: -5906598218874874896, guid: 47be06556900873438503296b0fdd175, type: 3}
-  - {fileID: -1816755548282093316, guid: 47be06556900873438503296b0fdd175, type: 3}
-  - {fileID: 2008176328888099268, guid: 47be06556900873438503296b0fdd175, type: 3}
-  - {fileID: 6967745887157389618, guid: 47be06556900873438503296b0fdd175, type: 3}
-  - {fileID: 6501298950303736333, guid: 47be06556900873438503296b0fdd175, type: 3}
-  - {fileID: -3181606171480048652, guid: 47be06556900873438503296b0fdd175, type: 3}
-  - {fileID: -7010260848350730462, guid: 47be06556900873438503296b0fdd175, type: 3}
-  letterScrached:
-  - {fileID: -2374222918679686493, guid: b50c4351336e9ce4388f7ca8f0877b49, type: 3}
-  - {fileID: -761933863725385812, guid: b50c4351336e9ce4388f7ca8f0877b49, type: 3}
-  - {fileID: -5906598218874874896, guid: b50c4351336e9ce4388f7ca8f0877b49, type: 3}
-  - {fileID: -1816755548282093316, guid: b50c4351336e9ce4388f7ca8f0877b49, type: 3}
-  - {fileID: 2008176328888099268, guid: b50c4351336e9ce4388f7ca8f0877b49, type: 3}
-  - {fileID: 6967745887157389618, guid: b50c4351336e9ce4388f7ca8f0877b49, type: 3}
-  - {fileID: 6501298950303736333, guid: b50c4351336e9ce4388f7ca8f0877b49, type: 3}
-  - {fileID: -3181606171480048652, guid: b50c4351336e9ce4388f7ca8f0877b49, type: 3}
-  - {fileID: -7010260848350730462, guid: b50c4351336e9ce4388f7ca8f0877b49, type: 3}
+  - {fileID: -2374222918679686493, guid: 71d4bb6fb5187204f8bdf626a3794922, type: 3}
+  - {fileID: -761933863725385812, guid: 71d4bb6fb5187204f8bdf626a3794922, type: 3}
+  - {fileID: -5906598218874874896, guid: 71d4bb6fb5187204f8bdf626a3794922, type: 3}
+  - {fileID: -1816755548282093316, guid: 71d4bb6fb5187204f8bdf626a3794922, type: 3}
+  - {fileID: 2008176328888099268, guid: 71d4bb6fb5187204f8bdf626a3794922, type: 3}
+  - {fileID: 6967745887157389618, guid: 71d4bb6fb5187204f8bdf626a3794922, type: 3}
+  - {fileID: 6501298950303736333, guid: 71d4bb6fb5187204f8bdf626a3794922, type: 3}
+  - {fileID: -3181606171480048652, guid: 71d4bb6fb5187204f8bdf626a3794922, type: 3}
+  - {fileID: -7010260848350730462, guid: 71d4bb6fb5187204f8bdf626a3794922, type: 3}
+  - {fileID: -8655818156195654838, guid: 71d4bb6fb5187204f8bdf626a3794922, type: 3}
+  - {fileID: 6346318911325233748, guid: 71d4bb6fb5187204f8bdf626a3794922, type: 3}
+  - {fileID: 1840059084634729652, guid: 71d4bb6fb5187204f8bdf626a3794922, type: 3}
+  - {fileID: 1127223760459724062, guid: 71d4bb6fb5187204f8bdf626a3794922, type: 3}
+  - {fileID: 2450565909728410856, guid: 71d4bb6fb5187204f8bdf626a3794922, type: 3}
+  - {fileID: -3165705482850905674, guid: 71d4bb6fb5187204f8bdf626a3794922, type: 3}
+  - {fileID: -5774996654182199871, guid: 71d4bb6fb5187204f8bdf626a3794922, type: 3}
   selector: 0
   EndgameMenu: {fileID: 396050913}
 --- !u!1 &442949206
@@ -1219,10 +1206,19 @@ PrefabInstance:
       propertyPath: onDialogueEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1788309106, guid: f9cf9ff9943921943bbb41cab3390a11, type: 3}
+      propertyPath: onDialogueStart.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2552118832597424446, guid: f9cf9ff9943921943bbb41cab3390a11,
         type: 3}
       propertyPath: m_Name
       value: GameDialogue
+      objectReference: {fileID: 0}
+    - target: {fileID: 2552118832597424446, guid: f9cf9ff9943921943bbb41cab3390a11,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5296080503983468574, guid: f9cf9ff9943921943bbb41cab3390a11,
         type: 3}
@@ -1655,6 +1651,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PauseMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 9031774543542262498, guid: 274056581bb348747b9caedd2437fce0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9031774543542262499, guid: 274056581bb348747b9caedd2437fce0,
         type: 3}

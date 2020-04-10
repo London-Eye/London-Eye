@@ -7,11 +7,11 @@ public class Set_images : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] private Partial_image partial_im;
-    [SerializeField] private Sprite[] letterBroken;
+    [SerializeField] private Sprite[] letterBroken;/*
     [SerializeField] private Sprite[] letterBurned;
-    [SerializeField] private Sprite[] letterScrached;
-    private float[] posX = new float[9] { -1.09f, 1, 3.09f, -1.09f, 1, 3.09f, -1.09f, 1, 3.09f };
-    private float[] posY = new float[9] { 2.9f, 2.9f, 2.9f, -0.07f,  -0.07f, -0.07f, -3.04f, -3.04f, -3.04f };
+    [SerializeField] private Sprite[] letterScrached;*/
+    private float[] posX = new float[16] {-1.55f, 0.04f, 1.63f, 3.22f, -1.55f, 0.04f, 1.63f, 3.22f, -1.55f, 0.04f, 1.63f, 3.22f, -1.55f, 0.04f, 1.63f, 3.22f };
+    private float[] posY = new float[16] {3.4f, 3.4f, 3.4f, 3.4f, 1.14f, 1.14f, 1.14f, 1.14f, -1.12f, -1.12f, -1.12f, -1.12f,-3.38f, -3.38f, -3.38f, -3.38f };
     public Dictionary<string, Vector3> correct = new Dictionary<string, Vector3>();
     public int selector;
 
@@ -19,10 +19,11 @@ public class Set_images : MonoBehaviour
 
     public bool GameRunning { get; private set; }
 
+
     // Start is called before the first frame update
     void Start()
     {
-        Sprite[] images;
+        Sprite[] images = letterBroken;/*
         selector = Random.Range(0, 9);
         if (selector > 5)
         {
@@ -36,7 +37,7 @@ public class Set_images : MonoBehaviour
             else {
                 images = letterScrached;
             }
-        }
+        }*/
         EndgameMenu.SetActive(false);
         for (int i = 0; i < images.Length; i++)
         {

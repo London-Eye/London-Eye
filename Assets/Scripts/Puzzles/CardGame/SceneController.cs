@@ -114,10 +114,10 @@ public class SceneController : MonoBehaviour
     {
         int movRest = MaxMoves - _movimientos;
         movesLabel.text = "" + movRest;
-        if (movRest < movRest/2) {
+        if (movRest < MaxMoves/2) {
             movesLabel.color = Color.yellow;
         }
-        if (movRest < movRest/5) {
+        if (movRest < MaxMoves/5) {
             movesLabel.color = Color.red;
         }
         yield return null;

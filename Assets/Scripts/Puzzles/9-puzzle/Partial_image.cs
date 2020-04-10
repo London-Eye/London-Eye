@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,7 +9,8 @@ public class Partial_image : MonoBehaviour
     [SerializeField] Sprite subImage;
     private Vector2 ini,fin;
     private Partial_image source;
-
+    public float[] posX = new float[16] { -1.55f, 0.04f, 1.63f, 3.22f, -1.55f, 0.04f, 1.63f, 3.22f, -1.55f, 0.04f, 1.63f, 3.22f, -1.55f, 0.04f, 1.63f, 3.22f };
+    private float[] posY = new float[16] { 3.4f, 3.4f, 3.4f, 3.4f, 1.14f, 1.14f, 1.14f, 1.14f, -1.12f, -1.12f, -1.12f, -1.12f, -3.38f, -3.38f, -3.38f, -3.38f };
     public object x { get; private set; }
 
     public void setSubImage(Sprite s) {
@@ -19,76 +21,24 @@ public class Partial_image : MonoBehaviour
         transform.position = new Vector3(x, y, transform.position.z);
     }
 
+    public string getSpriteName(Partial_image pi) {
+        return pi.GetComponent<SpriteRenderer>().sprite.name;
+    }
 
 
     public Vector2 GetSector(float x, float y) {
 
-        Vector2 point;
+        Vector2 point = new Vector2();
+        float min = 100000.0f;
+        float diff;
 
-        if (x < -0.045)
-        {
-            //columna de la izquierda
-            if (y < -1.54)
-            {
-                //fila de inferior
-                point = new Vector2(-1.09f, -3.04f);
-            }
-            else {
-                if (y < 1.43)
-                {
-                    //fila central
-                    point = new Vector2(-1.09f, -0.07f);
+        for (int i = 0; i < posY.Length; i++) {
+                diff = (float)Math.Sqrt((Math.Pow((posX[i] - x), 2.0) + Math.Pow((posY[i] - y), 2.0)));
+                if (diff < min) {
+                    min = diff;
+                    point.x = posX[i];
+                    point.y = posY[i];
                 }
-                else {
-                    //fila superior
-                    point = new Vector2(-1.09f, 2.9f);
-                }
-            }
-        }
-        else {
-            if (x < 2.045)
-            {
-                //columna central
-                if (y < -1.54)
-                {
-                    //fila de inferior
-                    point = new Vector2(1, -3.04f);
-                }
-                else
-                {
-                    if (y < 1.43)
-                    {
-                        //fila central
-                        point = new Vector2(1, -0.07f);
-                    }
-                    else
-                    {
-                        //fila superior
-                        point = new Vector2(1, 2.9f);
-                    }
-                }
-            }
-            else {
-                //columna de la derecha
-                if (y < -1.54)
-                {
-                    //fila de inferior
-                    point = new Vector2(3.09f, -3.04f);
-                }
-                else
-                {
-                    if (y < 1.43)
-                    {
-                        //fila central
-                        point = new Vector2(3.09f, -0.07f);
-                    }
-                    else
-                    {
-                        //fila superior
-                        point = new Vector2(3.09f, 2.9f);
-                    }
-                }
-            }
         }
         return point;
     }
@@ -98,6 +48,7 @@ public class Partial_image : MonoBehaviour
         Vector2 mouseMove = GetMousePosition();
         ini = GetSector(mouseMove.x,mouseMove.y);
         transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, transform.localPosition.z - 1);
+        Debug.Log(ini);
     }
     private void OnMouseDrag()
     {
