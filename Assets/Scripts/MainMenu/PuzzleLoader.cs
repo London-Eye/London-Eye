@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.MainMenu.Characters;
+﻿using Assets.Scripts.Characters;
 using UnityEngine;
 using UnityEngine.UI;
 

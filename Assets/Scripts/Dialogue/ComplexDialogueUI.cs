@@ -1,7 +1,6 @@
 ﻿using Assets.Scripts.Dialogue.Texts;
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Yarn.Unity;
 
@@ -9,47 +8,38 @@ namespace Assets.Scripts.Dialogue
 {
     public class ComplexDialogueUI : DialogueUI
     {
-        private DialogueSnippetSystem[] snippetSystems;
+        public const char LineStartPlaceHolder = ':';
 
         // When true, the user has indicated that they want to proceed to
         // the next line.
         private bool proceedToNextLine = false;
 
-        void Start()
-        {
-            snippetSystems = FindObjectsOfType<DialogueSnippetSystem>();
-        }
-
-        public override Yarn.Dialogue.HandlerExecutionType RunLine(Yarn.Line line, IDictionary<string, string> strings, System.Action onComplete)
+        public override Yarn.Dialogue.HandlerExecutionType RunLine(Yarn.Line line, ILineLocalisationProvider localisationProvider, Action onComplete)
         {
             // Start displaying the line; it will call onComplete later
             // which will tell the dialogue to continue
-            StartCoroutine(DoRunLine(line, strings, onComplete));
+            StartCoroutine(DoRunLine(line, localisationProvider, onComplete));
             return Yarn.Dialogue.HandlerExecutionType.PauseExecution;
         }
 
         /// Show a line of dialogue, gradually        
-        private IEnumerator DoRunLine(Yarn.Line line, IDictionary<string, string> strings, System.Action onComplete)
+        private IEnumerator DoRunLine(Yarn.Line line, ILineLocalisationProvider localisationProvider, Action onComplete)
         {
             onLineStart?.Invoke();
 
             proceedToNextLine = false;
 
-            if (strings.TryGetValue(line.ID, out var text))
-            {
-                // Replace snippets with real text
-                if (snippetSystems != null && snippetSystems.Length > 0)
-                {
-                    foreach (var snippetSystem in snippetSystems)
-                    {
-                        text = snippetSystem.ParseAndReplace(text, RunLineLogger);
-                    }
-                }
-            }
-            else
+            // The final text we'll be showing for this line.
+            string text = localisationProvider.GetLocalisedTextForLine(line);
+
+            if (text == null)
             {
                 Debug.LogWarning($"Line {line.ID} doesn't have any localised text.");
                 text = line.ID;
+            }
+            else if (text[0] == LineStartPlaceHolder)
+            {
+                text = text.Remove(0, 1);
             }
 
             if (textSpeed > 0.0f)

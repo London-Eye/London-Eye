@@ -1240,6 +1240,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9cf9ff9943921943bbb41cab3390a11, type: 3}
+--- !u!114 &607182776 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5296080504864627355, guid: f9cf9ff9943921943bbb41cab3390a11,
+    type: 3}
+  m_PrefabInstance: {fileID: 607182775}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 610c541718d694070a21327d1ae62e75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &876223875
 GameObject:
   m_ObjectHideFlags: 0
@@ -1542,7 +1554,8 @@ MonoBehaviour:
   - {fileID: 312018911}
   - {fileID: 1120897258}
   - {fileID: 427668922}
-  ScoreColorName: SCORE_COLOR
+  ScoreColorName: ScoreColor
+  scoreColorVariableStorage: {fileID: 607182776}
 --- !u!4 &1153968361
 Transform:
   m_ObjectHideFlags: 0

@@ -14,6 +14,6 @@ tags: PostGame
 ---
 <<CompletePuzzle GameManager>>
 Después de una investigación ligera sobre la lista, consigues reducir el número de sospechosos.
-<i>Te has quedado con <color=**<SCORE_COLOR>**>**<NUMERO_SOSPECHOSOS>**</color> sospechosos.</i>
+<i>Te has quedado con <color={$ScoreColor}>{$NumberOfSuspects}</color> sospechosos.</i>
 Hora de investigar más profundamente a la víctima y a los sospechosos para encontrar al culpable.
 ===

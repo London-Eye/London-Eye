@@ -1,7 +1,7 @@
 title: MoveTheBlock-PreGame
 tags: PreGame
 ---
-Decides que lo mejor que puedes hacer es investigar a **<SOSPECHOSO[cname]>**, pero no podéis hablar directamente.
+Decides que lo mejor que puedes hacer es investigar a {$SuspectName}, pero no podéis hablar directamente.
 Aún así, sigues queriendo saber más cosas; así que decides usar tus habilidades de hacker para entrar en sus diferentes cuentas.
 Pero para ello tienes que atravesar su <i>cortafuegos</i> para poder infectar su ordenador con un <i>virus</i>.
 <color=orange>Mueve los bloques del <i>cortafuegos</i> para poder introducir el archivo con el <i>virus</i> en su ordenador.</color>
@@ -13,16 +13,16 @@ tags: PostGame
 ---
 <<EndGame MoveTheBlockController>>
 <<CompletePuzzle GameManager>>
-Después de usar todo tu ingenio, consigues acceder a las cuentas de **<SOSPECHOSO[cname]>**.
+Después de usar todo tu ingenio, consigues acceder a las cuentas de {$SuspectName}.
 
-Entras en su correo electrónico. Por el tipo de mensajes que encuentras, **<SOSPECHOSO[cname]>** es **<SOSPECHOSO[relation]>** de la víctima (**<VICTIMA[cname]>**).
-<<set $numero_pruebas to $numero_pruebas + 1>>
+Entras en su correo electrónico. Por el tipo de mensajes que encuentras, {$SuspectName} es {$SuspectRelation} de la víctima ({$VictimName}).
+<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
 
-Consigues entrar en una de sus apps de mensajería. Por cómo habla con **<NOMBRE>**, **<SOSPECHOSO[cname]>** **<SOSPECHOSO[emotion]>** la víctima (**<VICTIMA[cname]>**).
-<<set $numero_pruebas to $numero_pruebas + 1>>
+Consigues entrar en una de sus apps de mensajería. Por cómo habla con {$RandomName}, {$SuspectName} {$SuspectEmotion} la víctima ({$VictimName}).
+<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
 
-Revisando las facturas de **<SOSPECHOSO[cname]>**, te das cuenta de que su coartada **<SOSPECHOSO[HasAlibiAsString]>** es válida.
-<<set $numero_pruebas to $numero_pruebas + 1>>
+Revisando las facturas de {$SuspectName}, te das cuenta de que su coartada {$SuspectHasAlibiAsString} es válida.
+<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
 
 <<BackToMainMenu GameDialogue>>
 ===
