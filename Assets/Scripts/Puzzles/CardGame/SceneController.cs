@@ -6,7 +6,6 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Yarn.Unity;
-
 public class SceneController : MonoBehaviour
 {
     public int _maxMV = 0;
@@ -23,6 +22,7 @@ public class SceneController : MonoBehaviour
     [SerializeField] private GameObject EndgameMenu;
     [SerializeField] private TextMeshProUGUI finalScore;
     [SerializeField] private TextMeshProUGUI finalMessage;
+    [SerializeField] private GameObject[] layout;
 
     public string ScoreColorName;
 
@@ -39,6 +39,9 @@ public class SceneController : MonoBehaviour
     {
         EndgameMenu.SetActive(false);
         PutCardsOnTable();
+        for (int i = 0; i < layout.Length; i++) {
+            layout[i].SetActive(false);
+        }
     }
 
     [YarnCommand("StartCardGame")]
@@ -48,6 +51,10 @@ public class SceneController : MonoBehaviour
         scoreLabel.gameObject.SetActive(true);
         scoreLabel.color = Color.red;
         movesLabel.gameObject.SetActive(true);
+        for (int i = 0; i < layout.Length; i++)
+        {
+            layout[i].SetActive(true);
+        }
     }
 
     private void PutCardsOnTable()

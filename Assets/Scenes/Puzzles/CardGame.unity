@@ -667,7 +667,7 @@ GameObject:
   - component: {fileID: 427668925}
   - component: {fileID: 427668924}
   m_Layer: 5
-  m_Name: Image
+  m_Name: mov
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1318,7 +1318,7 @@ GameObject:
   - component: {fileID: 1120897261}
   - component: {fileID: 1120897260}
   m_Layer: 5
-  m_Name: iconePar (1)
+  m_Name: iconePar2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1537,6 +1537,11 @@ MonoBehaviour:
   EndgameMenu: {fileID: 1447375499}
   finalScore: {fileID: 59841791}
   finalMessage: {fileID: 1751742064}
+  layout:
+  - {fileID: 185071357}
+  - {fileID: 312018911}
+  - {fileID: 1120897258}
+  - {fileID: 427668922}
   ScoreColorName: SCORE_COLOR
 --- !u!4 &1153968361
 Transform:
