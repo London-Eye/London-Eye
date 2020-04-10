@@ -4,7 +4,6 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Yarn.Unity;
-
 public class SceneController : MonoBehaviour
 {
     public int _maxMV = 0;
@@ -21,6 +20,7 @@ public class SceneController : MonoBehaviour
     [SerializeField] private GameObject EndgameMenu;
     [SerializeField] private TextMeshProUGUI finalScore;
     [SerializeField] private TextMeshProUGUI finalMessage;
+    [SerializeField] private GameObject[] layout;
 
     public string ScoreColorName;
     [SerializeField] private VariableStorageBehaviour scoreColorVariableStorage;
@@ -38,6 +38,9 @@ public class SceneController : MonoBehaviour
     {
         EndgameMenu.SetActive(false);
         PutCardsOnTable();
+        for (int i = 0; i < layout.Length; i++) {
+            layout[i].SetActive(false);
+        }
     }
 
     [YarnCommand("StartCardGame")]
@@ -45,7 +48,12 @@ public class SceneController : MonoBehaviour
     {
         GameRunning = true;
         scoreLabel.gameObject.SetActive(true);
+        scoreLabel.color = Color.red;
         movesLabel.gameObject.SetActive(true);
+        for (int i = 0; i < layout.Length; i++)
+        {
+            layout[i].SetActive(true);
+        }
     }
 
     private void PutCardsOnTable()
@@ -71,7 +79,7 @@ public class SceneController : MonoBehaviour
                 int id = ids[index];
                 card.SetCard(id, images[id]);
                 float posX = (i + 0.5f) * cardWidth - totalwidth / 2 + margin;
-                float posY = (j + 0.55f) * cardHeight - totalheight / 2 + margin;
+                float posY = (j + 0.5f) * cardHeight - totalheight / 2 + margin;
                 card.transform.position = new Vector3(posX, posY, originalCard.transform.position.z);
             }
         }
@@ -105,7 +113,14 @@ public class SceneController : MonoBehaviour
 
     private IEnumerator CheckMoves()
     {
-        movesLabel.text = "Mov. restantes: " + (_maxMV - _movimientos);
+        int movRest = _maxMV - _movimientos;
+        movesLabel.text = "" + movRest;
+        if (movRest < movRest/2) {
+            movesLabel.color = Color.yellow;
+        }
+        if (movRest < movRest/5) {
+            movesLabel.color = Color.red;
+        }
         yield return null;
     }
     private IEnumerator CheckMatch()
@@ -116,7 +131,9 @@ public class SceneController : MonoBehaviour
         if (sp1.Equals(sp2))
         {
             _score++;
-            scoreLabel.text = "Parejas: " + _score;
+            ScoreRank scoreRank = GetScoreRank(true);
+            scoreLabel.color = scoreRank.Color;
+            scoreLabel.text = "" + _score;
         }
         else
         {
