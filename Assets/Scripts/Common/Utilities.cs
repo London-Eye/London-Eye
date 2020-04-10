@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.Dialogue.Texts.Variables;
+﻿using Assets.Scripts.Dialogue.Variables.Storages;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;

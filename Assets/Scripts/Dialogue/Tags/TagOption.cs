@@ -1,4 +1,4 @@
-﻿namespace Assets.Scripts.Dialogue.Texts.Tags
+﻿namespace Assets.Scripts.Dialogue.Tags
 {
     public enum TagOptionPosition { start, end }
 
@@ -9,9 +9,9 @@
         public string Option { get; }
 
         public string MainOption =>
-            (Option == null)
+            Option == null
             ? null
-            : (Option.IndexOf(EQUAL_SIGN) < 0)
+            : Option.IndexOf(EQUAL_SIGN) < 0
                 ? Option
                 : Option.Split(EQUAL_SIGN)[0];
 
@@ -36,12 +36,12 @@
 
         public TagOption(string option, TagFormat format, TagOptionPosition position = TagOptionPosition.start)
         {
-            this.Option = option;
-            this.Format = format;
-            this.Position = position;
+            Option = option;
+            Format = format;
+            Position = position;
         }
 
-        public override string ToString() => this.Text;
+        public override string ToString() => Text;
 
         public static bool Matches(TagOption start, TagOption end)
         {

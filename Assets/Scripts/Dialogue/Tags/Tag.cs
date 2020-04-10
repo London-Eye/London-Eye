@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Assets.Scripts.Dialogue.Texts.Tags
+namespace Assets.Scripts.Dialogue.Tags
 {
     /// <summary>
     /// Tags disponibles en Unity: https://docs.unity3d.com/Manual/StyledText.html
@@ -19,20 +19,20 @@ namespace Assets.Scripts.Dialogue.Texts.Tags
 
         public Tag(string option, TagFormat format)
         {
-            this.Option = option;
-            this.Format = format;
+            Option = option;
+            Format = format;
 
-            this.StartOption = new TagOption(option, format, TagOptionPosition.start);
-            this.EndOption = new TagOption(option, format, TagOptionPosition.end);
+            StartOption = new TagOption(option, format, TagOptionPosition.start);
+            EndOption = new TagOption(option, format, TagOptionPosition.end);
         }
 
         public Tag(TagOption startOption, TagOption endOption)
         {
-            this.Option = startOption.MainOption;
-            this.Format = startOption.Format;
+            Option = startOption.MainOption;
+            Format = startOption.Format;
 
-            this.StartOption = startOption;
-            this.EndOption = endOption;
+            StartOption = startOption;
+            EndOption = endOption;
         }
 
         public string GetTaggedText(string text) => StartOption.Text + text + EndOption.Text;

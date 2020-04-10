@@ -1,6 +1,7 @@
-﻿using System;
+﻿using Assets.Scripts.Dialogue.Texts;
+using System;
 
-namespace Assets.Scripts.Dialogue.Texts.Tags
+namespace Assets.Scripts.Dialogue.Tags
 {
     public class TagFormat : ISeparatedFormat<TagOption>
     {

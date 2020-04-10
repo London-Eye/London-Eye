@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Yarn;
 using Yarn.Unity;
 
-namespace Assets.Scripts.Dialogue.Texts.Variables
+namespace Assets.Scripts.Dialogue.Variables.Storages
 {
     public class PoolVariableStorage : VariableStorageDecorator<InMemoryVariableStorage>
     {

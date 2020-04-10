@@ -1,10 +1,10 @@
 ﻿using Assets.Scripts.Common;
-using Assets.Scripts.Dialogue.Texts.Variables.Attributes;
+using Assets.Scripts.Dialogue.Variables.Attributes;
 using System;
 using System.Reflection;
 using Yarn;
 
-namespace Assets.Scripts.Dialogue.Texts.Variables
+namespace Assets.Scripts.Dialogue.Variables.Access
 {
     public class AccessIndex
     {

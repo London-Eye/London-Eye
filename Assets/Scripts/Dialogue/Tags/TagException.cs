@@ -1,6 +1,7 @@
-﻿using System;
+﻿using Assets.Scripts.Dialogue.Texts;
+using System;
 
-namespace Assets.Scripts.Dialogue.Texts.Tags
+namespace Assets.Scripts.Dialogue.Tags
 {
     [Serializable]
     public class TagException : ParsingException
@@ -11,7 +12,7 @@ namespace Assets.Scripts.Dialogue.Texts.Tags
 
         public TagException(TagOption tag, int? index = null, int? lineNumber = null, string message = null) : base(message, index, lineNumber, END_ACTION_MESSAGE)
         {
-            this.Tag = tag;
+            Tag = tag;
         }
 
         [Serializable]

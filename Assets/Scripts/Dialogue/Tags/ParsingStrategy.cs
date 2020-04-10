@@ -1,4 +1,4 @@
-﻿namespace Assets.Scripts.Dialogue.Texts.Tags
+﻿namespace Assets.Scripts.Dialogue.Tags
 {
     public enum ParsingStrategy
     {

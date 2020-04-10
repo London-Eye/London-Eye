@@ -1,7 +1,7 @@
 ﻿using Yarn;
 using Yarn.Unity;
 
-namespace Assets.Scripts.Dialogue.Texts.Variables
+namespace Assets.Scripts.Dialogue.Variables.Storages
 {
     public abstract class VariableStorageDecorator<T> : VariableStorageBehaviour where T : VariableStorageBehaviour
     {
@@ -18,7 +18,7 @@ namespace Assets.Scripts.Dialogue.Texts.Variables
 
         protected virtual T InitStorage()
         {
-            this.gameObject.SetActive(false);
+            gameObject.SetActive(false);
 
             T storage = gameObject.AddComponent<T>();
 
@@ -29,7 +29,7 @@ namespace Assets.Scripts.Dialogue.Texts.Variables
                 memoryStorage.defaultVariables = new InMemoryVariableStorage.DefaultVariable[0];
             }
 
-            this.gameObject.SetActive(true);
+            gameObject.SetActive(true);
 
             return storage;
         }

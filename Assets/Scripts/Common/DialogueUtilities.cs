@@ -1,5 +1,5 @@
-﻿using Assets.Scripts.Dialogue.Texts.Variables;
-using Assets.Scripts.Dialogue.Texts.Variables.Attributes;
+﻿using Assets.Scripts.Dialogue.Variables.Attributes;
+using Assets.Scripts.Dialogue.Variables.Storages;
 using UnityEngine;
 using Yarn.Unity;
 

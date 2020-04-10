@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Assets.Scripts.Dialogue.Texts.Variables.Attributes
+namespace Assets.Scripts.Dialogue.Variables.Attributes
 {
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct, AllowMultiple = true)]
     public class YarnRecursiveAccessAttribute : Attribute
@@ -38,7 +38,7 @@ namespace Assets.Scripts.Dialogue.Texts.Variables.Attributes
 
             object currentValue = obj;
 
-            for(int i = 0; i < memberAccesses.Length - 1; i++)
+            for (int i = 0; i < memberAccesses.Length - 1; i++)
             {
                 string member = memberAccesses[i];
                 GoToNextValue(currentValue, member);

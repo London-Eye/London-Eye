@@ -1,12 +1,13 @@
 ﻿using Assets.Scripts.Common;
-using Assets.Scripts.Dialogue.Texts.Variables.Attributes;
+using Assets.Scripts.Dialogue.Variables.Access;
+using Assets.Scripts.Dialogue.Variables.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
 using Yarn;
 using Yarn.Unity;
 
-namespace Assets.Scripts.Dialogue.Texts.Variables
+namespace Assets.Scripts.Dialogue.Variables.Storages
 {
     public class AccessibleVariableStorage<T> : VariableStorageDecorator<T> where T : VariableStorageBehaviour
     {

@@ -4,8 +4,8 @@ using Assets.Scripts.Common;
 using UnityEngine.SceneManagement;
 using Yarn.Unity;
 using Assets.Scripts.Characters;
-using Assets.Scripts.Dialogue.Texts.Variables;
 using UnityEngine.Events;
+using Assets.Scripts.Dialogue.Variables.Storages;
 
 [RequireComponent(typeof(PoolVariableStorage))]
 public class CharacterCreation : MonoBehaviour

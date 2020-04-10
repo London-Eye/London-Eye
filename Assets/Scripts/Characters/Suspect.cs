@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.Dialogue.Texts.Variables.Attributes;
+﻿using Assets.Scripts.Dialogue.Variables.Attributes;
 
 namespace Assets.Scripts.Characters
 {

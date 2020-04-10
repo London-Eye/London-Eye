@@ -4,7 +4,7 @@ using System.IO;
 using UnityEngine;
 using Yarn;
 
-namespace Assets.Scripts.Dialogue.Texts.Variables
+namespace Assets.Scripts.Dialogue.Variables.Storages
 {
     public class TextAssetPoolVariableStorage : VariableStorageDecorator<PoolVariableStorage>
     {

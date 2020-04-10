@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Assets.Scripts.Dialogue.Texts.Variables.Attributes
+namespace Assets.Scripts.Dialogue.Variables.Attributes
 {
     [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property)]
     public class YarnAccessAttribute : Attribute
