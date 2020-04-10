@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 using Yarn.Unity;
 public class SceneController : MonoBehaviour
 {
-    public int _maxMV = 0;
+    public int MaxMoves = 0;
 
     public int gridRows = 1;
     public int gridCols = 1;
@@ -15,8 +15,8 @@ public class SceneController : MonoBehaviour
 
     [SerializeField] private MemoryCard originalCard;
     [SerializeField] private Sprite[] images;
-    [SerializeField] private TextMesh scoreLabel;
-    [SerializeField] private TextMesh movesLabel;
+    [SerializeField] private TextMeshProUGUI scoreLabel;
+    [SerializeField] private TextMeshProUGUI movesLabel;
     [SerializeField] private GameObject EndgameMenu;
     [SerializeField] private TextMeshProUGUI finalScore;
     [SerializeField] private TextMeshProUGUI finalMessage;
@@ -45,9 +45,13 @@ public class SceneController : MonoBehaviour
     public void StartCardGame()
     {
         GameRunning = true;
+
         scoreLabel.gameObject.SetActive(true);
         scoreLabel.color = Color.red;
+
         movesLabel.gameObject.SetActive(true);
+        StartCoroutine(CheckMoves());
+
         layout.SetActive(true);
     }
 
@@ -82,13 +86,13 @@ public class SceneController : MonoBehaviour
 
     void LateUpdate()
     {
-        if (GameRunning && (_movimientos >= _maxMV || _score == MaxScore))
+        if (GameRunning && (_movimientos >= MaxMoves || _score == MaxScore))
         {
             StartCoroutine(EndGame());
         }
     }
 
-    public bool CanReveal => _secondRevealed == null && _movimientos < _maxMV && GameRunning;
+    public bool CanReveal => _secondRevealed == null && _movimientos < MaxMoves && GameRunning;
 
     public void CardRevealed(MemoryCard card)
     {
@@ -108,7 +112,7 @@ public class SceneController : MonoBehaviour
 
     private IEnumerator CheckMoves()
     {
-        int movRest = _maxMV - _movimientos;
+        int movRest = MaxMoves - _movimientos;
         movesLabel.text = "" + movRest;
         if (movRest < movRest/2) {
             movesLabel.color = Color.yellow;
