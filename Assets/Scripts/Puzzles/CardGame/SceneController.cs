@@ -20,7 +20,7 @@ public class SceneController : MonoBehaviour
     [SerializeField] private GameObject EndgameMenu;
     [SerializeField] private TextMeshProUGUI finalScore;
     [SerializeField] private TextMeshProUGUI finalMessage;
-    [SerializeField] private GameObject[] layout;
+    [SerializeField] private GameObject layout;
 
     public string ScoreColorName;
     [SerializeField] private VariableStorageBehaviour scoreColorVariableStorage;
@@ -38,9 +38,7 @@ public class SceneController : MonoBehaviour
     {
         EndgameMenu.SetActive(false);
         PutCardsOnTable();
-        for (int i = 0; i < layout.Length; i++) {
-            layout[i].SetActive(false);
-        }
+        layout.SetActive(false);
     }
 
     [YarnCommand("StartCardGame")]
@@ -50,10 +48,7 @@ public class SceneController : MonoBehaviour
         scoreLabel.gameObject.SetActive(true);
         scoreLabel.color = Color.red;
         movesLabel.gameObject.SetActive(true);
-        for (int i = 0; i < layout.Length; i++)
-        {
-            layout[i].SetActive(true);
-        }
+        layout.SetActive(true);
     }
 
     private void PutCardsOnTable()
