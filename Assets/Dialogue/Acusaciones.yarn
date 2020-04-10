@@ -1,9 +1,18 @@
 title: Acusacion-SinPruebas
 tags: SinPruebas
 ---
-:{$SuspectName} ha sido [select {$SuspectIsMale} True="acusado" False="acusada"] de asesinato, pero el jurado ha declarado que no tiene suficientes pruebas para [select {$SuspectIsMale} True="procesarlo" False="procesarla"].
-El jurado no ha podido decidirse en el caso de {$SuspectName} por falta de pruebas y, por tanto, queda libre.
-El juez ha declarado inocente a {$SuspectName} por falta de pruebas que [select {$SuspectIsMale} True="lo" False="la"] incriminen.
+<<set $RandomIntMin to 0>>
+<<set $RandomIntMax to 3>>
+<<set $CurrentRandomInt to $RandomInt>>
+
+<<if $CurrentRandomInt eq 0>>
+    :{$SuspectName} ha sido [select {$SuspectIsMale} True="acusado" False="acusada"] de asesinato, pero el jurado ha declarado que no tiene suficientes pruebas para [select {$SuspectIsMale} True="procesarlo" False="procesarla"].
+<<elseif $CurrentRandomInt eq 1>>
+    El jurado no ha podido decidirse en el caso de {$SuspectName} por falta de pruebas y, por tanto, queda libre.
+<<elseif $CurrentRandomInt eq 2>>
+    El juez ha declarado inocente a {$SuspectName} por falta de pruebas que [select {$SuspectIsMale} True="lo" False="la"] incriminen.
+<<endif>>
+
 <color=orange>Sigue investigando sospechosos para conseguir más pruebas y poder acusarlos más acertadamente.</color>
 <<BackToMainMenu GameDialogue>>
 ===
@@ -11,9 +20,18 @@ El juez ha declarado inocente a {$SuspectName} por falta de pruebas que [select 
 title: Acusacion-Inocente
 tags: Inocente
 ---
-Después de un juicio justo, se ha declarado que {$SuspectName} es inocente.
-El jurado ha declarado la inocencia de {$SuspectName} en el caso de asesinato.
-:{$SuspectName} queda libre por resultar inocente en el caso de asesinato que se le acusaba.
+<<set $RandomIntMin to 0>>
+<<set $RandomIntMax to 3>>
+<<set $CurrentRandomInt to $RandomInt>>
+
+<<if $CurrentRandomInt eq 0>>
+    Después de un juicio justo, se ha declarado que {$SuspectName} es inocente.
+<<elseif $CurrentRandomInt eq 1>>
+    El jurado ha declarado la inocencia de {$SuspectName} en el caso de asesinato.
+<<elseif $CurrentRandomInt eq 2>>
+    :{$SuspectName} queda libre por resultar inocente en el caso de asesinato que se le acusaba.
+<<endif>>
+
 <color=orange>No te desanimes, sigue investigando sospechosos para poder encontrar al criminal, pero cuidado con las acusaciones sin pruebas o perderás el caso.</color>
 <<BackToMainMenu GameDialogue>>
 ===
@@ -21,9 +39,18 @@ El jurado ha declarado la inocencia de {$SuspectName} en el caso de asesinato.
 title:Acusacion-Criminal
 tags: Criminal
 ---
-El juez ha declarado culpable a {$SuspectName} del asesinato de {$VictimName}.
-:{$SuspectName}, {$SuspectRelation} de {$VictimName}, es culpable de su asesinato.
-Gracias a Deiv I.D., se ha arrestado a {$SuspectName}, culpable del asesinato de {$VictimName}.
+<<set $RandomIntMin to 0>>
+<<set $RandomIntMax to 3>>
+<<set $CurrentRandomInt to $RandomInt>>
+
+<<if $CurrentRandomInt eq 0>>
+    El juez ha declarado culpable a {$SuspectName} del asesinato de {$VictimName}.
+<<elseif $CurrentRandomInt eq 1>>
+    :{$SuspectName}, {$SuspectRelation} de {$VictimName}, es culpable de su asesinato.
+<<elseif $CurrentRandomInt eq 2>>
+    Gracias a Deiv I.D., se ha arrestado a {$SuspectName}, culpable del asesinato de {$VictimName}.
+<<endif>>
+
 <color=orange>Enhorabuena, has atrapado al criminal y con ello has aumentado tu reputación como investigador.</color>
 <<BackToMainMenu GameDialogue>>
 ===
