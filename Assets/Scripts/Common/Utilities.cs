@@ -10,6 +10,7 @@ namespace Assets.Scripts.Common
 {
     public static class Utilities
     {
+        #region Yarn Value
         public static object As(this Value yarnValue, System.Type targetType)
         {
             if (targetType.IsAssignableFrom(typeof(float)))
@@ -18,7 +19,7 @@ namespace Assets.Scripts.Common
             }
             else if (targetType.IsAssignableFrom(typeof(int)))
             {
-                return (int) yarnValue.AsNumber;
+                return (int)yarnValue.AsNumber;
             }
             else if (targetType.IsAssignableFrom(typeof(bool)))
             {
@@ -43,6 +44,8 @@ namespace Assets.Scripts.Common
 
             return value;
         }
+        #endregion
+
 
         #region Variable Storage Leading
         public const string variableLeading = "$";
@@ -72,8 +75,8 @@ namespace Assets.Scripts.Common
         public static void SetValueNoLeading(this VariableStorageBehaviour v, string variableNameNoLeading, Value value)
             => v.SetValue(AddLeadingIfNeeded(variableNameNoLeading), value);
 
-        public static void SetValueNoLeading<T>(this AccessibleVariableStorage<T> v, string variableNameNoLeading, object value) where T : VariableStorageBehaviour
-            => v.SetValue(AddLeadingIfNeeded(variableNameNoLeading), value);
+        public static void SetValueNoLeading<T>(this AccessibleVariableStorage<T> v, string variableNameNoLeading, object objectValue) where T : VariableStorageBehaviour
+            => v.SetValue(AddLeadingIfNeeded(variableNameNoLeading), objectValue);
         #endregion
 
 
@@ -127,7 +130,7 @@ namespace Assets.Scripts.Common
                 collection.Add(i);
             }
             return collection;
-        } 
+        }
         #endregion
     }
 }

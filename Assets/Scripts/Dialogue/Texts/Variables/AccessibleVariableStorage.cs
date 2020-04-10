@@ -14,7 +14,7 @@ namespace Assets.Scripts.Dialogue.Texts.Variables
 
         protected override Value GetValueAfterStorage(string variableName)
         {
-            if (accessIndices.TryGetValue(variableName, out AccessIndex accessIndex))
+            if (accessIndices.TryGetValue(this.RemoveLeadingIfPresent(variableName), out AccessIndex accessIndex))
             {
                 return accessIndex.GetValue();
             }
@@ -26,7 +26,7 @@ namespace Assets.Scripts.Dialogue.Texts.Variables
 
         public void SetValue(string variableName, object objectValue)
         {
-            var yarnAccessIndices = CheckYarnAccesses(objectValue);
+            var yarnAccessIndices = GetYarnAccesses(objectValue);
 
             foreach (AccessIndex index in yarnAccessIndices)
             {
@@ -35,7 +35,7 @@ namespace Assets.Scripts.Dialogue.Texts.Variables
 
             AddIndices(yarnAccessIndices);
 
-            if (accessIndices.TryGetValue(variableName, out AccessIndex accessIndex))
+            if (accessIndices.TryGetValue(this.RemoveLeadingIfPresent(variableName), out AccessIndex accessIndex))
             {
                 if (objectValue is Value yarnValue)
                 {
@@ -64,6 +64,9 @@ namespace Assets.Scripts.Dialogue.Texts.Variables
             }
         }
 
+        public void AddIndicesFrom(object target)
+            => AddIndices(GetYarnAccesses(target));
+
         public void AddIndices(IEnumerable<AccessIndex> accessIndices)
         {
             foreach (AccessIndex index in accessIndices)
@@ -77,7 +80,7 @@ namespace Assets.Scripts.Dialogue.Texts.Variables
             accessIndices[accessIndex.Name] = accessIndex;
         }
 
-        public static List<AccessIndex> CheckYarnAccesses(object value)
+        public static List<AccessIndex> GetYarnAccesses(object value)
         {
             List<AccessIndex> res = new List<AccessIndex>();
 
@@ -91,13 +94,13 @@ namespace Assets.Scripts.Dialogue.Texts.Variables
 
             foreach (PropertyInfo propertyInfo in t.GetProperties())
             {
-                var yarnAccess = CheckYarnAccess(value, propertyInfo);
+                var yarnAccess = GetYarnAccess(value, propertyInfo);
                 if (yarnAccess != null) res.Add(yarnAccess);
             }
 
             foreach (FieldInfo fieldInfo in t.GetFields())
             {
-                var yarnAccess = CheckYarnAccess(value, fieldInfo);
+                var yarnAccess = GetYarnAccess(value, fieldInfo);
                 if (yarnAccess != null) res.Add(yarnAccess);
             }
 
@@ -109,7 +112,7 @@ namespace Assets.Scripts.Dialogue.Texts.Variables
         /// </summary>
         /// <param name="value"></param>
         /// <param name="memberInfo"></param>
-        public static AccessIndex CheckYarnAccess(object value, MemberInfo memberInfo)
+        public static AccessIndex GetYarnAccess(object value, MemberInfo memberInfo)
         {
             YarnAccessAttribute attribute = (YarnAccessAttribute)Attribute.GetCustomAttribute(memberInfo, typeof(YarnAccessAttribute));
             if (attribute != null)

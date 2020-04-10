@@ -13,9 +13,9 @@ public class CharacterCreation : MonoBehaviour
     public const string InitialPuzzle = "CardGame";
 
     [System.Serializable]
-    private class SimpleAccesibleVariableStorage : AccessibleVariableStorage<InMemoryVariableStorage>
+    private class SimpleAccessibleVariableStorage : AccessibleVariableStorage<InMemoryVariableStorage>
     {
-        public SimpleAccesibleVariableStorage()
+        public SimpleAccessibleVariableStorage()
         {
             persistStorage = true;
         }
@@ -46,7 +46,14 @@ public class CharacterCreation : MonoBehaviour
     [YarnCommand("StartNewGame")]
     public void NewGame()
     {
-        characterVariableStorage = gameObject.AddComponent<SimpleAccesibleVariableStorage>();
+        if (characterVariableStorage != null) Destroy(characterVariableStorage.gameObject);
+        characterVariableStorage = gameObject.AddComponent<SimpleAccessibleVariableStorage>();
+
+        TryGetComponent(out DialogueUtilities dialogueUtilities);
+        if (dialogueUtilities == null) dialogueUtilities = gameObject.AddComponent<DialogueUtilities>();
+
+        characterVariableStorage.AddIndicesFrom(dialogueUtilities);
+
         InitializePools();
 
         CreateVictim();
@@ -56,6 +63,7 @@ public class CharacterCreation : MonoBehaviour
         VariableStorageGroup variableStorage = gameObject.AddComponent<VariableStorageGroup>();
         variableStorage.sources = new List<VariableStorageBehaviour>() { characterVariableStorage, randomNamePoolSource };
 
+        if (VariableStorage != null) Destroy(VariableStorage.gameObject);
         VariableStorage = variableStorage;
 
         OnNewGame.Invoke();
@@ -83,7 +91,7 @@ public class CharacterCreation : MonoBehaviour
         set
         {
             numberOfSuspects = value < maxNumberOfSuspects ? value : maxNumberOfSuspects;
-            characterVariableStorage.SetValueNoLeading(numberOfSuspectsKey, value: numberOfSuspects);
+            characterVariableStorage.SetValueNoLeading(numberOfSuspectsKey, objectValue: numberOfSuspects);
         }
     }
 
@@ -94,7 +102,7 @@ public class CharacterCreation : MonoBehaviour
         private set
         {
             victim = value;
-            characterVariableStorage.SetValueNoLeading(victimKey, value: value);
+            characterVariableStorage.SetValueNoLeading(victimKey, objectValue: value);
         }
     }
 
@@ -145,7 +153,7 @@ public class CharacterCreation : MonoBehaviour
         // Create the murderer
         Suspect murderer = InitializeSuspect(hasAlibi: false);
         Murderer = murderer;
-        characterVariableStorage.SetValueNoLeading(murdererKey, value: murderer);
+        characterVariableStorage.SetValueNoLeading(murdererKey, objectValue: murderer);
         suspects.Add(murderer);
 
         // Create other suspects
@@ -184,7 +192,7 @@ public class CharacterCreation : MonoBehaviour
     private void SetCurrentSuspectImpl(Suspect suspect)
     {
         CurrentSuspect = suspect;
-        characterVariableStorage.SetValueNoLeading(suspectKey, value: suspect);
+        characterVariableStorage.SetValueNoLeading(suspectKey, objectValue: suspect);
     }
 
     private void InitializePools()
