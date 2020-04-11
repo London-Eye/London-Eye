@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GridCell
   m_EditorClassIdentifier: 
   m_Sprite: {fileID: 21300000, guid: a1c42f73578efa343ab4b437d06b103c, type: 3}
-  m_Color: {r: 0.5188679, g: 0.5188679, b: 0.5188679, a: 0.23137255}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.14509805}
   m_Transform:
     e00: 1
     e01: 0

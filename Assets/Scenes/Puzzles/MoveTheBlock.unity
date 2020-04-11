@@ -1114,7 +1114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.16037738, g: 0.15054291, b: 0.15054291, a: 0.95686275}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -3812,7 +3812,7 @@ Tilemap:
       e33: 1
   m_TileColorArray:
   - m_RefCount: 36
-    m_Data: {r: 0.5188679, g: 0.5188679, b: 0.5188679, a: 0.23137255}
+    m_Data: {r: 1, g: 1, b: 1, a: 0.14509805}
   - m_RefCount: 0
     m_Data: {r: 0, g: 0, b: 0, a: 0}
   m_AnimationFrameRate: 1
