@@ -58,6 +58,13 @@ namespace Assets.Scripts.Common
             }
         }
 
+        public bool TryPushAndShuffle(T item)
+        {
+            bool pushed = TryPush(item);
+            if (pushed) Shuffle();
+            return pushed;
+        }
+
         public bool TryPush(T item)
         {
             if (Pool.Contains(item))
@@ -71,6 +78,12 @@ namespace Assets.Scripts.Common
             }
         }
 
+        public void PushAndShuffle(T item)
+        {
+            Push(item);
+            Shuffle();
+        }
+
         public void Push(T item)
         {
             if (Pool.Contains(item))
@@ -79,11 +92,17 @@ namespace Assets.Scripts.Common
                 throw new System.ArgumentException($"The item is not in the {nameof(Pool)}");
         }
 
-        public void Fill()
+        public void Fill() => FillFrom(Pool);
+
+        public void Shuffle() => FillFrom(currentPool);
+
+        private void FillFrom(IEnumerable<T> pool)
         {
+            var shuffledPool = pool.GetShuffle();
+
             if (Count > 0) currentPool.Clear();
 
-            foreach (T item in Pool.GetShuffle())
+            foreach (T item in shuffledPool)
             {
                 currentPool.Push(item);
             }

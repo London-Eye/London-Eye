@@ -80,7 +80,11 @@ public class SuspectManager : MonoBehaviour, IComparable<SuspectManager>
     {
         if (!Suspect.HasFoundAllEvidences)
         {
-            if (Suspect.Puzzle == null)
+            if (Suspect.Puzzle != null && PoolPuzzleLoader.IsPuzzleActive(Suspect.Puzzle))
+            {
+                PoolPuzzleLoader.LoadPuzzle(Suspect.Puzzle);
+            }
+            else
             {
                 try
                 {
@@ -95,10 +99,6 @@ public class SuspectManager : MonoBehaviour, IComparable<SuspectManager>
                     // The puzzle pool is empty. TODO: Warn the user
 
                 }
-            }
-            else if (!Suspect.HasFoundAllEvidences)
-            {
-                 PoolPuzzleLoader.LoadPuzzle(Suspect.Puzzle);
             }
         }
     }

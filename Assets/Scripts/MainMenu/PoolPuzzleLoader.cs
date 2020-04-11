@@ -63,7 +63,7 @@ public class PoolPuzzleLoader : MonoBehaviour
     public void CompletePuzzle(string puzzle, bool updateSuspect, bool updatePuzzleLoaders)
     {
         activePuzzles.Remove(puzzle);
-        puzzlePool.TryPush(puzzle);
+        puzzlePool.TryPushAndShuffle(puzzle);
 
         if (updateSuspect)
         {
