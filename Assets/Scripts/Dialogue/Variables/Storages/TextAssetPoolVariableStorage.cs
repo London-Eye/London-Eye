@@ -16,7 +16,7 @@ namespace Assets.Scripts.Dialogue.Variables.Storages
 
         public string PoolSeparator = DefaultPoolSeparator;
 
-        public bool AutoRefillPools;
+        public bool FillPoolsOnLoad = true, AutoRefillPools = false;
 
         private enum PoolsLoadState { EMPTY, NAME, POOLS };
 
@@ -54,6 +54,7 @@ namespace Assets.Scripts.Dialogue.Variables.Storages
                         case PoolsLoadState.POOLS:
                             if (line == PoolSeparator)
                             {
+                                if (FillPoolsOnLoad) selectorPool.Fill();
                                 Storage.SelectorPools.Add(name, selectorPool);
                                 state = PoolsLoadState.EMPTY;
                                 selectorPool = null;
