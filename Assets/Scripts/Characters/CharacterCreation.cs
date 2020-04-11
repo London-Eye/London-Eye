@@ -12,15 +12,6 @@ public class CharacterCreation : MonoBehaviour
 {
     public const string InitialPuzzle = "CardGame";
 
-    [System.Serializable]
-    private class SimpleAccessibleVariableStorage : AccessibleVariableStorage<InMemoryVariableStorage>
-    {
-        public SimpleAccessibleVariableStorage()
-        {
-            persistStorage = true;
-        }
-    }
-
     public UnityEvent OnNewGame;
 
     public static CharacterCreation Instance { get; private set; }
@@ -48,11 +39,6 @@ public class CharacterCreation : MonoBehaviour
     {
         if (characterVariableStorage != null) Destroy(characterVariableStorage.gameObject);
         characterVariableStorage = gameObject.AddComponent<SimpleAccessibleVariableStorage>();
-
-        TryGetComponent(out DialogueUtilities dialogueUtilities);
-        if (dialogueUtilities == null) dialogueUtilities = gameObject.AddComponent<DialogueUtilities>();
-
-        characterVariableStorage.AddIndicesFrom(dialogueUtilities);
 
         InitializePools();
 

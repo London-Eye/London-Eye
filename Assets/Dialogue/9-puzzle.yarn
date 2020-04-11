@@ -5,6 +5,8 @@ Investigando las imágenes de la escena del crimen, encuentras un trozo de una n
 Por desgracia, se ve poco más que el nombre en esta imagen.
 Después de observar mejor las fotografías, descubres que hay más imágenes que contienen diferentes partes de la que parece la misma nota.
 Decides completar la nota usando las partes de las diferentes imágenes para descubrir su contenido.
+
+<<set $ContinueMode to "Button">>
 <color=orange>Intercambia las piezas de posición hasta que estén en el orden correcto, para poder leer la nota.</color>
 ===
 

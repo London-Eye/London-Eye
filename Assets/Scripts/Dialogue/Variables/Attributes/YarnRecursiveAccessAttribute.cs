@@ -2,6 +2,9 @@
 
 namespace Assets.Scripts.Dialogue.Variables.Attributes
 {
+    /// <summary>
+    /// Specify to Yarn a path which can be accessed from this class via <see cref="Storages.AccessibleVariableStorage{T}"/>.
+    /// </summary>
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct, AllowMultiple = true)]
     public class YarnRecursiveAccessAttribute : Attribute
     {

@@ -4,6 +4,8 @@ tags: PreGame
 Según el informe policial, en la escena del crimen había restos de huellas y ADN de diferentes personas; así como en la casa de la víctima.
 Es por ello que decides comparar las huellas con las del registro para ver si consigues algo más sobre {$SuspectName}.
 También te gustaría comparar el ADN, pero esto resulta más difícil, puesto que tendrá que haber estado antes en el registro para poder encontrar algo.
+
+<<set $ContinueMode to "Button">>
 <color=orange>Mueve las bolas entre las probetas para que cada probeta se quede con un solo color. <i>Solo puedes mover las bolas si las colocas en una probeta vacía o sobre una bola de su mismo color.</i></color>
 ===
 

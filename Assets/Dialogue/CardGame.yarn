@@ -1,10 +1,12 @@
 title: CardGame-PreGame
 tags: PreGame
 ---
+<<set $ContinueMode to "Time">>
 Además de las pruebas encontradas en la escena del crimen, la policía te ha enviado una lista de posibles sospechosos.
 Esta lista la crearon antes del confinamiento, pero no llegaron a investigar a quienes figuran en ella.
 Lo primero que decides hacer es una investigación rápida a cada uno.
 Esto servirá para descartar a todos los sospechosos que puedas antes de ponerte a investigar de forma más exhaustiva.
+<<set $ContinueMode to "Button">>
 <color=orange>Empareja los retratos de personas para descartar posibles sospechosos.</color>
 <<StartCardGame CardGameController>>
 ===
@@ -13,7 +15,9 @@ title: CardGame-PostGame
 tags: PostGame
 ---
 <<CompletePuzzle GameManager>>
+<<set $ContinueMode to "Time">>
 Después de una investigación ligera sobre la lista, consigues reducir el número de sospechosos.
+<<set $ContinueMode to "Button">>
 <i>Te has quedado con <color={$ScoreColor}>{$NumberOfSuspects}</color> sospechosos.</i>
 Hora de investigar más profundamente a la víctima y a los sospechosos para encontrar al culpable.
 ===

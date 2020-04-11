@@ -4,6 +4,8 @@ tags: PreGame
 Conforme están las cosas, decides realizar una videoconferencia con {$SuspectName}.
 Pero no sabes si va a decir toda la verdad durante el interrogatorio.
 Así que decides estar atento a su lenguaje corporal para detectar solo la verdad de entre todo lo que dice.
+
+<<set $ContinueMode to "Button">>
 <color=orange>Para ello, pasa los ojos por encima del Suspect sin dejar nada.</color>
 ===
 

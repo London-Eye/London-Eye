@@ -13,6 +13,7 @@ tags: SinPruebas
     El juez ha declarado inocente a {$SuspectName} por falta de pruebas que [select {$SuspectIsMale} True="lo" False="la"] incriminen.
 <<endif>>
 
+<<set $ContinueMode to "Button">>
 <color=orange>¿En qué pensabas? La única forma que te acepten un sospechoso sin pruebas, es que hayas agotado todas las vías de investigación.</color>
 <<BackToMainMenu GameDialogue>>
 ===
@@ -32,6 +33,7 @@ tags: Inocente
     :{$SuspectName} queda libre por resultar inocente en el caso de asesinato que se le acusaba.
 <<endif>>
 
+<<set $ContinueMode to "Button">>
 <color=orange>Has usado recursos públicos (además, en una situación social donde son escasos) en un inocente... esto va a hacer mella a tu reputación.</color>
 <<BackToMainMenu GameDialogue>>
 ===
@@ -51,6 +53,7 @@ tags: Criminal
     Gracias a Deiv I.D., se ha arrestado a {$SuspectName}, culpable del asesinato de {$VictimName}.
 <<endif>>
 
+<<set $ContinueMode to "Button">>
 <color=orange>Enhorabuena, has atrapado al criminal y con ello has aumentado tu reputación como investigador.</color>
 <<BackToMainMenu GameDialogue>>
 ===

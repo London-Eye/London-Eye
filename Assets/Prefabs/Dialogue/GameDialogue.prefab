@@ -12,6 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8266d6511c58fdc49afb8c59a5a4b1dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogueRunner: {fileID: 5296080504864627357}
+  dialogueUI: {fileID: 1788309106}
+  myVariableStorage: {fileID: 5251284711274546695}
+  continueMode: 0
+  ContinueButton: {fileID: 8642892209297188790}
+  ContinueTime: 2.5
 --- !u!114 &1788309106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25,7 +31,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueContainer: {fileID: 5296080505399609465}
-  textSpeed: 0.01
+  textSpeed: 0.025
   optionButtons:
   - {fileID: 1020394552292798831}
   - {fileID: 1140641128354077046}
@@ -76,16 +82,16 @@ MonoBehaviour:
   onLineFinishDisplaying:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7363312580719556204}
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 2182630733096129128}
+        m_MethodName: StartContinue
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
         m_CallState: 2
   onLineUpdate:
     m_PersistentCalls:
@@ -135,6 +141,20 @@ MonoBehaviour:
   onCommand:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &5251284711274546695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5296080504864627352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13dd5a24cd8252c409e507290c315592, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allowReset: 0
+  persistStorageOnReset: 0
 --- !u!114 &5310200421852604645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,11 +167,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f501e10f3c11e145ba4d161178eaef3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  persistStorage: 0
+  allowReset: 0
+  persistStorageOnReset: 0
   sources:
+  - {fileID: 5251284711274546695}
   - {fileID: 8708759236710813677}
   - {fileID: 5296080504864627355}
-  logKnownExceptionsOnSet: 1
+  logSetKnownErrors: 1
 --- !u!114 &8708759236710813677
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,7 +186,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e37ded0f6dfd28a4ca3e2a57d945c49c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  persistStorage: 1
+  allowReset: 0
+  persistStorageOnReset: 0
   OnInitStorage:
     m_PersistentCalls:
       m_Calls:
@@ -562,6 +585,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1954342738241314140}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5296080504864627357 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5935829475398715329, guid: 4ec3df5875e7347beb6176b545b8fb39,
+    type: 3}
+  m_PrefabInstance: {fileID: 1954342738241314140}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5296080504864627352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bec29c0a230741bdac901dba8da47ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5296080504864627355 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5935829475398715335, guid: 4ec3df5875e7347beb6176b545b8fb39,
@@ -652,3 +687,15 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1954342738241314140}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8642892209297188790 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7849352976167254762, guid: 4ec3df5875e7347beb6176b545b8fb39,
+    type: 3}
+  m_PrefabInstance: {fileID: 1954342738241314140}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7363312580719556204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

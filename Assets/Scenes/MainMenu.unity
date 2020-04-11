@@ -2582,10 +2582,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d057aecc9fabab44bccf888eca528d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  persistStorage: 1
+  allowReset: 0
+  persistStorageOnReset: 0
   textAsset: {fileID: 4900000, guid: 91a40575f01d3c049bcb61de9cd0aa7f, type: 3}
   NameValuesSeparator: '---'
   PoolSeparator: ===
+  FillPoolsOnLoad: 1
   AutoRefillPools: 0
 --- !u!114 &1276836353
 MonoBehaviour:

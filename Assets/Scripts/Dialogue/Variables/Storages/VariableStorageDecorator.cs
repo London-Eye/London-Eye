@@ -5,7 +5,7 @@ namespace Assets.Scripts.Dialogue.Variables.Storages
 {
     public abstract class VariableStorageDecorator<T> : VariableStorageBehaviour where T : VariableStorageBehaviour
     {
-        public bool persistStorage;
+        public bool allowReset, persistStorageOnReset;
 
         public T Storage { get; private set; }
 
@@ -13,7 +13,6 @@ namespace Assets.Scripts.Dialogue.Variables.Storages
         internal void Awake()
         {
             Storage = InitStorage();
-            ResetToDefaults();
         }
 
         protected virtual T InitStorage()
@@ -53,9 +52,17 @@ namespace Assets.Scripts.Dialogue.Variables.Storages
 
         public override void ResetToDefaults()
         {
-            ResetToDefaultsBeforeStorage();
-            if (!persistStorage) Storage.ResetToDefaults();
-            ResetToDefaultsAfterStorage();
+            if (allowReset)
+            {
+                ResetToDefaultsBeforeStorage();
+
+                if (!persistStorageOnReset && Storage != null)
+                {
+                    Storage.ResetToDefaults();
+                }
+
+                ResetToDefaultsAfterStorage();
+            }
         }
 
         protected void ResetToDefaults(T defaultStorage)

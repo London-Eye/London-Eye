@@ -4,6 +4,8 @@ tags: PreGame
 Has investigado todo lo que has podido encontrar a simple vista sobre {$SuspectName}.
 Has visitado todas sus redes sociales, así como las de sus parientes y amigos.
 Es hora de que ordenes toda la información encontrada; así que decides empezar a hacer suposiciones para ver si alguna te lleva a una conclusión útil.
+
+<<set $ContinueMode to "Button">>
 <color=orange>Gira las partes de los caminos para llevar la suposición inicial hasta la conclusión y poder descubrir una nueva pista sobre {$SuspectName}.</color>
 ===
 
