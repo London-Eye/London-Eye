@@ -17,7 +17,7 @@ public class GameController : MonoBehaviour
     public initially_full_tube sourceTube;
     private initially_full_tube[] tubes;
     public int selector;
-    private Color[] c;
+    public Color[] c = new Color[24];
 
     public bool GameRunning { get; private set; }
 
@@ -46,35 +46,41 @@ public class GameController : MonoBehaviour
         first = true;
         GameRunning = true;
         EndgameMenu.SetActive(false);
+        setTubes();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (GameRunning && isEndgame())
+        /*if (GameRunning && isEndgame())
         {
             GameRunning = false;
             EndgameMenu.SetActive(true);
-        }
+        }*/
     }
 
-    private bool isEndgame() {
+    public void isEndgame() {
         tubes = GameObject.FindObjectsOfType<initially_full_tube>();
+        bool completed = true;
         for (int i = 0; i < tubes.Length; i++) {
             if (!tubes[i].isComplete()) {
-                return false;
+                completed = false;
             }
         }
-        return true;
+        EndgameMenu.SetActive(completed);
 
     }
 
     public void setTubes() {
         tubes = GameObject.FindObjectsOfType<initially_full_tube>();
         int empty_tubes = tubes.Length - (c.Length / 4);
+        Debug.Log(c.Length);
         for (int i = 0; i < empty_tubes; i++) {
-            Debug.Log(i);
             tubes[i].initial_status = "empty";
+            tubes[i].transform.GetChild(0).gameObject.SetActive(false);
+            tubes[i].transform.GetChild(1).gameObject.SetActive(false);
+            tubes[i].transform.GetChild(2).gameObject.SetActive(false);
+            tubes[i].transform.GetChild(3).gameObject.SetActive(false);
         }
         int k = 0;
         for (int j = empty_tubes; j < tubes.Length; j++) {
@@ -84,7 +90,12 @@ public class GameController : MonoBehaviour
             tubes[j].transform.GetChild(2).GetComponent<SpriteRenderer>().color = c[k++];
             tubes[j].transform.GetChild(1).GetComponent<SpriteRenderer>().color = c[k++];
             tubes[j].transform.GetChild(0).GetComponent<SpriteRenderer>().color = c[k++];
-            
+            tubes[j].pila.Push(tubes[j].transform.GetChild(0).GetComponent<SpriteRenderer>().color);
+            tubes[j].pila.Push(tubes[j].transform.GetChild(1).GetComponent<SpriteRenderer>().color);
+            tubes[j].pila.Push(tubes[j].transform.GetChild(2).GetComponent<SpriteRenderer>().color);
+            tubes[j].pila.Push(tubes[j].transform.GetChild(3).GetComponent<SpriteRenderer>().color);
+
+
         }
     }
 }

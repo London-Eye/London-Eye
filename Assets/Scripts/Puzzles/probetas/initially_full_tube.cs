@@ -22,22 +22,8 @@ public class initially_full_tube : MonoBehaviour
         middleBase = this.gameObject.transform.GetChild(1).gameObject;
         middleTop = this.gameObject.transform.GetChild(2).gameObject;
         top = this.gameObject.transform.GetChild(3).gameObject;
-        controller.setTubes();
-
-        if (initial_status == "full")
-        {
-            pila.Push(basse.GetComponent<SpriteRenderer>().color);
-            pila.Push(middleBase.GetComponent<SpriteRenderer>().color);
-            pila.Push(middleTop.GetComponent<SpriteRenderer>().color);
-            pila.Push(top.GetComponent<SpriteRenderer>().color);
-        }
-        else {
-            basse.SetActive(false);
-            middleBase.SetActive(false);
-            middleTop.SetActive(false);
-            top.SetActive(false);
-        }
-}
+        
+    }
 
     // Update is called once per frame
     void Update()
@@ -103,6 +89,7 @@ public class initially_full_tube : MonoBehaviour
                 controller.ballTomove = Color.white;
                 controller.first = !controller.first;
                 controller.sourceTube = null;
+                controller.isEndgame();
             }
         }
 
