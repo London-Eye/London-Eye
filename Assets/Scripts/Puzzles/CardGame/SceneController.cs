@@ -2,6 +2,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using Yarn.Unity;
 public class SceneController : MonoBehaviour
@@ -24,6 +25,8 @@ public class SceneController : MonoBehaviour
 
     public string ScoreColorName;
     [SerializeField] private VariableStorageBehaviour scoreColorVariableStorage;
+
+    public UnityEvent OnStartCardGame;
 
     public bool GameRunning { get; set; }
 
@@ -53,6 +56,8 @@ public class SceneController : MonoBehaviour
         StartCoroutine(CheckMoves());
 
         layout.SetActive(true);
+
+        OnStartCardGame.Invoke();
     }
 
     private void PutCardsOnTable()
@@ -195,7 +200,7 @@ public class SceneController : MonoBehaviour
         EndgameMenu.SetActive(true);
     }
 
-    public void StartGame()
+    public void FinishCardGame()
     {
         EndgameMenu.SetActive(false);
 
