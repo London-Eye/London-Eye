@@ -6,9 +6,17 @@ namespace Assets.Scripts.Common
     {
         /// <summary>
         /// The source pool to select values from.
-        /// <para>If you change its elements (or set its value), the actual pool won't be updated until it is emptied (or you call <see cref="Empty"/>).</para>
+        /// <para>If you change its elements (or set its value), the actual pool won't be updated until:</para>
+        /// <para>- It is emptied (or you call <see cref="Empty"/>) (if <see cref="AutoRefill"/> is <see cref="true"/>)</para>
+        /// <para>- The <see cref="Fill"/> method is called.</para>
         /// </summary>
-        public List<T> Pool { get; set; }
+        public HashSet<T> Pool { get; set; }
+
+        /// <summary>
+        /// When the actual pool gets emptied (either manually via <see cref="Empty"/>, or by getting all items from <see cref="Select"/>),
+        /// the <see cref="Fill"/> method is automatically called.
+        /// </summary>
+        public bool AutoRefill { get; set; }
 
         public int Count => currentPool.Count;
 
@@ -16,19 +24,25 @@ namespace Assets.Scripts.Common
 
         public SelectorPool()
         {
-            Pool = new List<T>();
+            Pool = new HashSet<T>();
         }
 
-        public SelectorPool(List<T> pool)
+        public SelectorPool(HashSet<T> pool)
         {
             Pool = pool;
+        }
+
+        public SelectorPool(IEnumerable<T> pool)
+        {
+            Pool = new HashSet<T>(pool);
         }
 
         public T Select()
         {
             if (Count == 0)
             {
-                Fill();
+                if (AutoRefill) Fill();
+                else throw new System.InvalidOperationException("The pool is empty.");
             }
 
             return currentPool.Pop();
@@ -37,10 +51,38 @@ namespace Assets.Scripts.Common
         public void Empty()
         {
             currentPool.Clear();
+
+            if (AutoRefill)
+            {
+                Fill();
+            }
         }
 
-        private void Fill()
+        public bool TryPush(T item)
         {
+            if (Pool.Contains(item))
+            {
+                currentPool.Push(item);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public void Push(T item)
+        {
+            if (Pool.Contains(item))
+                currentPool.Push(item);
+            else
+                throw new System.ArgumentException($"The item is not in the {nameof(Pool)}");
+        }
+
+        public void Fill()
+        {
+            if (Count > 0) currentPool.Clear();
+
             foreach (T item in Pool.GetShuffle())
             {
                 currentPool.Push(item);

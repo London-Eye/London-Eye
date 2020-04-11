@@ -24,6 +24,7 @@ public class PoolPuzzleLoader : MonoBehaviour
     void Start()
     {
         puzzlePool = new SelectorPool<string>(puzzles);
+        puzzlePool.Fill();
     }
 
     public string LoadPuzzle()
@@ -41,25 +42,41 @@ public class PoolPuzzleLoader : MonoBehaviour
     }
 
     [YarnCommand("CompletePuzzle")]
-    public static void CompleteCurrentPuzzle()
+    public void CompleteCurrentPuzzle()
     {
-        CompletePuzzle(CurrentPuzzle, false);
+        bool updateSuspect = false;
         if (CharacterCreation.Instance != null)
         {
             Suspect currentSuspect = CharacterCreation.Instance.CurrentSuspect;
             if (currentSuspect != null) currentSuspect.Puzzle = null;
+            else updateSuspect = true;
         }
+        else
+        {
+            updateSuspect = true;
+        }
+
+        CompletePuzzle(CurrentPuzzle, updateSuspect, false);
         CurrentPuzzle = null;
     }
 
-    public static void CompletePuzzle(string puzzle, bool updateSuspect)
+    public void CompletePuzzle(string puzzle, bool updateSuspect, bool updatePuzzleLoaders)
     {
         activePuzzles.Remove(puzzle);
+        puzzlePool.TryPush(puzzle);
 
         if (updateSuspect)
         {
             Suspect currentSuspect = SuspectManager.GetSuspectByPuzzle(puzzle);
             if (currentSuspect != null) currentSuspect.Puzzle = null;
+        }
+
+        if (updatePuzzleLoaders)
+        {
+            foreach (PuzzleLoader puzzleLoader in FindObjectsOfType<PuzzleLoader>())
+            {
+                puzzleLoader.CheckActive();
+            }
         }
     }
 }

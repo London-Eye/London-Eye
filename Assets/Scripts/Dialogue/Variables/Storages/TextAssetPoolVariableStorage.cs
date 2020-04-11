@@ -16,6 +16,8 @@ namespace Assets.Scripts.Dialogue.Variables.Storages
 
         public string PoolSeparator = DefaultPoolSeparator;
 
+        public bool AutoRefillPools;
+
         private enum PoolsLoadState { EMPTY, NAME, POOLS };
 
         protected override bool SetValueNoStorage(string variableName, Value value)
@@ -38,7 +40,7 @@ namespace Assets.Scripts.Dialogue.Variables.Storages
                         case PoolsLoadState.EMPTY:
                             if (selectorPool == null)
                             {
-                                selectorPool = new SelectorPool<object>();
+                                selectorPool = new SelectorPool<object>() { AutoRefill = AutoRefillPools };
                             }
                             if (!string.IsNullOrEmpty(line))
                             {

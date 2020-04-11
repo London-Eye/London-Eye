@@ -82,13 +82,23 @@ public class SuspectManager : MonoBehaviour, IComparable<SuspectManager>
         {
             if (Suspect.Puzzle == null)
             {
-                string puzzle = FindObjectOfType<PoolPuzzleLoader>().LoadPuzzle();
-                Suspect.Puzzle = puzzle;
-                PoolPuzzleLoader.ActivePuzzle(puzzle);
+                try
+                {
+                    string puzzle = FindObjectOfType<PoolPuzzleLoader>().LoadPuzzle();
+                    Suspect.Puzzle = puzzle;
+                    PoolPuzzleLoader.ActivePuzzle(puzzle);
+                }
+                catch (InvalidOperationException ex)
+                {
+                    Debug.LogWarning(ex);
+
+                    // The puzzle pool is empty. TODO: Warn the user
+
+                }
             }
-            else if (PoolPuzzleLoader.IsPuzzleActive(Suspect.Puzzle))
+            else if (!Suspect.HasFoundAllEvidences)
             {
-                PoolPuzzleLoader.LoadPuzzle(Suspect.Puzzle);
+                 PoolPuzzleLoader.LoadPuzzle(Suspect.Puzzle);
             }
         }
     }

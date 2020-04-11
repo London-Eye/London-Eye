@@ -34,6 +34,11 @@ public class PuzzleLoader : MonoBehaviour
 
     private void Start()
     {
+        CheckActive();
+    }
+
+    public void CheckActive()
+    {
         gameObject.SetActive(PoolPuzzleLoader.IsPuzzleActive(Puzzle));
     }
 

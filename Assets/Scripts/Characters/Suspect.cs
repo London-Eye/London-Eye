@@ -34,7 +34,9 @@ namespace Assets.Scripts.Characters
                 evidencesFound = value;
                 if (HasFoundAllEvidences)
                 {
-                    PoolPuzzleLoader.CompletePuzzle(Puzzle, false);
+                    if (CharacterCreation.Instance != null)
+                        CharacterCreation.Instance.PoolPuzzleLoader.CompletePuzzle(Puzzle, false, true);
+
                     Puzzle = null;
                 }
             }

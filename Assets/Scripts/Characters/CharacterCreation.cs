@@ -122,6 +122,8 @@ public class CharacterCreation : MonoBehaviour
 
     private AccessibleVariableStorage<InMemoryVariableStorage> characterVariableStorage;
 
+    public PoolPuzzleLoader PoolPuzzleLoader { get; private set; }
+
     private SelectorPool<int> mNames, fNames;
     private SelectorPool<int> mRelation, fRelation;
     private PoolVariableStorage randomNamePoolSource;
@@ -129,6 +131,11 @@ public class CharacterCreation : MonoBehaviour
     void Awake()
     {
         MakeSingleton();
+    }
+
+    private void Start()
+    {
+        PoolPuzzleLoader = GetComponent<PoolPuzzleLoader>();
     }
 
     public void CreateVictim() => Victim = InitializeCharacter();
@@ -203,11 +210,11 @@ public class CharacterCreation : MonoBehaviour
 
     private static void InitializePool(int numberOfElements, out SelectorPool<int> malePool, out SelectorPool<int> femalePool)
     {
-        List<int> elements = new List<int>();
+        HashSet<int> elements = new HashSet<int>();
         Utilities.AddIntRange(elements, 0, numberOfElements);
 
-        malePool = new SelectorPool<int>(elements);
-        femalePool = new SelectorPool<int>(elements);
+        malePool = new SelectorPool<int>(elements) { AutoRefill = true };
+        femalePool = new SelectorPool<int>(elements) { AutoRefill = true };
     }
 
     private Character InitializeCharacter()
@@ -264,7 +271,7 @@ public class CharacterCreation : MonoBehaviour
 
     private void FillNamePool()
     {
-        SelectorPool<object> randomNamePool = new SelectorPool<object>();
+        SelectorPool<object> randomNamePool = new SelectorPool<object>() { AutoRefill = true };
 
         while (mNames.Count > 0)
         {
