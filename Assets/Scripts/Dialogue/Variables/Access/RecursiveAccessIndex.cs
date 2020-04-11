@@ -11,7 +11,7 @@ namespace Assets.Scripts.Dialogue.Variables.Access
         public override System.Type AccessType => accessType;
 
         public RecursiveAccessIndex(object target, YarnRecursiveAccessAttribute attribute, string name = null)
-            : base(name ?? attribute.name, target)
+            : base(name ?? attribute.Name, target)
         {
             TargetAttribute = attribute;
         }

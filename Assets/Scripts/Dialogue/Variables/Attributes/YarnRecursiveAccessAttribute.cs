@@ -9,12 +9,13 @@ namespace Assets.Scripts.Dialogue.Variables.Attributes
 
         public string memberSeparator = DefaultMemberSeparator;
 
-        public string name;
+        public string Name { get; }
 
         private readonly string path;
 
-        public YarnRecursiveAccessAttribute(string path)
+        public YarnRecursiveAccessAttribute(string path, string name)
         {
+            this.Name = name;
             this.path = path;
         }
 
