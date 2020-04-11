@@ -5,18 +5,46 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     [SerializeField] public PauseController ps;
-    [SerializeField] public Color[] c ;
+    [SerializeField] public Color[] c1;
+    [SerializeField] public Color[] c2 ;
+    [SerializeField] public Color[] c3;
+    [SerializeField] public Color[] c4;
+    [SerializeField] public Color[] c5;
+
     [SerializeField] private GameObject EndgameMenu;
     public bool first;
     public Color ballTomove;
     public initially_full_tube sourceTube;
     private initially_full_tube[] tubes;
+    public int selector;
+    private Color[] c;
 
     public bool GameRunning { get; private set; }
 
     // Start is called before the first frame update
     void Start()
     {
+        selector = Random.Range(1, 5);
+        switch (selector) {
+            case 1:
+                c = c1;
+                break;
+            case 2:
+                c = c2;
+                break;
+            case 3:
+                c = c3;
+                break;
+            case 4:
+                c = c4;
+                break;
+            case 5:
+                c = c5;
+                break;
+        }
+           
+        
+
         first = true;
         GameRunning = true;
         EndgameMenu.SetActive(false);
