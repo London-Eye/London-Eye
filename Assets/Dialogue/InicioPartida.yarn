@@ -11,3 +11,35 @@ Sin embargo, te ha puesto una condición. Esta es que, como cualquier otro ciuda
 La víctima del caso se llama {$VictimName}, trabajaba en un supermercado y murió hace apenas unos días, antes del inicio del confinamiento.
 La policía no puede hacerse cargo, así que es tu trabajo llevar a su asesino ante la justicia.
 ===
+
+title: Policia-PistasJuego
+tags: PistasJuego
+---
+<<set $RandomIntMin to 0>>
+<<set $RandomIntMax to 8>>
+<<set $CurrentRandomInt to $RandomInt>>
+
+<<if $CurrentRandomInt eq 0>>
+    Accede a los sospechosos desde el tablón de la pared.
+<<elseif $CurrentRandomInt eq 1>>
+    En el archivador encontrarás los puzzles que te hayas dejado a medias.
+<<elseif $CurrentRandomInt eq 2>>
+    En el ordenador de la derecha podrás llevar a juicio al sospechosos que creas que es el asesino.
+<<elseif $CurrentRandomInt eq 3>>
+    En el Walkie-Talkie que está encima del archivador podrás encontrar información útil sobre la víctima y la escena del crímen.
+<<elseif $CurrentRandomInt eq 4>>
+    Si acusas a un sospechoso con menos de 2 pistas es muy probable que no den el juicio como válido.
+<<elseif $CurrentRandomInt eq 5>>
+    Solo puedes acusar a un sospechoso, elige con cuidado.
+<<elseif $CurrentRandomInt eq 6>>
+    Si te atascas en un puzzle puedes dejarlo para más tarde. Pero no podrás seguir investigando a ese sospechoso hasta que lo completes.
+<<elseif $CurrentRandomInt eq 7>>
+    Si no recoges información sobre la víctima las pistas que consigas te servirán de poco.
+<<endif>>
+===
+
+title: Walkie-InvestigarVictima
+tags: InvestigarVictima
+---
+TODO
+===

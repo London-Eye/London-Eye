@@ -8,7 +8,7 @@ ScriptedImporter:
   assetBundleName: 
   assetBundleVariant: 
   script: {fileID: 11500000, guid: 94073015eacc34c1d8fc6786e43d60ca, type: 3}
-  baseLanguageID: 
+  baseLanguageID: es-ES
   stringIDs:
   - Acusaciones-Acusacion-SinPruebas-0
   - Acusaciones-Acusacion-SinPruebas-1
@@ -34,5 +34,6 @@ ScriptedImporter:
     \"[\"\n4:14 FORMAT_FUNCTION_ID \"cname\"\n4:19 ']' \"]\"\n4:20 TEXT \">** ha sido
     acusado de asesinato, pero el jurado ha declarado que no tiene suficientes pruebas
     para procesarlo.\""
-  baseLanguage: {instanceID: 0}
+  baseLanguage: {fileID: 7128917941130120860, guid: d98e686f38d54714ca476c184aaf7676,
+    type: 3}
   localizations: []

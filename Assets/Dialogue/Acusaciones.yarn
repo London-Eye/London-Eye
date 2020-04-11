@@ -13,7 +13,7 @@ tags: SinPruebas
     El juez ha declarado inocente a {$SuspectName} por falta de pruebas que [select {$SuspectIsMale} True="lo" False="la"] incriminen.
 <<endif>>
 
-<color=orange>Sigue investigando sospechosos para conseguir más pruebas y poder acusarlos más acertadamente.</color>
+<color=orange>En que pensabas? La única forma que te acepten un sospechoso sin pruebas, es que hayas agotado todas las opciones de investigación.</color>
 <<BackToMainMenu GameDialogue>>
 ===
 
@@ -32,7 +32,7 @@ tags: Inocente
     :{$SuspectName} queda libre por resultar inocente en el caso de asesinato que se le acusaba.
 <<endif>>
 
-<color=orange>No te desanimes, sigue investigando sospechosos para poder encontrar al criminal, pero cuidado con las acusaciones sin pruebas o perderás el caso.</color>
+<color=orange>Has usado recursos públicos en una situación social donde son escasos en un inocente, esto va a hacer mella en tu reputación.</color>
 <<BackToMainMenu GameDialogue>>
 ===
 
