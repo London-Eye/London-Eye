@@ -13,14 +13,16 @@ tags: PostGame
 <<CompletePuzzle GameManager>>
 Has conseguido llegar a una conclusión sobre {$SuspectName}.
 
-Es una persona misteriosa, y no haber podido ver sus movimientos en persona te ha retrasado, pero has descubierto que {$SuspectName} es {$SuspectRelation} de la víctima ({$VictimName}).
-<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
-
-Después de ver algunas conversaciones y fotos junto a la víctima, determinas que {$SuspectName} {$SuspectEmotion} la víctima ({$VictimName}).
-<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
-
-Una vez consultadas sus publicaciones en redes sociales en horas próximas a la del crimen, determinas que la coartada de {$SuspectName} {$SuspectHasAlibiAsString} es válida.
-<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
+<<if $SuspectEvidencesFound eq 0>>
+	Es una persona misteriosa, y no haber podido ver sus movimientos en persona te ha retrasado, pero has descubierto que {$SuspectName} es {$SuspectRelation} de la víctima ({$VictimName}).
+	<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
+<<elseif $SuspectEvidencesFound eq 1>>
+	Después de ver algunas conversaciones y fotos junto a la víctima, determinas que {$SuspectName} {$SuspectEmotion} la víctima ({$VictimName}).
+	<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
+<<elseif $SuspectEvidencesFound eq 2>>
+	Una vez consultadas sus publicaciones en redes sociales en horas próximas a la del crimen, determinas que la coartada de {$SuspectName} {$SuspectHasAlibiAsString} es válida.
+	<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
+<<endif>>
 
 <<BackToMainMenu GameDialogue>>
 ===

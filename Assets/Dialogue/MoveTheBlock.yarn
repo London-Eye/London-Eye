@@ -15,14 +15,16 @@ tags: PostGame
 <<CompletePuzzle GameManager>>
 Después de usar todo tu ingenio, consigues acceder a las cuentas de {$SuspectName}.
 
-Entras en su correo electrónico. Por el tipo de mensajes que encuentras, {$SuspectName} es {$SuspectRelation} de la víctima ({$VictimName}).
-<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
-
-Consigues entrar en una de sus apps de mensajería. Por cómo habla con {$RandomName}, {$SuspectName} {$SuspectEmotion} la víctima ({$VictimName}).
-<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
-
-Revisando las facturas de {$SuspectName}, te das cuenta de que su coartada {$SuspectHasAlibiAsString} es válida.
-<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
+<<if $SuspectEvidencesFound eq 0>>
+	Entras en su correo electrónico. Por el tipo de mensajes que encuentras, {$SuspectName} es {$SuspectRelation} de la víctima ({$VictimName}).
+	<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
+<<elseif $SuspectEvidencesFound eq 1>>
+	Consigues entrar en una de sus apps de mensajería. Por cómo habla con {$RandomName}, {$SuspectName} {$SuspectEmotion} la víctima ({$VictimName}).
+	<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
+<<elseif $SuspectEvidencesFound eq 2>>
+	Revisando las facturas de {$SuspectName}, te das cuenta de que su coartada {$SuspectHasAlibiAsString} es válida.
+	<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
+<<endif>>
 
 <<BackToMainMenu GameDialogue>>
 ===

@@ -13,14 +13,16 @@ tags: PostGame
 <<CompletePuzzle GameManager>>
 Después de casi una hora de interrogatorio con {$SuspectName}, has conseguido averiguar alguna cosa útil.
 
-:{$SuspectName} es {$SuspectRelation} de la víctima ({$VictimName}).
-<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
-
-Realmente, muy en su interior, {$SuspectName} {$SuspectEmotion} la víctima ({$VictimName}).
-<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
-
-Lo que te ha contado {$SuspectName} confirma tu sospecha de que {$SuspectHasAlibiAsString} tiene una coartada válida.
-<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
+<<if $SuspectEvidencesFound eq 0>>
+	:{$SuspectName} es {$SuspectRelation} de la víctima ({$VictimName}).
+	<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
+<<elseif $SuspectEvidencesFound eq 1>>
+	Realmente, muy en su interior, {$SuspectName} {$SuspectEmotion} la víctima ({$VictimName}).
+	<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
+<<elseif $SuspectEvidencesFound eq 2>>
+	Lo que te ha contado {$SuspectName} confirma tu sospecha de que {$SuspectHasAlibiAsString} tiene una coartada válida.
+	<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
+<<endif>>
 
 <<BackToMainMenu GameDialogue>>
 ===
