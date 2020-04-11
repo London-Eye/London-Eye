@@ -43,8 +43,6 @@ public class GameController : MonoBehaviour
                 break;
         }
            
-        
-
         first = true;
         GameRunning = true;
         EndgameMenu.SetActive(false);
