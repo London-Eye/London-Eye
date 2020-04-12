@@ -16,7 +16,25 @@ title: Policia-PistasJuego
 tags: PistasJuego
 ---
 <<set $RandomIntMin to 0>>
-<<set $RandomIntMax to 8>>
+<<set $RandomIntMax to 9>>
+<<set $CurrentRandomInt to $RandomIntPool>>
+
+<color=blue>Policía:</color>Sobre que quieres obtener información?
+->Dime que hace algo de esta oficina.
+    [[Pistas-MenuPrincipal]]
+->Sobre acusar a uno de los sospechosos.
+    [[Pistas-AcusarSospechoso]]
+->Dame alguna información útil.
+    [[Pistas-General]]
+->Nada, gracias.
+    Si necesitas algo ya sabes donde estoy.
+===
+
+title: Pistas-MenuPrincipal
+tags: MenuPrincipal
+---
+<<set $RandomIntMin to 0>>
+<<set $RandomIntMax to 4>>
 <<set $CurrentRandomInt to $RandomIntPool>>
 
 <<if $CurrentRandomInt eq 0>>
@@ -27,19 +45,46 @@ tags: PistasJuego
     <color=blue>Policía:</color> En el ordenador de la derecha podrás llevar a juicio al sospechoso que creas que es el asesino.
 <<elseif $CurrentRandomInt eq 3>>
     <color=blue>Policía:</color> En el Walkie-Talkie que está encima del archivador podrás encontrar información útil sobre la víctima y la escena del crímen.
-<<elseif $CurrentRandomInt eq 4>>
-    <color=blue>Policía:</color> Si acusas a un sospechoso con menos de {$NumberOfEvidences} pistas es muy probable que no den el juicio como válido.
-<<elseif $CurrentRandomInt eq 5>>
-    <color=blue>Policía:</color> Solo puedes acusar a un sospechoso, elige con cuidado.
-<<elseif $CurrentRandomInt eq 6>>
-    <color=blue>Policía:</color> Si te atascas en un puzzle puedes dejarlo para más tarde. Pero no podrás seguir investigando a ese sospechoso hasta que lo completes.
-<<elseif $CurrentRandomInt eq 7>>
-    <color=blue>Policía:</color> Si no recoges información sobre la víctima, las pistas que consigas te servirán de poco.
 <<endif>>
 ===
+
+title: Pistas-AcusarSospechoso
+tags: AcusarSospechoso
+---
+<<set $RandomIntMin to 0>>
+<<set $RandomIntMax to 3>>
+<<set $CurrentRandomInt to $RandomIntPool>>
+
+<<if $CurrentRandomInt eq 0>>
+    <color=blue>Policía:</color> Si acusas a un sospechoso con menos de 2 pistas es muy probable que no den el juicio como válido.
+<<elseif $CurrentRandomInt eq 1>>
+    <color=blue>Policía:</color> Solo puedes acusar a un sospechoso, elige con cuidado.
+<<elseif $CurrentRandomInt eq 2>>
+    <color=blue>Policía:</color> Si has investigado todo lo posible, y has elegido al sospechoso por descarte, es posible que den el juicio como válido.
+<<endif>>
+===
+
+title: Pistas-General
+tags: General
+---
+<<set $RandomIntMin to 0>>
+<<set $RandomIntMax to 4>>
+<<set $CurrentRandomInt to $RandomIntPool>>
+
+<<if $CurrentRandomInt eq 0>>
+    <color=blue>Policía:</color> Si te atascas en un puzzle puedes dejarlo para más tarde. Pero no podrás seguir investigando a ese sospechoso hasta que lo completes.
+<<elseif $CurrentRandomInt eq 1>>
+    <color=blue>Policía:</color> Si no recoges información sobre la víctima, las pistas que consigas te servirán de poco.
+<<elseif $CurrentRandomInt eq 2>>
+    <color=blue>Policía:</color> Puedes acelerar el texto con <color=orange>Espacio</color> o saltarlo con <color=orange>Enter</color>.
+<<elseif $CurrentRandomInt eq 4>>
+    <color=blue>Policía:</color> Tienes un número limitado de investigaciones sobre los sospechosos, investiga con cuidado.
+<<endif>>
+===
+
 
 title: Walkie-InvestigarVictima
 tags: InvestigarVictima
 ---
-TODO
+WIP
 ===
