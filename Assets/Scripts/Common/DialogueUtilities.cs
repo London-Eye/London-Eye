@@ -1,9 +1,8 @@
 ﻿using Assets.Scripts.Dialogue;
 using Assets.Scripts.Dialogue.Variables.Attributes;
 using Assets.Scripts.Dialogue.Variables.Storages;
-using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using Yarn.Unity;
 
 namespace Assets.Scripts.Common
@@ -30,6 +29,32 @@ namespace Assets.Scripts.Common
         public int RandomIntMax { get; set; } = 1;
         [YarnAccess]
         public int RandomInt => Random.Range(RandomIntMin, RandomIntMax);
+
+        private SelectorPool<int> randomIntPool;
+        private int randomIntPoolMin, randomIntPoolMax;
+
+        [YarnAccess]
+        public int RandomIntPool
+        {
+            get
+            {
+                if (randomIntPool == null || randomIntPoolMin != RandomIntMin || randomIntPoolMax != RandomIntMax)
+                {
+                    randomIntPoolMin = RandomIntMin;
+                    randomIntPoolMax = RandomIntMax;
+
+                    HashSet<int> pool = new HashSet<int>();
+                    Utilities.AddIntRange(pool, randomIntPoolMin, randomIntPoolMax);
+
+                    randomIntPool = new SelectorPool<int>(pool)
+                    {
+                        AutoRefill = true
+                    };
+                }
+
+                return randomIntPool.Select();
+            }
+        }
         #endregion
 
         #region CodeRelayVariableStorage Binding

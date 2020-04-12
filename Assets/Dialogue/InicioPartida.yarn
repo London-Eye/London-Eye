@@ -17,14 +17,14 @@ tags: PistasJuego
 ---
 <<set $RandomIntMin to 0>>
 <<set $RandomIntMax to 8>>
-<<set $CurrentRandomInt to $RandomInt>>
+<<set $CurrentRandomInt to $RandomIntPool>>
 
 <<if $CurrentRandomInt eq 0>>
     <color=blue>Policía:</color> Accede a los sospechosos desde el tablón de la pared.
 <<elseif $CurrentRandomInt eq 1>>
     <color=blue>Policía:</color> En el archivador encontrarás los puzzles que te hayas dejado a medias.
 <<elseif $CurrentRandomInt eq 2>>
-    <color=blue>Policía:</color> En el ordenador de la derecha podrás llevar a juicio al sospechosos que creas que es el asesino.
+    <color=blue>Policía:</color> En el ordenador de la derecha podrás llevar a juicio al sospechoso que creas que es el asesino.
 <<elseif $CurrentRandomInt eq 3>>
     <color=blue>Policía:</color> En el Walkie-Talkie que está encima del archivador podrás encontrar información útil sobre la víctima y la escena del crímen.
 <<elseif $CurrentRandomInt eq 4>>
