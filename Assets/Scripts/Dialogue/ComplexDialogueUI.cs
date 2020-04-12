@@ -104,7 +104,7 @@ namespace Assets.Scripts.Dialogue
 
             while (!proceedToNextLine)
             {
-                yield return null;
+                yield return CheckContinue();
             }
 
             // Avoid skipping lines if textSpeed == 0
@@ -122,7 +122,7 @@ namespace Assets.Scripts.Dialogue
             onLineEnd?.Invoke();
         }
 
-        private void LineUpdate(string text)
+        public void LineUpdate(string text)
         {
             if (AllowSkip && !skipDialogue && Input.GetKey(SkipKey))
             {
@@ -200,6 +200,8 @@ namespace Assets.Scripts.Dialogue
 
         public Button ContinueButton;
 
+        public KeyCode ContinueKey = KeyCode.Return;
+
         [Tooltip("Time between the line end and continuing to the next (only when ContinueMode is set to 'Time'")]
         [YarnAccess]
         public float ContinueTime = 2.5f;
@@ -212,15 +214,47 @@ namespace Assets.Scripts.Dialogue
                     ContinueButton.gameObject.SetActive(true);
                     if (skipDialogue) SkipDialogueEnd();
                     break;
+            }
+
+            onLineFinishDisplaying?.Invoke();
+        }
+
+        private IEnumerator CheckContinue()
+        {
+            switch (continueMode)
+            {
+                case ContinueMode.Button:
+                    yield return ContinueOnKey(ContinueKey);
+                    break;
                 case ContinueMode.Time:
-                    StartCoroutine(ContinueAfter(ContinueTime));
+                    yield return ContinueAfter(ContinueTime);
                     break;
                 case ContinueMode.Skip:
                     MarkLineComplete();
                     break;
             }
+        }
 
-            onLineFinishDisplaying?.Invoke();
+        private IEnumerator ContinueOnKey(KeyCode key)
+        {
+            // Wait for user to release the continue key
+            while (Input.GetKey(key))
+            {
+                yield return null;
+            }
+
+            while (!proceedToNextLine)
+            {
+                // Continue when the user presses the continue key
+                if (Input.GetKey(key))
+                {
+                    MarkLineComplete();
+                }
+                else
+                {
+                    yield return new WaitForEndOfFrame();
+                }
+            }
         }
 
         private IEnumerator ContinueAfter(float seconds)
