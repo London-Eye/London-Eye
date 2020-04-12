@@ -24,7 +24,6 @@ public class SceneController : MonoBehaviour
     [SerializeField] private GameObject layout;
 
     public string ScoreColorName;
-    [SerializeField] private VariableStorageBehaviour scoreColorVariableStorage;
 
     public UnityEvent OnStartCardGame;
 
@@ -209,7 +208,7 @@ public class SceneController : MonoBehaviour
         CharacterCreation.Instance.NumberOfSuspects = scoreRank.NumberOfSuspects;
 
         string scoreColorAsString = '#' + ColorUtility.ToHtmlStringRGBA(scoreRank.Color);
-        scoreColorVariableStorage.SetValueNoLeading(ScoreColorName, scoreColorAsString);
+        FindObjectOfType<DialogueRunner>().variableStorage.SetValueNoLeading(ScoreColorName, scoreColorAsString);
 
         FindObjectOfType<DialogueUI>().onDialogueEnd.AddListener(() =>
         {

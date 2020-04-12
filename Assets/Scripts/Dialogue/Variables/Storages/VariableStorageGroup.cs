@@ -13,7 +13,7 @@ namespace Assets.Scripts.Dialogue.Variables.Storages
         public List<VariableStorageBehaviour> sources;
 
         [Header("Optional debugging options")]
-        public bool logSetKnownErrors = true;
+        public bool logSetKnownErrors;
 
         protected override Value GetValueBeforeStorage(string variableName)
         {
@@ -40,23 +40,32 @@ namespace Assets.Scripts.Dialogue.Variables.Storages
         {
             foreach (var source in sources)
             {
-                try
+                if (TrySetValue(source, variableName, value))
                 {
-                    source.SetValue(variableName, value);
                     return true;
-                }
-                catch (SystemException ex) when (ex is ArgumentException || ex is InvalidOperationException)
-                {
-                    // The source was not compatible with the value. Try another.
-
-                    // Log the exception if the flag is set to true
-                    if (logSetKnownErrors)
-                    {
-                        Debug.LogException(ex);
-                    }
                 }
             }
 
+            return false;
+        }
+
+        protected bool TrySetValue(VariableStorageBehaviour source, string variableName, Value value)
+        {
+            try
+            {
+                source.SetValue(variableName, value);
+                return true;
+            }
+            catch (SystemException ex) when (ex is ArgumentException || ex is InvalidOperationException)
+            {
+                // The source was not compatible with the value. Try another.
+
+                // Log the exception if the flag is set to true
+                if (logSetKnownErrors)
+                {
+                    Debug.LogException(ex);
+                }
+            }
             return false;
         }
     }

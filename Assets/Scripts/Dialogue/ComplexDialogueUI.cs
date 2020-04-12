@@ -191,7 +191,7 @@ namespace Assets.Scripts.Dialogue
         [Header("Continue Modes")]
         public ContinueMode continueMode = ContinueMode.Time;
 
-        [YarnAccess(name = "ContinueMode")]
+        [YarnAccess(name = nameof(ContinueMode))]
         public string ContinueModeAsString
         {
             get => continueMode.ToString();

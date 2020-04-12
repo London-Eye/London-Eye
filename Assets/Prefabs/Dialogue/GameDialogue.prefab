@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &2182630733096129128
+--- !u!114 &2104841466017727831
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9,12 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2552118832597424446}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8266d6511c58fdc49afb8c59a5a4b1dd, type: 3}
+  m_Script: {fileID: 11500000, guid: 346939a1c4d037f4bafd4dd1f159f4df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueRunner: {fileID: 5296080504864627357}
-  dialogueUI: {fileID: 1788309106}
-  myVariableStorage: {fileID: 5251284711274546695}
 --- !u!114 &1788309106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,41 +129,9 @@ MonoBehaviour:
   FastForwardKey: 32
   continueMode: 0
   ContinueButton: {fileID: 8642892209297188790}
+  ContinueKey: 13
   ContinueTime: 2.5
---- !u!114 &5251284711274546695
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5296080504864627352}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13dd5a24cd8252c409e507290c315592, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  allowReset: 0
-  persistStorageOnReset: 0
---- !u!114 &5310200421852604645
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5296080504864627352}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f501e10f3c11e145ba4d161178eaef3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  allowReset: 0
-  persistStorageOnReset: 0
-  sources:
-  - {fileID: 5251284711274546695}
-  - {fileID: 8708759236710813677}
-  - {fileID: 5296080504864627355}
-  logSetKnownErrors: 1
---- !u!114 &8708759236710813677
+--- !u!114 &3385787636333580402
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -180,12 +145,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowReset: 0
   persistStorageOnReset: 0
+  Storage: {fileID: 0}
   OnInitStorage:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2182630733096129128}
-        m_MethodName: BindPersistentStorage
-        m_Mode: 0
+      - m_Target: {fileID: 7178464129720201115}
+        m_MethodName: BindPersistentStorageFallback
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -194,6 +160,129 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &4024052942159978150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5296080504864627352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 983186aaeb94e4d42bd8642c2f79f1de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allowReset: 0
+  persistStorageOnReset: 0
+  Storage: {fileID: 0}
+  sources:
+  - {fileID: 6553407414790594021}
+  - {fileID: 5061015326884837362}
+  - {fileID: 9024164480311414271}
+  logSetKnownErrors: 0
+  TryOthersOnSelectedFail: 1
+  SelectedStorageIndex: 0
+--- !u!114 &5061015326884837362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5296080504864627352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e37ded0f6dfd28a4ca3e2a57d945c49c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allowReset: 0
+  persistStorageOnReset: 0
+  Storage: {fileID: 0}
+  OnInitStorage:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7178464129720201115}
+        m_MethodName: BindPersistentStorage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &5537605140621226588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5296080504864627352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 610c541718d694070a21327d1ae62e75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultVariables: []
+  debugTextView: {fileID: 0}
+--- !u!114 &6553407414790594021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5296080504864627352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13dd5a24cd8252c409e507290c315592, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allowReset: 0
+  persistStorageOnReset: 0
+  Storage: {fileID: 0}
+--- !u!114 &7178464129720201115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5296080504864627352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8266d6511c58fdc49afb8c59a5a4b1dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueRunner: {fileID: 5296080504864627357}
+  dialogueUI: {fileID: 1788309106}
+  myVariableStorage: {fileID: 6553407414790594021}
+  variableStorageSelector: {fileID: 4024052942159978150}
+  variableStorageSelectorFallback: {fileID: 9024164480311414271}
+  localVariableStorage: {fileID: 6553407414790594021}
+  globalVariableStorage: {fileID: 5061015326884837362}
+  localVariableStorageFallback: {fileID: 5537605140621226588}
+  globalVariableStorageFallback: {fileID: 3385787636333580402}
+  variableStorageMode: 1
+--- !u!114 &9024164480311414271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5296080504864627352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 983186aaeb94e4d42bd8642c2f79f1de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allowReset: 0
+  persistStorageOnReset: 0
+  Storage: {fileID: 0}
+  sources:
+  - {fileID: 5537605140621226588}
+  - {fileID: 3385787636333580402}
+  logSetKnownErrors: 0
+  TryOthersOnSelectedFail: 1
+  SelectedStorageIndex: 0
 --- !u!1001 &1954342738241314140
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -395,7 +484,7 @@ PrefabInstance:
         type: 3}
       propertyPath: variableStorage
       value: 
-      objectReference: {fileID: 5310200421852604645}
+      objectReference: {fileID: 4024052942159978150}
     - target: {fileID: 5935829475398715334, guid: 4ec3df5875e7347beb6176b545b8fb39,
         type: 3}
       propertyPath: onDialogueStart.m_PersistentCalls.m_Calls.Array.size
@@ -564,6 +653,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5935829475398715334, guid: 4ec3df5875e7347beb6176b545b8fb39, type: 3}
+    - {fileID: 5935829475398715335, guid: 4ec3df5875e7347beb6176b545b8fb39, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4ec3df5875e7347beb6176b545b8fb39, type: 3}
 --- !u!1 &2552118832597424446 stripped
 GameObject:
@@ -587,18 +677,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4bec29c0a230741bdac901dba8da47ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &5296080504864627355 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5935829475398715335, guid: 4ec3df5875e7347beb6176b545b8fb39,
-    type: 3}
-  m_PrefabInstance: {fileID: 1954342738241314140}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5296080504864627352}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 610c541718d694070a21327d1ae62e75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &5296080505399609465 stripped

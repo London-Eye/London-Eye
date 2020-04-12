@@ -7,39 +7,24 @@ namespace Assets.Scripts.Dialogue.Variables.Storages
     {
         public bool allowReset, persistStorageOnReset;
 
-        public T Storage { get; private set; }
+        public T Storage;
 
         /// Reset to our default values when the game starts
         internal void Awake()
         {
-            Storage = InitStorage();
+            T initialStorage = InitStorage();
+            if (initialStorage != null) Storage = initialStorage;
         }
 
-        protected virtual T InitStorage()
-        {
-            gameObject.SetActive(false);
-
-            T storage = gameObject.AddComponent<T>();
-
-            // This boilerplate code is needed to avoid InMemoryVariableStorage to throw a NullReferenceException
-            // The SetActive(false) and SetActive(true) are needed too in order for this to work
-            if (storage is InMemoryVariableStorage memoryStorage)
-            {
-                memoryStorage.defaultVariables = new InMemoryVariableStorage.DefaultVariable[0];
-            }
-
-            gameObject.SetActive(true);
-
-            return storage;
-        }
+        protected virtual T InitStorage() => null;
 
         public override Value GetValue(string variableName)
         {
             Value value = GetValueBeforeStorage(variableName);
             if (value == Value.NULL)
             {
-                value = Storage.GetValue(variableName);
-                if (value == Value.NULL)
+                if (Storage != null) value = Storage.GetValue(variableName);
+                if (Storage == null || value == Value.NULL)
                 {
                     value = GetValueAfterStorage(variableName);
                 }
@@ -50,7 +35,11 @@ namespace Assets.Scripts.Dialogue.Variables.Storages
         protected virtual Value GetValueBeforeStorage(string variableName) => Value.NULL;
         protected virtual Value GetValueAfterStorage(string variableName) => Value.NULL;
 
-        public override void ResetToDefaults()
+        public override void ResetToDefaults() => ResetToDefaults(allowReset);
+
+        public void ResetToDefaultsForce() => ResetToDefaults(true);
+
+        private void ResetToDefaults(bool allowReset)
         {
             if (allowReset)
             {
@@ -78,7 +67,8 @@ namespace Assets.Scripts.Dialogue.Variables.Storages
         {
             if (!SetValueNoStorage(variableName, value))
             {
-                Storage.SetValue(variableName, value);
+                if (Storage != null) Storage.SetValue(variableName, value);
+                else throw new System.InvalidOperationException("Unable to set value");
             }
         }
 

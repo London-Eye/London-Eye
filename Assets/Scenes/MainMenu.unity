@@ -1149,6 +1149,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3385787636333580402, guid: f9cf9ff9943921943bbb41cab3390a11,
+        type: 3}
+      propertyPath: OnInitStorage.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5061015326884837362, guid: f9cf9ff9943921943bbb41cab3390a11,
+        type: 3}
+      propertyPath: OnInitStorage.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5296080503983468574, guid: f9cf9ff9943921943bbb41cab3390a11,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -1707,18 +1717,6 @@ PrefabInstance:
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14516dc1e119ca14ab2ee8998c7bf600, type: 3}
---- !u!114 &688476741 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2182630733096129128, guid: f9cf9ff9943921943bbb41cab3390a11,
-    type: 3}
-  m_PrefabInstance: {fileID: 618743010}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8266d6511c58fdc49afb8c59a5a4b1dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &734213966 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3323268399735593434, guid: 68f01693af15f014e841892ba837812e,
@@ -2568,6 +2566,9 @@ GameObject:
   - component: {fileID: 1276836353}
   - component: {fileID: 1276836356}
   - component: {fileID: 1276836351}
+  - component: {fileID: 1276836355}
+  - component: {fileID: 1276836352}
+  - component: {fileID: 1276836358}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2589,11 +2590,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowReset: 0
   persistStorageOnReset: 0
+  Storage: {fileID: 0}
   textAsset: {fileID: 4900000, guid: 91a40575f01d3c049bcb61de9cd0aa7f, type: 3}
   NameValuesSeparator: '---'
   PoolSeparator: ===
   FillPoolsOnLoad: 1
   AutoRefillPools: 0
+--- !u!114 &1276836352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1276836350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2faea18e2273f9b43af2f17a22562026, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allowReset: 0
+  persistStorageOnReset: 0
+  Storage: {fileID: 0}
 --- !u!114 &1276836353
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2609,13 +2626,23 @@ MonoBehaviour:
   OnNewGame:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 688476741}
+      - m_Target: {fileID: 1423128515}
         m_MethodName: ResetBindingPersistentStorage
-        m_Mode: 2
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 2107543540}
-          m_ObjectArgumentAssemblyTypeName: Assets.Scripts.Dialogue.Variables.Storages.CodeRelayVariableStorage,
-            Assembly-CSharp
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1423128515}
+        m_MethodName: ResetBindingPersistentStorageFallback
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2629,6 +2656,9 @@ MonoBehaviour:
   murdererKey: Criminal
   randomNameKey: RandomName
   numberOfSuspectsKey: NumberOfSuspects
+  FallbackVariableStorage: {fileID: 1276836358}
+  characterVariableStorage: {fileID: 1276836355}
+  randomNamePoolSource: {fileID: 1276836352}
 --- !u!4 &1276836354
 Transform:
   m_ObjectHideFlags: 0
@@ -2643,6 +2673,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1276836355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1276836350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13dd5a24cd8252c409e507290c315592, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allowReset: 0
+  persistStorageOnReset: 0
+  Storage: {fileID: 0}
 --- !u!114 &1276836356
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2756,6 +2801,32 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1276836358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1276836350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 610c541718d694070a21327d1ae62e75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultVariables: []
+  debugTextView: {fileID: 0}
+--- !u!114 &1423128515 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7178464129720201115, guid: f9cf9ff9943921943bbb41cab3390a11,
+    type: 3}
+  m_PrefabInstance: {fileID: 618743010}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8266d6511c58fdc49afb8c59a5a4b1dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1591043089
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3683,18 +3754,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2087223754}
   m_CullTransparentMesh: 0
---- !u!114 &2107543540 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8708759236710813677, guid: f9cf9ff9943921943bbb41cab3390a11,
-    type: 3}
-  m_PrefabInstance: {fileID: 618743010}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e37ded0f6dfd28a4ca3e2a57d945c49c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &975159929904395388
 PrefabInstance:
   m_ObjectHideFlags: 0

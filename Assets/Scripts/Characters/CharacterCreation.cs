@@ -37,20 +37,25 @@ public class CharacterCreation : MonoBehaviour
     [YarnCommand("StartNewGame")]
     public void NewGame()
     {
-        if (characterVariableStorage != null) Destroy(characterVariableStorage.gameObject);
-        characterVariableStorage = gameObject.AddComponent<SimpleAccessibleVariableStorage>();
+        characterVariableStorage.ResetToDefaultsForce();
 
         InitializePools();
 
         CreateVictim();
 
-        randomNamePoolSource = GetComponent<PoolVariableStorage>();
+        randomNamePoolSource.ResetToDefaultsForce();
 
         VariableStorageGroup variableStorage = gameObject.AddComponent<VariableStorageGroup>();
         variableStorage.sources = new List<VariableStorageBehaviour>() { characterVariableStorage, randomNamePoolSource };
 
+        VariableStorageGroup variableStorageWithFallback = gameObject.AddComponent<VariableStorageGroup>();
+        variableStorageWithFallback.sources = new List<VariableStorageBehaviour>() { variableStorage, FallbackVariableStorage };
+
         if (VariableStorage != null) Destroy(VariableStorage.gameObject);
         VariableStorage = variableStorage;
+        
+        if (VariableStorageWithFallback != null) Destroy(VariableStorageWithFallback.gameObject);
+        VariableStorageWithFallback = variableStorageWithFallback;
 
         OnNewGame.Invoke();
     }
@@ -77,7 +82,7 @@ public class CharacterCreation : MonoBehaviour
         set
         {
             numberOfSuspects = value < maxNumberOfSuspects ? value : maxNumberOfSuspects;
-            characterVariableStorage.SetValueNoLeading(numberOfSuspectsKey, objectValue: numberOfSuspects);
+            VariableStorageWithFallback.SetValueNoLeading(numberOfSuspectsKey, numberOfSuspects);
         }
     }
 
@@ -105,14 +110,17 @@ public class CharacterCreation : MonoBehaviour
     public IReadOnlyCollection<Suspect> Suspects => suspects;
 
     public VariableStorageBehaviour VariableStorage { get; private set; }
+    public VariableStorageBehaviour VariableStorageWithFallback { get; private set; }
 
-    private AccessibleVariableStorage<InMemoryVariableStorage> characterVariableStorage;
+    public VariableStorageBehaviour FallbackVariableStorage;
+
+    public SimpleAccessibleVariableStorage characterVariableStorage;
 
     public PoolPuzzleLoader PoolPuzzleLoader { get; private set; }
 
     private SelectorPool<int> mNames, fNames;
     private SelectorPool<int> mRelation, fRelation;
-    private PoolVariableStorage randomNamePoolSource;
+    public PoolVariableStorage randomNamePoolSource;
 
     void Awake()
     {
