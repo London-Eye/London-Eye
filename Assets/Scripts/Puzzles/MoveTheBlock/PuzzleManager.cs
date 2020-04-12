@@ -8,13 +8,9 @@ public class PuzzleManager : MonoBehaviour
 
     public UnityEvent onGameStart, onGameEnd;
 
-    [SerializeField] public BlockSetter setter;
-
-
     [YarnCommand("StartGame")]
     public void StartGame()
     {
-        setter.setBlocks();
         gameRunning = true;
         onGameStart.Invoke();
     }
