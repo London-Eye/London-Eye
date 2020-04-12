@@ -21,13 +21,13 @@ public class BlockMovement : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody2D>();
 
-        directionAxis = bounds.transform.localScale.y > bounds.transform.localScale.x ? Vector2.up : Vector2.right;
         offset = bounds.transform.localScale.y > bounds.transform.localScale.x ? transform.position.y : transform.position.x;
         offset -= Mathf.FloorToInt(offset);
     }
 
     private void OnMouseDown()
     {
+        directionAxis = this.transform.localScale.y > this.transform.localScale.x ? Vector2.up : Vector2.right;
         isBeingMoved = true;
         _rb.bodyType = RigidbodyType2D.Dynamic;
 
