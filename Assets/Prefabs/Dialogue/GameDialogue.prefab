@@ -15,9 +15,6 @@ MonoBehaviour:
   dialogueRunner: {fileID: 5296080504864627357}
   dialogueUI: {fileID: 1788309106}
   myVariableStorage: {fileID: 5251284711274546695}
-  continueMode: 0
-  ContinueButton: {fileID: 8642892209297188790}
-  ContinueTime: 2.5
 --- !u!114 &1788309106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81,18 +78,7 @@ MonoBehaviour:
         m_CallState: 2
   onLineFinishDisplaying:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2182630733096129128}
-        m_MethodName: StartContinue
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   onLineUpdate:
     m_PersistentCalls:
       m_Calls:
@@ -141,6 +127,11 @@ MonoBehaviour:
   onCommand:
     m_PersistentCalls:
       m_Calls: []
+  AllowSkip: 1
+  SkipKey: 32
+  continueMode: 0
+  ContinueButton: {fileID: 8642892209297188790}
+  ContinueTime: 2.5
 --- !u!114 &5251284711274546695
 MonoBehaviour:
   m_ObjectHideFlags: 0
