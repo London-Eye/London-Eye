@@ -9,6 +9,7 @@ namespace Assets.Scripts.Dialogue.Variables.Access
 
         private System.Type accessType;
         public override System.Type AccessType => accessType;
+        public override bool IsStatic => false;
 
         public RecursiveAccessIndex(object target, YarnRecursiveAccessAttribute attribute, string name = null)
             : base(name ?? attribute.Name, target)
@@ -19,7 +20,7 @@ namespace Assets.Scripts.Dialogue.Variables.Access
         public override Yarn.Value GetValue()
         {
             object value = TargetAttribute.GetValue(Target);
-            if (accessType != null && value != null) accessType = value.GetType();
+            if (accessType == null && value != null) accessType = value.GetType();
             return Utilities.AsYarnValue(value);
         }
 

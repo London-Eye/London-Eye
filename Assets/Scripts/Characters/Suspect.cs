@@ -6,7 +6,9 @@ namespace Assets.Scripts.Characters
     public class Suspect : Character
     {
         public const string AffirmativeAlibi = "sí", NegativeAlibi = "no";
-        public const int numberOfEvidences = 3;
+
+        [YarnAccess]
+        public const int NumberOfEvidences = 3;
 
         [YarnAccess]
         public string Relation;
@@ -42,7 +44,7 @@ namespace Assets.Scripts.Characters
             }
         }
 
-        public bool HasFoundAllEvidences => EvidencesFound == numberOfEvidences;
+        public bool HasFoundAllEvidences => EvidencesFound == NumberOfEvidences;
 
         public string Puzzle { get; set; }
 
@@ -50,7 +52,7 @@ namespace Assets.Scripts.Characters
         {
             get
             {
-                if (EvidencesFound < numberOfEvidences) return "SinPruebas";
+                if (EvidencesFound < NumberOfEvidences) return "SinPruebas";
                 else return this == CharacterCreation.Instance.Murderer ? "Criminal" : "Inocente";
             }
         }

@@ -7,6 +7,7 @@ namespace Assets.Scripts.Dialogue.Variables.Access
     {
         public FieldInfo TargetFieldInfo { get; }
         public override System.Type AccessType => TargetFieldInfo.FieldType;
+        public override bool IsStatic => TargetFieldInfo.IsStatic;
 
         public FieldAccessIndex(object target, FieldInfo fieldInfo, string name = null) : base(name ?? fieldInfo.Name, target)
         {

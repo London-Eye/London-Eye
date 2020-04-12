@@ -33,7 +33,10 @@ namespace Assets.Scripts.Dialogue.Variables.Storages
 
             foreach (AccessIndex index in yarnAccessIndices)
             {
-                index.Name = GetAccessVariableName(variableNameNoLeading, index.Name);
+                if (!index.IsStatic)
+                {
+                    index.Name = GetAccessVariableName(variableNameNoLeading, index.Name);
+                }
             }
 
             AddIndices(yarnAccessIndices);

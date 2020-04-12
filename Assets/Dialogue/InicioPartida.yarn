@@ -28,7 +28,7 @@ tags: PistasJuego
 <<elseif $CurrentRandomInt eq 3>>
     <color=blue>Policía:</color> En el Walkie-Talkie que está encima del archivador podrás encontrar información útil sobre la víctima y la escena del crímen.
 <<elseif $CurrentRandomInt eq 4>>
-    <color=blue>Policía:</color> Si acusas a un sospechoso con menos de 2 pistas es muy probable que no den el juicio como válido.
+    <color=blue>Policía:</color> Si acusas a un sospechoso con menos de {$NumberOfEvidences} pistas es muy probable que no den el juicio como válido.
 <<elseif $CurrentRandomInt eq 5>>
     <color=blue>Policía:</color> Solo puedes acusar a un sospechoso, elige con cuidado.
 <<elseif $CurrentRandomInt eq 6>>

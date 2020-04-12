@@ -11,6 +11,8 @@ namespace Assets.Scripts.Dialogue.Variables.Access
 
         public abstract Type AccessType { get; }
 
+        public abstract bool IsStatic { get; }
+
         public AccessIndex(string name, object target)
         {
             Name = name;

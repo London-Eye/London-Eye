@@ -7,6 +7,7 @@ namespace Assets.Scripts.Dialogue.Variables.Access
     {
         public PropertyInfo TargetPropertyInfo { get; }
         public override System.Type AccessType => TargetPropertyInfo.PropertyType;
+        public override bool IsStatic => TargetPropertyInfo.GetGetMethod().IsStatic;
 
         public PropertyAccessIndex(object target, PropertyInfo propertyInfo, string name = null)
             : base(name ?? propertyInfo.Name, target)
