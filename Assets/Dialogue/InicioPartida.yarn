@@ -19,8 +19,10 @@ tags: PistasJuego
 <<set $RandomIntMax to 9>>
 <<set $CurrentRandomInt to $RandomIntPool>>
 
-<color=blue>Policía:</color>Sobre que quieres obtener información?
-->Dime que hace algo de esta oficina.
+<<set $ContinueMode to "skip">>
+<color=blue>Policía:</color> ¿Sobre qué quieres obtener información?
+<<set $ContinueMode to "time">>
+->Dime qué hace algo de esta oficina.
     [[Pistas-MenuPrincipal]]
 ->Sobre acusar a uno de los sospechosos.
     [[Pistas-AcusarSospechoso]]
