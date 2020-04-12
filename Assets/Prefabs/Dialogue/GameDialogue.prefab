@@ -128,7 +128,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   AllowSkip: 1
-  SkipKey: 32
+  SkipKey: 13
+  FastForwardKey: 32
   continueMode: 0
   ContinueButton: {fileID: 8642892209297188790}
   ContinueTime: 2.5

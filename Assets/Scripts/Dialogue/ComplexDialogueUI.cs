@@ -23,15 +23,10 @@ namespace Assets.Scripts.Dialogue
         [YarnAccess]
         public bool AllowSkip;
 
-        public KeyCode SkipKey = KeyCode.Space;
+        public KeyCode SkipKey = KeyCode.Return;
 
-        private void Update()
-        {
-            if (AllowSkip && !skipDialogue && Input.GetKeyDown(SkipKey))
-            {
-                SkipDialogue();
-            }
-        }
+        public KeyCode FastForwardKey = KeyCode.Space;
+        private float originalTextSpeed = 0;
 
         public override Yarn.Dialogue.HandlerExecutionType RunLine(Yarn.Line line, ILineLocalisationProvider localisationProvider, Action onComplete)
         {
@@ -84,12 +79,12 @@ namespace Assets.Scripts.Dialogue
 
                 foreach (string currentText in completeText.Parse())
                 {
-                    onLineUpdate?.Invoke(currentText);
+                    LineUpdate(currentText);
                     if (proceedToNextLine)
                     {
                         // We've requested a skip of the entire line.
                         // Display all of the text immediately.
-                        onLineUpdate?.Invoke(text);
+                        LineUpdate(text);
                         break;
                     }
                     yield return new WaitForSeconds(textSpeed);
@@ -98,7 +93,7 @@ namespace Assets.Scripts.Dialogue
             else
             {
                 // Display the entire line immediately if textSpeed <= 0
-                onLineUpdate?.Invoke(text);
+                LineUpdate(text);
             }
 
             // We're now waiting for the player to move on to the next line
@@ -116,10 +111,35 @@ namespace Assets.Scripts.Dialogue
             yield return new WaitForEndOfFrame();
 
             // Hide the text and prompt
-            onLineEnd?.Invoke();
+            LineEnd();
 
             onComplete();
 
+        }
+
+        private void LineEnd()
+        {
+            onLineEnd?.Invoke();
+        }
+
+        private void LineUpdate(string text)
+        {
+            if (AllowSkip && !skipDialogue && Input.GetKey(SkipKey))
+            {
+                SkipDialogue();
+            }
+
+            if (Input.GetKey(FastForwardKey))
+            {
+                if (originalTextSpeed == 0)
+                {
+                    originalTextSpeed = textSpeed;
+                }
+
+                textSpeed /= 1.2f;
+            }
+
+            onLineUpdate?.Invoke(text);
         }
 
         public new void MarkLineComplete()
@@ -129,8 +149,15 @@ namespace Assets.Scripts.Dialogue
 
         public override void DialogueComplete()
         {
-            base.DialogueComplete();
             if (skipDialogue) SkipDialogueEnd();
+
+            if (originalTextSpeed > 0)
+            {
+                textSpeed = originalTextSpeed;
+                originalTextSpeed = 0;
+            }
+
+            base.DialogueComplete();
         }
 
         public void SkipDialogue()
