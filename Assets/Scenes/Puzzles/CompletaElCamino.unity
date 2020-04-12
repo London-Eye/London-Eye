@@ -1073,6 +1073,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StartDialogue: 1
+  InactiveAfterDestroy: 1
+  onBlockDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &951569348
 GameObject:
   m_ObjectHideFlags: 0
@@ -1841,6 +1845,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7507364381134204712, guid: a76f8e72090db7c4897dafaf3a6ece93,
+        type: 3}
+      propertyPath: OnRotationEnded.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7507364381473378983, guid: a76f8e72090db7c4897dafaf3a6ece93,
         type: 3}
       propertyPath: ImpulseFactor
