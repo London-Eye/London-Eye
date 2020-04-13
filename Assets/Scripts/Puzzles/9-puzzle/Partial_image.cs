@@ -46,7 +46,7 @@ public class Partial_image : MonoBehaviour
     private void OnMouseDown() {
         source = this;
         Vector2 mouseMove = GetMousePosition();
-        ini = GetSector(mouseMove.x,mouseMove.y);
+        ini = GetSector(mouseMove.x, mouseMove.y);
         transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, transform.localPosition.z - 1);
         Debug.Log(ini);
     }

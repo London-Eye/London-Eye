@@ -12,13 +12,15 @@ public class GameController : MonoBehaviour
     [SerializeField] public Color[] c5;
 
     [SerializeField] private GameObject EndgameMenu;
+    [SerializeField] private initially_full_tube tube;
+    [SerializeField] private GameObject container;
     public bool first;
     public Color ballTomove;
     public initially_full_tube sourceTube;
-    private initially_full_tube[] tubes;
+    private initially_full_tube[] tubes = new initially_full_tube[8];
     public int selector;
     public Color[] c = new Color[24];
-
+    private readonly Vector2[] position = new Vector2[8] {new Vector2(-3.5f,-2f), new Vector2(-2f, -2f), new Vector2(-0.5f, -2f), new Vector2(1f, -2f), new Vector2(-3.5f, 1.25f), new Vector2(-2f, 1.25f), new Vector2(-0.5f, 1.25f), new Vector2(1f, 1.25f) };
     public bool GameRunning { get; private set; }
 
     // Start is called before the first frame update
@@ -42,21 +44,23 @@ public class GameController : MonoBehaviour
                 c = c5;
                 break;
         }
-           
         first = true;
         GameRunning = true;
         EndgameMenu.SetActive(false);
+
+        for (int i = 0; i < position.Length; i++)
+        {
+            initially_full_tube t = Instantiate(tube) as initially_full_tube;
+            t.transform.SetParent(container.GetComponent<Transform>());
+            t.transform.position = new Vector3(position[i][0], position[i][1], container.transform.position.z);
+            t.transform.localScale = new Vector3(container.transform.localScale.x + 77.18328f, container.transform.localScale.y + 77.18328f, container.transform.localScale.z + 77.18328f);
+        }
         setTubes();
     }
 
     // Update is called once per frame
     void Update()
     {
-        /*if (GameRunning && isEndgame())
-        {
-            GameRunning = false;
-            EndgameMenu.SetActive(true);
-        }*/
     }
 
     public void isEndgame() {
@@ -75,27 +79,32 @@ public class GameController : MonoBehaviour
         tubes = GameObject.FindObjectsOfType<initially_full_tube>();
         int empty_tubes = tubes.Length - (c.Length / 4);
         Debug.Log(c.Length);
+        Debug.Log(tubes.Length);
         for (int i = 0; i < empty_tubes; i++) {
             tubes[i].initial_status = "empty";
             tubes[i].transform.GetChild(0).gameObject.SetActive(false);
             tubes[i].transform.GetChild(1).gameObject.SetActive(false);
             tubes[i].transform.GetChild(2).gameObject.SetActive(false);
             tubes[i].transform.GetChild(3).gameObject.SetActive(false);
+            tubes[i].pila = new Stack<Color>();
         }
         int k = 0;
         for (int j = empty_tubes; j < tubes.Length; j++) {
-            Debug.Log("In");
+            Debug.Log(tubes[j]);
             tubes[j].initial_status = "full";
             tubes[j].transform.GetChild(3).GetComponent<SpriteRenderer>().color = c[k++];
             tubes[j].transform.GetChild(2).GetComponent<SpriteRenderer>().color = c[k++];
             tubes[j].transform.GetChild(1).GetComponent<SpriteRenderer>().color = c[k++];
             tubes[j].transform.GetChild(0).GetComponent<SpriteRenderer>().color = c[k++];
-            tubes[j].pila.Push(tubes[j].transform.GetChild(0).GetComponent<SpriteRenderer>().color);
-            tubes[j].pila.Push(tubes[j].transform.GetChild(1).GetComponent<SpriteRenderer>().color);
-            tubes[j].pila.Push(tubes[j].transform.GetChild(2).GetComponent<SpriteRenderer>().color);
-            tubes[j].pila.Push(tubes[j].transform.GetChild(3).GetComponent<SpriteRenderer>().color);
-
+            fillStack(tubes[j]);
 
         }
     }
+    private void fillStack(initially_full_tube t) {
+        t.pila = new Stack<Color>();
+        t.pila.Push(t.transform.GetChild(0).GetComponent<SpriteRenderer>().color);
+        t.pila.Push(t.transform.GetChild(1).GetComponent<SpriteRenderer>().color);
+        t.pila.Push(t.transform.GetChild(2).GetComponent<SpriteRenderer>().color);
+        t.pila.Push(t.transform.GetChild(3).GetComponent<SpriteRenderer>().color);
+        }
 }

@@ -27,19 +27,17 @@ public class Set_images : MonoBehaviour
     void Start()
     {
         Sprite[] images = letterBroken;
-        selector = Random.Range(0, 9);
-        if (selector > 5)
-        {
-            images = letterBroken;
-        }
-        else {
-            if (selector > 2)
-            {
+        selector = Random.Range(1, 3);
+        switch (selector) {
+            case 1:
+                images = letterBroken;
+                break;
+            case 2:
                 images = letterBurned;
-            }
-            else {
+                break;
+            case 3:
                 images = letterScrached;
-            }
+                break;
         }
         EndgameMenu.SetActive(false);
         for (int i = 0; i < images.Length; i++)
@@ -88,20 +86,17 @@ public class Set_images : MonoBehaviour
         yield return new WaitForSeconds(0.75f);
 
         EndgameMenu.SetActive(true);
-        if (selector > 5)
+        switch (selector)
         {
-            Ibro.SetActive(true);
-        }
-        else
-        {
-            if (selector > 2)
-            {
+            case 1:
+                Ibro.SetActive(true);
+                break;
+            case 2:
                 IBur.SetActive(true);
-            }
-            else
-            {
+                break;
+            case 3:
                 IScr.SetActive(true);
-            }
+                break;
         }
         
     }

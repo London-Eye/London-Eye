@@ -16,7 +16,6 @@ public class initially_full_tube : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        pila = new Stack<Color>();
         controller = GameObject.Find("GameController").GetComponent<GameController>();
         basse = this.gameObject.transform.GetChild(0).gameObject;
         middleBase = this.gameObject.transform.GetChild(1).gameObject;
@@ -33,9 +32,10 @@ public class initially_full_tube : MonoBehaviour
     private void OnMouseDown() {
 
         if (!controller.ps.IsPaused && controller.GameRunning) {
-
+            Debug.Log("clicado");
             if (controller.first) //primera bola que pillas
             {
+                Debug.Log("primera bola");
                 if (size(this.pila) > 0) //si has clicado una probeta con bolas
                 {
                     Debug.Log("First");
