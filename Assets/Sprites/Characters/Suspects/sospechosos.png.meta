@@ -1,0 +1,679 @@
+fileFormatVersion: 2
+guid: c0becb2836328724aa542be7af79650e
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1073003080083091260
+    second: sospechosos_0
+  - first:
+      213: -5873754469075465620
+    second: sospechosos_1
+  - first:
+      213: -8423103235548866450
+    second: sospechosos_2
+  - first:
+      213: -6285645471435257908
+    second: sospechosos_3
+  - first:
+      213: -6185240459281073592
+    second: sospechosos_4
+  - first:
+      213: 6118293747101031894
+    second: sospechosos_5
+  - first:
+      213: 9078807515234337840
+    second: sospechosos_6
+  - first:
+      213: -6719564791499570008
+    second: sospechosos_7
+  - first:
+      213: 2289984322799960101
+    second: sospechosos_8
+  - first:
+      213: 4154152351393692542
+    second: sospechosos_9
+  - first:
+      213: -3936871294875387827
+    second: sospechosos_10
+  - first:
+      213: -5474331343130540681
+    second: sospechosos_11
+  - first:
+      213: 5659392169915068734
+    second: sospechosos_12
+  - first:
+      213: -5586402007600020488
+    second: sospechosos_13
+  - first:
+      213: -1571980184562708302
+    second: sospechosos_14
+  - first:
+      213: 2238915206347785754
+    second: sospechosos_15
+  - first:
+      213: -3955663219503002321
+    second: sospechosos_16
+  - first:
+      213: 3452431301200451158
+    second: sospechosos_17
+  - first:
+      213: -3225383506912079694
+    second: sospechosos_18
+  - first:
+      213: 4537539636634554676
+    second: sospechosos_19
+  - first:
+      213: -156364847357101262
+    second: sospechosos_20
+  - first:
+      213: 4042395502662685715
+    second: sospechosos_21
+  - first:
+      213: 6619346278962307224
+    second: sospechosos_22
+  - first:
+      213: 8454082917564981985
+    second: sospechosos_23
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: sospechosos_0
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 3944
+        width: 709
+        height: 980
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7692d6f74f90114d90705a8ff800432
+      internalID: 1073003080083091260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sospechosos_1
+      rect:
+        serializedVersion: 2
+        x: 1047
+        y: 3944
+        width: 649
+        height: 980
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ceca7b0195e4c444a7443b6fd4e296f
+      internalID: -5873754469075465620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sospechosos_2
+      rect:
+        serializedVersion: 2
+        x: 1893
+        y: 3944
+        width: 709
+        height: 1009
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d84593c9223828145a3d7b35fccf00be
+      internalID: -8423103235548866450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sospechosos_3
+      rect:
+        serializedVersion: 2
+        x: 2713
+        y: 3951
+        width: 696
+        height: 984
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 379a97293bc0f0f4d9080cf3f47ab52d
+      internalID: -6285645471435257908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sospechosos_4
+      rect:
+        serializedVersion: 2
+        x: 3562
+        y: 3951
+        width: 698
+        height: 984
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87942a84f6e2c9046b32ab7e6ba5b75b
+      internalID: -6185240459281073592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sospechosos_5
+      rect:
+        serializedVersion: 2
+        x: 4450
+        y: 3954
+        width: 703
+        height: 991
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e96d86a0b0ff2fd4f9b415353eff6de3
+      internalID: 6118293747101031894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sospechosos_6
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 2781
+        width: 685
+        height: 1040
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b056cbe598cb9f14c8ee2d6e4e301034
+      internalID: 9078807515234337840
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sospechosos_7
+      rect:
+        serializedVersion: 2
+        x: 1037
+        y: 2783
+        width: 680
+        height: 981
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 654f510730adff8408891775230f1e39
+      internalID: -6719564791499570008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sospechosos_8
+      rect:
+        serializedVersion: 2
+        x: 1880
+        y: 2786
+        width: 670
+        height: 1007
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37a43b723aa63174d945b2835c1a7295
+      internalID: 2289984322799960101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sospechosos_9
+      rect:
+        serializedVersion: 2
+        x: 2708
+        y: 2781
+        width: 683
+        height: 991
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 443cbb560fa48be4f9c907f0ac25edfc
+      internalID: 4154152351393692542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sospechosos_10
+      rect:
+        serializedVersion: 2
+        x: 3544
+        y: 2778
+        width: 682
+        height: 937
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5b429576af11c94c9556a59590a6bac
+      internalID: -3936871294875387827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sospechosos_11
+      rect:
+        serializedVersion: 2
+        x: 4447
+        y: 2786
+        width: 672
+        height: 906
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 672c83465120a50468421a123abfbde8
+      internalID: -5474331343130540681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sospechosos_12
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 1532
+        width: 623
+        height: 984
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8792a0f37f11aa4398bcec6102fbd04
+      internalID: 5659392169915068734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sospechosos_13
+      rect:
+        serializedVersion: 2
+        x: 1130
+        y: 1530
+        width: 530
+        height: 996
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6ad6f5233c075e44aebce874c20070d
+      internalID: -5586402007600020488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sospechosos_14
+      rect:
+        serializedVersion: 2
+        x: 1911
+        y: 1530
+        width: 660
+        height: 1033
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9783a2f3d83e1e4ba4bf97014be28b6
+      internalID: -1571980184562708302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sospechosos_15
+      rect:
+        serializedVersion: 2
+        x: 2812
+        y: 1543
+        width: 589
+        height: 1035
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 846ddfe5f7b8c76459bdf91f9b1f2834
+      internalID: 2238915206347785754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sospechosos_16
+      rect:
+        serializedVersion: 2
+        x: 3603
+        y: 1540
+        width: 652
+        height: 1033
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66a0ce4af60e15241a02cf960a66fba0
+      internalID: -3955663219503002321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sospechosos_17
+      rect:
+        serializedVersion: 2
+        x: 4499
+        y: 1540
+        width: 540
+        height: 1033
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b82ad9988a53d8e409b8da6d1d5f3fe5
+      internalID: 3452431301200451158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sospechosos_18
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 378
+        width: 708
+        height: 955
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15b980f44a087e041916fa76eee946e6
+      internalID: -3225383506912079694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sospechosos_19
+      rect:
+        serializedVersion: 2
+        x: 988
+        y: 370
+        width: 630
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6e3030924ad5924e8240d3942b36a99
+      internalID: 4537539636634554676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sospechosos_20
+      rect:
+        serializedVersion: 2
+        x: 1828
+        y: 367
+        width: 649
+        height: 960
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d50ff16e45abb9b42896505919a5e0af
+      internalID: -156364847357101262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sospechosos_21
+      rect:
+        serializedVersion: 2
+        x: 2659
+        y: 375
+        width: 617
+        height: 937
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32ae9951c40bef343ae1f00b1de0bd13
+      internalID: 4042395502662685715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sospechosos_22
+      rect:
+        serializedVersion: 2
+        x: 3596
+        y: 367
+        width: 664
+        height: 940
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2a6ac6968e50f445950d7cb4872f2f9
+      internalID: 6619346278962307224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sospechosos_23
+      rect:
+        serializedVersion: 2
+        x: 4509
+        y: 362
+        width: 623
+        height: 963
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c37e8d6d0f34dc745ae5bf3a479b8059
+      internalID: 8454082917564981985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
