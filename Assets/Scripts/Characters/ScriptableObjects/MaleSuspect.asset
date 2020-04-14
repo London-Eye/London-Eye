@@ -25,18 +25,18 @@ MonoBehaviour:
   - Godofredo
   relation:
   - novio
-  - padre
-  - hermano
   - amante
+  - hermano
+  - padre
   - primo
   - "compa\xF1ero de trabajo"
   - conocido
   emotion:
-  - estaba celoso de
-  - estaba enfadado con
-  - admiraba a
-  - estaba enamorado de
-  - estaba decepcionado con
-  - estaba felizmente con
-  - estaba orgulloso de
   - odiaba a
+  - estaba enfadado con
+  - estaba celoso de
+  - estaba decepcionado con
+  - estaba enamorado de
+  - admiraba a
+  - estaba orgulloso de
+  - estaba felizmente con

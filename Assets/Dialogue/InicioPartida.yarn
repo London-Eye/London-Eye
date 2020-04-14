@@ -88,5 +88,31 @@ tags: General
 title: Walkie-InvestigarVictima
 tags: InvestigarVictima
 ---
-WIP
+<<if $SuspectEvidencesFound eq 0>>
+    <<if $CriminalRelationIndexCriminal is 0>>
+        Relation index 0
+    <<elseif $CriminalRelationIndexCriminal is 1>>
+        Relation index 1
+    <<elseif $CriminalRelationIndexCriminal is 2>>
+        Relation index 2
+    <<elseif $CriminalRelationIndexCriminal is 3>>
+        Relation index 3
+    <<endif>>
+    Primera pista: Criminal relation {$CriminalRelation}
+    <<set $SuspectEvidencesFound to 0>>
+<<elseif $SuspectEvidencesFound eq 1>>
+    <<if $CriminalEmotionIndexCriminal is 0>>
+        Emotion index 0
+    <<elseif $CriminalEmotionIndexCriminal is 1>>
+        Emotion index 1
+    <<elseif $CriminalEmotionIndexCriminal is 2>>
+        Emotion index 2
+    <<elseif $CriminalEmotionIndexCriminal is 3>>
+        Emotion index 3
+    <<endif>>
+    Segunda pista: Criminal emotion {$CriminalEmotion}
+    <<set $SuspectEvidencesFound to 0>>
+<<endif>>
+
+
 ===

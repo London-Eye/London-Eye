@@ -56,5 +56,11 @@ namespace Assets.Scripts.Characters
                 else return this == CharacterCreation.Instance.Murderer ? "Criminal" : "Inocente";
             }
         }
+
+        [YarnAccess]
+        public int RelationIndexCriminal;
+
+        [YarnAccess]
+        public int EmotionIndexCriminal;
     }
 }

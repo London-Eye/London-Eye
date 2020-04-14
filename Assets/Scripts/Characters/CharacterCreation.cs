@@ -71,7 +71,7 @@ public class CharacterCreation : MonoBehaviour
     }
 
     // maxNumberOfSuspects = min(numberOfNames, numberOfRelations, numberOfEmotions);
-    public const int maxNumberOfSuspects = 6, numberOfNames = 9, numberOfRelations = 6, numberOfEmotions = 7;
+    public const int maxNumberOfSuspects = 6, numberOfNames = 10, numberOfRelations = 7, numberOfEmotions = 8;
 
     public const string MainMenuMenusGameObjectName = "Menus";
 
@@ -261,6 +261,8 @@ public class CharacterCreation : MonoBehaviour
         suspect.cname = stats.characterName[nameIndex];
         suspect.Relation = stats.relation[relationIndex];
         suspect.Emotion = stats.emotion[emotionIndex];
+        suspect.RelationIndexCriminal = relationIndex / 2;
+        suspect.EmotionIndexCriminal = emotionIndex / 2;
     }
 
     private void FillNamePool()

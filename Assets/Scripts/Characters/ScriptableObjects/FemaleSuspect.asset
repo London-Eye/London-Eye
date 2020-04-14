@@ -25,18 +25,18 @@ MonoBehaviour:
   - Rita
   relation:
   - novia
-  - madre
-  - hermana
   - amante
+  - hermana
+  - madre
   - prima
   - "compa\xF1era de trabajo"
   - conocida
   emotion:
-  - estaba celosa de
-  - estaba enfadada con
-  - admiraba a
-  - estaba enamorada de
-  - estaba decepcionada con
-  - estaba felizmente con
-  - estaba orgullosa de
   - odiaba a
+  - estaba enfadada con
+  - estaba celosa de
+  - estaba decepcionada con
+  - estaba enamorada de
+  - admiraba a
+  - estaba orgullosa de
+  - estaba felizmente con
