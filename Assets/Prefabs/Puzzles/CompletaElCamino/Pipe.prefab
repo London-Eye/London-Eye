@@ -146,11 +146,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87f88270ca092fb4c8134e275d3381cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ImpulseFactor: {x: 8, y: 12}
-  FreezeImpulseUp: 0
-  FreezeImpulseLeft: 0
-  FreezeImpulseRight: 0
-  FreezeImpulseDown: 1
+  ImpulseFactor: {x: 4, y: 8}
+  ImpulseDirection: {x: 1, y: 0}
+  directionSpace: 1
+  relativeToCurrentVelocity: 0
+  allowedEntryDirections:
+  - {x: 0, y: -1}
+  DisableImpulseUp: 0
+  DisableImpulseLeft: 0
+  DisableImpulseRight: 0
+  DisableImpulseDown: 1
+  freezeOnDisabled: 1
 --- !u!1 &7507364381988317938
 GameObject:
   m_ObjectHideFlags: 0
@@ -221,11 +227,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87f88270ca092fb4c8134e275d3381cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ImpulseFactor: {x: 8, y: 12}
-  FreezeImpulseUp: 0
-  FreezeImpulseLeft: 0
-  FreezeImpulseRight: 0
-  FreezeImpulseDown: 1
+  ImpulseFactor: {x: 4, y: 8}
+  ImpulseDirection: {x: 1, y: 0}
+  directionSpace: 1
+  relativeToCurrentVelocity: 0
+  allowedEntryDirections:
+  - {x: 0, y: -1}
+  DisableImpulseUp: 0
+  DisableImpulseLeft: 0
+  DisableImpulseRight: 0
+  DisableImpulseDown: 1
+  freezeOnDisabled: 1
 --- !u!1 &7507364382552247456
 GameObject:
   m_ObjectHideFlags: 0
