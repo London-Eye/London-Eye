@@ -89,26 +89,22 @@ title: Walkie-InvestigarVictima
 tags: InvestigarVictima
 ---
 <<if $SuspectEvidencesFound eq 0>>
-    <<if $CriminalRelationIndexCriminal is 0>>
-        Relation index 0
-    <<elseif $CriminalRelationIndexCriminal is 1>>
-        Relation index 1
-    <<elseif $CriminalRelationIndexCriminal is 2>>
-        Relation index 2
-    <<elseif $CriminalRelationIndexCriminal is 3>>
-        Relation index 3
+    <<if $CriminalRelationIndexCriminal is 0 or 1>>
+        <color=blue>Comisaria:</color> La víctima parece estar relajada y tranquila, probablemente, quien [select {$VictimIsMale} True="lo" False="la"] mató fué algún conocido cercano de [select {$VictimIsMale} True="este" False="esta"].
+    <<elseif $CriminalRelationIndexCriminal is 2 or 3>>
+        <color=blue>Comisaria:</color> Aunque no parece que se lo vió venir, ya que no hay signos de que se haya defendido, la víctima no está relajada del todo así que en la comisaria pensamos que quien mató a la víctima no era cercano a esta.
     <<endif>>
     Primera pista: Criminal relation {$CriminalRelation}
-    <<set $SuspectEvidencesFound to 0>>
+    <<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
 <<elseif $SuspectEvidencesFound eq 1>>
     <<if $CriminalEmotionIndexCriminal is 0>>
-        Emotion index 0
+        <color=blue>Comisaria:</color> La víctima murió por múltiples contusiones en la parte posterior de la cabeza, claramente lo realizó alguien que tenia sentimientos negativos muy fuertes hacia [select {$VictimIsMale} True="él" False="ella"].
     <<elseif $CriminalEmotionIndexCriminal is 1>>
-        Emotion index 1
+        <color=blue>Comisaria:</color> Mataron a la víctima de un tiro en la cabeza desde la nuca. Quien [select {$VictimIsMale} True="lo" False="la"] mató seguramente tenia sentimientos negativos hacia la víctima pero no suficientemente fuertes como para ensañarse.
     <<elseif $CriminalEmotionIndexCriminal is 2>>
-        Emotion index 2
+        <color=blue>Comisaria:</color> La víctima tenia un cuchillo clavado en el corazón, esa era su única herida así que probablemente quién lo hizo sentía algo por la víctima.
     <<elseif $CriminalEmotionIndexCriminal is 3>>
-        Emotion index 3
+        <color=blue>Comisaria:</color> El motivo de la muerte es una sola contusión en la cabeza. Parece más un accidente que un asesinato premeditado.
     <<endif>>
     Segunda pista: Criminal emotion {$CriminalEmotion}
     <<set $SuspectEvidencesFound to 0>>
