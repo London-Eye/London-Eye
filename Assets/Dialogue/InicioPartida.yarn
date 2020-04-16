@@ -89,14 +89,14 @@ title: Walkie-InvestigarVictima
 tags: InvestigarVictima
 ---
 <<if $SuspectEvidencesFound eq 0>>
+    <<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
     <<if $CriminalRelationIndexCriminal is 0 or 1>>
         <color=blue>Comisaria:</color> La víctima parece estar relajada y tranquila, probablemente, quien [select {$VictimIsMale} True="lo" False="la"] mató fué algún conocido cercano de [select {$VictimIsMale} True="este" False="esta"].
     <<elseif $CriminalRelationIndexCriminal is 2 or 3>>
         <color=blue>Comisaria:</color> Aunque no parece que se lo vió venir, ya que no hay signos de que se haya defendido, la víctima no está relajada del todo así que en la comisaria pensamos que quien mató a la víctima no era cercano a esta.
     <<endif>>
-    Primera pista: Criminal relation {$CriminalRelation}
-    <<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
 <<elseif $SuspectEvidencesFound eq 1>>
+    <<set $SuspectEvidencesFound to 0>>
     <<if $CriminalEmotionIndexCriminal is 0>>
         <color=blue>Comisaria:</color> La víctima murió por múltiples contusiones en la parte posterior de la cabeza, claramente lo realizó alguien que tenia sentimientos negativos muy fuertes hacia [select {$VictimIsMale} True="él" False="ella"].
     <<elseif $CriminalEmotionIndexCriminal is 1>>
@@ -106,8 +106,6 @@ tags: InvestigarVictima
     <<elseif $CriminalEmotionIndexCriminal is 3>>
         <color=blue>Comisaria:</color> El motivo de la muerte es una sola contusión en la cabeza. Parece más un accidente que un asesinato premeditado.
     <<endif>>
-    Segunda pista: Criminal emotion {$CriminalEmotion}
-    <<set $SuspectEvidencesFound to 0>>
 <<endif>>
 
 
