@@ -71,7 +71,7 @@ public class CharacterCreation : MonoBehaviour
     }
 
     // maxNumberOfSuspects = min(numberOfNames, numberOfRelations, numberOfEmotions);
-    public const int maxNumberOfSuspects = 6, numberOfNames = 10, numberOfRelations = 7, numberOfEmotions = 8;
+    public const int maxNumberOfSuspects = 6, numberOfNames = 10, numberOfRelations = 7, numberOfEmotions = 8, numberOfImages = 6;
 
     public const string MainMenuMenusGameObjectName = "Menus";
 
@@ -120,6 +120,8 @@ public class CharacterCreation : MonoBehaviour
 
     private SelectorPool<int> mNames, fNames;
     private SelectorPool<int> mRelation, fRelation;
+    private SelectorPool<int> mImages, fImages;
+
     public PoolVariableStorage randomNamePoolSource;
 
     void Awake()
@@ -200,6 +202,7 @@ public class CharacterCreation : MonoBehaviour
     {
         InitializePool(numberOfNames, out mNames, out fNames);
         InitializePool(numberOfRelations, out mRelation, out fRelation);
+        InitializePool(numberOfImages, out mImages, out fImages);
     }
 
     private static void InitializePool(int numberOfElements, out SelectorPool<int> malePool, out SelectorPool<int> femalePool)
@@ -239,31 +242,32 @@ public class CharacterCreation : MonoBehaviour
         int name = isMale ? mNames.Select() : fNames.Select();
         int relation = isMale ? mRelation.Select() : fRelation.Select();
         int emotion = Random.Range(0, numberOfEmotions);
+        int image = isMale ? mImages.Select() : fImages.Select();
 
-        return InitializeSuspect(isMale, name, relation, emotion, hasAlibi);
+        return InitializeSuspect(isMale, name, relation, emotion, hasAlibi, image);
     }
 
-    private Suspect InitializeSuspect(bool isMale, int name, int relation, int emotion, bool hasAlibi)
+    private Suspect InitializeSuspect(bool isMale, int name, int relation, int emotion, bool hasAlibi, int image)
     {
         Suspect suspect = ScriptableObject.CreateInstance<Suspect>();
 
         suspect.IsMale = isMale;
 
-        FillSuspectWithStats(suspect, isMale ? maleCharacterStats : femaleCharacterStats, name, relation, emotion);
+        FillSuspectWithStats(suspect, isMale ? maleCharacterStats : femaleCharacterStats, name, relation, emotion, image);
 
         suspect.HasAlibi = hasAlibi;
 
         return suspect;
     }
 
-    private void FillSuspectWithStats(Suspect suspect, CharacterStats stats, int nameIndex, int relationIndex, int emotionIndex)
+    private void FillSuspectWithStats(Suspect suspect, CharacterStats stats, int nameIndex, int relationIndex, int emotionIndex, int imageIndex)
     {
         suspect.cname = stats.characterName[nameIndex];
         suspect.Relation = stats.relation[relationIndex];
         suspect.Emotion = stats.emotion[emotionIndex];
         suspect.RelationIndexCriminal = relationIndex / 2;
         suspect.EmotionIndexCriminal = emotionIndex / 2;
-        suspect.Image = stats.images[nameIndex];
+        suspect.Image = stats.images[imageIndex];
     }
 
     private void FillNamePool()
