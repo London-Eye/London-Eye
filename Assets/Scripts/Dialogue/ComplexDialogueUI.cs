@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.Dialogue.Texts;
+using Assets.Scripts.Dialogue.Texts;
 using Assets.Scripts.Dialogue.Variables.Attributes;
 using System;
 using System.Collections;
@@ -124,9 +124,16 @@ namespace Assets.Scripts.Dialogue
 
         public void LineUpdate(string text)
         {
-            if (AllowSkip && !skipDialogue && Input.GetKey(SkipKey))
+            if (!skipDialogue && Input.GetKey(SkipKey))
             {
-                SkipDialogue();
+                if (AllowSkip)
+                {
+                    SkipDialogue();
+                }
+                else
+                {
+                    MarkLineComplete();
+                }
             }
 
             if (Input.GetKey(FastForwardKey))

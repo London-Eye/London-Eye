@@ -88,12 +88,18 @@ tags: General
 title: Walkie-InvestigarVictima
 tags: InvestigarVictima
 ---
-<<set $ContinueTime to "1">>
-<color=blue>Comisaria:</color> Tenemos los datos de la autopsia de la víctima. Hemos obtenido algunas conclusiones a partir de estos.
-<<set $ContinueTime to "2">>
+<<set $AllowSkip to false>>
+<<if $SuspectEvidencesFound is 0>>
+    <<set $SuspectEvidencesFound to 1>>
+    <<set $ContinueTime to "1">>
+    <color=blue>Comisaria:</color> Tenemos los datos de la autopsia de la víctima. Hemos obtenido algunas conclusiones a partir de estos.
+    <<set $ContinueTime to "2">>
+<<endif>>
+<<set $AllowSkip to true>>
 <<set $ContinueMode to "skip">>
 <color=blue>Comisaria:</color> ¿Qué quieres saber?
 <<set $ContinueMode to "time">>
+<<set $AllowSkip to false>>
 ->¿Cómo se encuentra el cuerpo?
     <<if $CriminalRelationIndexCriminal is 0 or 1>>
         <color=blue>Comisaria:</color> La víctima parece estar relajada y tranquila, probablemente, quien [select {$VictimIsMale} True="lo" False="la"] mató fue algún conocido cercano de [select {$VictimIsMale} True="este" False="esta"].
@@ -110,4 +116,5 @@ tags: InvestigarVictima
     <<elseif $CriminalEmotionIndexCriminal is 3>>
         <color=blue>Comisaria:</color> El motivo de la muerte es una sola contusión en la cabeza. Parece más un accidente que un asesinato premeditado.
     <<endif>>
+<<set $AllowSkip to true>>
 ===
