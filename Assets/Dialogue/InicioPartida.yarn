@@ -29,7 +29,7 @@ tags: PistasJuego
 ->Dame alguna información útil.
     [[Pistas-General]]
 ->Nada, gracias.
-    Si necesitas algo ya sabes donde estoy.
+    Si necesitas algo ya sabes dónde estoy.
 ===
 
 title: Pistas-MenuPrincipal
@@ -88,25 +88,26 @@ tags: General
 title: Walkie-InvestigarVictima
 tags: InvestigarVictima
 ---
-<<if $SuspectEvidencesFound eq 0>>
-    <<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
+<<set $ContinueTime to "1">>
+<color=blue>Comisaria:</color> Tenemos los datos de la autopsia de la víctima. Hemos obtenido algunas conclusiones a partir de estos.
+<<set $ContinueTime to "2">>
+<<set $ContinueMode to "skip">>
+<color=blue>Comisaria:</color> ¿Qué quieres saber?
+<<set $ContinueMode to "time">>
+->¿Cómo se encuentra el cuerpo?
     <<if $CriminalRelationIndexCriminal is 0 or 1>>
-        <color=blue>Comisaria:</color> La víctima parece estar relajada y tranquila, probablemente, quien [select {$VictimIsMale} True="lo" False="la"] mató fué algún conocido cercano de [select {$VictimIsMale} True="este" False="esta"].
+        <color=blue>Comisaria:</color> La víctima parece estar relajada y tranquila, probablemente, quien [select {$VictimIsMale} True="lo" False="la"] mató fue algún conocido cercano de [select {$VictimIsMale} True="este" False="esta"].
     <<elseif $CriminalRelationIndexCriminal is 2 or 3>>
-        <color=blue>Comisaria:</color> Aunque no parece que se lo vió venir, ya que no hay signos de que se haya defendido, la víctima no está relajada del todo así que en la comisaria pensamos que quien mató a la víctima no era cercano a esta.
+        <color=blue>Comisaria:</color> Aunque no parece que se lo viera venir, ya que no hay signos de que se haya defendido, la víctima no está relajada del todo así que en la comisaría pensamos que quien mató a la víctima no era cercano a esta.
     <<endif>>
-<<elseif $SuspectEvidencesFound eq 1>>
-    <<set $SuspectEvidencesFound to 0>>
+->¿Cómo murió la víctima?
     <<if $CriminalEmotionIndexCriminal is 0>>
-        <color=blue>Comisaria:</color> La víctima murió por múltiples contusiones en la parte posterior de la cabeza, claramente lo realizó alguien que tenia sentimientos negativos muy fuertes hacia [select {$VictimIsMale} True="él" False="ella"].
+        <color=blue>Comisaria:</color> La víctima murió por múltiples contusiones en la parte posterior de la cabeza. Esto implica que quien lo realizó tenía sentimientos negativos muy fuertes hacia [select {$VictimIsMale} True="él" False="ella"].
     <<elseif $CriminalEmotionIndexCriminal is 1>>
-        <color=blue>Comisaria:</color> Mataron a la víctima de un tiro en la cabeza desde la nuca. Quien [select {$VictimIsMale} True="lo" False="la"] mató seguramente tenia sentimientos negativos hacia la víctima pero no suficientemente fuertes como para ensañarse.
+        <color=blue>Comisaria:</color> Mataron a la víctima de un tiro en la cabeza desde la nuca. Quien [select {$VictimIsMale} True="lo" False="la"] mató seguramente tenía sentimientos negativos hacia la víctima, pero no suficientemente fuertes como para ensañarse.
     <<elseif $CriminalEmotionIndexCriminal is 2>>
-        <color=blue>Comisaria:</color> La víctima tenia un cuchillo clavado en el corazón, esa era su única herida así que probablemente quién lo hizo sentía algo por la víctima.
+        <color=blue>Comisaria:</color> La víctima tenia un cuchillo clavado en el corazón, esa era su única herida. Probablemente quien lo hizo sentía algo por la víctima.
     <<elseif $CriminalEmotionIndexCriminal is 3>>
         <color=blue>Comisaria:</color> El motivo de la muerte es una sola contusión en la cabeza. Parece más un accidente que un asesinato premeditado.
     <<endif>>
-<<endif>>
-
-
 ===
