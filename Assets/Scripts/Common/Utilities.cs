@@ -1,4 +1,6 @@
-﻿using Assets.Scripts.Dialogue.Variables.Storages;
+﻿using Assets.Scripts.Dialogue.Tags;
+using Assets.Scripts.Dialogue.Texts;
+using Assets.Scripts.Dialogue.Variables.Storages;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -10,6 +12,11 @@ namespace Assets.Scripts.Common
 {
     public static class Utilities
     {
+        public static Tag CreateColorTag(string color)
+            => new Tag(new TagOption($"color={color}", TagFormat.RichTextTagFormat),
+                new TagOption("color", TagFormat.RichTextTagFormat, TagOptionPosition.end));
+
+
         #region Yarn Value
         public static object As(this Value yarnValue, System.Type targetType)
         {

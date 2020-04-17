@@ -1,4 +1,7 @@
-﻿using Assets.Scripts.Dialogue.Variables.Attributes;
+﻿using Assets.Scripts.Common;
+using Assets.Scripts.Dialogue.Tags;
+using Assets.Scripts.Dialogue.Texts;
+using Assets.Scripts.Dialogue.Variables.Attributes;
 using UnityEngine;
 
 namespace Assets.Scripts.Characters
@@ -7,6 +10,14 @@ namespace Assets.Scripts.Characters
     public class Suspect : Character
     {
         public const string AffirmativeAlibi = "sí", NegativeAlibi = "no";
+
+        public static readonly Tag
+            affirmativeTag = Utilities.CreateColorTag("green"),
+            negativeTag = Utilities.CreateColorTag("red");
+
+        public static readonly string
+            AffirmativeAlibiColored = new DialogueTaggedText(affirmativeTag, AffirmativeAlibi).FullText,
+            NegativeAlibiColored = new DialogueTaggedText(negativeTag, NegativeAlibi).FullText;
 
         [YarnAccess]
         public const int NumberOfEvidences = 3;
@@ -23,10 +34,10 @@ namespace Assets.Scripts.Characters
         private int evidencesFound;
 
         [YarnAccess]
-        public string HasAlibiAsString => HasAlibi ? AffirmativeAlibi : NegativeAlibi;
+        public string HasAlibiAsString => HasAlibi ? affirmativeTag.GetTaggedText(AffirmativeAlibi) : negativeTag.GetTaggedText(NegativeAlibi);
 
         [YarnAccess]
-        public string NotHasAlibiAsString => HasAlibi ? NegativeAlibi : AffirmativeAlibi;
+        public string NotHasAlibiAsString => HasAlibi ? affirmativeTag.GetTaggedText(NegativeAlibi) : negativeTag.GetTaggedText(AffirmativeAlibi);
 
         [YarnAccess]
         public int EvidencesFound

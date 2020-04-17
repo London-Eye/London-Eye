@@ -9,6 +9,7 @@ using Yarn.Unity;
 public class SuspectManager : MonoBehaviour, IComparable<SuspectManager>
 {
     public const string AccusationSceneName = "Accusation";
+    private const string NoEvidenceText = "Sin pruebas";
 
     public static bool IsInAccusationMenu = false;
 
@@ -31,6 +32,8 @@ public class SuspectManager : MonoBehaviour, IComparable<SuspectManager>
 
     public Text suspectText;
 
+    public TMPro.TextMeshProUGUI suspectInfoUp, suspectInfoMiddle, suspectInfoDown;
+
     private int Id => transform.GetSiblingIndex();
 
     private Suspect suspect;
@@ -48,6 +51,43 @@ public class SuspectManager : MonoBehaviour, IComparable<SuspectManager>
             {
                 suspectText.text = suspect.cname;
                 suspectImage.sprite = suspect.Image;
+
+                #region Suspect Info Panel
+                if (suspect.EvidencesFound > 2)
+                {
+                    suspectInfoDown.text = $"Coartada válida: {suspect.HasAlibiAsString}";
+                    suspectInfoDown.gameObject.SetActive(true);
+                }
+                else
+                {
+                    suspectInfoDown.gameObject.SetActive(false);
+                }
+
+                if (suspect.EvidencesFound > 1)
+                {
+                    suspectInfoMiddle.text = $"Emoción: {suspect.Emotion} la víctima";
+                    suspectInfoMiddle.gameObject.SetActive(true);
+                }
+                else
+                {
+                    suspectInfoMiddle.gameObject.SetActive(false);
+                }
+
+                if (suspect.EvidencesFound > 0)
+                {
+                    suspectInfoUp.text = $"Relación: {suspect.Relation}";
+                    suspectInfoUp.gameObject.SetActive(true);
+                }
+                else
+                {
+                    suspectInfoUp.gameObject.SetActive(false);
+
+                    suspectInfoMiddle.text = NoEvidenceText;
+                    suspectInfoMiddle.gameObject.SetActive(true);
+
+                    suspectInfoDown.gameObject.SetActive(false);
+                } 
+                #endregion
             }
 
             gameObject.SetActive(value != null);
