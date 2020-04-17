@@ -383,6 +383,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 961306818}
     m_Modifications:
+    - target: {fileID: 1862081793641655905, guid: aa2fc4464f1e4ea47b9710b57a143872,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.91000366
+      objectReference: {fileID: 0}
+    - target: {fileID: 1862081793641655905, guid: aa2fc4464f1e4ea47b9710b57a143872,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.000024795532
+      objectReference: {fileID: 0}
+    - target: {fileID: 1900658180705185221, guid: aa2fc4464f1e4ea47b9710b57a143872,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.90997314
+      objectReference: {fileID: 0}
+    - target: {fileID: 1900658180705185221, guid: aa2fc4464f1e4ea47b9710b57a143872,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -9.099998
+      objectReference: {fileID: 0}
     - target: {fileID: 7738993877349483524, guid: aa2fc4464f1e4ea47b9710b57a143872,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -534,6 +554,16 @@ PrefabInstance:
       propertyPath: m_Text
       value: Druida Deiv I.V.
       objectReference: {fileID: 0}
+    - target: {fileID: 8704329894315420697, guid: aa2fc4464f1e4ea47b9710b57a143872,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 309
+      objectReference: {fileID: 0}
+    - target: {fileID: 8704329894315420697, guid: aa2fc4464f1e4ea47b9710b57a143872,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -252.6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa2fc4464f1e4ea47b9710b57a143872, type: 3}
 --- !u!1001 &292728852
@@ -543,6 +573,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 961306818}
     m_Modifications:
+    - target: {fileID: 1862081793641655905, guid: aa2fc4464f1e4ea47b9710b57a143872,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.91000366
+      objectReference: {fileID: 0}
+    - target: {fileID: 1862081793641655905, guid: aa2fc4464f1e4ea47b9710b57a143872,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.000024795532
+      objectReference: {fileID: 0}
+    - target: {fileID: 1900658180705185221, guid: aa2fc4464f1e4ea47b9710b57a143872,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.90997314
+      objectReference: {fileID: 0}
+    - target: {fileID: 1900658180705185221, guid: aa2fc4464f1e4ea47b9710b57a143872,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -9.099998
+      objectReference: {fileID: 0}
     - target: {fileID: 7738993877349483524, guid: aa2fc4464f1e4ea47b9710b57a143872,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -694,6 +744,16 @@ PrefabInstance:
       propertyPath: m_Text
       value: Druida Deiv I.V.
       objectReference: {fileID: 0}
+    - target: {fileID: 8704329894315420697, guid: aa2fc4464f1e4ea47b9710b57a143872,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 309
+      objectReference: {fileID: 0}
+    - target: {fileID: 8704329894315420697, guid: aa2fc4464f1e4ea47b9710b57a143872,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -252.6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa2fc4464f1e4ea47b9710b57a143872, type: 3}
 --- !u!1001 &355736024
@@ -703,6 +763,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 961306818}
     m_Modifications:
+    - target: {fileID: 1862081793641655905, guid: aa2fc4464f1e4ea47b9710b57a143872,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.91000366
+      objectReference: {fileID: 0}
+    - target: {fileID: 1862081793641655905, guid: aa2fc4464f1e4ea47b9710b57a143872,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.000024795532
+      objectReference: {fileID: 0}
+    - target: {fileID: 1900658180705185221, guid: aa2fc4464f1e4ea47b9710b57a143872,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.90997314
+      objectReference: {fileID: 0}
+    - target: {fileID: 1900658180705185221, guid: aa2fc4464f1e4ea47b9710b57a143872,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -9.099998
+      objectReference: {fileID: 0}
     - target: {fileID: 7738993877349483524, guid: aa2fc4464f1e4ea47b9710b57a143872,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -858,6 +938,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Text
       value: Clon malvado de Deiv I.V.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8704329894315420697, guid: aa2fc4464f1e4ea47b9710b57a143872,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 309
+      objectReference: {fileID: 0}
+    - target: {fileID: 8704329894315420697, guid: aa2fc4464f1e4ea47b9710b57a143872,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -252.6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa2fc4464f1e4ea47b9710b57a143872, type: 3}
@@ -3073,6 +3163,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 961306818}
     m_Modifications:
+    - target: {fileID: 1862081793641655905, guid: aa2fc4464f1e4ea47b9710b57a143872,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.91000366
+      objectReference: {fileID: 0}
+    - target: {fileID: 1862081793641655905, guid: aa2fc4464f1e4ea47b9710b57a143872,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.000024795532
+      objectReference: {fileID: 0}
+    - target: {fileID: 1900658180705185221, guid: aa2fc4464f1e4ea47b9710b57a143872,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.90997314
+      objectReference: {fileID: 0}
+    - target: {fileID: 1900658180705185221, guid: aa2fc4464f1e4ea47b9710b57a143872,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -9.099998
+      objectReference: {fileID: 0}
     - target: {fileID: 7738993877349483524, guid: aa2fc4464f1e4ea47b9710b57a143872,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3209,6 +3319,16 @@ PrefabInstance:
       propertyPath: m_Text
       value: Deiv I.V.
       objectReference: {fileID: 0}
+    - target: {fileID: 8704329894315420697, guid: aa2fc4464f1e4ea47b9710b57a143872,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 309
+      objectReference: {fileID: 0}
+    - target: {fileID: 8704329894315420697, guid: aa2fc4464f1e4ea47b9710b57a143872,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -252.6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa2fc4464f1e4ea47b9710b57a143872, type: 3}
 --- !u!1001 &1768661822
@@ -3218,6 +3338,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 961306818}
     m_Modifications:
+    - target: {fileID: 1862081793641655905, guid: aa2fc4464f1e4ea47b9710b57a143872,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.91000366
+      objectReference: {fileID: 0}
+    - target: {fileID: 1862081793641655905, guid: aa2fc4464f1e4ea47b9710b57a143872,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.000024795532
+      objectReference: {fileID: 0}
+    - target: {fileID: 1900658180705185221, guid: aa2fc4464f1e4ea47b9710b57a143872,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.90997314
+      objectReference: {fileID: 0}
+    - target: {fileID: 1900658180705185221, guid: aa2fc4464f1e4ea47b9710b57a143872,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -9.099998
+      objectReference: {fileID: 0}
     - target: {fileID: 7738993877349483524, guid: aa2fc4464f1e4ea47b9710b57a143872,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3373,6 +3513,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Text
       value: Clon malvado de Deiv I.V.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8704329894315420697, guid: aa2fc4464f1e4ea47b9710b57a143872,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 309
+      objectReference: {fileID: 0}
+    - target: {fileID: 8704329894315420697, guid: aa2fc4464f1e4ea47b9710b57a143872,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -252.6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa2fc4464f1e4ea47b9710b57a143872, type: 3}
@@ -3886,6 +4036,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 961306818}
     m_Modifications:
+    - target: {fileID: 1862081793641655905, guid: aa2fc4464f1e4ea47b9710b57a143872,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.91000366
+      objectReference: {fileID: 0}
+    - target: {fileID: 1862081793641655905, guid: aa2fc4464f1e4ea47b9710b57a143872,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.000024795532
+      objectReference: {fileID: 0}
+    - target: {fileID: 1900658180705185221, guid: aa2fc4464f1e4ea47b9710b57a143872,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.90997314
+      objectReference: {fileID: 0}
+    - target: {fileID: 1900658180705185221, guid: aa2fc4464f1e4ea47b9710b57a143872,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -9.100002
+      objectReference: {fileID: 0}
     - target: {fileID: 7738993877349483524, guid: aa2fc4464f1e4ea47b9710b57a143872,
         type: 3}
       propertyPath: m_LocalPosition.x
