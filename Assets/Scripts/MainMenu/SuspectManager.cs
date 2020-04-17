@@ -34,7 +34,7 @@ public class SuspectManager : MonoBehaviour, IComparable<SuspectManager>
 
     public TMPro.TextMeshProUGUI suspectInfoUp, suspectInfoMiddle, suspectInfoDown;
 
-    private int Id => transform.GetSiblingIndex();
+    private int Id => transform.parent.GetSiblingIndex();
 
     private Suspect suspect;
 
