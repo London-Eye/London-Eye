@@ -212,7 +212,7 @@ public class SceneController : MonoBehaviour
 
         FindObjectOfType<DialogueUI>().onDialogueEnd.AddListener(() =>
         {
-            AsyncOperation loadSceneOperation = SceneManager.LoadSceneAsync(0); // Load Main Menu
+            AsyncOperation loadSceneOperation = SceneManager.LoadSceneAsync(1); // Load Main Menu
             loadSceneOperation.completed += op => FindObjectOfType<CharacterCreation>().CreateSuspects();
         });
 

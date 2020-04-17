@@ -37,5 +37,5 @@ public class PauseController : MonoBehaviour
 
     public void GoToMenu() => GoToMainMenu();
 
-    public static void GoToMainMenu() => SceneManager.LoadScene(0);
+    public static void GoToMainMenu() => SceneManager.LoadScene(1);
 }

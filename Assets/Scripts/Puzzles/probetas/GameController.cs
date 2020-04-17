@@ -21,6 +21,7 @@ public class GameController : MonoBehaviour
     public int selector;
     public Color[] c = new Color[24];
     private readonly Vector2[] position = new Vector2[8] {new Vector2(-3.5f,-2f), new Vector2(-2f, -2f), new Vector2(-0.5f, -2f), new Vector2(1f, -2f), new Vector2(-3.5f, 1.25f), new Vector2(-2f, 1.25f), new Vector2(-0.5f, 1.25f), new Vector2(1f, 1.25f) };
+    private readonly Vector2[] positionLR = new Vector2[8] { new Vector2(-2f, -2f), new Vector2(-1f, -2f), new Vector2(0f, -2f), new Vector2(1f, -2f), new Vector2(-2f, 1.25f), new Vector2(-1f, 1.25f), new Vector2(0f, 1.25f), new Vector2(1f, 1.25f) };
     public bool GameRunning { get; private set; }
 
     // Start is called before the first frame update
@@ -54,6 +55,12 @@ public class GameController : MonoBehaviour
             t.transform.SetParent(container.GetComponent<Transform>());
             t.transform.position = new Vector3(position[i][0], position[i][1], container.transform.position.z);
             t.transform.localScale = new Vector3(container.transform.localScale.x + 77.18328f, container.transform.localScale.y + 77.18328f, container.transform.localScale.z + 77.18328f);
+            Debug.Log("before if");
+            if (Screen.currentResolution.width != 1920 && Screen.currentResolution.height != 1080) {
+                Debug.Log("in Screen");
+                t.transform.localScale = new Vector3(t.transform.localScale.x / 2, t.transform.localScale.x / 2, 1);
+                t.transform.position = new Vector3(positionLR[i][0], positionLR[i][1], container.transform.position.z);
+            }
         }
         setTubes();
     }
