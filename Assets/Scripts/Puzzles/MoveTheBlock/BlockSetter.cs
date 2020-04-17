@@ -7,6 +7,7 @@ public class BlockSetter : MonoBehaviour
 {
     [SerializeField] public GameObject container;
     [SerializeField] public BlockMovement originalBlock;
+    public int selector;
 
     private readonly Vector2[] bP1 = new Vector2[11] { new Vector2(-2.5f, -2.5f), new Vector2(-0.5f, -3f), new Vector2(2f, -3f), new Vector2(2f, -2f), new Vector2(-0.5f, -1.5f), new Vector2(0.5f, -1.5f), new Vector2(2.5f, 0f), new Vector2(1.5f, 1.5f), new Vector2(0.5f, 1.5f), new Vector2(-1f, 1f), new Vector2(-2.5f, 1.5f) };
     private readonly Vector2[] bS1 = new Vector2[11] { new Vector2(1f, 2f), new Vector2(3f, 1f), new Vector2(2f, 1f), new Vector2(2f, 1f), new Vector2(1f, 2f), new Vector2(1f, 2f), new Vector2(1f, 3f), new Vector2(1f, 2f), new Vector2(1f, 2f), new Vector2(2f, 1f), new Vector2(1f, 2f) };
@@ -26,6 +27,26 @@ public class BlockSetter : MonoBehaviour
     public void SetBlocks() {
         blockPosition = bP4;
         blockScale = bS4;
+        selector = UnityEngine.Random.Range(1, 5);
+        switch (selector) {
+            case 1:
+                blockPosition = bP1;
+                blockScale = bS1;
+                break;
+            case 2:
+                blockPosition = bP2;
+                blockScale = bS2;
+                break;
+            case 3:
+                blockPosition = bP3;
+                blockScale = bS3;
+                break;
+            default:
+                blockPosition = bP4;
+                blockScale = bS4;
+                break;
+        }
+
         for (int i = 0; i < blockPosition.Length; i++)
         {
             BlockMovement block = Instantiate(originalBlock) as BlockMovement;
