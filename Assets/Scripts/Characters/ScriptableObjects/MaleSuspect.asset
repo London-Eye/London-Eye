@@ -40,3 +40,14 @@ MonoBehaviour:
   - admiraba a
   - estaba orgulloso de
   - estaba felizmente con
+  images:
+  - {fileID: 1073003080083091260, guid: c0becb2836328724aa542be7af79650e, type: 3}
+  - {fileID: -5873754469075465620, guid: c0becb2836328724aa542be7af79650e, type: 3}
+  - {fileID: -8423103235548866450, guid: c0becb2836328724aa542be7af79650e, type: 3}
+  - {fileID: -6285645471435257908, guid: c0becb2836328724aa542be7af79650e, type: 3}
+  - {fileID: -6185240459281073592, guid: c0becb2836328724aa542be7af79650e, type: 3}
+  - {fileID: 6118293747101031894, guid: c0becb2836328724aa542be7af79650e, type: 3}
+  - {fileID: 9078807515234337840, guid: c0becb2836328724aa542be7af79650e, type: 3}
+  - {fileID: -6719564791499570008, guid: c0becb2836328724aa542be7af79650e, type: 3}
+  - {fileID: 2289984322799960101, guid: c0becb2836328724aa542be7af79650e, type: 3}
+  - {fileID: 4154152351393692542, guid: c0becb2836328724aa542be7af79650e, type: 3}

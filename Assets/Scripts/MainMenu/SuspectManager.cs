@@ -27,6 +27,8 @@ public class SuspectManager : MonoBehaviour, IComparable<SuspectManager>
         return null;
     }
 
+    public Image suspectImage;
+
     public Text suspectText;
 
     private int Id => transform.GetSiblingIndex();
@@ -45,6 +47,7 @@ public class SuspectManager : MonoBehaviour, IComparable<SuspectManager>
             if (suspect != null)
             {
                 suspectText.text = suspect.cname;
+                suspectImage.sprite = suspect.Image;
             }
 
             gameObject.SetActive(value != null);

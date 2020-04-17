@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Dialogue.Variables.Attributes;
+using UnityEngine;
 
 namespace Assets.Scripts.Characters
 {
@@ -62,5 +63,7 @@ namespace Assets.Scripts.Characters
 
         [YarnAccess]
         public int EmotionIndexCriminal;
+
+        public Sprite Image;
     }
 }

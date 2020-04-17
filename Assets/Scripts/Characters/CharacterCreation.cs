@@ -263,6 +263,7 @@ public class CharacterCreation : MonoBehaviour
         suspect.Emotion = stats.emotion[emotionIndex];
         suspect.RelationIndexCriminal = relationIndex / 2;
         suspect.EmotionIndexCriminal = emotionIndex / 2;
+        suspect.Image = stats.images[nameIndex];
     }
 
     private void FillNamePool()

@@ -8,5 +8,6 @@ namespace Assets.Scripts.Characters
         public string[] characterName;
         public string[] relation;
         public string[] emotion;
+        public Sprite[] images;
     }
 }
