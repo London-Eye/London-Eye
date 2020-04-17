@@ -16,7 +16,7 @@ namespace Assets.Scripts.Dialogue.Variables.Storages
             if (SelectorPools.TryGetValue(poolName, out SelectorPool<object> pool))
             {
                 Value value = Utilities.AsYarnValue(pool.Select());
-                Storage.SetValue(name, value);
+                if (Storage != null) Storage.SetValue(name, value);
                 return value;
             }
             else
