@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GifRunnere : MonoBehaviour
+public class GifRunner : MonoBehaviour
 {
     // Start is called before the first frame update
     public Texture2D[] frames;
@@ -12,8 +12,8 @@ public class GifRunnere : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        int index = (int)(Time.time * fps) % frames.Length;
+        int index = ((int)(Time.time * fps)) % frames.Length;
         GetComponent<RawImage>().texture = frames[index];
-        
+
     }
 }
