@@ -6,6 +6,7 @@ using Yarn.Unity;
 using Assets.Scripts.Characters;
 using UnityEngine.Events;
 using Assets.Scripts.Dialogue.Variables.Storages;
+using Assets.Scripts.Puzzles;
 
 [RequireComponent(typeof(PoolVariableStorage))]
 public class CharacterCreation : MonoBehaviour
@@ -53,21 +54,11 @@ public class CharacterCreation : MonoBehaviour
 
         if (VariableStorage != null) Destroy(VariableStorage.gameObject);
         VariableStorage = variableStorage;
-        
+
         if (VariableStorageWithFallback != null) Destroy(VariableStorageWithFallback.gameObject);
         VariableStorageWithFallback = variableStorageWithFallback;
 
         OnNewGame.Invoke();
-    }
-
-    private void LoadGame()
-    {
-        // TODO: Add Game Loading
-    }
-
-    private void SaveGame()
-    {
-        // TODO: Add Game Saving
     }
 
     // maxNumberOfSuspects = min(numberOfNames, numberOfRelations, numberOfEmotions);
@@ -123,6 +114,8 @@ public class CharacterCreation : MonoBehaviour
     private SelectorPool<int> mImages, fImages;
 
     public PoolVariableStorage randomNamePoolSource;
+
+    internal Dictionary<System.Type, SelectorPool<int>> PuzzleCombinationPools { get; set; }
 
     void Awake()
     {
@@ -200,18 +193,37 @@ public class CharacterCreation : MonoBehaviour
 
     private void InitializePools()
     {
-        InitializePool(numberOfNames, out mNames, out fNames);
-        InitializePool(numberOfRelations, out mRelation, out fRelation);
-        InitializePool(numberOfImages, out mImages, out fImages);
+        // Suspect stats
+
+        InitializeGenderedPool(numberOfNames, out mNames, out fNames);
+        InitializeGenderedPool(numberOfRelations, out mRelation, out fRelation);
+        InitializeGenderedPool(numberOfImages, out mImages, out fImages);
+
+        // Puzzle combinations
+        InitializePuzzleCombinationPool(PuzzleCombinations.Probetas, typeof(ProbetasGameController));
+        InitializePuzzleCombinationPool(PuzzleCombinations.MoveTB, typeof(BlockSetter));
+        InitializePuzzleCombinationPool(PuzzleCombinations.CompletaEC, typeof(PipeSetter));
+        InitializePuzzleCombinationPool(PuzzleCombinations.NinePuzzle, typeof(ImageSetter));
     }
 
-    private static void InitializePool(int numberOfElements, out SelectorPool<int> malePool, out SelectorPool<int> femalePool)
+    private void InitializePuzzleCombinationPool(int numberOfCombinations, System.Type puzzleType)
+    {
+        InitializePool(numberOfCombinations, out SelectorPool<int> combinationPool);
+        PuzzleCombinationPools.Add(puzzleType, combinationPool);
+    }
+
+    private static void InitializeGenderedPool(int numberOfElements, out SelectorPool<int> malePool, out SelectorPool<int> femalePool)
+    {
+        InitializePool(numberOfElements, out malePool);
+        InitializePool(numberOfElements, out femalePool);
+    }
+
+    private static void InitializePool(int numberOfElements, out SelectorPool<int> pool)
     {
         HashSet<int> elements = new HashSet<int>();
         Utilities.AddIntRange(elements, 0, numberOfElements);
 
-        malePool = new SelectorPool<int>(elements) { AutoRefill = true };
-        femalePool = new SelectorPool<int>(elements) { AutoRefill = true };
+        pool = new SelectorPool<int>(elements) { AutoRefill = true };
     }
 
     private Character InitializeCharacter()

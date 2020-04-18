@@ -25,7 +25,7 @@ public class BlockSetter : MonoBehaviour
     private  Vector2[] blockScale = new Vector2[11];
 
     public void SetBlocks() {
-        selector = UnityEngine.Random.Range(1, 5);
+        selector = CharacterCreation.Instance.PuzzleCombinationPools[this.GetType()].Select();
         switch (selector) {
             case 1:
                 blockPosition = bP1;

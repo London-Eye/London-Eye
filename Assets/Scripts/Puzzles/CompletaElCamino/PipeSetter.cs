@@ -20,20 +20,21 @@ public class PipeSetter : MonoBehaviour
 
     private Vector2[] cor3 = new Vector2[14] { new Vector2(-5.3f, 1.2f), new Vector2(-3.3f, 1.2f), new Vector2(-3.3f, 4.2f), new Vector2(0.7f, 4.2f), new Vector2(0.7f, 2.2f), new Vector2(-1.3f,2.2f), new Vector2(3.7f, 2.2f), new Vector2(3.7f, 4.2f), new Vector2(-1.3f, 0.2f), new Vector2(0.7f, 0.2f), new Vector2(0.7f, -1.8f), new Vector2(-3.3f, -1.8f), new Vector2(2.7f, 0.3f), new Vector2(5.7f, -1.8f) };
     private Vector2[] hor3 = new Vector2[12] { new Vector2(-3.3f, 2.7f), new Vector2(-1.8f, 4.2f), new Vector2(-0.8f, 4.2f), new Vector2(2.2f, 2.2f), new Vector2(-0.8f, -1.8f), new Vector2(-1.8f, -1.8f), new Vector2(-3.3f, -0.3f), new Vector2(2.2f, -1.8f), new Vector2(3.2f, -1.8f), new Vector2(4.2f, -1.8f), new Vector2(5.7f,-0.3f), new Vector2(5.7f, 0.7f)};
+    
     // Start is called before the first frame update
     void Start()
     {
-        int selector = Random.Range(1, 4);
+        int selector = CharacterCreation.Instance.PuzzleCombinationPools[this.GetType()].Select();
         switch (selector) {
-            case 1:
+            case 0:
                 cor = cor1;
                 hor = hor1;
                 break;
-            case 2:
+            case 1:
                 cor = cor2;
                 hor = hor2;
                 break;
-            case 3:
+            case 2:
                 cor = cor3;
                 hor = hor3;
                 break;
