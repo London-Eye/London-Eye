@@ -47,8 +47,14 @@ public class SuspectManager : MonoBehaviour, IComparable<SuspectManager>
 
             suspectSafe[Id] = value;
 
-            if (suspect != null)
+            if (suspect == null)
             {
+                transform.parent.gameObject.SetActive(false);
+            }
+            else
+            {
+                transform.parent.gameObject.SetActive(true);
+
                 suspectText.text = suspect.cname;
                 suspectImage.sprite = suspect.Image;
 
