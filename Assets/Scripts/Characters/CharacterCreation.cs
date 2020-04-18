@@ -200,6 +200,7 @@ public class CharacterCreation : MonoBehaviour
         InitializeGenderedPool(numberOfImages, out mImages, out fImages);
 
         // Puzzle combinations
+        PuzzleCombinationPools = new Dictionary<System.Type, SelectorPool<int>>();
         InitializePuzzleCombinationPool(PuzzleCombinations.Probetas, typeof(ProbetasGameController));
         InitializePuzzleCombinationPool(PuzzleCombinations.MoveTB, typeof(BlockSetter));
         InitializePuzzleCombinationPool(PuzzleCombinations.CompletaEC, typeof(PipeSetter));

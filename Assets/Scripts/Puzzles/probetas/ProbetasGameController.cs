@@ -19,8 +19,8 @@ public class ProbetasGameController : MonoBehaviour
     private InitiallyFullTube[] tubes = new InitiallyFullTube[8];
     public int selector;
     public Color[] c = new Color[24];
-    private readonly Vector2[] position = new Vector2[8] { new Vector2(-3.5f, -2f), new Vector2(-2f, -2f), new Vector2(-0.5f, -2f), new Vector2(1f, -2f), new Vector2(-3.5f, 1.25f), new Vector2(-2f, 1.25f), new Vector2(-0.5f, 1.25f), new Vector2(1f, 1.25f) };
-    private readonly Vector2[] positionLR = new Vector2[8] { new Vector2(-2f, -2f), new Vector2(-1f, -2f), new Vector2(0f, -2f), new Vector2(1f, -2f), new Vector2(-2f, 1.25f), new Vector2(-1f, 1.25f), new Vector2(0f, 1.25f), new Vector2(1f, 1.25f) };
+    private static readonly Vector2[] position = new Vector2[8] { new Vector2(-3.5f, -2f), new Vector2(-2f, -2f), new Vector2(-0.5f, -2f), new Vector2(1f, -2f), new Vector2(-3.5f, 1.25f), new Vector2(-2f, 1.25f), new Vector2(-0.5f, 1.25f), new Vector2(1f, 1.25f) };
+    private static readonly Vector2[] positionLR = new Vector2[8] { new Vector2(-2f, -2f), new Vector2(-1f, -2f), new Vector2(0f, -2f), new Vector2(1f, -2f), new Vector2(-2f, 1.25f), new Vector2(-1f, 1.25f), new Vector2(0f, 1.25f), new Vector2(1f, 1.25f) };
     public bool GameRunning { get; private set; }
 
     // Start is called before the first frame update
@@ -29,19 +29,19 @@ public class ProbetasGameController : MonoBehaviour
         selector = CharacterCreation.Instance.PuzzleCombinationPools[this.GetType()].Select();
         switch (selector)
         {
-            case 1:
+            case 0:
                 c = c1;
                 break;
-            case 2:
+            case 1:
                 c = c2;
                 break;
-            case 3:
+            case 2:
                 c = c3;
                 break;
-            case 4:
+            case 3:
                 c = c4;
                 break;
-            case 5:
+            case 4:
                 c = c5;
                 break;
         }

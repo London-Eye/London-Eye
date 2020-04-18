@@ -15,8 +15,8 @@ public class ImageSetter : MonoBehaviour
     [SerializeField] private GameObject IScr;
     [SerializeField] private GameObject IBur;
     [SerializeField] private GameObject IWas;
-    private float[] posX = new float[16] { -1.55f, 0.04f, 1.63f, 3.22f, -1.55f, 0.04f, 1.63f, 3.22f, -1.55f, 0.04f, 1.63f, 3.22f, -1.55f, 0.04f, 1.63f, 3.22f };
-    private float[] posY = new float[16] { 3.4f, 3.4f, 3.4f, 3.4f, 1.14f, 1.14f, 1.14f, 1.14f, -1.12f, -1.12f, -1.12f, -1.12f, -3.38f, -3.38f, -3.38f, -3.38f };
+    private static readonly float[] posX = new float[16] { -1.55f, 0.04f, 1.63f, 3.22f, -1.55f, 0.04f, 1.63f, 3.22f, -1.55f, 0.04f, 1.63f, 3.22f, -1.55f, 0.04f, 1.63f, 3.22f };
+    private static readonly float[] posY = new float[16] { 3.4f, 3.4f, 3.4f, 3.4f, 1.14f, 1.14f, 1.14f, 1.14f, -1.12f, -1.12f, -1.12f, -1.12f, -3.38f, -3.38f, -3.38f, -3.38f };
     public Dictionary<string, Vector3> correct = new Dictionary<string, Vector3>();
     public int selector;
 
@@ -32,16 +32,16 @@ public class ImageSetter : MonoBehaviour
         selector = CharacterCreation.Instance.PuzzleCombinationPools[this.GetType()].Select();
         switch (selector)
         {
-            case 1:
+            case 0:
                 images = letterBroken;
                 break;
-            case 2:
+            case 1:
                 images = letterBurned;
                 break;
-            case 3:
+            case 2:
                 images = letterScrached;
                 break;
-            case 4:
+            case 3:
                 images = letterWasted;
                 break;
         }
