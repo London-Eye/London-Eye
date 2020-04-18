@@ -41,7 +41,7 @@ public class BlockSetter : MonoBehaviour
                 blockPosition = bP3;
                 blockScale = bS3;
                 break;
-            default:
+            case 4:
                 blockPosition = bP4;
                 blockScale = bS4;
                 break;
