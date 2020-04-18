@@ -47,14 +47,8 @@ public class SuspectManager : MonoBehaviour, IComparable<SuspectManager>
 
             suspectSafe[Id] = value;
 
-            if (suspect == null)
+            if (suspect != null)
             {
-                transform.parent.gameObject.SetActive(false);
-            }
-            else
-            {
-                transform.parent.gameObject.SetActive(true);
-
                 suspectText.text = suspect.cname;
                 suspectImage.sprite = suspect.Image;
 
@@ -96,7 +90,7 @@ public class SuspectManager : MonoBehaviour, IComparable<SuspectManager>
                 #endregion
             }
 
-            gameObject.SetActive(value != null);
+            transform.parent.gameObject.SetActive(value != null);
         }
     }
 
@@ -108,7 +102,7 @@ public class SuspectManager : MonoBehaviour, IComparable<SuspectManager>
         }
         else
         {
-            gameObject.SetActive(Suspect != null);
+            transform.parent.gameObject.SetActive(Suspect != null);
         }
     }
 
