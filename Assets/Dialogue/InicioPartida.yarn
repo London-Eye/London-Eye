@@ -2,15 +2,46 @@ title: InicioPartida
 tags: Inicio
 ---
 <<StartNewGame GameManager>>
-Eres <color=lightblue>Deiv I.D.</color>, un investigador de prestigio mundial que recientemente se ha mudado a Londres debido a que la ciudad está llena de crímenes sin resolver.
-Sin embargo, llegaste hace dos semanas y aún no te han contratado para ningún caso.
-Para empeorar más aún las cosas, la ciudad se ha visto azotada por una pandemia y te has visto obligado a permanecer en casa, cosa que no te ayuda a resolver casos para aumentar tu prestigio.
-Por suerte, tienes una amiga que trabaja en el departamento de policía, <color=magenta>Diana</color>, quien puede ayudarte a conseguir uno.
-Después de una larga conversación, <color=magenta>Diana</color> te cede uno de los casos que se han producido hace poco, pero que debido a la pandemia aún no han podido investigar.
-Sin embargo, te ha puesto una condición. Esta es que, como cualquier otro ciudadano, no puedes salir de casa. Así que no podrás acceder a la escena del crimen para recopilar más información que la que te ha proporcionado el departamento.
-La víctima del caso se llama {$VictimName}, trabajaba en un supermercado y murió hace apenas unos días, antes del inicio del confinamiento.
-La policía no puede hacerse cargo, así que es tu trabajo llevar a su asesino ante la justicia.
+<color=cyan>Policía:</color> <color=silver>(Soy Deiv I.D., un aclamado investigador que trabaja para la policía)</color>
+<color=lightblue>Deiv I.D.:</color> <color=silver>(Normalmente me envían a resolver los casos más difíciles, esos que la policía no puede resolver)</color>
+<color=lightblue>Deiv I.D.:</color> <color=silver>(En este último caso me han enviado a Londres)</color>
+<color=lightblue>Deiv I.D.:</color> <color=silver>(Parece un caso cualquiera que la policía deberia poder resolver, pero tiene algo diferente)</color>
+<color=lightblue>Deiv I.D.:</color> <color=silver>(La ciudad se ha visto azotada por una pandemia)</color>
+<color=lightblue>Deiv I.D.:</color> <color=silver>(Lo que significa que la policía no tiene recursos suficientes ahora mismo)</color>
+<color=lightblue>Deiv I.D.:</color> <color=silver>(Por si fuera poco, la ciudad está en cuarentena, de forma que, no puedo salir a investigar)</color>
+<color=maroon>Teléfono:</color> Brrrrr.......brrrrr.......brrrrr.......
+<color=silver>-Descolgando el teléfono-</color> <color=lightblue>Deiv I.D.:</color> Si, dígame.
+<color=maroon>Teléfono:</color> <color=lightblue>Deiv</color>? Tenemos que hablar sobre el caso.
+<color=lightblue>Deiv I.D.:</color> <color=silver>(La chica que llama es, </color><color=magenta>Diana</color><color=silver>, mi jefa)</color> Por fin, ya era hora de que me informaras de algo.
+<color=magenta>Diana:</color> [select {$VictimIsMale} True="El chico" False="La chica"] que ha muerto se llamaba {$VictimName}.
+<color=magenta>Diana:</color> Trabajaba en el supermercado como [select {$VictimIsMale} True="reponedor" False="reponedora"] y [select {$VictimIsMale} True="lo" False="la"] mataron dias antes del confinamiento.
+<color=lightblue>Deiv I.D.:</color> <color=silver>-Tomando apuntes en un diário-</color> Donde [select {$VictimIsMale} True="lo" False="la"] mataron? En el propio supermercado?
+<color=magenta>Diana:</color> No, la escena del crímen es su casa, [select {$VictimIsMale} True="lo" False="la"] mataron allí.
+<color=lightblue>Deiv I.D.:</color> <color=silver>-Terminando de tomar apuntes-</color> De acuerdo, algo más, jefa?
+<color=magenta>Diana:</color> Si, el departamento te enviará una lista de sospechosos iniciales, a partir de ahí, empezará tu trabajo.
+<color=lightblue>Deiv I.D.:</color> <color=silver>-Cerrando el diário-</color> Yo me ocupo jefa, como hago siempre.
+<color=magenta>Diana:</color> Ten en cuenta que este es un caso especial.
+<color=magenta>Diana:</color> La gente tiene los nervios a flor de piel y nosotros no tenemos recursos para investigar estas cosas.
+<color=magenta>Diana:</color> Además, los conservadores presionan al gobierno para que termine la cuarentena.
+<color=magenta>Diana:</color> Que pasara impune un crímen hacia [select {$VictimIsMale} True="un trabajador" False="una trabajadora"] esencial podría crear más caos del que ya hay.
+<color=magenta>Diana:</color> Por si fuera poco, tenemos a la prensa echándose a nuestros cuellos.
+<color=magenta>Diana:</color> Resuelve esto, y resuélvelo rápido <color=lightblue>Deiv</color>, solo tenemos una oportunidad.
+<color=lightblue>Deiv I.D.:</color> Lo se jefa, déjalo en mis manos.
+<color=maroon>Teléfono:</color> <color=silver>-Cuelga-</color>
+<color=lightblue>Deiv I.D.:</color> <color=silver>-Dando una palmada-</color> Manos a la obra.
 ===
+
+
+
+title: MainMenu-Return
+tags: Return
+---
+<color=lightblue>Deiv I.D.:</color> Probablemente deberia empezar investigando a los sospechosos.
+<color=lightblue>Deiv I.D.:</color> Aunque no estaria de más saber algo más sobre la víctima.
+<color=orange>Puedes empezar a familiarizarte con el juego dandole a la imágen de</color> <color=lightblue>Deiv I.D.</color>
+===
+
+
 
 title: Policia-PistasJuego
 tags: PistasJuego
@@ -85,6 +116,7 @@ tags: General
 ===
 
 
+
 title: Walkie-InvestigarVictima
 tags: InvestigarVictima
 ---
@@ -101,20 +133,34 @@ tags: InvestigarVictima
 <<set $ContinueMode to "time">>
 <<set $AllowSkip to false>>
 ->¿Cómo se encuentra el cuerpo?
-    <<if $CriminalRelationIndexCriminal is 0 or 1>>
-        <color=blue>Comisaria:</color> La víctima parece estar relajada y tranquila, probablemente, quien [select {$VictimIsMale} True="lo" False="la"] mató fue algún conocido cercano de [select {$VictimIsMale} True="este" False="esta"].
-    <<elseif $CriminalRelationIndexCriminal is 2 or 3>>
-        <color=blue>Comisaria:</color> Aunque no parece que se lo viera venir, ya que no hay signos de que se haya defendido, la víctima no está relajada del todo así que en la comisaría pensamos que quien mató a la víctima no era cercano a esta.
-    <<endif>>
+    [[Walkie-Relacion]]
 ->¿Cómo murió la víctima?
-    <<if $CriminalEmotionIndexCriminal is 0>>
-        <color=blue>Comisaria:</color> La víctima murió por múltiples contusiones en la parte posterior de la cabeza. Esto implica que quien lo realizó tenía sentimientos negativos muy fuertes hacia [select {$VictimIsMale} True="él" False="ella"].
-    <<elseif $CriminalEmotionIndexCriminal is 1>>
-        <color=blue>Comisaria:</color> Mataron a la víctima de un tiro en la cabeza desde la nuca. Quien [select {$VictimIsMale} True="lo" False="la"] mató seguramente tenía sentimientos negativos hacia la víctima, pero no suficientemente fuertes como para ensañarse.
-    <<elseif $CriminalEmotionIndexCriminal is 2>>
-        <color=blue>Comisaria:</color> La víctima tenia un cuchillo clavado en el corazón, esa era su única herida. Probablemente quien lo hizo sentía algo por la víctima.
-    <<elseif $CriminalEmotionIndexCriminal is 3>>
-        <color=blue>Comisaria:</color> El motivo de la muerte es una sola contusión en la cabeza. Parece más un accidente que un asesinato premeditado.
-    <<endif>>
+    [[Walkie-Emocion]]
+->Ahora mismo nada, gracias.
+    <color=blue>Comisaria:</color> Llámanos si necesitas algo.
 <<set $AllowSkip to true>>
+===
+
+title: Walkie-Relacion
+tags: Relacion
+---
+<<if $CriminalRelationIndexCriminal/2 is 0 or 1>>
+    <color=blue>Comisaria:</color> La víctima parece estar relajada y tranquila, probablemente, quien [select {$VictimIsMale} True="lo" False="la"] mató fue algún conocido cercano de [select {$VictimIsMale} True="este" False="esta"].
+<<elseif $CriminalRelationIndexCriminal/2 is 2 or 3>>
+    <color=blue>Comisaria:</color> Aunque no parece que se lo viera venir, ya que no hay signos de que se haya defendido, la víctima no está relajada del todo así que en la comisaría pensamos que quien mató a la víctima no era cercano a esta.
+<<endif>>
+===
+
+title: Walkie-Emocion
+tags: Emocion
+---
+<<if $CriminalEmotionIndexCriminal/2 is 0>>
+    <color=blue>Comisaria:</color> La víctima murió por múltiples contusiones en la parte posterior de la cabeza. Esto implica que quien lo realizó tenía sentimientos negativos muy fuertes hacia [select {$VictimIsMale} True="él" False="ella"].
+<<elseif $CriminalEmotionIndexCriminal/2 is 1>>
+    <color=blue>Comisaria:</color> Mataron a la víctima de un tiro en la cabeza desde la nuca. Quien [select {$VictimIsMale} True="lo" False="la"] mató seguramente tenía sentimientos negativos hacia la víctima, pero no suficientemente fuertes como para ensañarse.
+<<elseif $CriminalEmotionIndexCriminal/2 is 2>>
+    <color=blue>Comisaria:</color> La víctima tenia un cuchillo clavado en el corazón, esa era su única herida. Probablemente quien lo hizo sentía algo por la víctima.
+<<elseif $CriminalEmotionIndexCriminal/2 is 3>>
+    <color=blue>Comisaria:</color> El motivo de la muerte es una sola contusión en la cabeza. Parece más un accidente que un asesinato premeditado.
+<<endif>>
 ===

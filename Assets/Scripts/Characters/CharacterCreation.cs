@@ -265,8 +265,8 @@ public class CharacterCreation : MonoBehaviour
         suspect.cname = stats.characterName[nameIndex];
         suspect.Relation = stats.relation[relationIndex];
         suspect.Emotion = stats.emotion[emotionIndex];
-        suspect.RelationIndexCriminal = relationIndex / 2;
-        suspect.EmotionIndexCriminal = emotionIndex / 2;
+        suspect.RelationIndexCriminal = relationIndex;
+        suspect.EmotionIndexCriminal = emotionIndex;
         suspect.Image = stats.images[imageIndex];
     }
 

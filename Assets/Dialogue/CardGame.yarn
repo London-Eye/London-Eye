@@ -2,10 +2,16 @@ title: CardGame-PreGame
 tags: PreGame
 ---
 <<set $ContinueMode to "Time">>
-Además de las pruebas encontradas en la escena del crimen, la policía te ha enviado una lista de posibles sospechosos.
-Esta lista la crearon antes del confinamiento, pero no llegaron a investigar a quienes figuran en ella.
-Lo primero que decides hacer es una investigación rápida a cada uno.
-Esto servirá para descartar a todos los sospechosos que puedas antes de ponerte a investigar de forma más exhaustiva.
+<color=maroon>Teléfono:</color> Brrrrr.......brrrrr.......brrrrr.......
+<color=silver>-Descolgando el teléfono-</color> <color=lightblue>Deiv I.D.:</color> Si, dígame.
+<color=cyan>Policía:</color> Hola <color=lightblue>Deiv I.D.</color>, te llamo de la comisaría.
+<color=cyan>Policía:</color> La oficial <color=magenta>Diana</color> me ha pedido que te pase la lista de sospechosos así que te la he enviado a tu correo interno.
+<color=lightblue>Deiv I.D.:</color> De acuerdo, gracias. Algo más?
+<color=cyan>Policía:</color> Si, ten en cuenta que es una lista muy inicial.
+<color=cyan>Policía:</color> Debido a la situación actual no hemos podido investigar a ninguno de los sospechosos.
+<color=cyan>Policía:</color> Dicho esto, mucha suerte con tu investigación.
+<color=lightblue>Deiv I.D.:</color> Gracias por todo. <color=silver>-Cuelga el teléfono-</color>
+<color=lightblue>Deiv I.D.:</color> <color=silver>-Abriendo los archivos del correo-</color> A ver si puedo descartar algunos así de primeras, ásí me ahorro trabajo en el futuro.
 <<set $ContinueMode to "Button">>
 <color=orange>Empareja los retratos de personas para descartar posibles sospechosos.</color>
 <<StartCardGame CardGameController>>
@@ -16,8 +22,17 @@ tags: PostGame
 ---
 <<CompletePuzzle GameManager>>
 <<set $ContinueMode to "Time">>
-Después de una investigación ligera sobre la lista, consigues reducir el número de sospechosos.
+<<if $NumberOfSuspects == 4>>
+	<color=lightblue>Deiv I.D.:</color> Esta primera investigación ha sido bastante fructífera.
+	<color=lightblue>Deiv I.D.:</color> He hecho bien haciendo esta primera criba.
+<<elseif $NumberOfSuspects == 5>>
+	<color=lightblue>Deiv I.D.:</color> No he podido quitarme muchos pero, al menos, algunos si.
+	<color=lightblue>Deiv I.D.:</color> Podria haberme salido peor, tengo menos trabajo, algo es algo.
+<<elseif $NumberOfSuspects == 6>>
+	<color=lightblue>Deiv I.D.:</color> Me ha salido bastante mal la jugada.
+	<color=lightblue>Deiv I.D.:</color> No he podido quitarme casi ninguno, no se si me renta con el tiempo que he usado.
+<<endif>>
 <<set $ContinueMode to "Button">>
-<i>Te has quedado con <color={$ScoreColor}>{$NumberOfSuspects}</color> sospechosos.</i>
-Hora de investigar más profundamente a la víctima y a los sospechosos para encontrar al culpable.
+<color=lightblue>Deiv I.D.:</color> Al final, <i>me he quedado con <color={$ScoreColor}>{$NumberOfSuspects}</color> sospechosos.</i>
+<color=lightblue>Deiv I.D.:</color> Hora de investigar más profundamente a la víctima y a los sospechosos para encontrar al culpable.
 ===

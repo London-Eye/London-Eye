@@ -25,7 +25,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueContainer: {fileID: 5296080505399609465}
-  textSpeed: 0.025
+  textSpeed: 0.02
   optionButtons:
   - {fileID: 1020394552292798831}
   - {fileID: 1140641128354077046}
@@ -130,7 +130,7 @@ MonoBehaviour:
   continueMode: 0
   ContinueButton: {fileID: 8642892209297188790}
   ContinueKey: 13
-  ContinueTime: 2.5
+  ContinueTime: 1.5
 --- !u!114 &3385787636333580402
 MonoBehaviour:
   m_ObjectHideFlags: 0

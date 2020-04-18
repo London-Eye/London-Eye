@@ -214,7 +214,10 @@ public class SceneController : MonoBehaviour
         {
             AsyncOperation loadSceneOperation = SceneManager.LoadSceneAsync(1); // Load Main Menu
             loadSceneOperation.completed += op => FindObjectOfType<CharacterCreation>().CreateSuspects();
+            loadSceneOperation.completed += op => FindObjectOfType<DialogueRunner>().startNode = "MainMenu-Return";
+            loadSceneOperation.completed += op => FindObjectOfType<DialogueRunner>().startAutomatically = true;
         });
+
 
         Utilities.StartPostGameDialogue();
     }

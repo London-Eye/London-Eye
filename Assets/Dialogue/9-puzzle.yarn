@@ -26,6 +26,5 @@ Enhorabuena, has conseguido unir todos los trozos de la nota.
 	Como sospechabas, el contenido de la carta confirma que {$SuspectName} {$SuspectHasAlibiAsString} tiene coartada válida para el crimen.
 	<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
 <<endif>>
-
 <<BackToMainMenu GameDialogue>>
 ===
