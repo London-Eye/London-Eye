@@ -1,13 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class initially_full_tube : MonoBehaviour
+public class InitiallyFullTube : MonoBehaviour
 {
     [SerializeField] public string initial_status;
-    private GameController controller;
+    private ProbetasGameController controller;
     public Stack<Color> pila;
-    private int max_size = 4;
+    private const int max_size = 4;
     public GameObject basse;
     public GameObject middleBase;
     public GameObject middleTop;
@@ -16,33 +15,30 @@ public class initially_full_tube : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        controller = GameObject.Find("GameController").GetComponent<GameController>();
-        basse = this.gameObject.transform.GetChild(0).gameObject;
-        middleBase = this.gameObject.transform.GetChild(1).gameObject;
-        middleTop = this.gameObject.transform.GetChild(2).gameObject;
-        top = this.gameObject.transform.GetChild(3).gameObject;
-        
+        controller = GameObject.Find("GameController").GetComponent<ProbetasGameController>();
+        basse = gameObject.transform.GetChild(0).gameObject;
+        middleBase = gameObject.transform.GetChild(1).gameObject;
+        middleTop = gameObject.transform.GetChild(2).gameObject;
+        top = gameObject.transform.GetChild(3).gameObject;
+
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnMouseDown()
     {
 
-    }
-    private void OnMouseDown() {
-
-        if (!controller.ps.IsPaused && controller.GameRunning) {
+        if (!controller.ps.IsPaused && controller.GameRunning)
+        {
             Debug.Log("clicado");
             if (controller.first) //primera bola que pillas
             {
                 Debug.Log("primera bola");
-                if (size(this.pila) > 0) //si has clicado una probeta con bolas
+                if (Size(pila) > 0) //si has clicado una probeta con bolas
                 {
                     Debug.Log("First");
-                    controller.ballTomove = this.pila.ToArray()[0];
+                    controller.ballTomove = pila.ToArray()[0];
                     controller.first = !controller.first;
                     controller.sourceTube = this;
-                    doAnimation(this);
+                    DoAnimation(this);
                 }
             }
             else
@@ -50,58 +46,63 @@ public class initially_full_tube : MonoBehaviour
                 //TODO: 
                 // - que la probeta esté vacía o que tenga en la pila a alguien de su color.
 
-                if (size(this.pila) < max_size) //con la bola ya pillada, si la bola cabe
+                if (Size(pila) < max_size) //con la bola ya pillada, si la bola cabe
                 {
                     Debug.Log("Cabe");
-                    if (size(this.pila) == 0) {
+                    if (Size(pila) == 0)
+                    {
                         Debug.Log("Case vacia");
-                        undoAnimation(controller.sourceTube);
-                        this.pila.Push(controller.sourceTube.pila.Pop());
+                        UndoAnimation(controller.sourceTube);
+                        pila.Push(controller.sourceTube.pila.Pop());
                     }
-                    else {
+                    else
+                    {
                         Debug.Log("case con algo");
-                        if (this.pila.ToArray()[0].Equals(controller.ballTomove))
+                        if (pila.ToArray()[0].Equals(controller.ballTomove))
                         {
                             Debug.Log("Es algo del mismo color");
-                            undoAnimation(controller.sourceTube);
-                            this.pila.Push(controller.sourceTube.pila.Pop());
-                            
-                            printStackStatus(this.pila, this);
+                            UndoAnimation(controller.sourceTube);
+                            pila.Push(controller.sourceTube.pila.Pop());
+
+                            PrintStackStatus(pila, this);
                         }
-                        else {
+                        else
+                        {
                             Debug.Log("no es del mismo color");
-                            undoAnimation(controller.sourceTube);
-                            printStackStatus(controller.sourceTube.pila, controller.sourceTube);
+                            UndoAnimation(controller.sourceTube);
+                            PrintStackStatus(controller.sourceTube.pila, controller.sourceTube);
                         }
                     }/*
-                    undoAnimation(controller.sourceTube);
-                    printStackStatus(this.pila, this);*/
+                undoAnimation(controller.sourceTube);
+                printStackStatus(this.pila, this);*/
 
-                    printStackStatus(this.pila, this);
-                    printStackStatus(controller.sourceTube.pila, controller.sourceTube);
+                    PrintStackStatus(pila, this);
+                    PrintStackStatus(controller.sourceTube.pila, controller.sourceTube);
                 }
                 else
                 { // la bola no cabe
                     Debug.Log("No cabe");
-                     undoAnimation(controller.sourceTube);
-                     printStackStatus(this.pila, this);
+                    UndoAnimation(controller.sourceTube);
+                    PrintStackStatus(pila, this);
                 }
                 controller.ballTomove = Color.white;
                 controller.first = !controller.first;
                 controller.sourceTube = null;
-                controller.isEndgame();
+                controller.IsEndgame();
             }
         }
 
     }
 
-    public int size(Stack<Color> s) {
+    public int Size(Stack<Color> s)
+    {
         return s.ToArray().Length;
     }
 
-    public void printStackStatus(Stack<Color> s, initially_full_tube tb) {
+    public void PrintStackStatus(Stack<Color> s, InitiallyFullTube tb)
+    {
 
-        switch (size(s))
+        switch (Size(s))
         {
             case 0:
                 tb.basse.SetActive(false);
@@ -126,7 +127,7 @@ public class initially_full_tube : MonoBehaviour
                 tb.middleBase.GetComponent<SpriteRenderer>().color = s.ToArray()[0];
                 tb.middleTop.SetActive(false);
                 tb.top.SetActive(false);
-               // Debug.Log("case 2");
+                // Debug.Log("case 2");
                 break;
 
             case 3:
@@ -155,30 +156,35 @@ public class initially_full_tube : MonoBehaviour
                 break;
         }
     }
-    public bool isComplete() {
-        if (size(this.pila) == 0)
+    public bool IsComplete()
+    {
+        if (Size(pila) == 0)
         {
             return true;
         }
-        else {
-            if (size(this.pila) == 4)
+        else
+        {
+            if (Size(pila) == 4)
             {
-                for (int i = 0; i < size(this.pila) - 1; i++)
+                for (int i = 0; i < Size(pila) - 1; i++)
                 {
-                    if (!this.pila.ToArray()[i].Equals(this.pila.ToArray()[i + 1]))
+                    if (!pila.ToArray()[i].Equals(pila.ToArray()[i + 1]))
                     {
                         return false;
                     }
                 }
             }
-            else {
+            else
+            {
                 return false;
             }
         }
         return true;
     }
-    public void doAnimation(initially_full_tube tb) {
-        switch (size(tb.pila)) {
+    public void DoAnimation(InitiallyFullTube tb)
+    {
+        switch (Size(tb.pila))
+        {
             case 1:
                 oldY = tb.basse.transform.position.y;
                 tb.basse.transform.position = new Vector3(tb.basse.transform.position.x, tb.oldY + 0.5f, tb.basse.transform.position.z);
@@ -198,9 +204,10 @@ public class initially_full_tube : MonoBehaviour
         }
     }
 
-    public void undoAnimation(initially_full_tube tb) {
-        
-        switch (size(tb.pila))
+    public void UndoAnimation(InitiallyFullTube tb)
+    {
+
+        switch (Size(tb.pila))
         {
             case 1:
                 tb.basse.transform.position = new Vector3(tb.basse.transform.position.x, tb.oldY, tb.basse.transform.position.z);
@@ -215,6 +222,6 @@ public class initially_full_tube : MonoBehaviour
                 tb.top.transform.position = new Vector3(tb.top.transform.position.x, tb.oldY, tb.top.transform.position.z);
                 break;
         }
-        
+
     }
 }

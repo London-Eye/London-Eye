@@ -1,47 +1,41 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class BlockSetter : MonoBehaviour
+public class BlockSetter : PuzzleSetter
 {
     [SerializeField] public GameObject container;
     [SerializeField] public BlockMovement originalBlock;
-    public int selector;
 
-    private readonly Vector2[] bP1 = new Vector2[11] { new Vector2(-2.5f, -2.5f), new Vector2(-0.5f, -3f), new Vector2(2f, -3f), new Vector2(2f, -2f), new Vector2(-0.5f, -1.5f), new Vector2(0.5f, -1.5f), new Vector2(2.5f, 0f), new Vector2(1.5f, 1.5f), new Vector2(0.5f, 1.5f), new Vector2(-1f, 1f), new Vector2(-2.5f, 1.5f) };
-    private readonly Vector2[] bS1 = new Vector2[11] { new Vector2(1f, 2f), new Vector2(3f, 1f), new Vector2(2f, 1f), new Vector2(2f, 1f), new Vector2(1f, 2f), new Vector2(1f, 2f), new Vector2(1f, 3f), new Vector2(1f, 2f), new Vector2(1f, 2f), new Vector2(2f, 1f), new Vector2(1f, 2f) };
+    private static readonly Vector2[] bP1 = new Vector2[11] { new Vector2(-2.5f, -2.5f), new Vector2(-0.5f, -3f), new Vector2(2f, -3f), new Vector2(2f, -2f), new Vector2(-0.5f, -1.5f), new Vector2(0.5f, -1.5f), new Vector2(2.5f, 0f), new Vector2(1.5f, 1.5f), new Vector2(0.5f, 1.5f), new Vector2(-1f, 1f), new Vector2(-2.5f, 1.5f) };
+    private static readonly Vector2[] bS1 = new Vector2[11] { new Vector2(1f, 2f), new Vector2(3f, 1f), new Vector2(2f, 1f), new Vector2(2f, 1f), new Vector2(1f, 2f), new Vector2(1f, 2f), new Vector2(1f, 3f), new Vector2(1f, 2f), new Vector2(1f, 2f), new Vector2(2f, 1f), new Vector2(1f, 2f) };
 
-    private readonly Vector2[] bP2 = new Vector2[11] { new Vector2(-2.5f, -1.5f ), new Vector2(-1f,-2f ), new Vector2(0.5f,-3f ),new Vector2(2.5f,-2.5f ),new Vector2(1.5f,-1f ),new Vector2(0.5f, -0.5f ),new Vector2(-0.5f, -0.5f  ),new Vector2(2.5f,0.5f ), new Vector2(1.5f, 2f ), new Vector2(-0.5f,1f ),new Vector2(-2f,2f ) };
-    private readonly Vector2[] bS2 = new Vector2[11] { new Vector2(1f, 2f ), new Vector2(2f, 1f ), new Vector2(3f, 1f ), new Vector2(1f, 2f ), new Vector2(1f, 3f ),new Vector2(1f, 2f ),new Vector2(1f,2f ),new Vector2(1f, 2f ), new Vector2(3f, 1f ), new Vector2(3f, 1f ), new Vector2(2f,1f ) };
+    private static readonly Vector2[] bP2 = new Vector2[11] { new Vector2(-2.5f, -1.5f ), new Vector2(-1f,-2f ), new Vector2(0.5f,-3f ),new Vector2(2.5f,-2.5f ),new Vector2(1.5f,-1f ),new Vector2(0.5f, -0.5f ),new Vector2(-0.5f, -0.5f  ),new Vector2(2.5f,0.5f ), new Vector2(1.5f, 2f ), new Vector2(-0.5f,1f ),new Vector2(-2f,2f ) };
+    private static readonly Vector2[] bS2 = new Vector2[11] { new Vector2(1f, 2f ), new Vector2(2f, 1f ), new Vector2(3f, 1f ), new Vector2(1f, 2f ), new Vector2(1f, 3f ),new Vector2(1f, 2f ),new Vector2(1f,2f ),new Vector2(1f, 2f ), new Vector2(3f, 1f ), new Vector2(3f, 1f ), new Vector2(2f,1f ) };
 
-    private readonly Vector2[] bP3 = new Vector2[11] { new Vector2(-2.5f, -2.5f),new Vector2(-1f, -3f), new Vector2(2f, -3f), new Vector2(0.5f, -2f), new Vector2(2.5f, -1.5f),new Vector2(0f, -1f), new Vector2(1.5f, -0.5f),new Vector2(-0.5f, 0.5f), new Vector2(0.5f, 0.5f), new Vector2(0.5f, 2f), new Vector2(2.5f, 1.5f) };
-    private readonly Vector2[] bS3 = new Vector2[11] { new Vector2(1f, 2f), new Vector2(2f, 1f),new Vector2(2f, 1f), new Vector2(3f, 1f), new Vector2(1f, 2f), new Vector2(2f, 1f), new Vector2(1f, 2f), new Vector2(1f, 2f),  new Vector2(1f, 2f), new Vector2(3f, 1f), new Vector2(1f, 2f) };
+    private static readonly Vector2[] bP3 = new Vector2[11] { new Vector2(-2.5f, -2.5f),new Vector2(-1f, -3f), new Vector2(2f, -3f), new Vector2(0.5f, -2f), new Vector2(2.5f, -1.5f),new Vector2(0f, -1f), new Vector2(1.5f, -0.5f),new Vector2(-0.5f, 0.5f), new Vector2(0.5f, 0.5f), new Vector2(0.5f, 2f), new Vector2(2.5f, 1.5f) };
+    private static readonly Vector2[] bS3 = new Vector2[11] { new Vector2(1f, 2f), new Vector2(2f, 1f),new Vector2(2f, 1f), new Vector2(3f, 1f), new Vector2(1f, 2f), new Vector2(2f, 1f), new Vector2(1f, 2f), new Vector2(1f, 2f),  new Vector2(1f, 2f), new Vector2(3f, 1f), new Vector2(1f, 2f) };
 
-    private readonly Vector2[] bP4 = new Vector2[11] { new Vector2(-2.5f, -2f), new Vector2(-0.5f, -3f), new Vector2(-0.5f, -2f),new Vector2(2.5f, -2f),new Vector2(0.5f, -1f),new Vector2(2.5f, 0.5f), new Vector2(1.5f, 0.5f), new Vector2(0.5f, 0.5f), new Vector2(2f,2f),new Vector2(-2f, 1f), new Vector2(-1.5f, 2f) };
-    private readonly Vector2[] bS4 = new Vector2[11] { new Vector2(1f, 3f), new Vector2(3f, 1f), new Vector2(3f, 1f), new Vector2(1f, 3f),  new Vector2(3f, 1f), new Vector2(1f, 2f), new Vector2(1f, 2f), new Vector2(1f, 2f), new Vector2(2f, 1f), new Vector2(2f, 1f), new Vector2(3f, 1f) };
+    private static readonly Vector2[] bP4 = new Vector2[11] { new Vector2(-2.5f, -2f), new Vector2(-0.5f, -3f), new Vector2(-0.5f, -2f),new Vector2(2.5f, -2f),new Vector2(0.5f, -1f),new Vector2(2.5f, 0.5f), new Vector2(1.5f, 0.5f), new Vector2(0.5f, 0.5f), new Vector2(2f,2f),new Vector2(-2f, 1f), new Vector2(-1.5f, 2f) };
+    private static readonly Vector2[] bS4 = new Vector2[11] { new Vector2(1f, 3f), new Vector2(3f, 1f), new Vector2(3f, 1f), new Vector2(1f, 3f),  new Vector2(3f, 1f), new Vector2(1f, 2f), new Vector2(1f, 2f), new Vector2(1f, 2f), new Vector2(2f, 1f), new Vector2(2f, 1f), new Vector2(3f, 1f) };
 
     private Vector2[] blockPosition = new Vector2[11];
     private  Vector2[] blockScale = new Vector2[11];
 
-    public void SetBlocks() {
-        blockPosition = bP4;
-        blockScale = bS4;
-        selector = UnityEngine.Random.Range(1, 5);
+    protected override void SetPuzzle(int selector)
+    {
         switch (selector) {
-            case 1:
+            case 0:
                 blockPosition = bP1;
                 blockScale = bS1;
                 break;
-            case 2:
+            case 1:
                 blockPosition = bP2;
                 blockScale = bS2;
                 break;
-            case 3:
+            case 2:
                 blockPosition = bP3;
                 blockScale = bS3;
                 break;
-            default:
+            case 3:
                 blockPosition = bP4;
                 blockScale = bS4;
                 break;

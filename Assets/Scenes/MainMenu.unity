@@ -1167,8 +1167,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 3921501239716412533, guid: aa2fc4464f1e4ea47b9710b57a143872,
-          type: 3}
+      - m_Target: {fileID: 975159929904395389}
         m_MethodName: SetIsInAccusationMenu
         m_Mode: 6
         m_Arguments:
@@ -4349,8 +4348,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 3921501239716412533, guid: aa2fc4464f1e4ea47b9710b57a143872,
-          type: 3}
+      - m_Target: {fileID: 975159929904395389}
         m_MethodName: SetIsInAccusationMenu
         m_Mode: 6
         m_Arguments:
@@ -4616,3 +4614,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa2fc4464f1e4ea47b9710b57a143872, type: 3}
+--- !u!114 &975159929904395389 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3826377409330788899, guid: aa2fc4464f1e4ea47b9710b57a143872,
+    type: 3}
+  m_PrefabInstance: {fileID: 975159929904395388}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2bc99f671ece3a4e95ed97584e79d01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -11,9 +11,26 @@ public class PoolPuzzleLoader : MonoBehaviour
 
     private static readonly HashSet<string> activePuzzles = new HashSet<string>();
 
-    public static void ActivePuzzle(string puzzle) => activePuzzles.Add(puzzle);
+    public static void ActivePuzzle(string puzzle)
+    {
+        activePuzzles.Add(puzzle);
+        var puzzleType = PuzzleSetterTypes[puzzle];
+        CurrentPuzzleCombinations[puzzleType] = CharacterCreation.Instance.PuzzleCombinationPools[puzzleType].Select(); 
+    }
 
     public static bool IsPuzzleActive(string puzzle) => activePuzzles.Contains(puzzle);
+
+    private static readonly Dictionary<string, System.Type> PuzzleSetterTypes = new Dictionary<string, System.Type>()
+    {
+        { "probetas", typeof(ProbetasGameController) },
+        { "MoveTheBlock", typeof(BlockSetter) },
+        { "CompletaElCamino", typeof(PipeSetter) },
+        { "9-puzzle", typeof(ImageSetter) },
+    };
+
+    private static readonly Dictionary<System.Type, int> CurrentPuzzleCombinations = new Dictionary<System.Type, int>();
+
+    internal static int GetCurrentPuzzleCombination(System.Type puzzleType) => CurrentPuzzleCombinations[puzzleType];
 
 
     public List<string> puzzles;
@@ -30,6 +47,8 @@ public class PoolPuzzleLoader : MonoBehaviour
     public string LoadPuzzle()
     {
         string puzzleToLoad = puzzlePool.Select();
+
+        ActivePuzzle(puzzleToLoad);
         LoadPuzzle(puzzleToLoad);
 
         return puzzleToLoad;

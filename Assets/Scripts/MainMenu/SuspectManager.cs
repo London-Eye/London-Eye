@@ -90,7 +90,7 @@ public class SuspectManager : MonoBehaviour, IComparable<SuspectManager>
                 #endregion
             }
 
-            gameObject.SetActive(value != null);
+            transform.parent.gameObject.SetActive(value != null);
         }
     }
 
@@ -102,7 +102,7 @@ public class SuspectManager : MonoBehaviour, IComparable<SuspectManager>
         }
         else
         {
-            gameObject.SetActive(Suspect != null);
+            transform.parent.gameObject.SetActive(Suspect != null);
         }
     }
 
@@ -133,7 +133,6 @@ public class SuspectManager : MonoBehaviour, IComparable<SuspectManager>
                 {
                     string puzzle = FindObjectOfType<PoolPuzzleLoader>().LoadPuzzle();
                     Suspect.Puzzle = puzzle;
-                    PoolPuzzleLoader.ActivePuzzle(puzzle);
                 }
                 catch (InvalidOperationException ex)
                 {

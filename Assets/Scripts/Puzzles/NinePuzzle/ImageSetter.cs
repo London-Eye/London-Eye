@@ -3,55 +3,61 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Set_images : MonoBehaviour
+public class ImageSetter : PuzzleSetter
 {
     // Start is called before the first frame update
-    [SerializeField] private Partial_image partial_im;
+    [SerializeField] private PartialImage partial_im;
     [SerializeField] private Sprite[] letterBroken;
     [SerializeField] private Sprite[] letterBurned;
     [SerializeField] private Sprite[] letterScrached;
+    [SerializeField] private Sprite[] letterWasted;
     [SerializeField] private GameObject Ibro;
     [SerializeField] private GameObject IScr;
     [SerializeField] private GameObject IBur;
-    private float[] posX = new float[16] {-1.55f, 0.04f, 1.63f, 3.22f, -1.55f, 0.04f, 1.63f, 3.22f, -1.55f, 0.04f, 1.63f, 3.22f, -1.55f, 0.04f, 1.63f, 3.22f };
-    private float[] posY = new float[16] {3.4f, 3.4f, 3.4f, 3.4f, 1.14f, 1.14f, 1.14f, 1.14f, -1.12f, -1.12f, -1.12f, -1.12f,-3.38f, -3.38f, -3.38f, -3.38f };
+    [SerializeField] private GameObject IWas;
+    private static readonly float[] posX = new float[16] { -1.55f, 0.04f, 1.63f, 3.22f, -1.55f, 0.04f, 1.63f, 3.22f, -1.55f, 0.04f, 1.63f, 3.22f, -1.55f, 0.04f, 1.63f, 3.22f };
+    private static readonly float[] posY = new float[16] { 3.4f, 3.4f, 3.4f, 3.4f, 1.14f, 1.14f, 1.14f, 1.14f, -1.12f, -1.12f, -1.12f, -1.12f, -3.38f, -3.38f, -3.38f, -3.38f };
     public Dictionary<string, Vector3> correct = new Dictionary<string, Vector3>();
-    public int selector;
 
     [SerializeField] private GameObject EndgameMenu;
 
     public bool GameRunning { get; private set; }
 
+    private int selector;
 
-    // Start is called before the first frame update
-    void Start()
+    protected override void SetPuzzle(int selector)
     {
+        this.selector = selector;
+
         Sprite[] images = letterBroken;
-        selector = Random.Range(1, 3);
-        switch (selector) {
-            case 1:
+        switch (selector)
+        {
+            case 0:
                 images = letterBroken;
                 break;
-            case 2:
+            case 1:
                 images = letterBurned;
                 break;
-            case 3:
+            case 2:
                 images = letterScrached;
+                break;
+            case 3:
+                images = letterWasted;
                 break;
         }
         EndgameMenu.SetActive(false);
         for (int i = 0; i < images.Length; i++)
         {
             Vector3 aux = new Vector3(posX[i], posY[i], 0);
-            correct.Add(images[i].name,aux);
+            correct.Add(images[i].name, aux);
         }
         images.Shuffle();
-        
+
         for (int i = 0; i < images.Length; i++)
         {
-            Partial_image subImage = Instantiate(partial_im) as Partial_image;
-            subImage.setSubImage(images[i]);
-            subImage.setPosition(posX[i], posY[i]);
+            PartialImage subImage = Instantiate(partial_im) as PartialImage;
+            subImage.SetSubImage(images[i]);
+            subImage.SetPosition(posX[i], posY[i]);
             subImage.transform.SetParent(transform);
         }
 
@@ -61,13 +67,14 @@ public class Set_images : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameRunning) check_solution();
+        if (GameRunning) CheckSolution();
     }
 
-    private void check_solution() {
+    private void CheckSolution()
+    {
         bool completed = true;
-        Partial_image[] allObjects = UnityEngine.Object.FindObjectsOfType<Partial_image>();
-        foreach (Partial_image go in allObjects)
+        PartialImage[] allObjects = FindObjectsOfType<PartialImage>();
+        foreach (PartialImage go in allObjects)
         {
             string name = go.GetComponent<SpriteRenderer>().sprite.name;
 
@@ -77,10 +84,11 @@ public class Set_images : MonoBehaviour
                 completed = false;
             }
         }
-        if (completed) { StartCoroutine(puzzle_completed()); }
+        if (completed) { StartCoroutine(PuzzleCompleted()); }
     }
 
-    private IEnumerator puzzle_completed() {
+    private IEnumerator PuzzleCompleted()
+    {
         GameRunning = false;
 
         yield return new WaitForSeconds(0.75f);
@@ -97,7 +105,10 @@ public class Set_images : MonoBehaviour
             case 3:
                 IScr.SetActive(true);
                 break;
+            case 4:
+                IWas.SetActive(true);
+                break;
         }
-        
+
     }
 }
