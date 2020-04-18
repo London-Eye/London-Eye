@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class ProbetasGameController : MonoBehaviour
+public class ProbetasGameController : PuzzleSetter
 {
     [SerializeField] public PauseController ps;
     [SerializeField] public Color[] c1;
@@ -17,16 +17,13 @@ public class ProbetasGameController : MonoBehaviour
     public Color ballTomove;
     public InitiallyFullTube sourceTube;
     private InitiallyFullTube[] tubes = new InitiallyFullTube[8];
-    public int selector;
     public Color[] c = new Color[24];
     private static readonly Vector2[] position = new Vector2[8] { new Vector2(-3.5f, -2f), new Vector2(-2f, -2f), new Vector2(-0.5f, -2f), new Vector2(1f, -2f), new Vector2(-3.5f, 1.25f), new Vector2(-2f, 1.25f), new Vector2(-0.5f, 1.25f), new Vector2(1f, 1.25f) };
     private static readonly Vector2[] positionLR = new Vector2[8] { new Vector2(-2f, -2f), new Vector2(-1f, -2f), new Vector2(0f, -2f), new Vector2(1f, -2f), new Vector2(-2f, 1.25f), new Vector2(-1f, 1.25f), new Vector2(0f, 1.25f), new Vector2(1f, 1.25f) };
     public bool GameRunning { get; private set; }
 
-    // Start is called before the first frame update
-    void Start()
+    protected override void SetPuzzle(int selector)
     {
-        selector = CharacterCreation.Instance.PuzzleCombinationPools[this.GetType()].Select();
         switch (selector)
         {
             case 0:
@@ -63,15 +60,10 @@ public class ProbetasGameController : MonoBehaviour
                 t.transform.position = new Vector3(positionLR[i][0], positionLR[i][1], container.transform.position.z);
             }
         }
-        setTubes();
+        SetTubes();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
-    public void isEndgame()
+    public void IsEndgame()
     {
         tubes = FindObjectsOfType<InitiallyFullTube>();
         bool completed = true;
@@ -83,10 +75,9 @@ public class ProbetasGameController : MonoBehaviour
             }
         }
         EndgameMenu.SetActive(completed);
-
     }
 
-    public void setTubes()
+    public void SetTubes()
     {
         tubes = FindObjectsOfType<InitiallyFullTube>();
         int empty_tubes = tubes.Length - c.Length / 4;
@@ -110,11 +101,11 @@ public class ProbetasGameController : MonoBehaviour
             tubes[j].transform.GetChild(2).GetComponent<SpriteRenderer>().color = c[k++];
             tubes[j].transform.GetChild(1).GetComponent<SpriteRenderer>().color = c[k++];
             tubes[j].transform.GetChild(0).GetComponent<SpriteRenderer>().color = c[k++];
-            fillStack(tubes[j]);
+            FillStack(tubes[j]);
 
         }
     }
-    private void fillStack(InitiallyFullTube t)
+    private void FillStack(InitiallyFullTube t)
     {
         t.pila = new Stack<Color>();
         t.pila.Push(t.transform.GetChild(0).GetComponent<SpriteRenderer>().color);

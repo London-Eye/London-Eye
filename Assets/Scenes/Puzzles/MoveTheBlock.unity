@@ -3067,7 +3067,7 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 1065056164}
-        m_MethodName: SetBlocks
+        m_MethodName: TrySetPuzzle
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3128,6 +3128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7b5e295c8c5bea468bbe1fefe65c78f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SetPuzzleOnStart: 0
   container: {fileID: 770876431}
   originalBlock: {fileID: 7963010066383443767, guid: 0f986c9d7919ce74f8f9b22b408ccf6a,
     type: 3}

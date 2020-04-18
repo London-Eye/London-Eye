@@ -133,7 +133,6 @@ public class SuspectManager : MonoBehaviour, IComparable<SuspectManager>
                 {
                     string puzzle = FindObjectOfType<PoolPuzzleLoader>().LoadPuzzle();
                     Suspect.Puzzle = puzzle;
-                    PoolPuzzleLoader.ActivePuzzle(puzzle);
                 }
                 catch (InvalidOperationException ex)
                 {

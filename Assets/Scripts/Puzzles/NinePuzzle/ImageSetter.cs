@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ImageSetter : MonoBehaviour
+public class ImageSetter : PuzzleSetter
 {
     // Start is called before the first frame update
     [SerializeField] private PartialImage partial_im;
@@ -18,18 +18,18 @@ public class ImageSetter : MonoBehaviour
     private static readonly float[] posX = new float[16] { -1.55f, 0.04f, 1.63f, 3.22f, -1.55f, 0.04f, 1.63f, 3.22f, -1.55f, 0.04f, 1.63f, 3.22f, -1.55f, 0.04f, 1.63f, 3.22f };
     private static readonly float[] posY = new float[16] { 3.4f, 3.4f, 3.4f, 3.4f, 1.14f, 1.14f, 1.14f, 1.14f, -1.12f, -1.12f, -1.12f, -1.12f, -3.38f, -3.38f, -3.38f, -3.38f };
     public Dictionary<string, Vector3> correct = new Dictionary<string, Vector3>();
-    public int selector;
 
     [SerializeField] private GameObject EndgameMenu;
 
     public bool GameRunning { get; private set; }
 
+    private int selector;
 
-    // Start is called before the first frame update
-    void Start()
+    protected override void SetPuzzle(int selector)
     {
+        this.selector = selector;
+
         Sprite[] images = letterBroken;
-        selector = CharacterCreation.Instance.PuzzleCombinationPools[this.GetType()].Select();
         switch (selector)
         {
             case 0:
@@ -67,10 +67,10 @@ public class ImageSetter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameRunning) check_solution();
+        if (GameRunning) CheckSolution();
     }
 
-    private void check_solution()
+    private void CheckSolution()
     {
         bool completed = true;
         PartialImage[] allObjects = FindObjectsOfType<PartialImage>();
@@ -84,10 +84,10 @@ public class ImageSetter : MonoBehaviour
                 completed = false;
             }
         }
-        if (completed) { StartCoroutine(puzzle_completed()); }
+        if (completed) { StartCoroutine(PuzzleCompleted()); }
     }
 
-    private IEnumerator puzzle_completed()
+    private IEnumerator PuzzleCompleted()
     {
         GameRunning = false;
 

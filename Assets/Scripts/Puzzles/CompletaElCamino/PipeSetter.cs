@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class PipeSetter : MonoBehaviour
+public class PipeSetter : PuzzleSetter
 {
     [SerializeField] public GameObject horizontalPipe;
     [SerializeField] public GameObject cornerPipe;
@@ -20,10 +20,8 @@ public class PipeSetter : MonoBehaviour
 
     private static float RandomRotation => 90f * Random.Range(0, 4);
 
-    // Start is called before the first frame update
-    void Start()
+    protected override void SetPuzzle(int selector)
     {
-        int selector = CharacterCreation.Instance.PuzzleCombinationPools[this.GetType()].Select();
         switch (selector) {
             case 0:
                 cor = cor1;

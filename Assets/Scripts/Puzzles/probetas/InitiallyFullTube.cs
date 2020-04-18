@@ -88,7 +88,7 @@ public class InitiallyFullTube : MonoBehaviour
                 controller.ballTomove = Color.white;
                 controller.first = !controller.first;
                 controller.sourceTube = null;
-                controller.isEndgame();
+                controller.IsEndgame();
             }
         }
 
