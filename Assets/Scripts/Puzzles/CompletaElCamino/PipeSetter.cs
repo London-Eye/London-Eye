@@ -20,8 +20,8 @@ public class PipeSetter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        cor = cor2;
-        hor = hor2;
+        cor = cor1;
+        hor = hor1;
         for (int i = 0; i <cor.Length; i++)
         {
             GameObject pipe = Instantiate(cornerPipe) as GameObject;
