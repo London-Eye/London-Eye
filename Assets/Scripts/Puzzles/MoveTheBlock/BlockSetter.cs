@@ -25,8 +25,6 @@ public class BlockSetter : MonoBehaviour
     private  Vector2[] blockScale = new Vector2[11];
 
     public void SetBlocks() {
-        blockPosition = bP4;
-        blockScale = bS4;
         selector = UnityEngine.Random.Range(1, 5);
         switch (selector) {
             case 1:

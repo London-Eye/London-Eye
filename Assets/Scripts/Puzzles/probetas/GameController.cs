@@ -27,7 +27,7 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        selector = Random.Range(1, 5);
+        selector = Random.Range(1, 6);
         switch (selector) {
             case 1:
                 c = c1;

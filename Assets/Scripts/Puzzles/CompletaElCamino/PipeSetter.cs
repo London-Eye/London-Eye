@@ -23,7 +23,7 @@ public class PipeSetter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        int selector = Random.Range(1, 3);
+        int selector = Random.Range(1, 4);
         switch (selector) {
             case 1:
                 cor = cor1;

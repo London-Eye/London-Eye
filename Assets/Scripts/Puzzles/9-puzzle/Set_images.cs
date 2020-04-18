@@ -10,9 +10,11 @@ public class Set_images : MonoBehaviour
     [SerializeField] private Sprite[] letterBroken;
     [SerializeField] private Sprite[] letterBurned;
     [SerializeField] private Sprite[] letterScrached;
+    [SerializeField] private Sprite[] letterWasted;
     [SerializeField] private GameObject Ibro;
     [SerializeField] private GameObject IScr;
     [SerializeField] private GameObject IBur;
+    [SerializeField] private GameObject IWas;
     private float[] posX = new float[16] {-1.55f, 0.04f, 1.63f, 3.22f, -1.55f, 0.04f, 1.63f, 3.22f, -1.55f, 0.04f, 1.63f, 3.22f, -1.55f, 0.04f, 1.63f, 3.22f };
     private float[] posY = new float[16] {3.4f, 3.4f, 3.4f, 3.4f, 1.14f, 1.14f, 1.14f, 1.14f, -1.12f, -1.12f, -1.12f, -1.12f,-3.38f, -3.38f, -3.38f, -3.38f };
     public Dictionary<string, Vector3> correct = new Dictionary<string, Vector3>();
@@ -27,7 +29,7 @@ public class Set_images : MonoBehaviour
     void Start()
     {
         Sprite[] images = letterBroken;
-        selector = Random.Range(1, 3);
+        selector = Random.Range(1, 5);
         switch (selector) {
             case 1:
                 images = letterBroken;
@@ -37,6 +39,9 @@ public class Set_images : MonoBehaviour
                 break;
             case 3:
                 images = letterScrached;
+                break;
+            case 4:
+                images = letterWasted;
                 break;
         }
         EndgameMenu.SetActive(false);
@@ -96,6 +101,9 @@ public class Set_images : MonoBehaviour
                 break;
             case 3:
                 IScr.SetActive(true);
+                break;
+            case 4:
+                IWas.SetActive(true);
                 break;
         }
         
