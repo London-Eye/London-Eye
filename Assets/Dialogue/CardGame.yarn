@@ -20,7 +20,6 @@ tags: PreGame
 title: CardGame-PostGame
 tags: PostGame
 ---
-<<CompletePuzzle GameManager>>
 <<set $ContinueMode to "Time">>
 <<if $NumberOfSuspects == 4>>
 	<color=lightblue>Deiv I.D.:</color> Esta primera investigación ha sido bastante fructífera.

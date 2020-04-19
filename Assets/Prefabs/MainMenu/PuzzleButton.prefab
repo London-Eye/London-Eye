@@ -219,5 +219,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ff80924cd9c85e40a5f6cb253a8ff03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  puzzleName: 
   puzzleText: {fileID: 7331617268555999123}
+  puzzleImage: {fileID: 7331617269074269138}

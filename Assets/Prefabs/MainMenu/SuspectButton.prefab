@@ -167,7 +167,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 30.45
+  m_fontSize: 72
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -322,7 +322,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 24.6
+  m_fontSize: 49.1
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -477,7 +477,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 24.8
+  m_fontSize: 70.05
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -699,6 +699,9 @@ MonoBehaviour:
   suspectInfoUp: {fileID: 6041202094085492209}
   suspectInfoMiddle: {fileID: 2283790813284335565}
   suspectInfoDown: {fileID: 7990312268656878576}
+  PuzzlesView: {fileID: 0}
+  PuzzleButtonPrefab: {fileID: 5436143980512838471, guid: 14516dc1e119ca14ab2ee8998c7bf600,
+    type: 3}
 --- !u!1 &7738993877349483547
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,13 +1,12 @@
 ﻿using Assets.Scripts.Characters;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PuzzleLoader : MonoBehaviour
 {
-    public string puzzleName;
     public Text puzzleText;
-
-    private string originalText;
+    public Image puzzleImage;
 
     private Suspect suspect;
 
@@ -19,32 +18,15 @@ public class PuzzleLoader : MonoBehaviour
             suspect = value;
             if (suspect != null)
             {
-                puzzleText.text = $"{originalText} ({suspect.cname})";
+                puzzleText.text = $"{suspect.Puzzle} ({suspect.cname})";
+                puzzleImage.sprite = CharacterCreation.Instance.PoolPuzzleLoader.GetPuzzleMiniature(suspect.Puzzle);
             }
         }
-    }
-
-    public string Puzzle => (Suspect != null && Suspect.Puzzle != null) ? Suspect.Puzzle : puzzleName;
-
-    private void Awake()
-    {
-        originalText = puzzleText.text;
-        Suspect = SuspectManager.GetSuspectByPuzzle(Puzzle);
-    }
-
-    private void Start()
-    {
-        CheckActive();
-    }
-
-    public void CheckActive()
-    {
-        gameObject.SetActive(PoolPuzzleLoader.IsPuzzleActive(Puzzle));
     }
 
     public void LoadPuzzle()
     {
         CharacterCreation.Instance.SetCurrentSuspect(Suspect);
-        PoolPuzzleLoader.LoadPuzzle(Puzzle);
+        SceneManager.LoadScene(Suspect.Puzzle);
     }
 }
