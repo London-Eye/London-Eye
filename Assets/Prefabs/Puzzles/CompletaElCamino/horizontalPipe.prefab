@@ -146,15 +146,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87f88270ca092fb4c8134e275d3381cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ImpulseFactor: {x: 2, y: 4}
+  ImpulseFactor: {x: 2, y: 2}
   ImpulseDirection: {x: 0, y: 0}
   directionSpace: 0
   relativeToCurrentVelocity: 1
+  addForce: 1
   allowedEntryDirections: []
   DisableImpulseUp: 0
   DisableImpulseLeft: 0
   DisableImpulseRight: 0
-  DisableImpulseDown: 1
+  DisableImpulseDown: 0
   freezeOnDisabled: 0
 --- !u!1 &7507364382552247456
 GameObject:
