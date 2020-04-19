@@ -1,12 +1,42 @@
 title: MoveTheBlock-PreGame
 tags: PreGame
 ---
-Decides que lo mejor que puedes hacer es investigar a {$SuspectName}, pero no podéis hablar directamente.
-Aún así, sigues queriendo saber más cosas; así que decides usar tus habilidades de hacker para entrar en sus diferentes cuentas.
-Pero para ello tienes que atravesar su <i>cortafuegos</i> para poder infectar su ordenador con un <i>virus</i>.
+<<if $MoveTheBlock eq 0>>
+	<color=lightblue>Deiv I.D.:</color> <color=silver>-Llamando por teléfono-</color> Odio tener que recurrir a esto pero tendré que hacerlo para poder continuar.
+	<color=maroon>Teléfono:</color> Aquí <color=magenta>Aimin Jis Divais</color>, quien llama?
+	<color=lightblue>Deiv I.D.:</color> <color=magenta>Aimin</color>, soy <color=lightblue>Deiv</color>, necesito un favor.
+	<color=magenta>Aimin:</color> Claro, viejo amigo, dime.
+	<color=lightblue>Deiv I.D.:</color> Estoy investigando un caso, pero no puedo salir de casa.
+	<color=lightblue>Deiv I.D.:</color> Así que necesito que me encuentres toda la información posible sobre {$SuspectName}.
+	<color=magenta>Aimin:</color> Sin problema, pásame su información y te envio todo lo que encuentre.
+<<elseif $MoveTheBlock eq 1>>
+	<color=lightblue>Deiv I.D.:</color> <color=silver>-Llamando por teléfono-</color> <color=magenta>Aimin</color>, soy <color=lightblue>Deiv</color> otra vez, vuelvo a necesitar tus servicios.
+	<color=magenta>Aimin:</color> Claro, de quién se trata esta vez?
+	<color=lightblue>Deiv I.D.:</color> Se llama {$SuspectName}
+	<color=magenta>Aimin:</color> [select {$SuspectIsMale} True="El actor?" False="La actriz?"]
+	<color=lightblue>Deiv I.D.:</color> No, es otra persona.
+	<color=magenta>Aimin:</color> Sin problema entonces.
+<<elseif $MoveTheBlock eq 2>>
+	<color=maroon>Teléfono:</color> Brrrrr.......brrrrr.......brrrrr.......
+	<color=magenta>Aimin:</color> Qué pasa <color=magenta>Aimin</color>?
+	<color=magenta>Aimin:</color> Revisando la lista de sospechosos que me mandaste he visto cosas que no me cuadran con {$SuspectName}.
+	<color=magenta>Aimin:</color> Te importaria que le eche un vistazo?
+	<color=lightblue>Deiv I.D.:</color> Siempre y cuando me envies lo que descubras, sin problema.
+	<color=magenta>Aimin:</color> Por supuesto. 
+<<elseif $MoveTheBlock eq 3>>
+	<color=lightblue>Deiv I.D.:</color> <color=silver>-Llamando por teléfono-</color> <color=magenta>Aimin</color>? Soy <color=lightblue>Deiv</color> otra vez.
+	<color=magenta>Aimin:</color> Alguien más que tenga que escudriñar?
+	<color=lightblue>Deiv I.D.:</color> Si, esta vez se llama {$SuspectName}.
+	<color=lightblue>Deiv I.D.:</color> Por cierto, gracias por el aviso anterior, me ha venido de perlas.
+	<color=magenta>Aimin:</color> De nada, voy a ver que saco sobre [select {$SuspectIsMale} True="este" False="esta"].
+<<endif>>
 
+<color=lightblue>Deiv I.D.:</color> Gracias <color=silver>-Cuelga-</color>
+<color=lightblue>Deiv I.D.:</color> Vamos a ver que consigue encontrar.
+
+<<set $MoveTheBlock to $MoveTheBlock+1>>
 <<set $ContinueMode to "Button">>
-<color=orange>Mueve los bloques del <i>cortafuegos</i> para poder introducir el archivo con el <i>virus</i> en su ordenador.</color>
+<color=orange>Mueve los bloques del <b>cortafuegos</b> para poder introducir el archivo con el <b>virus</b> en su ordenador.</color>
 <<StartGame MoveTheBlockController>>
 ===
 
@@ -15,18 +45,31 @@ tags: PostGame
 ---
 <<EndGame MoveTheBlockController>>
 <<CompletePuzzle GameManager>>
-Después de usar todo tu ingenio, consigues acceder a las cuentas de {$SuspectName}.
+
+<<if $MoveTheBlock eq 1>>
+	<color=lightblue>Deiv I.D.:</color> Vamos a ver los datos que me ha enviado <color=magenta>Aimin</color>
+<<elseif $MoveTheBlock eq 2>>
+	<color=lightblue>Deiv I.D.:</color> Parece que esta vez ha encontrado más rápidamente algo útil.
+<<elseif $MoveTheBlock eq 3>>
+	<color=lightblue>Deiv I.D.:</color> Se ve que la corazonada de <color=magenta>Aimin</color> era correcta.
+<<elseif $MoveTheBlock eq 4>>
+	<color=lightblue>Deiv I.D.:</color> A ver que ha conseguido sacar esta vez.
+<<endif>>
 
 <<if $SuspectEvidencesFound eq 0>>
-	Entras en su correo electrónico. Por el tipo de mensajes que encuentras, {$SuspectName} es {$SuspectRelation} de la víctima ({$VictimName}).
+	<color=lightblue>Deiv I.D.:</color> Al parecer ha entrado en su correo electrónico y ....... bingo!
+	<color=lightblue>Deiv I.D.:</color> Según estos mensajes, {$SuspectName} es {$SuspectRelation} de la víctima ({$VictimName}).
 	<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
 <<elseif $SuspectEvidencesFound eq 1>>
-	Consigues entrar en una de sus apps de mensajería. Por cómo habla con {$RandomName}, {$SuspectName} {$SuspectEmotion} la víctima ({$VictimName}).
+	<color=lightblue>Deiv I.D.:</color> Así que donde ha encontrado información útil es en su WhatsApp....
+	<color=lightblue>Deiv I.D.:</color> Entiendo, por los mensajes que se ha enviado con{$RandomName}, {$SuspectName} {$SuspectEmotion} la víctima ({$VictimName}).
 	<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
 <<elseif $SuspectEvidencesFound eq 2>>
-	Revisando las facturas de {$SuspectName}, te das cuenta de que su coartada {$SuspectHasAlibiAsString} es válida.
+	<color=lightblue>Deiv I.D.:</color> Yendo directo a por sus cuentas eh vieja pícara....
+	<color=lightblue>Deiv I.D.:</color> Segun sus facturas, la coartada de {$SuspectName} {$SuspectHasAlibiAsString} es válida.
 	<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
 <<endif>>
 
+<<set $PuzzlesResueltos to $PuzzlesResueltos+1>>
 <<BackToMainMenu GameDialogue>>
 ===

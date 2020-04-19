@@ -1,10 +1,27 @@
 title: CompletaElCamino-PreGame
 tags: PreGame
 ---
-Has investigado todo lo que has podido encontrar a simple vista sobre {$SuspectName}.
-Has visitado todas sus redes sociales, así como las de sus parientes y amigos.
-Es hora de que ordenes toda la información encontrada; así que decides empezar a hacer suposiciones para ver si alguna te lleva a una conclusión útil.
+<<if $CompletaCamino eq 0>>
+	<color=lightblue>Deiv I.D.:</color> Correos con la víctima, redes sociales, etc.
+	<color=lightblue>Deiv I.D.:</color> He encontrado bastante información sobre {$SuspectName}.
+	<color=lightblue>Deiv I.D.:</color> Por desgracia, a simple vista, nada de esto me revela nada.
+	<color=lightblue>Deiv I.D.:</color> Es todo superficial y no puedo sacar nada en claro.
+	<color=lightblue>Deiv I.D.:</color> Tal vez, juntandolo todo, y mirándolo con perspectiva, pueda encontrar algo.
+	<color=lightblue>Deiv I.D.:</color> Me va a llevar mi tiempo, espero que valga la pena.
+<<elseif $CompletaCamino eq 1>>
+	<color=lightblue>Deiv I.D.:</color> Otro aparente callejón sin salida, pero tengo que seguir investigando a {$SuspectName}.
+	<color=lightblue>Deiv I.D.:</color> Tendré que volver a sacar a relucir mis famosas dotes deductivas.
+	<color=lightblue>Deiv I.D.:</color> Esta vez he podido sacar algo más de infromación sobre sus familiares.
+	<color=lightblue>Deiv I.D.:</color> Vamos a ver si tengo algo de suerte.
+<<elseif $CompletaCamino eq 2>>
+	<color=lightblue>Deiv I.D.:</color> En serio? Tampoco encuentro más información sobre {$SuspectName}?
+	<color=lightblue>Deiv I.D.:</color> Supongo que tendré que volver a revisar todo lo que he obtenido sobre [select {$SuspectIsMale} True="el" False="ella"].
+	<color=lightblue>Deiv I.D.:</color> Esto de no poder salir a la calle a investigar me está matando.
+<<endif>>
 
+<color=lightblue>Deiv I.D.:</color> <color=silver>-Dándose palmaditas en la cara-</color> Vamos, <color=lightblue>Deiv</color>, que tu puedes.
+
+<<set $CompletaCamino to $CompletaCamino+1>>
 <<set $ContinueMode to "Button">>
 <color=orange>Gira las partes de los caminos para llevar la suposición inicial hasta la conclusión y poder descubrir una nueva pista sobre {$SuspectName}.</color>
 ===
@@ -13,18 +30,29 @@ title: CompletaElCamino-PostGame
 tags: PostGame
 ---
 <<CompletePuzzle GameManager>>
-Has conseguido llegar a una conclusión sobre {$SuspectName}.
+<<if $CompletaCamino eq 1>>
+	<color=lightblue>Deiv I.D.:</color> Curiosamente estaba más a la vista de lo que esperaba.
+<<elseif $CompletaCamino eq 2>>
+	<color=lightblue>Deiv I.D.:</color> Al fin, después de todo este trabajo es bueno llegar a una conclusión.
+<<elseif $CompletaCamino eq 3>>
+	<color=lightblue>Deiv I.D.:</color> Claramente soy un genio, nadie más podria haber encontrado algo útil entre tanta información.
+<<endif>>
 
 <<if $SuspectEvidencesFound eq 0>>
-	Es una persona misteriosa, y no haber podido ver sus movimientos en persona te ha retrasado, pero has descubierto que {$SuspectName} es {$SuspectRelation} de la víctima ({$VictimName}).
+	<color=lightblue>Deiv I.D.:</color> A ver que he sacado en claro....
+	<color=lightblue>Deiv I.D.:</color> Es una persona misteriosa, por algo me ha costado tanto encontrar cosas.
+	<color=lightblue>Deiv I.D.:</color> Pero después de todo el esfuerzo puedo decir que {$SuspectName} es {$SuspectRelation} de la víctima ({$VictimName}).
 	<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
 <<elseif $SuspectEvidencesFound eq 1>>
-	Después de ver algunas conversaciones y fotos junto a la víctima, determinas que {$SuspectName} {$SuspectEmotion} la víctima ({$VictimName}).
+	<color=lightblue>Deiv I.D.:</color> Resulta que la respuesta estaba delante mia después de todo.
+	<color=lightblue>Deiv I.D.:</color> Estas fotos junto a la víctima y sus conversaciones demuestran que {$SuspectName} {$SuspectEmotion} la víctima ({$VictimName}).
 	<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
 <<elseif $SuspectEvidencesFound eq 2>>
-	Una vez consultadas sus publicaciones en redes sociales en horas próximas a la del crimen, determinas que la coartada de {$SuspectName} {$SuspectHasAlibiAsString} es válida.
+	<color=lightblue>Deiv I.D.:</color> Después de revisar publicaciones, horas y lugares esta todo claro.
+	<color=lightblue>Deiv I.D.:</color> Una vez cotejado con el crímen, resulta claro que {$SuspectName} {$SuspectHasAlibiAsString} coartada válida para el crímen.
 	<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
 <<endif>>
 
+<<set $PuzzlesResueltos to $PuzzlesResueltos+1>>
 <<BackToMainMenu GameDialogue>>
 ===

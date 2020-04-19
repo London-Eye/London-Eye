@@ -36,6 +36,11 @@ tags: Inicio
 title: MainMenu-Return
 tags: Return
 ---
+<<set $NinePuzzle to 0>>
+<<set $CompletaCamino to 0>>
+<<set $MoveTheBlock to 0>>
+<<set $SeparaColores to 0>>
+<<set $PuzzlesResueltos to 0>>
 <color=lightblue>Deiv I.D.:</color> Probablemente deberia empezar investigando a los sospechosos.
 <color=lightblue>Deiv I.D.:</color> Aunque no estaria de más saber algo más sobre la víctima.
 <color=orange>Puedes empezar a familiarizarte con el juego dandole a la imágen de</color> <color=lightblue>Deiv I.D.</color>
@@ -46,10 +51,6 @@ tags: Return
 title: Policia-PistasJuego
 tags: PistasJuego
 ---
-<<set $RandomIntMin to 0>>
-<<set $RandomIntMax to 9>>
-<<set $CurrentRandomInt to $RandomIntPool>>
-
 <<set $ContinueMode to "skip">>
 <color=blue>Policía:</color> ¿Sobre qué quieres obtener información?
 <<set $ContinueMode to "time">>
