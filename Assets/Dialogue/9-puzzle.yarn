@@ -1,7 +1,6 @@
 title: 9-puzzle-PreGame
 tags: PreGame
 ---
-Después de observar mejor las fotografías, descubres que hay más imágenes que contienen diferentes partes de la que parece la misma nota.
 <<if $NinePuzzle eq 0>>
 	<color=lightblue>Deiv I.D.:</color> <color=silver>-Revisando las fotografías de la escena del crímen-</color> Que tenemos aqui? Parece una nota con el nombre '{$SuspectName}' en ella.
 	<color=lightblue>Deiv I.D.:</color> <color=silver>-Acercandose la fotografía-</color> No aparece entera, pero con un poco de suerte, habrá más trozos en distintas fotos.
