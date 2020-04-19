@@ -51,7 +51,10 @@ public class PoolPuzzleLoader : MonoBehaviour
     public void CompletePuzzle(Suspect suspect)
     {
         suspect.Puzzle = null;
-        Destroy(SuspectManager.activeSuspects[suspect]);
-        SuspectManager.activeSuspects.Remove(suspect);
+        if (SuspectManager.activeSuspects.ContainsKey(suspect))
+        {
+            Destroy(SuspectManager.activeSuspects[suspect]);
+            SuspectManager.activeSuspects.Remove(suspect);
+        }
     }
 }
