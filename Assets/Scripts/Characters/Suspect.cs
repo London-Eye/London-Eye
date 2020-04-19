@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.Common;
+using Assets.Scripts.Common;
 using Assets.Scripts.Dialogue.Tags;
 using Assets.Scripts.Dialogue.Texts;
 using Assets.Scripts.Dialogue.Variables.Attributes;
@@ -49,7 +49,7 @@ namespace Assets.Scripts.Characters
                 if (HasFoundAllEvidences)
                 {
                     if (CharacterCreation.Instance != null)
-                        CharacterCreation.Instance.PoolPuzzleLoader.CompletePuzzle(Puzzle, false, true);
+                        CharacterCreation.Instance.PoolPuzzleLoader.CompletePuzzle(this);
 
                     Puzzle = null;
                 }

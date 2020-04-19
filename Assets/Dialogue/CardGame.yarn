@@ -14,7 +14,6 @@ Esto servirá para descartar a todos los sospechosos que puedas antes de ponerte
 title: CardGame-PostGame
 tags: PostGame
 ---
-<<CompletePuzzle GameManager>>
 <<set $ContinueMode to "Time">>
 Después de una investigación ligera sobre la lista, consigues reducir el número de sospechosos.
 <<set $ContinueMode to "Button">>

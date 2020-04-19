@@ -16,17 +16,7 @@ public class SuspectManager : MonoBehaviour, IComparable<SuspectManager>
     // This is able to persist the suspects references, and restore them in the appropiate instances
     private static readonly Dictionary<int, Suspect> suspectSafe = new Dictionary<int, Suspect>();
 
-    public static Suspect GetSuspectByPuzzle(string puzzle)
-    {
-        foreach (Suspect suspect in suspectSafe.Values)
-        {
-            if (suspect.Puzzle == puzzle)
-            {
-                return suspect;
-            }
-        }
-        return null;
-    }
+    internal static readonly Dictionary<Suspect, PuzzleLoader> activeSuspects = new Dictionary<Suspect, PuzzleLoader>();
 
     public Image suspectImage;
 
@@ -94,11 +84,28 @@ public class SuspectManager : MonoBehaviour, IComparable<SuspectManager>
         }
     }
 
+    public Transform PuzzlesView;
+
+    public PuzzleLoader PuzzleButtonPrefab;
+
+    private PuzzleLoader InstantiatePuzzleLoader(Suspect suspect)
+    {
+        PuzzleLoader puzzleLoader = Instantiate(PuzzleButtonPrefab, PuzzlesView);
+        puzzleLoader.Suspect = suspect;
+
+        return puzzleLoader;
+    }
+
     private void Awake()
     {
         if (suspectSafe.TryGetValue(Id, out Suspect suspect))
         {
             Suspect = suspect;
+
+            if (activeSuspects.ContainsKey(suspect))
+            {
+                activeSuspects[suspect] = InstantiatePuzzleLoader(suspect);
+            }
         }
         else
         {
@@ -123,16 +130,20 @@ public class SuspectManager : MonoBehaviour, IComparable<SuspectManager>
     {
         if (!Suspect.HasFoundAllEvidences)
         {
-            if (Suspect.Puzzle != null && PoolPuzzleLoader.IsPuzzleActive(Suspect.Puzzle))
+            if (activeSuspects.ContainsKey(Suspect))
             {
-                PoolPuzzleLoader.LoadPuzzle(Suspect.Puzzle);
+                activeSuspects[Suspect].LoadPuzzle();
             }
             else
             {
                 try
                 {
-                    string puzzle = FindObjectOfType<PoolPuzzleLoader>().LoadPuzzle();
-                    Suspect.Puzzle = puzzle;
+                    CharacterCreation.Instance.PoolPuzzleLoader.SelectPuzzle(Suspect);
+
+                    PuzzleLoader puzzleLoader = InstantiatePuzzleLoader(Suspect);
+                    activeSuspects[Suspect] = puzzleLoader;
+
+                    puzzleLoader.LoadPuzzle();
                 }
                 catch (InvalidOperationException ex)
                 {

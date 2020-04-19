@@ -7,19 +7,6 @@ using Yarn.Unity;
 
 public class PoolPuzzleLoader : MonoBehaviour
 {
-    public static string CurrentPuzzle { get; private set; }
-
-    private static readonly HashSet<string> activePuzzles = new HashSet<string>();
-
-    public static void ActivePuzzle(string puzzle)
-    {
-        activePuzzles.Add(puzzle);
-        var puzzleType = PuzzleSetterTypes[puzzle];
-        CurrentPuzzleCombinations[puzzleType] = CharacterCreation.Instance.PuzzleCombinationPools[puzzleType].Select(); 
-    }
-
-    public static bool IsPuzzleActive(string puzzle) => activePuzzles.Contains(puzzle);
-
     private static readonly Dictionary<string, System.Type> PuzzleSetterTypes = new Dictionary<string, System.Type>()
     {
         { "probetas", typeof(ProbetasGameController) },
@@ -28,74 +15,43 @@ public class PoolPuzzleLoader : MonoBehaviour
         { "9-puzzle", typeof(ImageSetter) },
     };
 
-    private static readonly Dictionary<System.Type, int> CurrentPuzzleCombinations = new Dictionary<System.Type, int>();
+    private readonly Dictionary<System.Type, int> CurrentPuzzleCombinations = new Dictionary<System.Type, int>();
 
-    internal static int GetCurrentPuzzleCombination(System.Type puzzleType) => CurrentPuzzleCombinations[puzzleType];
-
+    internal int GetCurrentPuzzleCombination(System.Type puzzleType) => CurrentPuzzleCombinations[puzzleType];
 
     public List<string> puzzles;
+    public List<Sprite> puzzleMiniatures;
+
+    internal Sprite GetPuzzleMiniature(string puzzleName)
+    {
+        return puzzleMiniatures[puzzles.IndexOf(puzzleName)];
+    }
 
     private SelectorPool<string> puzzlePool;
 
     // Start is called before the first frame update
     void Start()
     {
-        puzzlePool = new SelectorPool<string>(puzzles);
-        puzzlePool.Fill();
+        puzzlePool = new SelectorPool<string>(puzzles) { AutoRefill = true };
     }
-
-    public string LoadPuzzle()
+        
+    public void SelectPuzzle(Suspect suspect)
     {
         string puzzleToLoad = puzzlePool.Select();
+        suspect.Puzzle = puzzleToLoad;
 
-        ActivePuzzle(puzzleToLoad);
-        LoadPuzzle(puzzleToLoad);
-
-        return puzzleToLoad;
-    }
-
-    public static void LoadPuzzle(string puzzleName)
-    {
-        CurrentPuzzle = puzzleName;
-        SceneManager.LoadScene(puzzleName);
+        var puzzleType = PuzzleSetterTypes[puzzleToLoad];
+        CurrentPuzzleCombinations[puzzleType] = CharacterCreation.Instance.PuzzleCombinationPools[puzzleType].Select();
     }
 
     [YarnCommand("CompletePuzzle")]
     public void CompleteCurrentPuzzle()
+        => CompletePuzzle(CharacterCreation.Instance.CurrentSuspect);
+
+    public void CompletePuzzle(Suspect suspect)
     {
-        bool updateSuspect = false;
-        if (CharacterCreation.Instance != null)
-        {
-            Suspect currentSuspect = CharacterCreation.Instance.CurrentSuspect;
-            if (currentSuspect != null) currentSuspect.Puzzle = null;
-            else updateSuspect = true;
-        }
-        else
-        {
-            updateSuspect = true;
-        }
-
-        CompletePuzzle(CurrentPuzzle, updateSuspect, false);
-        CurrentPuzzle = null;
-    }
-
-    public void CompletePuzzle(string puzzle, bool updateSuspect, bool updatePuzzleLoaders)
-    {
-        activePuzzles.Remove(puzzle);
-        puzzlePool.TryPushAndShuffle(puzzle);
-
-        if (updateSuspect)
-        {
-            Suspect currentSuspect = SuspectManager.GetSuspectByPuzzle(puzzle);
-            if (currentSuspect != null) currentSuspect.Puzzle = null;
-        }
-
-        if (updatePuzzleLoaders)
-        {
-            foreach (PuzzleLoader puzzleLoader in FindObjectsOfType<PuzzleLoader>())
-            {
-                puzzleLoader.CheckActive();
-            }
-        }
+        suspect.Puzzle = null;
+        Destroy(SuspectManager.activeSuspects[suspect]);
+        SuspectManager.activeSuspects.Remove(suspect);
     }
 }

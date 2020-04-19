@@ -10,7 +10,7 @@ public abstract class PuzzleSetter : MonoBehaviour
         if (SetPuzzleOnStart) TrySetPuzzle();
     }
 
-    public void TrySetPuzzle() => SetPuzzle(PoolPuzzleLoader.GetCurrentPuzzleCombination(GetType()));
+    public void TrySetPuzzle() => SetPuzzle(CharacterCreation.Instance.PoolPuzzleLoader.GetCurrentPuzzleCombination(GetType()));
 
     protected abstract void SetPuzzle(int selector);
 }
