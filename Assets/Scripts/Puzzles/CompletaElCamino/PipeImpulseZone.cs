@@ -8,6 +8,7 @@ public class PipeImpulseZone : MonoBehaviour
     public Vector2 ImpulseDirection;
     public Space directionSpace;
     public bool relativeToCurrentVelocity = false;
+    public bool addForce;
 
     public List<Vector2> allowedEntryDirections;
 
@@ -55,7 +56,9 @@ public class PipeImpulseZone : MonoBehaviour
             }
             else
             {
-                rb.AddForce(CalculatedImpulseDirection(rb.velocity) * ImpulseFactor, ForceMode2D.Impulse);
+                var force = CalculatedImpulseDirection(rb.velocity) * ImpulseFactor;
+                if (addForce) rb.AddForce(force, ForceMode2D.Impulse);
+                else rb.velocity = force;
             }
         }
     }
