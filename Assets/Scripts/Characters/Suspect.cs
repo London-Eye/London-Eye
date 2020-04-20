@@ -60,12 +60,14 @@ namespace Assets.Scripts.Characters
 
         public string Puzzle { get; set; }
 
-        public string AccusationState
+        public enum AccusationState { SinPruebas, Criminal, Inocente }
+
+        public AccusationState CurrentAccusationState
         {
             get
             {
-                if (EvidencesFound < NumberOfEvidences) return "SinPruebas";
-                else return this == CharacterCreation.Instance.Murderer ? "Criminal" : "Inocente";
+                if (EvidencesFound < NumberOfEvidences) return AccusationState.SinPruebas;
+                else return this == CharacterCreation.Instance.Murderer ? AccusationState.Criminal : AccusationState.Inocente;
             }
         }
 

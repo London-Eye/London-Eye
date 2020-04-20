@@ -159,7 +159,7 @@ public class SuspectManager : MonoBehaviour, IComparable<SuspectManager>
     public void Accuse()
     {
         AsyncOperation loadSceneOperation = SceneManager.LoadSceneAsync(AccusationSceneName);
-        loadSceneOperation.completed += op => FindObjectOfType<DialogueRunner>().startNode = "Acusacion-" + CharacterCreation.Instance.CurrentSuspect.AccusationState;
+        loadSceneOperation.completed += op => FindObjectOfType<DialogueRunner>().startNode = "Acusacion-" + CharacterCreation.Instance.CurrentSuspect.CurrentAccusationState;
     }
 
     public int CompareTo(SuspectManager other) => Id.CompareTo(other.Id);
