@@ -96,16 +96,16 @@ public class ImageSetter : PuzzleSetter
         EndgameMenu.SetActive(true);
         switch (selector)
         {
-            case 1:
+            case 0:
                 Ibro.SetActive(true);
                 break;
-            case 2:
+            case 1:
                 IBur.SetActive(true);
                 break;
-            case 3:
+            case 2:
                 IScr.SetActive(true);
                 break;
-            case 4:
+            case 3:
                 IWas.SetActive(true);
                 break;
         }

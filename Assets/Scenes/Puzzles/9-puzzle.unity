@@ -348,6 +348,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adad52b5af27d1d4cad615a744491eec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SetPuzzleOnStart: 1
   partial_im: {fileID: 7368752284640281770, guid: 6198ac81cb2776243ae582d1e88a005b,
     type: 3}
   letterBroken:
@@ -422,7 +423,6 @@ MonoBehaviour:
   IScr: {fileID: 1406066763}
   IBur: {fileID: 818890553}
   IWas: {fileID: 655504733}
-  selector: 0
   EndgameMenu: {fileID: 396050913}
 --- !u!1 &442949206
 GameObject:

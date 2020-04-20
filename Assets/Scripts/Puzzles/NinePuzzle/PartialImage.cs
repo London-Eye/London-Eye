@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class PartialImage : MonoBehaviour
 {
-    // Start is called before the first frame update
-    [SerializeField] Sprite subImage;
     private Vector2 ini, fin;
     private PartialImage source;
     public readonly float[] posX = new float[16] { -1.55f, 0.04f, 1.63f, 3.22f, -1.55f, 0.04f, 1.63f, 3.22f, -1.55f, 0.04f, 1.63f, 3.22f, -1.55f, 0.04f, 1.63f, 3.22f };
@@ -51,6 +49,7 @@ public class PartialImage : MonoBehaviour
     {
         source = this;
         Vector2 mouseMove = GetMousePosition();
+        Debug.Log(mouseMove);
         ini = GetSector(mouseMove.x, mouseMove.y);
         transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, transform.localPosition.z - 1);
         Debug.Log(ini);
@@ -67,15 +66,16 @@ public class PartialImage : MonoBehaviour
         Vector2 mouseMove = GetMousePosition();
 
         fin = GetSector(mouseMove.x, mouseMove.y);
-        transform.localPosition = new Vector3(fin.x, fin.y, transform.localPosition.z + 1);
 
         PartialImage[] allObjects = FindObjectsOfType<PartialImage>();
         foreach (PartialImage go in allObjects)
-            if ((Vector2)go.transform.localPosition == fin && this != go)
+            if ((Vector2)go.transform.localPosition == fin)
             {
                 go.SetPosition(ini.x, ini.y);
                 break;
             }
+
+        transform.localPosition = new Vector3(fin.x, fin.y, transform.localPosition.z + 1);
     }
 
     private bool IsBetween(float a, float b, float c)
