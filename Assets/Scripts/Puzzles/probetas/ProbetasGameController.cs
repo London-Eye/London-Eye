@@ -21,6 +21,7 @@ public class ProbetasGameController : PuzzleSetter
     private static readonly Vector2[] position = new Vector2[8] { new Vector2(-3.5f, -2f), new Vector2(-2f, -2f), new Vector2(-0.5f, -2f), new Vector2(1f, -2f), new Vector2(-3.5f, 1.25f), new Vector2(-2f, 1.25f), new Vector2(-0.5f, 1.25f), new Vector2(1f, 1.25f) };
     private static readonly Vector2[] positionLR = new Vector2[8] { new Vector2(-2f, -2f), new Vector2(-1f, -2f), new Vector2(0f, -2f), new Vector2(1f, -2f), new Vector2(-2f, 1.25f), new Vector2(-1f, 1.25f), new Vector2(0f, 1.25f), new Vector2(1f, 1.25f) };
     public bool GameRunning { get; private set; }
+    public bool completed { get; private set; }
 
     protected override void SetPuzzle(int selector)
     {
@@ -66,7 +67,7 @@ public class ProbetasGameController : PuzzleSetter
     public void IsEndgame()
     {
         tubes = FindObjectsOfType<InitiallyFullTube>();
-        bool completed = true;
+        completed = true;
         for (int i = 0; i < tubes.Length; i++)
         {
             if (!tubes[i].IsComplete())

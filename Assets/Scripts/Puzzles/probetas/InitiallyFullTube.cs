@@ -26,7 +26,7 @@ public class InitiallyFullTube : MonoBehaviour
     private void OnMouseDown()
     {
 
-        if (!controller.ps.IsPaused && controller.GameRunning)
+        if (!controller.ps.IsPaused && controller.GameRunning && !controller.completed)
         {
             Debug.Log("clicado");
             if (controller.first) //primera bola que pillas
