@@ -5,28 +5,28 @@ tags: Inicio
 <color=cyan>Policía:</color> <color=silver>(Soy Deiv I.D., un aclamado investigador que trabaja para la policía)</color>
 <color=lightblue>Deiv I.D.:</color> <color=silver>(Normalmente me envían a resolver los casos más difíciles, esos que la policía no puede resolver)</color>
 <color=lightblue>Deiv I.D.:</color> <color=silver>(En este último caso me han enviado a Londres)</color>
-<color=lightblue>Deiv I.D.:</color> <color=silver>(Parece un caso cualquiera que la policía deberia poder resolver, pero tiene algo diferente)</color>
+<color=lightblue>Deiv I.D.:</color> <color=silver>(Parece un caso cualquiera que la policía debería poder resolver, pero hay algo más)</color>
 <color=lightblue>Deiv I.D.:</color> <color=silver>(La ciudad se ha visto azotada por una pandemia)</color>
 <color=lightblue>Deiv I.D.:</color> <color=silver>(Lo que significa que la policía no tiene recursos suficientes ahora mismo)</color>
-<color=lightblue>Deiv I.D.:</color> <color=silver>(Por si fuera poco, la ciudad está en cuarentena, de forma que, no puedo salir a investigar)</color>
-<color=maroon>Teléfono:</color> Brrrrr.......brrrrr.......brrrrr.......
-<color=silver>-Descolgando el teléfono-</color> <color=lightblue>Deiv I.D.:</color> Si, dígame.
-<color=maroon>Teléfono:</color> <color=lightblue>Deiv</color>? Tenemos que hablar sobre el caso.
-<color=lightblue>Deiv I.D.:</color> <color=silver>(La chica que llama es, </color><color=magenta>Diana</color><color=silver>, mi jefa)</color> Por fin, ya era hora de que me informaras de algo.
+<color=lightblue>Deiv I.D.:</color> <color=silver>(Y por si fuera poco, la ciudad está en cuarentena, por lo que no puedo salir a investigar)</color>
+<color=maroon>Teléfono:</color> *Sonidos de vibración*
+<color=silver>-Descolgando el teléfono-</color> <color=lightblue>Deiv I.D.:</color> Sí, dígame.
+<color=maroon>Teléfono:</color> ¿<color=lightblue>Deiv</color>? Tenemos que hablar sobre el caso.
+<color=lightblue>Deiv I.D.:</color> <color=silver>(La chica que llama es </color><color=magenta>Diana</color><color=silver>, mi jefa)</color> Por fin, ya era hora de que me informaras de algo.
 <color=magenta>Diana:</color> [select {$VictimIsMale} True="El chico" False="La chica"] que ha muerto se llamaba {$VictimName}.
-<color=magenta>Diana:</color> Trabajaba en el supermercado como [select {$VictimIsMale} True="reponedor" False="reponedora"] y [select {$VictimIsMale} True="lo" False="la"] mataron dias antes del confinamiento.
-<color=lightblue>Deiv I.D.:</color> <color=silver>-Tomando apuntes en un diário-</color> Donde [select {$VictimIsMale} True="lo" False="la"] mataron? En el propio supermercado?
-<color=magenta>Diana:</color> No, la escena del crímen es su casa, [select {$VictimIsMale} True="lo" False="la"] mataron allí.
-<color=lightblue>Deiv I.D.:</color> <color=silver>-Terminando de tomar apuntes-</color> De acuerdo, algo más, jefa?
-<color=magenta>Diana:</color> Si, el departamento te enviará una lista de sospechosos iniciales, a partir de ahí, empezará tu trabajo.
-<color=lightblue>Deiv I.D.:</color> <color=silver>-Cerrando el diário-</color> Yo me ocupo jefa, como hago siempre.
+<color=magenta>Diana:</color> Trabajaba en el supermercado como [select {$VictimIsMale} True="reponedor" False="reponedora"] y [select {$VictimIsMale} True="lo" False="la"] mataron días antes del confinamiento.
+<color=lightblue>Deiv I.D.:</color> <color=silver>-Tomando apuntes en un diario-</color> ¿Dónde [select {$VictimIsMale} True="lo" False="la"] mataron? ¿En el propio supermercado?
+<color=magenta>Diana:</color> No, la escena del crimen es su casa, [select {$VictimIsMale} True="lo" False="la"] mataron allí.
+<color=lightblue>Deiv I.D.:</color> <color=silver>-Terminando de tomar apuntes-</color> De acuerdo. ¿Algo más, jefa?
+<color=magenta>Diana:</color> Sí, el departamento te enviará una lista de sospechosos iniciales; a partir de ahí, empezará tu trabajo.
+<color=lightblue>Deiv I.D.:</color> <color=silver>-Cerrando el diario-</color> Yo me ocupo jefa, como hago siempre.
 <color=magenta>Diana:</color> Ten en cuenta que este es un caso especial.
 <color=magenta>Diana:</color> La gente tiene los nervios a flor de piel y nosotros no tenemos recursos para investigar estas cosas.
 <color=magenta>Diana:</color> Además, los conservadores presionan al gobierno para que termine la cuarentena.
-<color=magenta>Diana:</color> Que pasara impune un crímen hacia [select {$VictimIsMale} True="un trabajador" False="una trabajadora"] esencial podría crear más caos del que ya hay.
+<color=magenta>Diana:</color> Que pasara impune un crimen hacia [select {$VictimIsMale} True="un trabajador" False="una trabajadora"] esencial podría crear más caos del que ya hay.
 <color=magenta>Diana:</color> Por si fuera poco, tenemos a la prensa echándose a nuestros cuellos.
 <color=magenta>Diana:</color> Resuelve esto, y resuélvelo rápido <color=lightblue>Deiv</color>, solo tenemos una oportunidad.
-<color=lightblue>Deiv I.D.:</color> Lo se jefa, déjalo en mis manos.
+<color=lightblue>Deiv I.D.:</color> Lo sé jefa, déjalo en mis manos.
 <color=maroon>Teléfono:</color> <color=silver>-Cuelga-</color>
 <color=lightblue>Deiv I.D.:</color> <color=silver>-Dando una palmada-</color> Manos a la obra.
 ===
@@ -41,9 +41,9 @@ tags: Return
 <<set $MoveTheBlock to 0>>
 <<set $SeparaColores to 0>>
 <<set $PuzzlesResueltos to 0>>
-<color=lightblue>Deiv I.D.:</color> Probablemente deberia empezar investigando a los sospechosos.
-<color=lightblue>Deiv I.D.:</color> Aunque no estaria de más saber algo más sobre la víctima.
-<color=orange>Puedes empezar a familiarizarte con el juego dandole a la imágen de</color> <color=lightblue>Deiv I.D.</color>
+<color=lightblue>Deiv I.D.:</color> Probablemente debería empezar investigando a los sospechosos.
+<color=lightblue>Deiv I.D.:</color> Aunque no estaría de más saber algo más sobre la víctima.
+<color=orange>Puedes empezar a familiarizarte con el juego dándole a la imagen de</color> <color=lightblue>Deiv I.D.</color>
 ===
 
 
@@ -78,7 +78,7 @@ tags: MenuPrincipal
 <<elseif $CurrentRandomInt eq 2>>
     <color=blue>Policía:</color> En el ordenador de la derecha podrás llevar a juicio al sospechoso que creas que es el asesino.
 <<elseif $CurrentRandomInt eq 3>>
-    <color=blue>Policía:</color> En el Walkie-Talkie que está encima del archivador podrás encontrar información útil sobre la víctima y la escena del crímen.
+    <color=blue>Policía:</color> En el Walkie-Talkie que está encima del archivador podrás encontrar información útil sobre la víctima y la escena del crimen.
 <<endif>>
 ===
 

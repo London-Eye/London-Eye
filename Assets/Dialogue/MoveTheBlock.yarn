@@ -2,37 +2,37 @@ title: MoveTheBlock-PreGame
 tags: PreGame
 ---
 <<if $MoveTheBlock eq 0>>
-	<color=lightblue>Deiv I.D.:</color> <color=silver>-Llamando por teléfono-</color> Odio tener que recurrir a esto pero tendré que hacerlo para poder continuar.
-	<color=maroon>Teléfono:</color> Aquí <color=lime>Aimin Jis Divais</color>, quien llama?
+	<color=lightblue>Deiv I.D.:</color> <color=silver>-Llamando por teléfono-</color> Odio tener que recurrir a esto, pero tendré que hacerlo para poder continuar.
+	<color=maroon>Teléfono:</color> Aquí <color=lime>Aimin Jis Divais</color>, ¿quién llama?
 	<color=lightblue>Deiv I.D.:</color> <color=lime>Aimin</color>, soy <color=lightblue>Deiv</color>, necesito un favor.
 	<color=lime>Aimin:</color> Claro, viejo amigo, dime.
 	<color=lightblue>Deiv I.D.:</color> Estoy investigando un caso, pero no puedo salir de casa.
 	<color=lightblue>Deiv I.D.:</color> Así que necesito que me encuentres toda la información posible sobre {$SuspectName}.
-	<color=lime>Aimin:</color> Sin problema, pásame su información y te envio todo lo que encuentre.
+	<color=lime>Aimin:</color> Sin problema, pásame su información y te envío todo lo que encuentre.
 <<elseif $MoveTheBlock eq 1>>
 	<color=lightblue>Deiv I.D.:</color> <color=silver>-Llamando por teléfono-</color> <color=lime>Aimin</color>, soy <color=lightblue>Deiv</color> otra vez, vuelvo a necesitar tus servicios.
-	<color=lime>Aimin:</color> Claro, de quién se trata esta vez?
+	<color=lime>Aimin:</color> Claro, ¿de quién se trata esta vez?
 	<color=lightblue>Deiv I.D.:</color> Se llama {$SuspectName}
-	<color=lime>Aimin:</color> [select {$SuspectIsMale} True="El actor?" False="La actriz?"]
+	<color=lime>Aimin:</color> [select {$SuspectIsMale} True="¿El actor?" False="¿La actriz?"]
 	<color=lightblue>Deiv I.D.:</color> No, es otra persona.
 	<color=lime>Aimin:</color> Sin problema entonces.
 <<elseif $MoveTheBlock eq 2>>
-	<color=maroon>Teléfono:</color> Brrrrr.......brrrrr.......brrrrr.......
-	<color=lime>Aimin:</color> Qué pasa <color=lime>Aimin</color>?
-	<color=lime>Aimin:</color> Revisando la lista de sospechosos que me mandaste he visto cosas que no me cuadran con {$SuspectName}.
-	<color=lime>Aimin:</color> Te importaria que le eche un vistazo?
-	<color=lightblue>Deiv I.D.:</color> Siempre y cuando me envies lo que descubras, sin problema.
-	<color=lime>Aimin:</color> Por supuesto. 
+	<color=maroon>Teléfono:</color> *Sonidos de vibración*
+	<color=lightblue>Deiv I.D.:</color> ¿Qué pasa <color=lime>Aimin</color>?
+	<color=lime>Aimin:</color> Revisando la lista de sospechosos que me mandaste, he visto cosas que no me cuadran con {$SuspectName}.
+	<color=lime>Aimin:</color> ¿Te importaría que le eche un vistazo?
+	<color=lightblue>Deiv I.D.:</color> Siempre y cuando me envíes lo que descubras, sin problema.
+	<color=lime>Aimin:</color> Por supuesto.
 <<elseif $MoveTheBlock eq 3>>
-	<color=lightblue>Deiv I.D.:</color> <color=silver>-Llamando por teléfono-</color> <color=lime>Aimin</color>? Soy <color=lightblue>Deiv</color> otra vez.
-	<color=lime>Aimin:</color> Alguien más que tenga que escudriñar?
-	<color=lightblue>Deiv I.D.:</color> Si, esta vez se llama {$SuspectName}.
+	<color=lightblue>Deiv I.D.:</color> <color=silver>-Llamando por teléfono-</color> ¿<color=lime>Aimin</color>? Soy <color=lightblue>Deiv</color> otra vez.
+	<color=lime>Aimin:</color> ¿Alguien más que tenga que escudriñar?
+	<color=lightblue>Deiv I.D.:</color> Sí, esta vez se llama {$SuspectName}.
 	<color=lightblue>Deiv I.D.:</color> Por cierto, gracias por el aviso anterior, me ha venido de perlas.
-	<color=lime>Aimin:</color> De nada, voy a ver que saco sobre [select {$SuspectIsMale} True="este" False="esta"].
+	<color=lime>Aimin:</color> De nada, voy a ver qué saco sobre [select {$SuspectIsMale} True="este" False="esta"].
 <<endif>>
 
 <color=lightblue>Deiv I.D.:</color> Gracias <color=silver>-Cuelga-</color>
-<color=lightblue>Deiv I.D.:</color> Vamos a ver que consigue encontrar.
+<color=lightblue>Deiv I.D.:</color> A ver qué consigue encontrar.
 
 <<set $MoveTheBlock to $MoveTheBlock+1>>
 <<set $ContinueMode to "Button">>
@@ -53,20 +53,20 @@ tags: PostGame
 <<elseif $MoveTheBlock eq 3>>
 	<color=lightblue>Deiv I.D.:</color> Se ve que la corazonada de <color=lime>Aimin</color> era correcta.
 <<elseif $MoveTheBlock eq 4>>
-	<color=lightblue>Deiv I.D.:</color> A ver que ha conseguido sacar esta vez.
+	<color=lightblue>Deiv I.D.:</color> A ver qué ha conseguido sacar esta vez.
 <<endif>>
 
 <<if $SuspectEvidencesFound eq 0>>
-	<color=lightblue>Deiv I.D.:</color> Al parecer ha entrado en su correo electrónico y ....... bingo!
+	<color=lightblue>Deiv I.D.:</color> Al parecer ha entrado en su correo electrónico y... ¡bingo!
 	<color=lightblue>Deiv I.D.:</color> Según estos mensajes, {$SuspectName} es {$SuspectRelation} de la víctima ({$VictimName}).
 	<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
 <<elseif $SuspectEvidencesFound eq 1>>
-	<color=lightblue>Deiv I.D.:</color> Así que donde ha encontrado información útil es en su WhatsApp....
-	<color=lightblue>Deiv I.D.:</color> Entiendo, por los mensajes que se ha enviado con{$RandomName}, {$SuspectName} {$SuspectEmotion} la víctima ({$VictimName}).
+	<color=lightblue>Deiv I.D.:</color> Así que donde ha encontrado información útil es en su, ejem, <color=green>aplicación de mensajería instantánea</color>...
+	<color=lightblue>Deiv I.D.:</color> Entiendo, por los mensajes que se ha enviado con {$RandomName}, {$SuspectName} {$SuspectEmotion} la víctima ({$VictimName}).
 	<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
 <<elseif $SuspectEvidencesFound eq 2>>
-	<color=lightblue>Deiv I.D.:</color> Yendo directo a por sus cuentas eh vieja pícara....
-	<color=lightblue>Deiv I.D.:</color> Segun sus facturas, la coartada de {$SuspectName} {$SuspectHasAlibiAsString} es válida.
+	<color=lightblue>Deiv I.D.:</color> Yendo directo a por sus cuentas, eh, vieja pícara...
+	<color=lightblue>Deiv I.D.:</color> Según sus facturas, la coartada de {$SuspectName} {$SuspectHasAlibiAsString} es válida.
 	<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
 <<endif>>
 

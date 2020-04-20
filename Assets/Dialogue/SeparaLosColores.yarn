@@ -2,40 +2,40 @@ title: probetas-PreGame
 tags: PreGame
 ---
 <<if $SeparaColores eq 0>>
-	<color=maroon>Teléfono:</color> Brrrrr.......brrrrr.......brrrrr.......
-	<color=silver>-Descolgando el teléfono-</color> <color=lightblue>Deiv I.D.:</color> Si, dígame.
+	<color=maroon>Teléfono:</color> *Sonidos de vibración*
+	<color=silver>-Descolgando el teléfono-</color> <color=lightblue>Deiv I.D.:</color> Sí, dígame.
 	<color=maroon>Teléfono:</color> Buenas tardes señor <color=lightblue>I.D.</color>, somos del departamento de investigación científica de la policía.
 	<color=cyan>Policía:</color> Hemos encontrado restos de huellas y ADN de {$SuspectName} en casa de la víctima.
 	<color=cyan>Policía:</color> Le informamos que cuando estén los resultados se los enviaremos a su correo.
 	<color=lightblue>Deiv I.D.:</color> De acuerdo, gracias por la información<color=silver>-Cuelga el teléfono-</color>.
 <<elseif $SeparaColores eq 1>>
-	<color=maroon>Teléfono:</color> Brrrrr.......brrrrr.......brrrrr.......
-	<color=silver>-Descolgando el teléfono-</color> <color=lightblue>Deiv I.D.:</color> Si, dígame.
+	<color=maroon>Teléfono:</color> *Sonidos de vibración*
+	<color=silver>-Descolgando el teléfono-</color> <color=lightblue>Deiv I.D.:</color> Sí, dígame.
 	<color=maroon>Teléfono:</color> Buenas tardes señor <color=lightblue>I.D.</color>, volvemos a llamar desde la policía científica.
-	<color=cyan>Policía:</color> Nuevos resultados han dado a luz la presencia [select {$SuspectIsMale} True="del sospechoso" False="de la sospechosa"] {$SuspectName} en casa de la víctima.
+	<color=cyan>Policía:</color> Nuevos resultados han dado a luz la presencia [select {$SuspectIsMale} True="del sospechoso" False="de la sospechosa"] de nombre {$SuspectName} en casa de la víctima.
 	<color=lightblue>Deiv I.D.:</color> Muchas gracias, manténganme informado<color=silver>-Cuelga el teléfono-</color>.
 <<elseif $SeparaColores eq 2>>
-	<color=lightblue>Deiv I.D.:</color> <color=silver>-Llamando por teléfono-</color> Hola, soy <color=lightblue>Deiv I.D.</color>, podría pasarme con la científica?
+	<color=lightblue>Deiv I.D.:</color> <color=silver>-Llamando por teléfono-</color> Hola, soy <color=lightblue>Deiv I.D.</color>, ¿podría pasarme con la científica?
 	<color=maroon>Teléfono:</color> Claro, un segundo.
-	<color=maroon>Teléfono:</color> .....
-	<color=cyan>Policía:</color> En qué podemos ayudarle?
-	<color=lightblue>Deiv I.D.:</color> Me gustaria que hicieran un repaso a las muestras que tienen, por si hubiera alguna coincidencia con {$SuspectName}, [select {$SuspectIsMale} True="un sospechoso" False="una sospechosa"].
+	<color=maroon>Teléfono:</color> ...
+	<color=cyan>Policía:</color> ¿En qué podemos ayudarle?
+	<color=lightblue>Deiv I.D.:</color> Me gustaría que hicieran un repaso a las muestras que tienen, por si hubiera alguna coincidencia con {$SuspectName}, [select {$SuspectIsMale} True="un sospechoso" False="una sospechosa"].
 	<color=cyan>Policía:</color> Le echaremos un vistazo señor <color=lightblue>I.D.</color>.
 <<elseif $SeparaColores eq 3>>
-	<color=lightblue>Deiv I.D.:</color> <color=silver>-Llamando por teléfono-</color> Hola, soy <color=lightblue>Deiv I.D.</color>, con la científica, por favor?
+	<color=lightblue>Deiv I.D.:</color> <color=silver>-Llamando por teléfono-</color> Hola, soy <color=lightblue>Deiv I.D.</color>. Póngame con la científica, por favor.
 	<color=maroon>Teléfono:</color> Claro, un segundo.
-	<color=maroon>Teléfono:</color> .....
-	<color=cyan>Policía:</color> En qué podemos ayudarle?
-	<color=lightblue>Deiv I.D.:</color> Me gustaria que revisaran por si encuentran algo de información extra sobre {$SuspectName}.
-	<color=cyan>Policía:</color> De acuerdo señor <color=lightblue>I.D.</color> pero tenga en cuenta que es la 4rta vez que revisamos el caso y puede que no encontremos nada.
+	<color=maroon>Teléfono:</color> ...
+	<color=cyan>Policía:</color> ¿En qué podemos ayudarle?
+	<color=lightblue>Deiv I.D.:</color> Me gustaría que volvieran a revisar el caso por si encuentran algo de información extra sobre {$SuspectName}.
+	<color=cyan>Policía:</color> De acuerdo señor <color=lightblue>I.D.</color> pero tenga en cuenta que es la cuarta vez que revisamos el caso y puede que no encontremos nada.
 	<color=lightblue>Deiv I.D.:</color> Lo tengo en cuenta, gracias.
 <<elseif $SeparaColores eq 4>>
-	<color=lightblue>Deiv I.D.:</color> Entre todos los papeles que tengo de la científica y no tengo la información que quiero sobre $SuspectName}.
+	<color=lightblue>Deiv I.D.:</color> Con todos los papeles que tengo de la científica, y no tengo la información que quiero sobre {$SuspectName}.
 	<color=lightblue>Deiv I.D.:</color> Tal vez se me haya escapado algo.
-	<color=lightblue>Deiv I.D.:</color> Ya se, voy a revisar los análisis centrandome en [select {$SuspectIsMale} True="este sospechoso" False="esta sospechosa"] en concreto.
+	<color=lightblue>Deiv I.D.:</color> Ya sé, voy a revisar los análisis centrándome en [select {$SuspectIsMale} True="este sospechoso" False="esta sospechosa"] en concreto.
 <<endif>>
 
-<color=lightblue>Deiv I.D.:</color> A ver que desvela la información de la científica.
+<color=lightblue>Deiv I.D.:</color> A ver qué desvela la información de la científica.
 
 <<set $SeparaColores to $SeparaColores+1>>
 <<set $ContinueMode to "Button">>
@@ -47,23 +47,23 @@ tags: PostGame
 ---
 <<CompletePuzzle GameManager>>
 
-<<if $SeparaColores eq 1>>
-	<color=lightblue>Deiv I.D.:</color> A ver que dicen los resultados de la investigación de la científica.
-<<elseif $SeparaColores eq 2>>
+<<if $SeparaColores eq 0>>
+	<color=lightblue>Deiv I.D.:</color> A ver qué dicen los resultados de la investigación de la científica.
+<<elseif $SeparaColores eq 1>>
 	<color=lightblue>Deiv I.D.:</color> Menos mal que la científica sigue trabajando en esto a pesar de la pandemia.
+<<elseif $SeparaColores eq 2>>
+	<color=lightblue>Deiv I.D.:</color> La policía científica, tan confiable como siempre.
 <<elseif $SeparaColores eq 3>>
-	<color=lightblue>Deiv I.D.:</color> La policía científica tan confiable como siempre.
+	<color=lightblue>Deiv I.D.:</color> Qué suerte he tenido de que hayan conseguido encontrar algo.
 <<elseif $SeparaColores eq 4>>
-	<color=lightblue>Deiv I.D.:</color> Que suerte he tenido de que hayan conseguido encontrar algo.
-<<elseif $SeparaColores eq 5>>
 	<color=lightblue>Deiv I.D.:</color> Eureka, en este informe de resultados hay algo que me sirve.
 <<endif>>
 
 <<if $SuspectEvidencesFound eq 0>>
 	<<if $SuspectRelationIndexCriminal/2 is 0 or 1>>
-		<color=lightblue>Deiv I.D.:</color> Segun esto, al comparar el ADN de {$SuspectName} y la víctima, queda claro que {$SuspectName} es {$SuspectRelation} de la víctima ({$VictimName}).
+		<color=lightblue>Deiv I.D.:</color> Según esto, al comparar el ADN de {$SuspectName} y la víctima, queda claro que {$SuspectName} es {$SuspectRelation} de la víctima ({$VictimName}).
 	<<elseif $SuspectRelationIndexCriminal/2 is 2 or 3>>
-		<color=lightblue>Deiv I.D.:</color> Segun esto, al comparar el ADN de {$SuspectName} y la víctima no se ha encontrado una coincidencia clara.
+		<color=lightblue>Deiv I.D.:</color> Según esto, al comparar el ADN de {$SuspectName} y la víctima no se ha encontrado una coincidencia clara.
 		<color=lightblue>Deiv I.D.:</color> Juntando esto y el número de huellas encontrado en casa de la víctima, lo más probable es que {$SuspectName} fuera {$SuspectRelation} de la víctima ({$VictimName}).
 	<<endif>>
 	<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
@@ -71,7 +71,7 @@ tags: PostGame
 	<color=lightblue>Deiv I.D.:</color> Viendo los informes sobre la distribución de las huellas de {$SuspectName} en casa de la víctima, lo más probable es que {$SuspectName} {$SuspectEmotion} la víctima ({$VictimName}).
 	<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
 <<elseif $SuspectEvidencesFound eq 2>>
-	<color=lightblue>Deiv I.D.:</color> Respecto al informe sobre ADN en la escena del crímen, el ADN de {$SuspectName} {$SuspectNotHasAlibiAsString} coincide con el de la escena del crimen.
+	<color=lightblue>Deiv I.D.:</color> Respecto al informe de ADN en la escena del crimen, el ADN de {$SuspectName} {$SuspectNotHasAlibiAsString} coincide con el de la escena del crimen.
 	<color=lightblue>Deiv I.D.:</color> Con estas pruebas puedo concluir que la coartada de {$SuspectName} [select {$SuspectHasAlibi} True="es" False="no es"] válida.
 	<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
 <<endif>>

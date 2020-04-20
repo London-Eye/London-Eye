@@ -2,16 +2,16 @@ title: CardGame-PreGame
 tags: PreGame
 ---
 <<set $ContinueMode to "Time">>
-<color=maroon>Teléfono:</color> Brrrrr.......brrrrr.......brrrrr.......
-<color=silver>-Descolgando el teléfono-</color> <color=lightblue>Deiv I.D.:</color> Si, dígame.
+<color=maroon>Teléfono:</color> *Sonidos de vibración*
+<color=silver>-Descolgando el teléfono-</color> <color=lightblue>Deiv I.D.:</color> Sí, dígame.
 <color=cyan>Policía:</color> Hola <color=lightblue>Deiv I.D.</color>, te llamo de la comisaría.
-<color=cyan>Policía:</color> La oficial <color=magenta>Diana</color> me ha pedido que te pase la lista de sospechosos así que te la he enviado a tu correo electrónico.
-<color=lightblue>Deiv I.D.:</color> De acuerdo, gracias. Algo más?
-<color=cyan>Policía:</color> Si, ten en cuenta que es una lista muy inicial.
+<color=cyan>Policía:</color> La oficial <color=magenta>Diana</color> me ha pedido que te pase la lista de sospechosos, así que te la he enviado a tu correo electrónico.
+<color=lightblue>Deiv I.D.:</color> De acuerdo, gracias. ¿Algo más?
+<color=cyan>Policía:</color> Sí, ten en cuenta que es una lista muy inicial.
 <color=cyan>Policía:</color> Debido a la situación actual no hemos podido investigar a ninguno de los sospechosos.
 <color=cyan>Policía:</color> Dicho esto, mucha suerte con tu investigación.
 <color=lightblue>Deiv I.D.:</color> Gracias por todo. <color=silver>-Cuelga el teléfono-</color>
-<color=lightblue>Deiv I.D.:</color> <color=silver>-Encendiendo el PC para ver el correo-</color> A ver si puedo descartar algunos así de primeras, ásí me ahorro trabajo en el futuro.
+<color=lightblue>Deiv I.D.:</color> <color=silver>-Encendiendo el PC para ver el correo-</color> A ver si puedo descartar algunos así de primeras, así me ahorro trabajo en el futuro.
 <<set $ContinueMode to "Button">>
 <color=orange>Empareja los retratos de personas para descartar posibles sospechosos.</color>
 <<StartCardGame CardGameController>>
@@ -21,15 +21,29 @@ title: CardGame-PostGame
 tags: PostGame
 ---
 <<set $ContinueMode to "Time">>
+
+<<set $RandomIntMin to 0>>
+<<set $RandomIntMax to 2>>
+<<set $CurrentRandomInt to $RandomInt>>
+
 <<if $NumberOfSuspects == 4>>
-	<color=lightblue>Deiv I.D.:</color> Esta primera investigación ha sido bastante fructífera.
-	<color=lightblue>Deiv I.D.:</color> He hecho bien haciendo esta primera criba.
+	<<if $CurrentRandomInt is 0>>
+			<color=lightblue>Deiv I.D.:</color> Esta primera investigación ha sido bastante fructífera.
+	<<elseif $CurrentRandomInt is 1>>
+			<color=lightblue>Deiv I.D.:</color> He hecho bien haciendo esta primera criba.
+	<<endif>>
 <<elseif $NumberOfSuspects == 5>>
-	<color=lightblue>Deiv I.D.:</color> No he podido quitarme muchos pero, al menos, algunos si.
-	<color=lightblue>Deiv I.D.:</color> Podria haberme salido peor, tengo menos trabajo, algo es algo.
+	<<if $CurrentRandomInt is 0>>
+			<color=lightblue>Deiv I.D.:</color> No he podido quitarme muchos pero, al menos, algunos sí.
+	<<elseif $CurrentRandomInt is 1>>
+			<color=lightblue>Deiv I.D.:</color> Podría haberme salido peor, tengo menos trabajo, algo es algo.
+	<<endif>>
 <<elseif $NumberOfSuspects == 6>>
-	<color=lightblue>Deiv I.D.:</color> Me ha salido bastante mal la jugada.
-	<color=lightblue>Deiv I.D.:</color> No he podido quitarme casi ninguno, no se si me renta con el tiempo que he usado.
+	<<if $CurrentRandomInt is 0>>
+			<color=lightblue>Deiv I.D.:</color> Me ha salido bastante mal la jugada.
+	<<elseif $CurrentRandomInt is 1>>
+			<color=lightblue>Deiv I.D.:</color> No he podido quitarme casi ninguno, no sé si me renta con el tiempo que he usado.
+	<<endif>>
 <<endif>>
 <<set $ContinueMode to "Button">>
 <color=lightblue>Deiv I.D.:</color> Al final, <i>me he quedado con <color={$ScoreColor}>{$NumberOfSuspects}</color> sospechosos.</i>

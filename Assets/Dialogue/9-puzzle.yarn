@@ -2,30 +2,30 @@ title: 9-puzzle-PreGame
 tags: PreGame
 ---
 <<if $NinePuzzle eq 0>>
-	<color=lightblue>Deiv I.D.:</color> <color=silver>-Revisando las fotografías de la escena del crímen-</color> Que tenemos aqui? Parece una nota con el nombre '{$SuspectName}' en ella.
-	<color=lightblue>Deiv I.D.:</color> <color=silver>-Acercandose la fotografía-</color> No aparece entera, pero con un poco de suerte, habrá más trozos en distintas fotos.
-	<color=lightblue>Deiv I.D.:</color> Así es, por desgracia hay algunas en las que prácticamente no se ve nada.
+	<color=lightblue>Deiv I.D.:</color> <color=silver>-Revisando las fotografías de la escena del crimen-</color> ¿Qué tenemos aqui? Parece una nota con el nombre '{$SuspectName}' en ella.
+	<color=lightblue>Deiv I.D.:</color> <color=silver>-Revisa la fotografía más de cerca-</color> No parece estar entera, pero con un poco de suerte, habrá más trozos en distintas fotos.
+	<color=lightblue>Deiv I.D.:</color> <color=silver>-Tras haberlas revisado todas-</color> Así es, por desgracia hay algunas en las que prácticamente no se ve nada.
 	<color=lightblue>Deiv I.D.:</color> Pero con suficientes fotografías podré completar la nota entera.
 <<elseif $NinePuzzle eq 1>>
-	<color=lightblue>Deiv I.D.:</color> <color=silver>-Llamando por teléfono-</color> Hola, soy <color=lightblue>Deiv I.D.</color>, podría pasarme con el departamento de pruebas?
+	<color=lightblue>Deiv I.D.:</color> <color=silver>-Llamando por teléfono-</color> Hola, soy <color=lightblue>Deiv I.D.</color>, ¿podría pasarme con el departamento de pruebas?
 	<color=maroon>Teléfono:</color> Claro, un segundo.
-	<color=maroon>Teléfono:</color> .....
-	<color=cyan>Policía:</color> En qué podemos ayudarle?
-	<color=lightblue>Deiv I.D.:</color> Hola, entre las fotos que me mandasteis de la escena del crímen, he encontrado una nota.
-	<color=lightblue>Deiv I.D.:</color> Por desgrácia no está completa.
-	<color=lightblue>Deiv I.D.:</color> Podríais enviarme más imágenes de la escena? Aunque sean imágenes desechadas originalmente.
+	<color=maroon>Teléfono:</color> ...
+	<color=cyan>Policía:</color> ¿En qué podemos ayudarle?
+	<color=lightblue>Deiv I.D.:</color> Hola, entre las fotos que me mandasteis de la escena del crimen, he encontrado una nota.
+	<color=lightblue>Deiv I.D.:</color> Por desgracia, no está completa.
+	<color=lightblue>Deiv I.D.:</color> Podríais enviarme más imágenes de la escena? Aunque hubieran sido desechadas originalmente.
 	<color=cyan>Policía:</color> Claro, enseguida las tendrá en su correo señor <color=lightblue>I.D.</color>
 	<color=lightblue>Deiv I.D.:</color> Gracias. <color=silver>-Cuelga el teléfono-</color>
 <<elseif $NinePuzzle eq 2>>
 	<color=lightblue>Deiv I.D.:</color> <color=silver>-Hablando por teléfono-</color> Hola, llamo otra vez ya que he encontrado otra nota parcial.
-	<color=lightblue>Deiv I.D.:</color> Disculpad las moléstias pero acabo de encontrar la nota entre las fotos de la residéncia de la víctima.
-	<color=lightblue>Deiv I.D.:</color> Les importaría enviarme más fotos sobre ese sítio?
+	<color=lightblue>Deiv I.D.:</color> Disculpad las molestias, pero acabo de encontrar la nota entre las fotos de la residencia de la víctima.
+	<color=lightblue>Deiv I.D.:</color> ¿Les importaría enviarme más fotos sobre ese sitio?
 	<color=cyan>Policía:</color> Claro, enseguida las tendrá en su correo señor <color=lightblue>I.D.</color>
 	<color=lightblue>Deiv I.D.:</color> Gracias otra vez. <color=silver>-Cuelga el teléfono-</color>
 <<elseif $NinePuzzle eq 3>>
-	<color=lightblue>Deiv I.D.:</color> Una cuarta nota, si que le gustaba a {$VictimName} recibirlas.
-	<color=lightblue>Deiv I.D.:</color> Por suerte esta vez tengo todas las imágenes que me hacen falta para poder completarla.
-	<color=lightblue>Deiv I.D.:</color> Además a estas alturas ya me he acostumbrado a hacer esto. 
+	<color=lightblue>Deiv I.D.:</color> Una cuarta nota, sí que le gustaba a {$VictimName} recibirlas.
+	<color=lightblue>Deiv I.D.:</color> Por suerte, esta vez tengo todas las imágenes que me hacen falta para poder completarla.
+	<color=lightblue>Deiv I.D.:</color> Además, a estas alturas ya me he acostumbrado a hacer esto.
 <<endif>>
 
 <color=lightblue>Deiv I.D.:</color> Hora de investigar por qué el nombre '{$SuspectName}' aparece en esta nota.
@@ -46,7 +46,7 @@ tags: PostGame
 <<elseif $NinePuzzle eq 3>>
 	<color=lightblue>Deiv I.D.:</color> Lo he conseguido, y esta vez más rápido, parece que la práctica hace al maestro.
 <<elseif $NinePuzzle eq 4>>
-	<color=lightblue>Deiv I.D.:</color> Menos mal que ya lo resuelvo rápido, si no, esto seria un suplicio.
+	<color=lightblue>Deiv I.D.:</color> Menos mal que ya lo resuelvo rápido, si no, esto sería un suplicio.
 <<endif>>
 
 <<if $SuspectEvidencesFound eq 0>>
