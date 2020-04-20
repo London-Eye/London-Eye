@@ -20,6 +20,7 @@ public class ImageSetter : PuzzleSetter
     public Dictionary<string, Vector3> correct = new Dictionary<string, Vector3>();
 
     [SerializeField] private GameObject EndgameMenu;
+    public bool completed { get; private set; }
 
     public bool GameRunning { get; private set; }
 
@@ -72,7 +73,7 @@ public class ImageSetter : PuzzleSetter
 
     private void CheckSolution()
     {
-        bool completed = true;
+        completed = true;
         PartialImage[] allObjects = FindObjectsOfType<PartialImage>();
         foreach (PartialImage go in allObjects)
         {

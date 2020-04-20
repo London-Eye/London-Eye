@@ -5,9 +5,11 @@ public class PartialImage : MonoBehaviour
 {
     private Vector2 ini, fin;
     private PartialImage source;
+    private ImageSetter controller;
     public readonly float[] posX = new float[16] { -1.55f, 0.04f, 1.63f, 3.22f, -1.55f, 0.04f, 1.63f, 3.22f, -1.55f, 0.04f, 1.63f, 3.22f, -1.55f, 0.04f, 1.63f, 3.22f };
     private readonly float[] posY = new float[16] { 3.4f, 3.4f, 3.4f, 3.4f, 1.14f, 1.14f, 1.14f, 1.14f, -1.12f, -1.12f, -1.12f, -1.12f, -3.38f, -3.38f, -3.38f, -3.38f };
     public object X { get; private set; }
+
 
     public void SetSubImage(Sprite s)
     {
@@ -16,6 +18,7 @@ public class PartialImage : MonoBehaviour
 
     public void SetPosition(float x, float y)
     {
+        controller = GameObject.Find("image_container").GetComponent<ImageSetter>();
         transform.position = new Vector3(x, y, transform.position.z);
     }
 
@@ -47,12 +50,13 @@ public class PartialImage : MonoBehaviour
 
     private void OnMouseDown()
     {
-        source = this;
-        Vector2 mouseMove = GetMousePosition();
-        Debug.Log(mouseMove);
-        ini = GetSector(mouseMove.x, mouseMove.y);
-        transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, transform.localPosition.z - 1);
-        Debug.Log(ini);
+        if(!controller.completed)
+            source = this;
+            Vector2 mouseMove = GetMousePosition();
+            Debug.Log(mouseMove);
+            ini = GetSector(mouseMove.x, mouseMove.y);
+            transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, transform.localPosition.z - 1);
+            Debug.Log(ini);
     }
     private void OnMouseDrag()
     {
