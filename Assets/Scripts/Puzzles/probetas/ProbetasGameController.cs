@@ -19,7 +19,7 @@ public class ProbetasGameController : PuzzleSetter
     private InitiallyFullTube[] tubes = new InitiallyFullTube[8];
     public Color[] c = new Color[24];
     private static readonly Vector2[] position = new Vector2[8] { new Vector2(-3.5f, -2f), new Vector2(-2f, -2f), new Vector2(-0.5f, -2f), new Vector2(1f, -2f), new Vector2(-3.5f, 1.25f), new Vector2(-2f, 1.25f), new Vector2(-0.5f, 1.25f), new Vector2(1f, 1.25f) };
-    private static readonly Vector2[] positionLR = new Vector2[8] { new Vector2(-2f, -2f), new Vector2(-1f, -2f), new Vector2(0f, -2f), new Vector2(1f, -2f), new Vector2(-2f, 1.25f), new Vector2(-1f, 1.25f), new Vector2(0f, 1.25f), new Vector2(1f, 1.25f) };
+    private static readonly Vector2[] positionLR = new Vector2[8] { new Vector2(-2.5f, -1.5f), new Vector2(-1.25f, -1.5f), new Vector2(0f, -1.5f), new Vector2(1.25f, -1.5f), new Vector2(-2.5f, 1.25f), new Vector2(-1.25f, 1.25f), new Vector2(0f, 1.25f), new Vector2(1.25f, 1.25f) };
     public bool GameRunning { get; private set; }
     public bool completed { get; private set; }
 
