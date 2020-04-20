@@ -10,7 +10,6 @@ public class ProbetasGameController : PuzzleSetter
     [SerializeField] public Color[] c4;
     [SerializeField] public Color[] c5;
 
-    [SerializeField] private GameObject EndgameMenu;
     [SerializeField] private InitiallyFullTube tube;
     [SerializeField] private GameObject container;
     public bool first;
@@ -45,7 +44,6 @@ public class ProbetasGameController : PuzzleSetter
         }
         first = true;
         GameRunning = true;
-        EndgameMenu.SetActive(false);
 
         for (int i = 0; i < position.Length; i++)
         {
@@ -75,7 +73,7 @@ public class ProbetasGameController : PuzzleSetter
                 completed = false;
             }
         }
-        EndgameMenu.SetActive(completed);
+        if (completed) dialogueController.StartPostGameDialogue();
     }
 
     public void SetTubes()

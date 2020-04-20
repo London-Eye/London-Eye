@@ -18,9 +18,6 @@ public class SceneController : MonoBehaviour
     [SerializeField] private Sprite[] images;
     [SerializeField] private TextMeshProUGUI scoreLabel;
     [SerializeField] private TextMeshProUGUI movesLabel;
-    [SerializeField] private GameObject EndgameMenu;
-    [SerializeField] private TextMeshProUGUI finalScore;
-    [SerializeField] private TextMeshProUGUI finalMessage;
     [SerializeField] private GameObject layout;
 
     public string ScoreColorName;
@@ -38,7 +35,6 @@ public class SceneController : MonoBehaviour
 
     private void Start()
     {
-        EndgameMenu.SetActive(false);
         PutCardsOnTable();
         layout.SetActive(false);
     }
@@ -92,7 +88,7 @@ public class SceneController : MonoBehaviour
     {
         if (GameRunning && (_movimientos >= MaxMoves || _score == MaxScore))
         {
-            StartCoroutine(EndGame());
+            EndGame();
         }
     }
 
@@ -147,6 +143,8 @@ public class SceneController : MonoBehaviour
         _firstRevealed = _secondRevealed = null;
     }
 
+    public void SkipGame() { if (GameRunning) EndGame(); }
+
     // ENDGAME
 
     struct ScoreRank
@@ -183,27 +181,11 @@ public class SceneController : MonoBehaviour
         return currentScoreRank.Value;
     }
 
-    private IEnumerator EndGame()
+    private void EndGame()
     {
         GameRunning = false;
 
-        yield return new WaitForSeconds(1.0f);
-
         ScoreRank scoreRank = GetScoreRank(true);
-
-        finalMessage.text = scoreRank.Message;
-
-        finalScore.color = scoreRank.Color;
-        finalScore.text = _score + "/" + MaxScore;
-
-        EndgameMenu.SetActive(true);
-    }
-
-    public void FinishCardGame()
-    {
-        EndgameMenu.SetActive(false);
-
-        ScoreRank scoreRank = GetScoreRank();
 
         CharacterCreation.Instance.NumberOfSuspects = scoreRank.NumberOfSuspects;
 
@@ -213,12 +195,16 @@ public class SceneController : MonoBehaviour
         FindObjectOfType<DialogueUI>().onDialogueEnd.AddListener(() =>
         {
             AsyncOperation loadSceneOperation = SceneManager.LoadSceneAsync(1); // Load Main Menu
-            loadSceneOperation.completed += op => FindObjectOfType<CharacterCreation>().CreateSuspects();
-            loadSceneOperation.completed += op => FindObjectOfType<DialogueRunner>().startNode = "MainMenu-Return";
-            loadSceneOperation.completed += op => FindObjectOfType<DialogueRunner>().startAutomatically = true;
+            loadSceneOperation.completed += op =>
+            {
+                CharacterCreation.Instance.CreateSuspects();
+
+                DialogueRunner dialogueRunner = FindObjectOfType<DialogueRunner>();
+                dialogueRunner.startNode = "MainMenu-Return";
+                dialogueRunner.startAutomatically = true;
+            };
         });
 
-
-        Utilities.StartPostGameDialogue();
+        FindObjectOfType<DialogueController>().StartPostGameDialogue();
     }
 }

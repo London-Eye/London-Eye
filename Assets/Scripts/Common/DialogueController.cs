@@ -3,6 +3,7 @@ using Assets.Scripts.Dialogue.Variables.Attributes;
 using Assets.Scripts.Dialogue.Variables.Storages;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Yarn.Unity;
 
 namespace Assets.Scripts.Common
@@ -129,13 +130,17 @@ namespace Assets.Scripts.Common
         #endregion
 
         #region PostGame Dialogue
+        public const string PostGameDialogueTag = "PostGame";
+
+        public static string PostGameDialogueNode => $"{SceneManager.GetActiveScene().name}-{PostGameDialogueTag}";
+
         public void StartPostGameDialogue(GameObject gameObjectToDeactivate)
         {
             gameObjectToDeactivate.SetActive(false);
             StartPostGameDialogue();
         }
 
-        public void StartPostGameDialogue() => Utilities.StartPostGameDialogue(dialogueRunner);
+        public void StartPostGameDialogue() => dialogueRunner.StartDialogue(PostGameDialogueNode);
         #endregion
     }
 }

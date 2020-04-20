@@ -1,7 +1,10 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Common;
+using UnityEngine;
 
 public abstract class PuzzleSetter : MonoBehaviour
 {
+    public DialogueController dialogueController;
+
     public bool SetPuzzleOnStart = true;
 
     // Start is called before the first frame update

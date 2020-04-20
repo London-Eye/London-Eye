@@ -5,31 +5,23 @@ using UnityEngine;
 
 public class ImageSetter : PuzzleSetter
 {
-    // Start is called before the first frame update
     [SerializeField] private PartialImage partial_im;
     [SerializeField] private Sprite[] letterBroken;
     [SerializeField] private Sprite[] letterBurned;
     [SerializeField] private Sprite[] letterScrached;
     [SerializeField] private Sprite[] letterWasted;
-    [SerializeField] private GameObject Ibro;
-    [SerializeField] private GameObject IScr;
-    [SerializeField] private GameObject IBur;
-    [SerializeField] private GameObject IWas;
+    
     private static readonly float[] posX = new float[16] { -1.55f, 0.04f, 1.63f, 3.22f, -1.55f, 0.04f, 1.63f, 3.22f, -1.55f, 0.04f, 1.63f, 3.22f, -1.55f, 0.04f, 1.63f, 3.22f };
     private static readonly float[] posY = new float[16] { 3.4f, 3.4f, 3.4f, 3.4f, 1.14f, 1.14f, 1.14f, 1.14f, -1.12f, -1.12f, -1.12f, -1.12f, -3.38f, -3.38f, -3.38f, -3.38f };
+    
     public Dictionary<string, Vector3> correct = new Dictionary<string, Vector3>();
 
-    [SerializeField] private GameObject EndgameMenu;
-    public bool completed { get; private set; }
+    public bool Completed { get; private set; }
 
     public bool GameRunning { get; private set; }
 
-    private int selector;
-
     protected override void SetPuzzle(int selector)
     {
-        this.selector = selector;
-
         Sprite[] images = letterBroken;
         switch (selector)
         {
@@ -46,7 +38,7 @@ public class ImageSetter : PuzzleSetter
                 images = letterWasted;
                 break;
         }
-        EndgameMenu.SetActive(false);
+
         for (int i = 0; i < images.Length; i++)
         {
             Vector3 aux = new Vector3(posX[i], posY[i], 0);
@@ -73,7 +65,7 @@ public class ImageSetter : PuzzleSetter
 
     private void CheckSolution()
     {
-        completed = true;
+        Completed = true;
         PartialImage[] allObjects = FindObjectsOfType<PartialImage>();
         foreach (PartialImage go in allObjects)
         {
@@ -82,10 +74,10 @@ public class ImageSetter : PuzzleSetter
             Vector3 pos = go.transform.localPosition;
             if (correct[name] != pos)
             {
-                completed = false;
+                Completed = false;
             }
         }
-        if (completed) { StartCoroutine(PuzzleCompleted()); }
+        if (Completed) { StartCoroutine(PuzzleCompleted()); }
     }
 
     private IEnumerator PuzzleCompleted()
@@ -94,22 +86,6 @@ public class ImageSetter : PuzzleSetter
 
         yield return new WaitForSeconds(0.75f);
 
-        EndgameMenu.SetActive(true);
-        switch (selector)
-        {
-            case 0:
-                Ibro.SetActive(true);
-                break;
-            case 1:
-                IBur.SetActive(true);
-                break;
-            case 2:
-                IScr.SetActive(true);
-                break;
-            case 3:
-                IWas.SetActive(true);
-                break;
-        }
-
+        dialogueController.StartPostGameDialogue();
     }
 }

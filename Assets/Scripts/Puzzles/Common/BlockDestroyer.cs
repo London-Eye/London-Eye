@@ -20,7 +20,7 @@ public class BlockDestroyer : MonoBehaviour
 
             if (StartDialogue)
             {
-                Utilities.StartPostGameDialogue();
+                FindObjectOfType<DialogueController>().StartPostGameDialogue();
             }
             else
             {

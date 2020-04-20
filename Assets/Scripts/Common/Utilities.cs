@@ -87,19 +87,6 @@ namespace Assets.Scripts.Common
         #endregion
 
 
-        #region Post Game Dialogue
-        public const string PostGameDialogueTag = "PostGame";
-
-        public static string PostGameDialogueNode => $"{SceneManager.GetActiveScene().name}-{PostGameDialogueTag}";
-
-        public static void StartPostGameDialogue()
-            => StartPostGameDialogue(Object.FindObjectOfType<DialogueRunner>());
-
-        public static void StartPostGameDialogue(DialogueRunner dialogueRunner)
-            => dialogueRunner.StartDialogue(PostGameDialogueNode);
-        #endregion
-
-
         #region Randomizers and other math utilities
         public static T[] GetShuffle<T>(this IEnumerable<T> arr)
         {

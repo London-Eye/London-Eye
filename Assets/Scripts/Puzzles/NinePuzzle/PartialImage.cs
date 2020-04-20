@@ -50,7 +50,7 @@ public class PartialImage : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if(!controller.completed)
+        if(!controller.Completed)
             source = this;
             Vector2 mouseMove = GetMousePosition();
             Debug.Log(mouseMove);
