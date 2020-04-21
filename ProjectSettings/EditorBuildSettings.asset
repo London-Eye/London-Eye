@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Accusation.unity
     guid: 564d809b408a09342b4a1d5bfb4121e3
+  - enabled: 1
+    path: Assets/Scenes/PostGame.unity
+    guid: 8e5ae159e32c3cd40b47f23361e0ba35
   m_configObjects: {}
