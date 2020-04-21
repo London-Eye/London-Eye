@@ -57,6 +57,10 @@ public class PipeImpulseZone : MonoBehaviour
             else
             {
                 var force = CalculatedImpulseDirection(rb.velocity) * ImpulseFactor;
+
+                if (Mathf.Abs(force.x) > Mathf.Abs(force.y)) rb.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+                else if (Mathf.Abs(force.y) > Mathf.Abs(force.x)) rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
+
                 if (addForce) rb.AddForce(force, ForceMode2D.Impulse);
                 else rb.velocity = force;
             }
