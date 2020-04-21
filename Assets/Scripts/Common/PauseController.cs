@@ -36,6 +36,17 @@ public class PauseController : MonoBehaviour
     }
 
     public void GoToMenu() => GoToMainMenu();
+    public void GoToStart() => GoToStartMenu();
+    public void ExitGame() => Exit();
 
     public static void GoToMainMenu() => SceneManager.LoadScene(1);
+    public static void GoToStartMenu() => SceneManager.LoadScene(0);
+    public static void Exit()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.ExitPlaymode();
+#else
+        Application.Quit();
+#endif
+    }
 }
