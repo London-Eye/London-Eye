@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PostGame : MonoBehaviour
 {
@@ -10,9 +11,9 @@ public class PostGame : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Suspect sus = new Suspect();
-        switch ((int)sus.CurrentAccusationState) {
-            case 1:
+        Suspect sus = CharacterCreation.Instance.CurrentSuspect;
+        switch (sus.CurrentAccusationState) {
+            case Suspect.AccusationState.Criminal:
                 WinCanvas.SetActive(true);
                 break;
             default:
@@ -21,5 +22,9 @@ public class PostGame : MonoBehaviour
         }
     }
 
+    public void GoToTittle() {
+        GameObject.Destroy(GameObject.Find("GameManager"));
+        SceneManager.LoadScene("Portada");
+    }
     
 }
