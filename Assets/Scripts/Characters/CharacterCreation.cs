@@ -61,7 +61,7 @@ public class CharacterCreation : MonoBehaviour
         OnNewGame.Invoke();
     }
 
-    // maxNumberOfSuspects = min(numberOfNames, numberOfRelations, numberOfEmotions);
+    // maxNumberOfSuspects <= min(numberOfNames, numberOfRelations, numberOfEmotions, numberOfImages)
     public const int maxNumberOfSuspects = 6, numberOfNames = 10, numberOfRelations = 7, numberOfEmotions = 8, numberOfImages = 6;
 
     public const string MainMenuMenusGameObjectName = "Menus";
@@ -111,6 +111,7 @@ public class CharacterCreation : MonoBehaviour
 
     private SelectorPool<int> mNames, fNames;
     private SelectorPool<int> mRelation, fRelation;
+    private SelectorPool<int> mEmotion, fEmotion;
     private SelectorPool<int> mImages, fImages;
 
     public PoolVariableStorage randomNamePoolSource;
@@ -197,6 +198,7 @@ public class CharacterCreation : MonoBehaviour
 
         InitializeGenderedPool(numberOfNames, out mNames, out fNames);
         InitializeGenderedPool(numberOfRelations, out mRelation, out fRelation);
+        InitializeGenderedPool(numberOfEmotions, out mEmotion, out fEmotion);
         InitializeGenderedPool(numberOfImages, out mImages, out fImages);
 
         // Puzzle combinations
@@ -254,7 +256,7 @@ public class CharacterCreation : MonoBehaviour
         bool isMale = Utilities.RandomBool();
         int name = isMale ? mNames.Select() : fNames.Select();
         int relation = isMale ? mRelation.Select() : fRelation.Select();
-        int emotion = Random.Range(0, numberOfEmotions);
+        int emotion = isMale ? mEmotion.Select() : fEmotion.Select();
         int image = isMale ? mImages.Select() : fImages.Select();
 
         return InitializeSuspect(isMale, name, relation, emotion, hasAlibi, image);
