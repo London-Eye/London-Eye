@@ -10,7 +10,8 @@ public class PostGame : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        switch ((int)Suspect.CurrentAccusationState) {
+        Suspect sus = new Suspect();
+        switch ((int)sus.CurrentAccusationState) {
             case 1:
                 WinCanvas.SetActive(true);
                 break;
