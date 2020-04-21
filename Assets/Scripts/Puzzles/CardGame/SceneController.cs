@@ -136,7 +136,7 @@ public class SceneController : MonoBehaviour
         }
         else
         {
-            yield return new WaitForSeconds(.25f);
+            yield return new WaitForSeconds(1f);
             _firstRevealed.Unreveal();
             _secondRevealed.Unreveal();
         }
