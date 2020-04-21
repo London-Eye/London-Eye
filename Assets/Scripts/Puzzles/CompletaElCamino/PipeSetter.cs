@@ -7,8 +7,8 @@ public class PipeSetter : PuzzleSetter
     [SerializeField] public GameObject container;
     [SerializeField] public GameObject pause;
 
-    [SerializeField] public Vector2[] cor;
-    [SerializeField] public Vector2[] hor;
+    private Vector2[] cor;
+    private Vector2[] hor;
 
     private static readonly Vector2[] cor1 = new Vector2[13] { new Vector2(-5.3f, 1.2f), new Vector2(-3.3f, 1.2f), new Vector2(-1.3f, 1.2f), new Vector2(0.7f, 1.2f), new Vector2(-3.3f, 3.2f), new Vector2(-1.3f, 3.2f), new Vector2(0.7f, 3.2f), new Vector2(-3.3f, -1.8f), new Vector2(-1.3f, -0.3f), new Vector2(0.7f, -0.8f), new Vector2(5.7f, 0.2f), new Vector2(3.7f, 0.2f), new Vector2(3.7f, 3.2f) };
     private static readonly Vector2[] hor1 = new Vector2[7] { new Vector2(-3.3f, -0.3f), new Vector2(-1.8f, -1.8f), new Vector2(-0.8f, -1.8f), new Vector2(2.2f, -0.8f), new Vector2(3.2f, -0.8f), new Vector2(3.7f, 1.7f), new Vector2(2.2f, 3.2f) };
