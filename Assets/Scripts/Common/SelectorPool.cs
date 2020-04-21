@@ -18,9 +18,17 @@ namespace Assets.Scripts.Common
         /// </summary>
         public bool AutoRefill { get; set; }
 
+
+        /// <summary>
+        /// (Optional) Add a limit for calls to <see cref="Select"/>. When reached, any further calls will result in an exception.
+        /// </summary>
+        public int? SelectLimit { get; set; }
+
         public int Count => currentPool.Count;
 
         private readonly Stack<T> currentPool = new Stack<T>();
+
+        private int selectCalls = 0;
 
         public SelectorPool()
         {
@@ -39,6 +47,13 @@ namespace Assets.Scripts.Common
 
         public T Select()
         {
+            selectCalls++;
+
+            if (SelectLimit.HasValue && selectCalls > SelectLimit.Value)
+            {
+                throw new System.InvalidOperationException("The limit of select calls has been reached.");
+            }
+
             if (Count == 0)
             {
                 if (AutoRefill) Fill();
@@ -47,6 +62,8 @@ namespace Assets.Scripts.Common
 
             return currentPool.Pop();
         }
+
+        public void ResetSelectCalls() => selectCalls = 0;
 
         public void Empty()
         {

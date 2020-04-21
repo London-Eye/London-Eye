@@ -2,11 +2,12 @@
 using Assets.Scripts.Common;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using Yarn.Unity;
 
 public class PoolPuzzleLoader : MonoBehaviour
 {
+    public const int PuzzleLimit = 12;
+
     private static readonly Dictionary<string, System.Type> PuzzleSetterTypes = new Dictionary<string, System.Type>()
     {
         { "probetas", typeof(ProbetasGameController) },
@@ -32,7 +33,7 @@ public class PoolPuzzleLoader : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        puzzlePool = new SelectorPool<string>(puzzles) { AutoRefill = true };
+        puzzlePool = new SelectorPool<string>(puzzles) { AutoRefill = true, SelectLimit = PuzzleLimit };
     }
         
     public void SelectPuzzle(Suspect suspect)
