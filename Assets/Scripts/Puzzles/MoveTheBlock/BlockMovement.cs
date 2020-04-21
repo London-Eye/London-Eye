@@ -15,10 +15,13 @@ public class BlockMovement : MonoBehaviour
     private float offset;
 
     private Rigidbody2D _rb;
+    private BlockSetter controller;
 
     // Start is called before the first frame update
     void Start()
     {
+
+        controller = GameObject.Find("MoveTheBlockController").GetComponent<BlockSetter>();
         _rb = GetComponent<Rigidbody2D>();
 
         directionAxis = bounds.transform.localScale.y > bounds.transform.localScale.x ? Vector2.up : Vector2.right;
@@ -28,17 +31,20 @@ public class BlockMovement : MonoBehaviour
 
     private void OnMouseDown()
     {
-        isBeingMoved = true;
-        _rb.bodyType = RigidbodyType2D.Dynamic;
+        if (!controller.pause.activeSelf)
+        {
+            isBeingMoved = true;
+            _rb.bodyType = RigidbodyType2D.Dynamic;
 
-        // Reduce a bit the collider size opposite to the block's direction, to avoid unwanted collisions
-        if (directionAxis.y > 0)
-        {
-            moveCollider.size = new Vector2(moveCollider.size.x * colliderSizeReductionFactor, moveCollider.size.y);
-        }
-        else
-        {
-            moveCollider.size = new Vector2(moveCollider.size.x, moveCollider.size.y * colliderSizeReductionFactor);
+            // Reduce a bit the collider size opposite to the block's direction, to avoid unwanted collisions
+            if (directionAxis.y > 0)
+            {
+                moveCollider.size = new Vector2(moveCollider.size.x * colliderSizeReductionFactor, moveCollider.size.y);
+            }
+            else
+            {
+                moveCollider.size = new Vector2(moveCollider.size.x, moveCollider.size.y * colliderSizeReductionFactor);
+            }
         }
     }
 

@@ -5,6 +5,7 @@ public class PipeSetter : PuzzleSetter
     [SerializeField] public GameObject horizontalPipe;
     [SerializeField] public GameObject cornerPipe;
     [SerializeField] public GameObject container;
+    [SerializeField] public GameObject pause;
 
     [SerializeField] public Vector2[] cor;
     [SerializeField] public Vector2[] hor;

@@ -731,6 +731,12 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 616232271}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &616232273 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9031774543793402529, guid: 274056581bb348747b9caedd2437fce0,
+    type: 3}
+  m_PrefabInstance: {fileID: 616232271}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &679138271
 GameObject:
   m_ObjectHideFlags: 0
@@ -1736,6 +1742,7 @@ MonoBehaviour:
   cornerPipe: {fileID: 7507364382552247456, guid: a76f8e72090db7c4897dafaf3a6ece93,
     type: 3}
   container: {fileID: 1830265120}
+  pause: {fileID: 616232273}
   cor: []
   hor: []
 --- !u!210 &1629205547

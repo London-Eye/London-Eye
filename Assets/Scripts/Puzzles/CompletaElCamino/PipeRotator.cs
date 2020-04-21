@@ -20,9 +20,11 @@ public class PipeRotator : MonoBehaviour
 
     private bool ready;
 
+    private PipeSetter controller;
     // Start is called before the first frame update
     void Start()
     {
+        controller = GameObject.Find("ComponentContainer").GetComponent<PipeSetter>();
         currentRotationSpeed = RotationSpeed;
         pendantRotations = 0;
         ready = true;
@@ -47,8 +49,11 @@ public class PipeRotator : MonoBehaviour
 
     private void OnMouseDown()
     {
-        pendantRotations++;
-        if (!ready) currentRotationSpeed *= IncreaseSpeedFactorPerRequest;
+        if (!controller.pause.activeSelf)
+        {
+            pendantRotations++;
+            if (!ready) currentRotationSpeed *= IncreaseSpeedFactorPerRequest;
+        }
     }
 
     private void StartRotating()

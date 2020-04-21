@@ -50,36 +50,43 @@ public class PartialImage : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if(!controller.Completed)
+        Debug.Log(!controller.pause.activeSelf);
+        if (!controller.Completed && !controller.pause.activeSelf)
+        {
+            Debug.Log("In");
             source = this;
             Vector2 mouseMove = GetMousePosition();
-            Debug.Log(mouseMove);
             ini = GetSector(mouseMove.x, mouseMove.y);
             transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, transform.localPosition.z - 1);
-            Debug.Log(ini);
+        }
     }
     private void OnMouseDrag()
     {
-        Vector2 mousePos = GetMousePosition();
-        transform.localPosition = new Vector3(mousePos.x, mousePos.y, transform.localPosition.z);
-
+        if (!controller.pause.activeSelf)
+        {
+            Vector2 mousePos = GetMousePosition();
+            transform.localPosition = new Vector3(mousePos.x, mousePos.y, transform.localPosition.z);
+        }
     }
 
     private void OnMouseUp()
     {
-        Vector2 mouseMove = GetMousePosition();
+        if (!controller.pause.activeSelf)
+        {
+            Vector2 mouseMove = GetMousePosition();
 
-        fin = GetSector(mouseMove.x, mouseMove.y);
+            fin = GetSector(mouseMove.x, mouseMove.y);
 
-        PartialImage[] allObjects = FindObjectsOfType<PartialImage>();
-        foreach (PartialImage go in allObjects)
-            if ((Vector2)go.transform.localPosition == fin)
-            {
-                go.SetPosition(ini.x, ini.y);
-                break;
-            }
+            PartialImage[] allObjects = FindObjectsOfType<PartialImage>();
+            foreach (PartialImage go in allObjects)
+                if ((Vector2)go.transform.localPosition == fin)
+                {
+                    go.SetPosition(ini.x, ini.y);
+                    break;
+                }
 
-        transform.localPosition = new Vector3(fin.x, fin.y, transform.localPosition.z + 1);
+            transform.localPosition = new Vector3(fin.x, fin.y, transform.localPosition.z + 1);
+        }
     }
 
     private bool IsBetween(float a, float b, float c)

@@ -644,6 +644,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 88546715}
   m_CullTransparentMesh: 0
+--- !u!1 &167509696 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9031774543793402529, guid: 274056581bb348747b9caedd2437fce0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1639826645}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &200942387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3128,10 +3134,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7b5e295c8c5bea468bbe1fefe65c78f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogueController: {fileID: 0}
   SetPuzzleOnStart: 0
   container: {fileID: 770876431}
   originalBlock: {fileID: 7963010066383443767, guid: 0f986c9d7919ce74f8f9b22b408ccf6a,
     type: 3}
+  pause: {fileID: 167509696}
 --- !u!1 &1091748987
 GameObject:
   m_ObjectHideFlags: 0

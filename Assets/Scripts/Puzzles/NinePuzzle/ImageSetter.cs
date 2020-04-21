@@ -10,6 +10,7 @@ public class ImageSetter : PuzzleSetter
     [SerializeField] private Sprite[] letterBurned;
     [SerializeField] private Sprite[] letterScrached;
     [SerializeField] private Sprite[] letterWasted;
+    [SerializeField] public GameObject pause;
     
     private static readonly float[] posX = new float[16] { -1.55f, 0.04f, 1.63f, 3.22f, -1.55f, 0.04f, 1.63f, 3.22f, -1.55f, 0.04f, 1.63f, 3.22f, -1.55f, 0.04f, 1.63f, 3.22f };
     private static readonly float[] posY = new float[16] { 3.4f, 3.4f, 3.4f, 3.4f, 1.14f, 1.14f, 1.14f, 1.14f, -1.12f, -1.12f, -1.12f, -1.12f, -3.38f, -3.38f, -3.38f, -3.38f };
