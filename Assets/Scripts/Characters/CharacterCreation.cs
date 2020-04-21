@@ -211,7 +211,7 @@ public class CharacterCreation : MonoBehaviour
 
     private void InitializePuzzleCombinationPool(int numberOfCombinations, System.Type puzzleType)
     {
-        InitializePool(numberOfCombinations, out SelectorPool<int> combinationPool, false);
+        InitializePool(numberOfCombinations, out SelectorPool<int> combinationPool, false, true);
         PuzzleCombinationPools.Add(puzzleType, combinationPool);
     }
 
@@ -221,12 +221,13 @@ public class CharacterCreation : MonoBehaviour
         InitializePool(numberOfElements, out femalePool);
     }
 
-    private static void InitializePool(int numberOfElements, out SelectorPool<int> pool, bool autoRefill = true)
+    private static void InitializePool(int numberOfElements, out SelectorPool<int> pool, bool autoRefill = true, bool fillOnStart = false)
     {
         HashSet<int> elements = new HashSet<int>();
         Utilities.AddIntRange(elements, 0, numberOfElements);
 
         pool = new SelectorPool<int>(elements) { AutoRefill = autoRefill };
+        if (fillOnStart) pool.Fill();
     }
 
     private Character InitializeCharacter()
