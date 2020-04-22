@@ -6,18 +6,26 @@ using UnityEngine.SceneManagement;
 
 public class PostGame : MonoBehaviour
 {
+    [SerializeField] private AudioClip win;
+    [SerializeField] private AudioClip lose;
     [SerializeField] private GameObject LoseCanvas;
     [SerializeField] private GameObject WinCanvas;
     // Start is called before the first frame update
     void Start()
     {
+        GameObject.Find("GameObject").GetComponent<AudioSource>().Stop();
+        GameObject.Find("GameManager").GetComponent<AudioSource>().Stop();
         Suspect sus = CharacterCreation.Instance.CurrentSuspect;
         switch (sus.CurrentAccusationState) {
             case Suspect.AccusationState.Criminal:
                 WinCanvas.SetActive(true);
+                GameObject.Find("GameObject").GetComponent<AudioSource>().clip = win;
+                GameObject.Find("GameObject").GetComponent<AudioSource>().Play();
                 break;
             default:
                 LoseCanvas.SetActive(true);
+                GameObject.Find("GameObject").GetComponent<AudioSource>().clip = lose;
+                GameObject.Find("GameObject").GetComponent<AudioSource>().Play();
                 break;
         }
     }
