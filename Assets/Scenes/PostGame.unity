@@ -227,7 +227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dad621dc9baeb34c848f1174ef19093, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  win: {fileID: 8300000, guid: 0fd00c4edf1257f4e9b0ccd4dd70c58d, type: 3}
+  win: {fileID: 8300000, guid: 35ce79dbfcc44ce449be69e46b7e5e58, type: 3}
   lose: {fileID: 8300000, guid: 235c98867e7255a41892fe679a2b1b43, type: 3}
   LoseCanvas: {fileID: 391638571}
   WinCanvas: {fileID: 147660504}
@@ -259,7 +259,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 0.853
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -359,7 +359,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &147660505
 MonoBehaviour:
   m_ObjectHideFlags: 0
