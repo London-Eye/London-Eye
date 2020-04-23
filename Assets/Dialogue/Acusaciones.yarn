@@ -2,6 +2,7 @@ title: Acusacion-SinPruebas
 tags: SinPruebas
 ---
 <<if $SuspectName eq $CriminalName and $PuzzlesResueltos eq 12>>
+    <color=purple>Juez:</color> Ya se han presentadp las pocas pruebas que se han podido encontrar en contra [select {$SuspectIsMale} True="del acusado" False="de la acusada"], {$SuspectName}.
     <color=purple>Juez:</color> Ahora, el jurado, deliberará sobre el caso del asesinato de {$VictimName} y emitirá su veredicto.
     <color=purple>Jurado:</color> <color=silver>-Deliberando-</color>
     <color=purple>Juez:</color> Finalmente el jurado emitirá su veredicto.
@@ -27,6 +28,7 @@ tags: SinPruebas
 
     <<set $ContinueMode to "Button">>
     <color=orange>La única forma que te acepten un sospechoso sin pruebas, es que hayas agotado todas las vías de investigación.</color>
+    <<set $SuspectEnding to 2>>
 <<endif>>
 ===
 
@@ -173,6 +175,7 @@ tag: NormalWin
 
 <<set $ContinueMode to "Button">>
 <color=orange>Has atrapado al criminal y con ello has aumentado tu reputación como investigador.</color>
+<<set $SuspectEnding to 1>>
 ===
 
 title: Ending-Lose
@@ -194,6 +197,7 @@ tag: Lose
 
 <<set $ContinueMode to "Button">>
 <color=orange>Has usado recursos públicos (además, en una situación social donde son escasos) en un inocente...esto va a hacer mella a tu reputación.</color>
+<<set $SuspectEnding to 2>>
 ===
 
 title: Ending-DeductionWin
@@ -220,4 +224,5 @@ tag: DeductionWin
 
 <<set $ContinueMode to "Button">>
 <color=orange>Bien hecho pero la próxima vez intenta apuntar mejor en tus investigaciones sobre los sospechosos.</color>
+<<set $SuspectEnding to 1>>
 ===

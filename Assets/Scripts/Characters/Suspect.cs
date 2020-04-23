@@ -78,5 +78,8 @@ namespace Assets.Scripts.Characters
         public int EmotionIndexCriminal;
 
         public Sprite Image;
+
+        [YarnAccess]
+        public int Ending;
     }
 }

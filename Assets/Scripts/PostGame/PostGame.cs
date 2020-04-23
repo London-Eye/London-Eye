@@ -16,8 +16,8 @@ public class PostGame : MonoBehaviour
         GameObject.Find("GameObject").GetComponent<AudioSource>().Stop();
         GameObject.Find("GameManager").GetComponent<AudioSource>().Stop();
         Suspect sus = CharacterCreation.Instance.CurrentSuspect;
-        switch (sus.CurrentAccusationState) {
-            case Suspect.AccusationState.Criminal:
+        switch (sus.Ending) {
+            case 1:
                 WinCanvas.SetActive(true);
                 GameObject.Find("GameObject").GetComponent<AudioSource>().clip = win;
                 GameObject.Find("GameObject").GetComponent<AudioSource>().Play();
