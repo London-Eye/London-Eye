@@ -3,32 +3,32 @@ tags: PreGame
 ---
 <<if $MoveTheBlock eq 0>>
 	<color=lightblue>Deiv I.D.:</color> <color=silver>-Llamando por teléfono-</color> Odio tener que recurrir a esto, pero tendré que hacerlo para poder continuar.
-	<color=maroon>Teléfono:</color> Aquí <color=lime>Aimin Jis Divais</color>, ¿quién llama?
-	<color=lightblue>Deiv I.D.:</color> <color=lime>Aimin</color>, soy <color=lightblue>Deiv</color>, necesito un favor.
-	<color=lime>Aimin:</color> Claro, viejo amigo, dime.
+	<color=maroon>Teléfono:</color> Aquí <color=lime>Tsudo P.C.</color>, ¿quién llama?
+	<color=lightblue>Deiv I.D.:</color> <color=lime>Tsudo</color>, soy <color=lightblue>Deiv</color>, necesito un favor.
+	<color=lime>Tsudo P.C.:</color> Claro, viejo amigo, dime.
 	<color=lightblue>Deiv I.D.:</color> Estoy investigando un caso, pero no puedo salir de casa.
 	<color=lightblue>Deiv I.D.:</color> Así que necesito que me encuentres toda la información posible sobre {$SuspectName}.
-	<color=lime>Aimin:</color> Sin problema, pásame su información y te envío todo lo que encuentre.
+	<color=lime>Tsudo P.C.:</color> Sin problema, pásame su información y te envío todo lo que encuentre.
 <<elseif $MoveTheBlock eq 1>>
-	<color=lightblue>Deiv I.D.:</color> <color=silver>-Llamando por teléfono-</color> <color=lime>Aimin</color>, soy <color=lightblue>Deiv</color> otra vez, vuelvo a necesitar tus servicios.
-	<color=lime>Aimin:</color> Claro, ¿de quién se trata esta vez?
+	<color=lightblue>Deiv I.D.:</color> <color=silver>-Llamando por teléfono-</color> <color=lime>Tsudo</color>, soy <color=lightblue>Deiv</color> otra vez, vuelvo a necesitar tus servicios.
+	<color=lime>Tsudo P.C.:</color> Claro, ¿de quién se trata esta vez?
 	<color=lightblue>Deiv I.D.:</color> Se llama {$SuspectName}
-	<color=lime>Aimin:</color> [select {$SuspectIsMale} True="¿El actor?" False="¿La actriz?"]
+	<color=lime>Tsudo P.C.:</color> [select {$SuspectIsMale} True="¿El actor?" False="¿La actriz?"]
 	<color=lightblue>Deiv I.D.:</color> No, es otra persona.
-	<color=lime>Aimin:</color> Sin problema entonces.
+	<color=lime>Tsudo P.C.:</color> Sin problema entonces.
 <<elseif $MoveTheBlock eq 2>>
 	<color=maroon>Teléfono:</color> *Sonidos de vibración*
-	<color=lightblue>Deiv I.D.:</color> ¿Qué pasa <color=lime>Aimin</color>?
-	<color=lime>Aimin:</color> Revisando la lista de sospechosos que me mandaste, he visto cosas que no me cuadran con {$SuspectName}.
-	<color=lime>Aimin:</color> ¿Te importaría que le eche un vistazo?
+	<color=lightblue>Deiv I.D.:</color> ¿Qué pasa <color=lime>Tsudo</color>?
+	<color=lime>Tsudo P.C.:</color> Revisando la lista de sospechosos que me mandaste, he visto cosas que no me cuadran con {$SuspectName}.
+	<color=lime>Tsudo P.C.:</color> ¿Te importaría que le eche un vistazo?
 	<color=lightblue>Deiv I.D.:</color> Siempre y cuando me envíes lo que descubras, sin problema.
-	<color=lime>Aimin:</color> Por supuesto.
+	<color=lime>Tsudo P.C.:</color> Por supuesto.
 <<elseif $MoveTheBlock eq 3>>
-	<color=lightblue>Deiv I.D.:</color> <color=silver>-Llamando por teléfono-</color> ¿<color=lime>Aimin</color>? Soy <color=lightblue>Deiv</color> otra vez.
-	<color=lime>Aimin:</color> ¿Alguien más que tenga que escudriñar?
+	<color=lightblue>Deiv I.D.:</color> <color=silver>-Llamando por teléfono-</color> ¿<color=lime>Tsudo</color>? Soy <color=lightblue>Deiv</color> otra vez.
+	<color=lime>Tsudo P.C.:</color> ¿Alguien más que tenga que escudriñar?
 	<color=lightblue>Deiv I.D.:</color> Sí, esta vez se llama {$SuspectName}.
 	<color=lightblue>Deiv I.D.:</color> Por cierto, gracias por el aviso anterior, me ha venido de perlas.
-	<color=lime>Aimin:</color> De nada, voy a ver qué saco sobre [select {$SuspectIsMale} True="este" False="esta"].
+	<color=lime>Tsudo P.C.:</color> De nada, voy a ver qué saco sobre [select {$SuspectIsMale} True="este" False="esta"].
 <<endif>>
 
 <color=lightblue>Deiv I.D.:</color> Gracias <color=silver>-Cuelga-</color>
@@ -47,11 +47,11 @@ tags: PostGame
 <<CompletePuzzle GameManager>>
 
 <<if $MoveTheBlock eq 1>>
-	<color=lightblue>Deiv I.D.:</color> Vamos a ver los datos que me ha enviado <color=lime>Aimin</color>
+	<color=lightblue>Deiv I.D.:</color> Vamos a ver los datos que me ha enviado <color=lime>Tsudo</color>
 <<elseif $MoveTheBlock eq 2>>
 	<color=lightblue>Deiv I.D.:</color> Parece que esta vez ha encontrado más rápidamente algo útil.
 <<elseif $MoveTheBlock eq 3>>
-	<color=lightblue>Deiv I.D.:</color> Se ve que la corazonada de <color=lime>Aimin</color> era correcta.
+	<color=lightblue>Deiv I.D.:</color> Se ve que la corazonada de <color=lime>Tsudo</color> era correcta.
 <<elseif $MoveTheBlock eq 4>>
 	<color=lightblue>Deiv I.D.:</color> A ver qué ha conseguido sacar esta vez.
 <<endif>>

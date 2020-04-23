@@ -66,7 +66,7 @@ namespace Assets.Scripts.Characters
         {
             get
             {
-                if (EvidencesFound < NumberOfEvidences) return AccusationState.SinPruebas;
+                if (EvidencesFound < NumberOfEvidences-1) return AccusationState.SinPruebas;
                 else return this == CharacterCreation.Instance.Murderer ? AccusationState.Criminal : AccusationState.Inocente;
             }
         }
