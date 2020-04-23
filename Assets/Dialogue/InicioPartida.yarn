@@ -159,3 +159,12 @@ tags: Emocion
     <color=blue>Comisaria:</color> El motivo de la muerte es una sola contusión en la cabeza. Parece más un accidente que un asesinato premeditado.
 <<endif>>
 ===
+
+title: Puzzle-Limit-Exceeded
+tags: Warning
+---
+<color=lightblue>Deiv I.D.:</color> <color=silver>(Vaya, me he quedado sin vías de investigación.)</color>
+<color=lightblue>Deiv I.D.:</color> <color=silver>(Debería revisar las pruebas que he obtenido.)</color>
+<color=lightblue>Deiv I.D.:</color> <color=silver>(Con esto, y las conclusiones de la autopsia, debería ser capaz de realizar una acusación.)</color>
+<color=lightblue>Deiv I.D.:</color> <color=silver>(Espera, [select {$VictimInvestigated} True="¿cuáles eran las conclusiones de la autopsia?" False="no tengo las conclusiones de la autopsia."] [select {$VictimInvestigated} True="Bueno, siempre puedo" False="Debería"] usar el <i>walkie</i> para obtenerlas.)</color>
+===

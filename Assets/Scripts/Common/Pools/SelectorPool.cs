@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
-namespace Assets.Scripts.Common
+namespace Assets.Scripts.Common.Pools
 {
     public class SelectorPool<T>
     {
@@ -51,13 +52,13 @@ namespace Assets.Scripts.Common
 
             if (SelectLimit.HasValue && selectCalls > SelectLimit.Value)
             {
-                throw new System.InvalidOperationException("The limit of select calls has been reached.");
+                throw new SelectLimitExceededException();
             }
 
             if (Count == 0)
             {
                 if (AutoRefill) Fill();
-                else throw new System.InvalidOperationException("The pool is empty.");
+                else throw new EmptyPoolException();
             }
 
             return currentPool.Pop();
@@ -106,7 +107,7 @@ namespace Assets.Scripts.Common
             if (Pool.Contains(item))
                 currentPool.Push(item);
             else
-                throw new System.ArgumentException($"The item is not in the {nameof(Pool)}");
+                throw new ArgumentException($"The item is not in the {nameof(Pool)}");
         }
 
         public void Fill() => FillFrom(Pool);

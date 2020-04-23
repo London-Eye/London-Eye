@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Characters;
+using Assets.Scripts.Characters;
+using Assets.Scripts.Common.Pools;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -145,12 +146,9 @@ public class SuspectManager : MonoBehaviour, IComparable<SuspectManager>
 
                     puzzleLoader.LoadPuzzle();
                 }
-                catch (InvalidOperationException ex)
+                catch (SelectLimitExceededException)
                 {
-                    Debug.LogWarning(ex);
-
-                    // The puzzle pool is empty. TODO: Warn the user
-
+                    FindObjectOfType<DialogueRunner>().StartDialogue("Puzzle-Limit-Exceeded");
                 }
             }
         }

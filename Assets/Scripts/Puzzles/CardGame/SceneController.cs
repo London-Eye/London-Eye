@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.Common;
+using Assets.Scripts.Common;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -113,11 +113,11 @@ public class SceneController : MonoBehaviour
     private IEnumerator CheckMoves()
     {
         int movRest = MaxMoves - _movimientos;
-        movesLabel.text = "" + movRest;
-        if (movRest < MaxMoves/2) {
+        movesLabel.text = movRest.ToString();
+        if (movRest < MaxMoves / 2) {
             movesLabel.color = Color.yellow;
         }
-        if (movRest < MaxMoves/5) {
+        if (movRest < MaxMoves / 5) {
             movesLabel.color = Color.red;
         }
         yield return null;
@@ -132,11 +132,11 @@ public class SceneController : MonoBehaviour
             _score++;
             ScoreRank scoreRank = GetScoreRank(true);
             scoreLabel.color = scoreRank.Color;
-            scoreLabel.text = "" + _score;
+            scoreLabel.text = _score.ToString();
         }
         else
         {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.75f);
             _firstRevealed.Unreveal();
             _secondRevealed.Unreveal();
         }
@@ -174,8 +174,8 @@ public class SceneController : MonoBehaviour
     {
         if (recalculate || !currentScoreRank.HasValue)
         {
-            if (_score >= 2 * MaxScore / 3) currentScoreRank = GoodRank;
-            else if (_score <= MaxScore / 3) currentScoreRank = BadRank;
+            if (_score >= MaxScore / 1.2) currentScoreRank = GoodRank;
+            else if (_score < MaxScore / 2) currentScoreRank = BadRank;
             else currentScoreRank = NormalRank;
         }
         return currentScoreRank.Value;
