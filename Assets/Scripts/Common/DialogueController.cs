@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Dialogue;
+﻿using Assets.Scripts.Common.Pools;
+using Assets.Scripts.Dialogue;
 using Assets.Scripts.Dialogue.Variables.Attributes;
 using Assets.Scripts.Dialogue.Variables.Storages;
 using System.Collections.Generic;

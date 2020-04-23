@@ -122,8 +122,8 @@ title: Walkie-InvestigarVictima
 tags: InvestigarVictima
 ---
 <<set $AllowSkip to false>>
-<<if $SuspectEvidencesFound is 0>>
-    <<set $SuspectEvidencesFound to 1>>
+<<if $VictimInvestigated is 0>>
+    <<set $VictimInvestigated to 1>>
     <<set $ContinueTime to "1">>
     <color=blue>Comisaria:</color> Tenemos los datos de la autopsia de la víctima. Hemos obtenido algunas conclusiones a partir de estos.
     <<set $ContinueTime to "2">>
@@ -164,4 +164,13 @@ tags: Emocion
 <<elseif $CriminalEmotionIndexCriminal/2 is 3>>
     <color=blue>Comisaria:</color> El motivo de la muerte es una sola contusión en la cabeza. Parece más un accidente que un asesinato premeditado.
 <<endif>>
+===
+
+title: Puzzle-Limit-Exceeded
+tags: Warning
+---
+<color=lightblue>Deiv I.D.:</color> <color=silver>(Vaya, me he quedado sin vías de investigación.)</color>
+<color=lightblue>Deiv I.D.:</color> <color=silver>(Debería revisar las pruebas que he obtenido.)</color>
+<color=lightblue>Deiv I.D.:</color> <color=silver>(Con esto, y las conclusiones de la autopsia, debería ser capaz de realizar una acusación.)</color>
+<color=lightblue>Deiv I.D.:</color> <color=silver>(Espera, [select {$VictimInvestigated} True="¿cuáles eran las conclusiones de la autopsia?" False="no tengo las conclusiones de la autopsia."] [select {$VictimInvestigated} True="Bueno, siempre puedo" False="Debería"] usar el <i>walkie</i> para obtenerlas.)</color>
 ===

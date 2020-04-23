@@ -7,6 +7,7 @@ using Assets.Scripts.Characters;
 using UnityEngine.Events;
 using Assets.Scripts.Dialogue.Variables.Storages;
 using Assets.Scripts.Puzzles;
+using Assets.Scripts.Common.Pools;
 
 [RequireComponent(typeof(PoolVariableStorage))]
 public class CharacterCreation : MonoBehaviour
@@ -77,8 +78,8 @@ public class CharacterCreation : MonoBehaviour
         }
     }
 
-    private Character victim;
-    public Character Victim
+    private Victim victim;
+    public Victim Victim
     {
         get => victim;
         private set
@@ -128,7 +129,7 @@ public class CharacterCreation : MonoBehaviour
         PoolPuzzleLoader = GetComponent<PoolPuzzleLoader>();
     }
 
-    public void CreateVictim() => Victim = InitializeCharacter();
+    public void CreateVictim() => Victim = InitializeCharacter<Victim>();
 
     public void CreateSuspects()
     {
@@ -230,17 +231,17 @@ public class CharacterCreation : MonoBehaviour
         if (fillOnStart) pool.Fill();
     }
 
-    private Character InitializeCharacter()
+    private T InitializeCharacter<T>() where T : Character
     {
         bool isMale = Utilities.RandomBool();
         int name = isMale ? mNames.Select() : fNames.Select();
 
-        return InitializeCharacter(isMale, name);
+        return InitializeCharacter<T>(isMale, name);
     }
 
-    private Character InitializeCharacter(bool isMale, int name)
+    private T InitializeCharacter<T>(bool isMale, int name) where T : Character
     {
-        Character character = ScriptableObject.CreateInstance<Character>();
+        T character = ScriptableObject.CreateInstance<T>();
         character.IsMale = isMale;
         character.cname = (isMale ? maleCharacterStats : femaleCharacterStats).characterName[name];
         return character;
