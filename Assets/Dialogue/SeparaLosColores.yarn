@@ -2,14 +2,14 @@ title: probetas-PreGame
 tags: PreGame
 ---
 <<if $SeparaColores eq 0>>
-	<color=maroon>Teléfono:</color> *Sonidos de vibración*
+	<color=maroon>Teléfono:</color> <color=silver>*Sonidos de vibración*</color>
 	<color=silver>-Descolgando el teléfono-</color> <color=lightblue>Deiv I.D.:</color> Sí, dígame.
 	<color=maroon>Teléfono:</color> Buenas tardes señor <color=lightblue>I.D.</color>, somos del departamento de investigación científica de la policía.
 	<color=cyan>Policía:</color> Hemos encontrado restos de huellas y ADN de {$SuspectName} en casa de la víctima.
 	<color=cyan>Policía:</color> Le informamos que cuando estén los resultados se los enviaremos a su correo.
 	<color=lightblue>Deiv I.D.:</color> De acuerdo, gracias por la información<color=silver>-Cuelga el teléfono-</color>.
 <<elseif $SeparaColores eq 1>>
-	<color=maroon>Teléfono:</color> *Sonidos de vibración*
+	<color=maroon>Teléfono:</color> <color=silver>*Sonidos de vibración*</color>
 	<color=silver>-Descolgando el teléfono-</color> <color=lightblue>Deiv I.D.:</color> Sí, dígame.
 	<color=maroon>Teléfono:</color> Buenas tardes señor <color=lightblue>I.D.</color>, volvemos a llamar desde la policía científica.
 	<color=cyan>Policía:</color> Nuevos resultados han dado a luz la presencia [select {$SuspectIsMale} True="del sospechoso" False="de la sospechosa"] de nombre {$SuspectName} en casa de la víctima.
@@ -46,6 +46,7 @@ title: probetas-PostGame
 tags: PostGame
 ---
 <<CompletePuzzle GameManager>>
+<<set $ContinueMode to "Time">>
 
 <<if $SeparaColores eq 0>>
 	<color=lightblue>Deiv I.D.:</color> A ver qué dicen los resultados de la investigación de la científica.
@@ -61,21 +62,26 @@ tags: PostGame
 
 <<if $SuspectEvidencesFound eq 0>>
 	<<if $SuspectRelationIndexCriminal/2 is 0 or 1>>
-		<color=lightblue>Deiv I.D.:</color> Según esto, al comparar el ADN de {$SuspectName} y la víctima, queda claro que {$SuspectName} es {$SuspectRelation} de la víctima ({$VictimName}).
+		<<set $ContinueMode to "Button">>
+		<color=lightblue>Deiv I.D.:</color> Según esto, al comparar el ADN de {$SuspectName} y la víctima, queda claro que {$SuspectName} es <b>{$SuspectRelation}</b> de la víctima ({$VictimName}).
 	<<elseif $SuspectRelationIndexCriminal/2 is 2 or 3>>
 		<color=lightblue>Deiv I.D.:</color> Según esto, al comparar el ADN de {$SuspectName} y la víctima no se ha encontrado una coincidencia clara.
-		<color=lightblue>Deiv I.D.:</color> Juntando esto y el número de huellas encontrado en casa de la víctima, lo más probable es que {$SuspectName} fuera {$SuspectRelation} de la víctima ({$VictimName}).
+		<<set $ContinueMode to "Button">>
+		<color=lightblue>Deiv I.D.:</color> Juntando esto y el número de huellas encontrado en casa de la víctima, lo más probable es que {$SuspectName} fuera <b>{$SuspectRelation}</b> de la víctima ({$VictimName}).
 	<<endif>>
 	<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
 <<elseif $SuspectEvidencesFound eq 1>>
-	<color=lightblue>Deiv I.D.:</color> Viendo los informes sobre la distribución de las huellas de {$SuspectName} en casa de la víctima, lo más probable es que {$SuspectName} {$SuspectEmotion} la víctima ({$VictimName}).
+	<<set $ContinueMode to "Button">>
+	<color=lightblue>Deiv I.D.:</color> Viendo los informes sobre la distribución de las huellas de {$SuspectName} en casa de la víctima, lo más probable es que {$SuspectName} <b>{$SuspectEmotion}</b> la víctima ({$VictimName}).
 	<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
 <<elseif $SuspectEvidencesFound eq 2>>
 	<color=lightblue>Deiv I.D.:</color> Respecto al informe de ADN en la escena del crimen, el ADN de {$SuspectName} {$SuspectNotHasAlibiAsString} coincide con el de la escena del crimen.
-	<color=lightblue>Deiv I.D.:</color> Con estas pruebas puedo concluir que la coartada de {$SuspectName} [select {$SuspectHasAlibi} True="es" False="no es"] válida.
+	<<set $ContinueMode to "Button">>
+	<color=lightblue>Deiv I.D.:</color> Con estas pruebas puedo concluir que la coartada de {$SuspectName} <b>[select {$SuspectHasAlibi} True="es" False="no es"]</b> válida.
 	<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
 <<endif>>
 
 <<set $PuzzlesResueltos to $PuzzlesResueltos+1>>
+<<set $FromPuzzle to true>>
 <<BackToMainMenu GameDialogue>>
 ===

@@ -39,6 +39,8 @@ title: 9-puzzle-PostGame
 tags: PostGame
 ---
 <<CompletePuzzle GameManager>>
+<<set $ContinueMode to "Time">>
+
 <<if $NinePuzzle eq 1>>
 	<color=lightblue>Deiv I.D.:</color> Al fin he conseguido reconstruir la nota. Me ha costado más de lo que esperaba.
 <<elseif $NinePuzzle eq 2>>
@@ -49,17 +51,19 @@ tags: PostGame
 	<color=lightblue>Deiv I.D.:</color> Menos mal que ya lo resuelvo rápido, si no, esto sería un suplicio.
 <<endif>>
 
+<<set $ContinueMode to "Button">>
 <<if $SuspectEvidencesFound eq 0>>
-	<color=lightblue>Deiv I.D.:</color> Por la forma en que {$RandomName} escribe sobre {$SuspectName}, es fácil deducir que es {$SuspectRelation} de la víctima ({$VictimName}).
+	<color=lightblue>Deiv I.D.:</color> Por la forma en que {$RandomName} escribe sobre {$SuspectName}, es fácil deducir que es <b>{$SuspectRelation}</b> de la víctima ({$VictimName}).
 	<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
 <<elseif $SuspectEvidencesFound eq 1>>
-	<color=lightblue>Deiv I.D.:</color> Curiosamente lo que parecía un nombre cualquiera, en realidad, es la firma. Por lo tanto, viendo el tono de la carta, claramente, {$SuspectName} {$SuspectEmotion} la víctima ({$VictimName}).
+	<color=lightblue>Deiv I.D.:</color> Curiosamente lo que parecía un nombre cualquiera, en realidad, es la firma. Por lo tanto, viendo el tono de la carta, claramente, {$SuspectName} <b>{$SuspectEmotion}</b> la víctima ({$VictimName}).
 	<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
 <<elseif $SuspectEvidencesFound eq 2>>
-	<color=lightblue>Deiv I.D.:</color> Esto despeja mis dudas, el contenido de la carta claramente confirma que {$SuspectName} {$SuspectHasAlibiAsString} tiene coartada válida para el crimen.
+	<color=lightblue>Deiv I.D.:</color> Esto despeja mis dudas, el contenido de la carta claramente confirma que {$SuspectName} <b>{$SuspectHasAlibiAsString}</b> tiene coartada válida para el crimen.
 	<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
 <<endif>>
 
 <<set $PuzzlesResueltos to $PuzzlesResueltos+1>>
+<<set $FromPuzzle to true>>
 <<BackToMainMenu GameDialogue>>
 ===

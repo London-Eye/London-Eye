@@ -33,10 +33,11 @@ tags: Inicio
 
 
 
+
+
 title: MainMenu-Return
 tags: Return
 ---
-:{$CriminalName}
 <<set $NinePuzzle to 0>>
 <<set $CompletaCamino to 0>>
 <<set $MoveTheBlock to 0>>
@@ -49,20 +50,21 @@ tags: Return
 
 
 
+
+
 title: Policia-PistasJuego
 tags: PistasJuego
 ---
 <<set $ContinueMode to "skip">>
-<color=blue>Policía:</color> ¿Sobre qué quieres obtener información?
+<color=lightblue>Deiv I.D.:</color> <color=silver>-Abriendo su diário personal-</color> ¿Sobre qué deberia consultar información en mis notas?
 <<set $ContinueMode to "time">>
-->Dime qué hace algo de esta oficina.
+->Sobre la funcionalidad de algo en la oficina.
     [[Pistas-MenuPrincipal]]
 ->Sobre acusar a uno de los sospechosos.
     [[Pistas-AcusarSospechoso]]
-->Dame alguna información útil.
+->Sobre alguna información útil en general.
     [[Pistas-General]]
-->Nada, gracias.
-    Si necesitas algo ya sabes dónde estoy.
+->Nada, deberia ponerme a investigar.
 ===
 
 title: Pistas-MenuPrincipal
@@ -73,13 +75,13 @@ tags: MenuPrincipal
 <<set $CurrentRandomInt to $RandomIntPool>>
 
 <<if $CurrentRandomInt eq 0>>
-    <color=blue>Policía:</color> Accede a los sospechosos desde el tablón de la pared.
+    <color=lightblue>Deiv I.D.:</color> Puedo acceder a los sospechosos desde el tablón de la pared.
 <<elseif $CurrentRandomInt eq 1>>
-    <color=blue>Policía:</color> En el archivador encontrarás los puzzles que te hayas dejado a medias.
+    <color=lightblue>Deiv I.D.:</color> En el archivador puedo encontrar los puzzles que te he dejado a medias.
 <<elseif $CurrentRandomInt eq 2>>
-    <color=blue>Policía:</color> En el ordenador de la derecha podrás llevar a juicio al sospechoso que creas que es el asesino.
+    <color=lightblue>Deiv I.D.:</color> En el ordenador de la derecha puedo llevar a juicio al sospechoso que creo que es el asesino.
 <<elseif $CurrentRandomInt eq 3>>
-    <color=blue>Policía:</color> En el Walkie-Talkie que está encima del archivador podrás encontrar información útil sobre la víctima y la escena del crimen.
+    <color=lightblue>Deiv I.D.:</color> En el Walkie-Talkie que está encima del archivador puedo encontrar información útil sobre la víctima y la escena del crimen.
 <<endif>>
 ===
 
@@ -91,11 +93,11 @@ tags: AcusarSospechoso
 <<set $CurrentRandomInt to $RandomIntPool>>
 
 <<if $CurrentRandomInt eq 0>>
-    <color=blue>Policía:</color> Si acusas a un sospechoso con menos de 2 pistas es muy probable que no den el juicio como válido.
+    <color=lightblue>Deiv I.D.:</color> Si acuso a un sospechoso con menos de 2 pistas es muy probable que no den el juicio como válido.
 <<elseif $CurrentRandomInt eq 1>>
-    <color=blue>Policía:</color> Solo puedes acusar a un sospechoso, elige con cuidado.
+    <color=lightblue>Deiv I.D.:</color> Solo puedo acusar a un sospechoso, tendré que elegir con cuidado.
 <<elseif $CurrentRandomInt eq 2>>
-    <color=blue>Policía:</color> Si has investigado todo lo posible, y has elegido al sospechoso por descarte, es posible que den el juicio como válido.
+    <color=lightblue>Deiv I.D.:</color> Si he investigado todo lo posible, y he elegido al sospechoso por descarte, es posible que den el juicio como válido.
 <<endif>>
 ===
 
@@ -107,15 +109,17 @@ tags: General
 <<set $CurrentRandomInt to $RandomIntPool>>
 
 <<if $CurrentRandomInt eq 0>>
-    <color=blue>Policía:</color> Si te atascas en un puzzle puedes dejarlo para más tarde. Pero no podrás seguir investigando a ese sospechoso hasta que lo completes.
+    <color=lightblue>Deiv I.D.:</color> Si me atasco en un puzzle puedo dejarlo para más tarde. Pero no podré seguir investigando a ese sospechoso hasta que lo completes.
 <<elseif $CurrentRandomInt eq 1>>
-    <color=blue>Policía:</color> Si no recoges información sobre la víctima, las pistas que consigas te servirán de poco.
+    <color=lightblue>Deiv I.D.:</color> Si no recojo información sobre la víctima, las pistas que consiga me servirán de poco.
 <<elseif $CurrentRandomInt eq 2>>
-    <color=blue>Policía:</color> Puedes acelerar el texto con <color=orange>Espacio</color> o saltarlo con <color=orange>Enter</color>.
+    <color=lightblue>Deiv I.D.:</color> Puedo acelerar el texto con <color=orange>Espacio</color> o saltarlo con <color=orange>Enter</color>.
 <<elseif $CurrentRandomInt eq 4>>
-    <color=blue>Policía:</color> Tienes un número limitado de investigaciones sobre los sospechosos, investiga con cuidado.
+    <color=lightblue>Deiv I.D.:</color> Tengo un número limitado de investigaciones sobre los sospechosos, tendré con cuidado.
 <<endif>>
 ===
+
+
 
 
 
@@ -124,25 +128,23 @@ tags: InvestigarVictima
 ---
 <<set $AllowSkip to true>>
 <<set $ContinueMode to "skip">>
-<color=blue>Comisaria:</color> ¿Qué quieres saber?
+<color=cyan>Policía:</color> Buenas señor <color=lightblue>I.D.</color>. ¿Que quiere saber sobre el crímen?
 <<set $ContinueMode to "time">>
-<<set $AllowSkip to false>>
 ->¿Cómo se encuentra el cuerpo?
     [[Walkie-Relacion]]
 ->¿Cómo murió la víctima?
     [[Walkie-Emocion]]
 ->Ahora mismo nada, gracias.
-    <color=blue>Comisaria:</color> Llámanos si necesitas algo.
-<<set $AllowSkip to true>>
+    <color=cyan>Policía:</color> Llámenos si necesita algo.
 ===
 
 title: Walkie-Relacion
 tags: Relacion
 ---
 <<if $CriminalRelationIndexCriminal < 4>>
-    <color=blue>Comisaria:</color> La víctima parece estar relajada y tranquila, probablemente, quien [select {$VictimIsMale} True="lo" False="la"] mató fue algún conocido cercano de [select {$VictimIsMale} True="este" False="esta"].
+    <color=cyan>Policía:</color> La víctima parece estar relajada y tranquila. probablemente, quien [select {$VictimIsMale} True="lo" False="la"] mató fue algún conocido cercano de [select {$VictimIsMale} True="este" False="esta"].
 <<elseif $CriminalRelationIndexCriminal > 3>>
-    <color=blue>Comisaria:</color> Aunque no parece que se lo viera venir, ya que no hay signos de que se haya defendido, la víctima no está relajada del todo así que en la comisaría pensamos que quien mató a la víctima no era cercano a esta.
+    <color=cyan>Policía:</color> Aunque no parece que se lo viera venir, ya que no hay signos de que se haya defendido, la víctima no está relajada del todo así que en la comisaría pensamos que quien mató a la víctima no era cercano a esta.
 <<endif>>
 ===
 
@@ -150,21 +152,76 @@ title: Walkie-Emocion
 tags: Emocion
 ---
 <<if $CriminalEmotionIndexCriminal is 0 or 1>>
-    <color=blue>Comisaria:</color> La víctima murió por múltiples contusiones en la parte posterior de la cabeza. Esto implica que quien lo realizó tenía sentimientos negativos muy fuertes hacia [select {$VictimIsMale} True="él" False="ella"].
+    <color=cyan>Policía:</color> La víctima murió por múltiples contusiones en la parte posterior de la cabeza. Quien lo realizó proabblemente tenía sentimientos negativos muy fuertes hacia [select {$VictimIsMale} True="él" False="ella"].
 <<elseif $CriminalEmotionIndexCriminal is 2 or 3>>
-    <color=blue>Comisaria:</color> Mataron a la víctima de un tiro en la cabeza desde la nuca. Quien [select {$VictimIsMale} True="lo" False="la"] mató seguramente tenía sentimientos negativos hacia la víctima, pero no suficientemente fuertes como para ensañarse.
+    <color=cyan>Policía:</color> Mataron a la víctima de un tiro en la cabeza desde la nuca. Quien [select {$VictimIsMale} True="lo" False="la"] mató seguramente tenía sentimientos negativos hacia la víctima, pero no suficientemente fuertes como para ensañarse.
 <<elseif $CriminalEmotionIndexCriminal is 4 or 5>>
-    <color=blue>Comisaria:</color> La víctima tenia un cuchillo clavado en el corazón, esa era su única herida. Probablemente quien lo hizo sentía algo por la víctima.
+    <color=cyan>Policía:</color> La víctima tenia un cuchillo clavado en el corazón, esa era su única herida. Lo más seguro es que quien lo hizo sentía algo por la víctima.
 <<elseif $CriminalEmotionIndexCriminal is 6 or 7>>
-    <color=blue>Comisaria:</color> El motivo de la muerte es una sola contusión en la cabeza. Parece más un accidente que un asesinato premeditado.
+    <color=cyan>Policía:</color> El motivo de la muerte es una sola contusión en la cabeza. Parece más un accidente que un asesinato premeditado.
 <<endif>>
 ===
+
+
+
+
 
 title: Puzzle-Limit-Exceeded
 tags: Warning
 ---
-<color=lightblue>Deiv I.D.:</color> <color=silver>(Vaya, me he quedado sin vías de investigación.)</color>
-<color=lightblue>Deiv I.D.:</color> <color=silver>(Debería revisar las pruebas que he obtenido.)</color>
-<color=lightblue>Deiv I.D.:</color> <color=silver>(Con esto, y las conclusiones de la autopsia, debería ser capaz de realizar una acusación.)</color>
-<color=lightblue>Deiv I.D.:</color> <color=silver>(Espera, [select {$VictimInvestigated} True="¿cuáles eran las conclusiones de la autopsia?" False="no tengo las conclusiones de la autopsia."] [select {$VictimInvestigated} True="Bueno, siempre puedo" False="Debería"] usar el <i>walkie</i> para obtenerlas.)</color>
+<color=lightblue>Deiv I.D.:</color> Parece que me he quedado sin tiempo, la prensa está presionando al departamento.
+<color=lightblue>Deiv I.D.:</color> Debería revisar las pruebas que he obtenido.
+<color=lightblue>Deiv I.D.:</color> Con esto, además de la información sobre la víctima y la escena del crímen, debería ser capaz de realizar una acusación.
+<color=lightblue>Deiv I.D.:</color> Debería volver a echarle un vistazo a esa información. Por si a caso.
+<color=lightblue>Deiv I.D.:</color> Puede que llame a la comisaria con el Walkie para que me refresquen la memória.
+===
+
+
+
+
+title: MainMenu-Back
+tags:Back
+---
+<<if $FromPuzzle>>
+    <<if $PuzzlesResueltos eq 3>>
+        <color=maroon>Teléfono:</color> <color=silver>*Sonidos de vibración*</color>
+        <color=silver>-Descolgando el teléfono-</color> <color=lightblue>Deiv I.D.:</color> Sí, dígame.
+        <color=magenta>Diana:</color> <color=lightblue>Deiv</color>, ¿como llevas el caso?
+        <color=lightblue>Deiv I.D.:</color> Bastante bien jefa.
+        <color=lightblue>Deiv I.D.:</color> Acabo de terminar de investigar tres fuentes de información
+        <color=magenta>Diana:</color> Me alegro que vaya bien.
+        <color=magenta>Diana:</color> Recuerda que estamos en una pandémia así que no puedes salir de casa.
+        <color=lightblue>Deiv I.D.:</color> Si jefa, lo tengo en cuenta.
+        <color=maroon>Teléfono:</color> <color=silver>-Cuelga-</color>
+    <<elseif $PuzzlesResueltos eq 6>>
+        <color=maroon>Teléfono:</color> *Sonidos de vibración*
+        <color=silver>-Descolgando el teléfono-</color> <color=lightblue>Deiv I.D.:</color> Sí, dígame.
+        <color=magenta>Diana:</color> <color=lightblue>Deiv</color>, ¿estas avanzando?
+        <color=lightblue>Deiv I.D.:</color> Si, jefa, poco a poco.
+        <color=magenta>Diana:</color> Pues date prisa, tenemos una fecha máxima, recuérdalo.
+        <color=lightblue>Deiv I.D.:</color> Lo recuerdo, sin problema.
+        <color=maroon>Teléfono:</color> <color=silver>-Cuelga-</color>
+    <<elseif $PuzzlesResueltos eq 9>>
+        <color=maroon>Teléfono:</color> *Sonidos de vibración*
+        <color=silver>-Descolgando el teléfono-</color> <color=lightblue>Deiv I.D.:</color> Sí, dígame.
+        <color=magenta>Diana:</color> <color=lightblue>Deiv</color>, espero resultados.
+        <color=lightblue>Deiv I.D.:</color> Estoy sobre la pista pero necesito más tiempo.
+        <color=magenta>Diana:</color> Aun te queda algo de tiempo pero se te termina.
+        <color=magenta>Diana:</color> La próxima vez que te llame será la última así que apresúrate.
+        <color=lightblue>Deiv I.D.:</color> De acuerdo.
+        <color=maroon>Teléfono:</color> <color=silver>-Cuelga-</color>
+    <<elseif $PuzzlesResueltos eq 12>>
+        <color=maroon>Teléfono:</color> *Sonidos de vibración*
+        <color=silver>-Descolgando el teléfono-</color> <color=lightblue>Deiv I.D.:</color> Sí, dígame.
+        <color=magenta>Diana:</color> <color=lightblue>Deiv</color>, como te dije, ya no hay tiempo.
+        <color=magenta>Diana:</color> Tienes que presentar a juicio a uno de los sospechosos.
+        <color=magenta>Diana:</color> A no ser que no hayas podido resolver el caso.
+        <color=lightblue>Deiv I.D.:</color> Tranquila jefa, lo he resuelto.
+        <color=lightblue>Deiv I.D.:</color> Dame un poco de tiempo para ordenar la información y enviaré a alguno a juicio.
+        <color=magenta>Diana:</color> Te esperaré en el juzgado. Y recuerda venir con mascarilla.
+        <color=lightblue>Deiv I.D.:</color> Así lo hare.
+        <color=lightblue>Deiv I.D.:</color> <color=silver>-Colgando el teléfono-</color> Hora de ir al ordenador para acusar a alguien.
+    <<endif>>
+<<endif>>
+<<set $FromPuzzle to false>>
 ===

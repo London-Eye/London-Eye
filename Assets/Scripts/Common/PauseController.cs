@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using Yarn.Unity;
 
 public class PauseController : MonoBehaviour
 {
@@ -39,7 +40,16 @@ public class PauseController : MonoBehaviour
     public void GoToStart() => GoToStartMenu();
     public void ExitGame() => Exit();
 
-    public static void GoToMainMenu() => SceneManager.LoadScene(1);
+    public static void GoToMainMenu()
+    {
+        AsyncOperation loadSceneOperation = SceneManager.LoadSceneAsync(1); // Load Main Menu
+        loadSceneOperation.completed += op =>
+        {
+            DialogueRunner dialogueRunner = FindObjectOfType<DialogueRunner>();
+            dialogueRunner.startNode = "MainMenu-Back";
+            dialogueRunner.startAutomatically = true;
+        };
+    }
     public static void GoToStartMenu() => SceneManager.LoadScene(0);
     public static void Exit()
     {

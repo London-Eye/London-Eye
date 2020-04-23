@@ -30,6 +30,8 @@ title: CompletaElCamino-PostGame
 tags: PostGame
 ---
 <<CompletePuzzle GameManager>>
+<<set $ContinueMode to "Time">>
+
 <<if $CompletaCamino eq 1>>
 	<color=lightblue>Deiv I.D.:</color> Curiosamente estaba más a la vista de lo que esperaba.
 <<elseif $CompletaCamino eq 2>>
@@ -41,18 +43,22 @@ tags: PostGame
 <<if $SuspectEvidencesFound eq 0>>
 	<color=lightblue>Deiv I.D.:</color> A ver qué he sacado en claro....
 	<color=lightblue>Deiv I.D.:</color> Es una persona misteriosa, por algo me ha costado tanto encontrar cosas.
-	<color=lightblue>Deiv I.D.:</color> Pero después de todo el esfuerzo puedo decir que {$SuspectName} es {$SuspectRelation} de la víctima ({$VictimName}).
+	<<set $ContinueMode to "Button">>
+	<color=lightblue>Deiv I.D.:</color> Pero después de todo el esfuerzo puedo decir que {$SuspectName} es <b>{$SuspectRelation}</b> de la víctima ({$VictimName}).
 	<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
 <<elseif $SuspectEvidencesFound eq 1>>
 	<color=lightblue>Deiv I.D.:</color> Resulta que la respuesta estaba delante mía después de todo.
-	<color=lightblue>Deiv I.D.:</color> Estas fotos junto a la víctima y sus conversaciones demuestran que {$SuspectName} {$SuspectEmotion} la víctima ({$VictimName}).
+	<<set $ContinueMode to "Button">>
+	<color=lightblue>Deiv I.D.:</color> Estas fotos junto a la víctima y sus conversaciones demuestran que {$SuspectName} <b>{$SuspectEmotion}</b> la víctima ({$VictimName}).
 	<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
 <<elseif $SuspectEvidencesFound eq 2>>
 	<color=lightblue>Deiv I.D.:</color> Después de revisar publicaciones, horas y lugares, está todo claro.
-	<color=lightblue>Deiv I.D.:</color> Una vez cotejado con el crimen, resulta claro que {$SuspectName} {$SuspectHasAlibiAsString} coartada válida para el crimen.
+	<<set $ContinueMode to "Button">>
+	<color=lightblue>Deiv I.D.:</color> Una vez cotejado con el crimen, resulta claro que {$SuspectName} <b>{$SuspectHasAlibiAsString}</b> coartada válida para el crimen.
 	<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
 <<endif>>
 
 <<set $PuzzlesResueltos to $PuzzlesResueltos+1>>
+<<set $FromPuzzle to true>>
 <<BackToMainMenu GameDialogue>>
 ===

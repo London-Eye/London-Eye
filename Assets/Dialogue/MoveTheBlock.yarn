@@ -17,7 +17,7 @@ tags: PreGame
 	<color=lightblue>Deiv I.D.:</color> No, es otra persona.
 	<color=lime>Tsudo P.C.:</color> Sin problema entonces.
 <<elseif $MoveTheBlock eq 2>>
-	<color=maroon>Teléfono:</color> *Sonidos de vibración*
+	<color=maroon>Teléfono:</color> <color=silver>*Sonidos de vibración*</color>
 	<color=lightblue>Deiv I.D.:</color> ¿Qué pasa <color=lime>Tsudo</color>?
 	<color=lime>Tsudo P.C.:</color> Revisando la lista de sospechosos que me mandaste, he visto cosas que no me cuadran con {$SuspectName}.
 	<color=lime>Tsudo P.C.:</color> ¿Te importaría que le eche un vistazo?
@@ -45,6 +45,7 @@ tags: PostGame
 ---
 <<EndGame MoveTheBlockController>>
 <<CompletePuzzle GameManager>>
+<<set $ContinueMode to "Time">>
 
 <<if $MoveTheBlock eq 1>>
 	<color=lightblue>Deiv I.D.:</color> Vamos a ver los datos que me ha enviado <color=lime>Tsudo</color>
@@ -58,18 +59,22 @@ tags: PostGame
 
 <<if $SuspectEvidencesFound eq 0>>
 	<color=lightblue>Deiv I.D.:</color> Al parecer ha entrado en su correo electrónico y... ¡bingo!
-	<color=lightblue>Deiv I.D.:</color> Según estos mensajes, {$SuspectName} es {$SuspectRelation} de la víctima ({$VictimName}).
+	<<set $ContinueMode to "Button">>
+	<color=lightblue>Deiv I.D.:</color> Según estos mensajes, {$SuspectName} es <b>{$SuspectRelation}</b> de la víctima ({$VictimName}).
 	<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
 <<elseif $SuspectEvidencesFound eq 1>>
 	<color=lightblue>Deiv I.D.:</color> Así que donde ha encontrado información útil es en su, ejem, <color=green>aplicación de mensajería instantánea</color>...
-	<color=lightblue>Deiv I.D.:</color> Entiendo, por los mensajes que se ha enviado con {$RandomName}, {$SuspectName} {$SuspectEmotion} la víctima ({$VictimName}).
+	<<set $ContinueMode to "Button">>
+	<color=lightblue>Deiv I.D.:</color> Entiendo, por los mensajes que se ha enviado con {$RandomName}, {$SuspectName} <b>{$SuspectEmotion}</b> la víctima ({$VictimName}).
 	<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
 <<elseif $SuspectEvidencesFound eq 2>>
 	<color=lightblue>Deiv I.D.:</color> Yendo directo a por sus cuentas, eh, vieja pícara...
-	<color=lightblue>Deiv I.D.:</color> Según sus facturas, la coartada de {$SuspectName} {$SuspectHasAlibiAsString} es válida.
+	<<set $ContinueMode to "Button">>
+	<color=lightblue>Deiv I.D.:</color> Según sus facturas, la coartada de {$SuspectName} <b>{$SuspectHasAlibiAsString}</b> es válida.
 	<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
 <<endif>>
 
 <<set $PuzzlesResueltos to $PuzzlesResueltos+1>>
+<<set $FromPuzzle to true>>
 <<BackToMainMenu GameDialogue>>
 ===
