@@ -136,7 +136,7 @@ public class SceneController : MonoBehaviour
         }
         else
         {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.75f);
             _firstRevealed.Unreveal();
             _secondRevealed.Unreveal();
         }
@@ -174,8 +174,8 @@ public class SceneController : MonoBehaviour
     {
         if (recalculate || !currentScoreRank.HasValue)
         {
-            if (_score >= 2 * MaxScore / 3) currentScoreRank = GoodRank;
-            else if (_score <= MaxScore / 3) currentScoreRank = BadRank;
+            if (_score >= MaxScore * 0.8) currentScoreRank = GoodRank;
+            else if (_score < MaxScore * 0.5 ) currentScoreRank = BadRank;
             else currentScoreRank = NormalRank;
         }
         return currentScoreRank.Value;
