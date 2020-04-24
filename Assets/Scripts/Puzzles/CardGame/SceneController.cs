@@ -35,13 +35,13 @@ public class SceneController : MonoBehaviour
 
     private void Start()
     {
-        PutCardsOnTable();
         layout.SetActive(false);
     }
 
     [YarnCommand("StartCardGame")]
     public void StartCardGame()
     {
+        PutCardsOnTable();
         GameRunning = true;
 
         scoreLabel.gameObject.SetActive(true);
