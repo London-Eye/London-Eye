@@ -219,8 +219,8 @@ tags:Back
         <color=magenta>Diana:</color> A no ser que no hayas podido resolver el caso.
         <color=lightblue>Deiv I.D.:</color> Tranquila jefa, lo he resuelto.
         <color=lightblue>Deiv I.D.:</color> Dame un poco de tiempo para ordenar la información y enviaré a alguno a juicio.
-        <color=magenta>Diana:</color> Te esperaré en el juzgado. Y recuerda venir con mascarilla.
-        <color=lightblue>Deiv I.D.:</color> Así lo hare.
+        <color=magenta>Diana:</color> Te esperaré en el juzgado.
+        <color=lightblue>Deiv I.D.:</color> Allí estaré.
         <color=lightblue>Deiv I.D.:</color> <color=silver>-Colgando el teléfono-</color> Hora de ir al ordenador para acusar a alguien.
     <<endif>>
 <<endif>>
