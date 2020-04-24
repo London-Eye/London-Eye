@@ -1,6 +1,7 @@
 title: CardGame-PreGame
 tags: PreGame
 ---
+<<StartCardGame CardGameController>>
 <<set $ContinueMode to "Time">>
 <color=maroon>Teléfono:</color> <color=silver>*Sonidos de vibración*</color>
 <color=silver>-Descolgando el teléfono-</color> <color=lightblue>Deiv I.D.:</color> Sí, dígame.
@@ -14,7 +15,7 @@ tags: PreGame
 <color=lightblue>Deiv I.D.:</color> <color=silver>-Encendiendo el PC para ver el correo-</color> A ver si puedo descartar algunos así de primeras, así me ahorro trabajo en el futuro.
 <<set $ContinueMode to "Button">>
 <color=orange>Empareja los retratos de personas para descartar posibles sospechosos.</color>
-<<StartCardGame CardGameController>>
+<<PutCardsOnTable CardGameController>>
 ===
 
 title: CardGame-PostGame

@@ -54,6 +54,7 @@ public class SceneController : MonoBehaviour
         OnStartCardGame.Invoke();
     }
 
+    [YarnCommand("PutCardsOnTable")]
     public void PutCardsOnTable()
     {
         layout.SetActive(true);

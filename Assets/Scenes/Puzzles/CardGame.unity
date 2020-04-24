@@ -575,7 +575,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1788309106, guid: f9cf9ff9943921943bbb41cab3390a11, type: 3}
       propertyPath: onDialogueStart.m_PersistentCalls.m_Calls.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1788309106, guid: f9cf9ff9943921943bbb41cab3390a11, type: 3}
       propertyPath: onDialogueEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -855,7 +855,7 @@ PrefabInstance:
     - target: {fileID: 5296080504864627357, guid: f9cf9ff9943921943bbb41cab3390a11,
         type: 3}
       propertyPath: onDialogueComplete.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5296080504864627357, guid: f9cf9ff9943921943bbb41cab3390a11,
         type: 3}
@@ -1647,7 +1647,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1437217323
 RectTransform:
   m_ObjectHideFlags: 0

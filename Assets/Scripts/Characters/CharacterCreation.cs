@@ -158,9 +158,9 @@ public class CharacterCreation : MonoBehaviour
 
         // Shuffle the suspects and put them in the scene
         Suspect[] suspectsShuffled = suspects.GetShuffle();
-        for (int i = 0; i < NumberOfSuspects; i++)
+        for (int i = 0; i < suspectManagers.Length; i++)
         {
-            suspectManagers[i].Suspect = suspectsShuffled[i];
+            suspectManagers[i].Suspect = i < suspectsShuffled.Length ? suspectsShuffled[i] : null;
         }
 
         // If the victim wasn't created yet, do it now
