@@ -1,7 +1,8 @@
 title: MoveTheBlock-PreGame
 tags: PreGame
 ---
-<<if $MoveTheBlock eq 0>>
+<<set $MoveTheBlock to $MoveTheBlock+1>>
+<<if $MoveTheBlock eq 1>>
 	<color=lightblue>Deiv I.D.:</color> <color=silver>-Llamando por teléfono-</color> Odio tener que recurrir a esto, pero tendré que hacerlo para poder continuar.
 	<color=maroon>Teléfono:</color> Aquí <color=lime>Tsudo P.C.</color>, ¿quién llama?
 	<color=lightblue>Deiv I.D.:</color> <color=lime>Tsudo</color>, soy <color=lightblue>Deiv</color>, necesito un favor.
@@ -9,21 +10,25 @@ tags: PreGame
 	<color=lightblue>Deiv I.D.:</color> Estoy investigando un caso, pero no puedo salir de casa.
 	<color=lightblue>Deiv I.D.:</color> Así que necesito que me encuentres toda la información posible sobre {$SuspectName}.
 	<color=lime>Tsudo P.C.:</color> Sin problema, pásame su información y te envío todo lo que encuentre.
-<<elseif $MoveTheBlock eq 1>>
+<<elseif $MoveTheBlock eq 2>>
 	<color=lightblue>Deiv I.D.:</color> <color=silver>-Llamando por teléfono-</color> <color=lime>Tsudo</color>, soy <color=lightblue>Deiv</color> otra vez, vuelvo a necesitar tus servicios.
 	<color=lime>Tsudo P.C.:</color> Claro, ¿de quién se trata esta vez?
 	<color=lightblue>Deiv I.D.:</color> Se llama {$SuspectName}
-	<color=lime>Tsudo P.C.:</color> [select {$SuspectIsMale} True="¿El actor?" False="¿La actriz?"]
+	<<if $SuspectIsMale>>
+		<color=lime>Tsudo P.C.:</color> ¿{$ProfesionMasculina}?
+	<<else>>
+		<color=lime>Tsudo P.C.:</color> ¿{$PofesionFemenina}?
+	<<endif>>
 	<color=lightblue>Deiv I.D.:</color> No, es otra persona.
 	<color=lime>Tsudo P.C.:</color> Sin problema entonces.
-<<elseif $MoveTheBlock eq 2>>
+<<elseif $MoveTheBlock eq 3>>
 	<color=maroon>Teléfono:</color> <color=silver>*Sonidos de vibración*</color>
 	<color=lightblue>Deiv I.D.:</color> ¿Qué pasa <color=lime>Tsudo</color>?
 	<color=lime>Tsudo P.C.:</color> Revisando la lista de sospechosos que me mandaste, he visto cosas que no me cuadran con {$SuspectName}.
 	<color=lime>Tsudo P.C.:</color> ¿Te importaría que le eche un vistazo?
 	<color=lightblue>Deiv I.D.:</color> Siempre y cuando me envíes lo que descubras, sin problema.
 	<color=lime>Tsudo P.C.:</color> Por supuesto.
-<<elseif $MoveTheBlock eq 3>>
+<<elseif $MoveTheBlock eq 4>>
 	<color=lightblue>Deiv I.D.:</color> <color=silver>-Llamando por teléfono-</color> ¿<color=lime>Tsudo</color>? Soy <color=lightblue>Deiv</color> otra vez.
 	<color=lime>Tsudo P.C.:</color> ¿Alguien más que tenga que escudriñar?
 	<color=lightblue>Deiv I.D.:</color> Sí, esta vez se llama {$SuspectName}.
@@ -34,7 +39,6 @@ tags: PreGame
 <color=lightblue>Deiv I.D.:</color> Gracias <color=silver>-Cuelga-</color>
 <color=lightblue>Deiv I.D.:</color> A ver qué consigue encontrar.
 
-<<set $MoveTheBlock to $MoveTheBlock+1>>
 <<set $ContinueMode to "Button">>
 <color=orange>Mueve los bloques del <b>cortafuegos</b> para poder introducir el archivo con el <b>virus</b> en su ordenador.</color>
 <<StartGame MoveTheBlockController>>

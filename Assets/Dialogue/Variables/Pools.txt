@@ -16,3 +16,23 @@ una lanza
 un martillo
 un ladrillo
 ===
+
+PofesionFemenina
+---
+La actriz
+La cantante
+La chica del tiempo
+Nuestra amiga
+La mujer del presidente
+Mi vecina del 5º
+===
+
+ProfesionMasculina
+---
+El actor
+El cantante
+El chico del tiempo
+Nuestro amigo
+El hombre de la presidenta
+Mi vecino del 3º
+===

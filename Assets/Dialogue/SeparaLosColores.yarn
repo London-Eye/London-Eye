@@ -1,27 +1,28 @@
 title: probetas-PreGame
 tags: PreGame
 ---
-<<if $SeparaColores eq 0>>
+<<set $SeparaColores to $SeparaColores+1>>
+<<if $SeparaColores eq 1>>
 	<color=maroon>Teléfono:</color> <color=silver>*Sonidos de vibración*</color>
 	<color=silver>-Descolgando el teléfono-</color> <color=lightblue>Deiv I.D.:</color> Sí, dígame.
 	<color=maroon>Teléfono:</color> Buenas tardes señor <color=lightblue>I.D.</color>, somos del departamento de investigación científica de la policía.
 	<color=cyan>Policía:</color> Hemos encontrado restos de huellas y ADN de {$SuspectName} en casa de la víctima.
 	<color=cyan>Policía:</color> Le informamos que cuando estén los resultados se los enviaremos a su correo.
 	<color=lightblue>Deiv I.D.:</color> De acuerdo, gracias por la información<color=silver>-Cuelga el teléfono-</color>.
-<<elseif $SeparaColores eq 1>>
+<<elseif $SeparaColores eq 2>>
 	<color=maroon>Teléfono:</color> <color=silver>*Sonidos de vibración*</color>
 	<color=silver>-Descolgando el teléfono-</color> <color=lightblue>Deiv I.D.:</color> Sí, dígame.
 	<color=maroon>Teléfono:</color> Buenas tardes señor <color=lightblue>I.D.</color>, volvemos a llamar desde la policía científica.
 	<color=cyan>Policía:</color> Nuevos resultados han dado a luz la presencia [select {$SuspectIsMale} True="del sospechoso" False="de la sospechosa"] de nombre {$SuspectName} en casa de la víctima.
 	<color=lightblue>Deiv I.D.:</color> Muchas gracias, manténganme informado<color=silver>-Cuelga el teléfono-</color>.
-<<elseif $SeparaColores eq 2>>
+<<elseif $SeparaColores eq 3>>
 	<color=lightblue>Deiv I.D.:</color> <color=silver>-Llamando por teléfono-</color> Hola, soy <color=lightblue>Deiv I.D.</color>, ¿podría pasarme con la científica?
 	<color=maroon>Teléfono:</color> Claro, un segundo.
 	<color=maroon>Teléfono:</color> ...
 	<color=cyan>Policía:</color> ¿En qué podemos ayudarle?
 	<color=lightblue>Deiv I.D.:</color> Me gustaría que hicieran un repaso a las muestras que tienen, por si hubiera alguna coincidencia con {$SuspectName}, [select {$SuspectIsMale} True="un sospechoso" False="una sospechosa"].
 	<color=cyan>Policía:</color> Le echaremos un vistazo señor <color=lightblue>I.D.</color>.
-<<elseif $SeparaColores eq 3>>
+<<elseif $SeparaColores eq 4>>
 	<color=lightblue>Deiv I.D.:</color> <color=silver>-Llamando por teléfono-</color> Hola, soy <color=lightblue>Deiv I.D.</color>. Póngame con la científica, por favor.
 	<color=maroon>Teléfono:</color> Claro, un segundo.
 	<color=maroon>Teléfono:</color> ...
@@ -29,7 +30,7 @@ tags: PreGame
 	<color=lightblue>Deiv I.D.:</color> Me gustaría que volvieran a revisar el caso por si encuentran algo de información extra sobre {$SuspectName}.
 	<color=cyan>Policía:</color> De acuerdo señor <color=lightblue>I.D.</color> pero tenga en cuenta que es la cuarta vez que revisamos el caso y puede que no encontremos nada.
 	<color=lightblue>Deiv I.D.:</color> Lo tengo en cuenta, gracias.
-<<elseif $SeparaColores eq 4>>
+<<elseif $SeparaColores eq 5>>
 	<color=lightblue>Deiv I.D.:</color> Con todos los papeles que tengo de la científica, y no tengo la información que quiero sobre {$SuspectName}.
 	<color=lightblue>Deiv I.D.:</color> Tal vez se me haya escapado algo.
 	<color=lightblue>Deiv I.D.:</color> Ya sé, voy a revisar los análisis centrándome en [select {$SuspectIsMale} True="este sospechoso" False="esta sospechosa"] en concreto.
@@ -37,7 +38,6 @@ tags: PreGame
 
 <color=lightblue>Deiv I.D.:</color> A ver qué desvela la información de la científica.
 
-<<set $SeparaColores to $SeparaColores+1>>
 <<set $ContinueMode to "Button">>
 <color=orange>Mueve las bolas entre las probetas para que cada probeta se quede con un solo color. <i>Solo puedes mover las bolas si las colocas en una probeta vacía o sobre una bola de su mismo color.</i></color>
 ===

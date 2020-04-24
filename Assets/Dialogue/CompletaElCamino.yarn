@@ -1,19 +1,20 @@
 title: CompletaElCamino-PreGame
 tags: PreGame
 ---
-<<if $CompletaCamino eq 0>>
+<<set $CompletaCamino to $CompletaCamino+1>>
+<<if $CompletaCamino eq 1>>
 	<color=lightblue>Deiv I.D.:</color> Correos con la víctima, redes sociales, etc.
 	<color=lightblue>Deiv I.D.:</color> He encontrado bastante información sobre {$SuspectName}.
 	<color=lightblue>Deiv I.D.:</color> Por desgracia, a simple vista, nada de esto me revela nada.
 	<color=lightblue>Deiv I.D.:</color> Es todo superficial y no puedo sacar nada en claro.
 	<color=lightblue>Deiv I.D.:</color> Tal vez, juntándolo todo, y mirándolo con perspectiva, pueda encontrar algo.
 	<color=lightblue>Deiv I.D.:</color> Me va a llevar mi tiempo, espero que valga la pena.
-<<elseif $CompletaCamino eq 1>>
+<<elseif $CompletaCamino eq 2>>
 	<color=lightblue>Deiv I.D.:</color> Otro aparente callejón sin salida, pero tengo que seguir investigando a {$SuspectName}.
 	<color=lightblue>Deiv I.D.:</color> Tendré que volver a sacar a relucir mis famosas dotes deductivas.
 	<color=lightblue>Deiv I.D.:</color> Esta vez he podido sacar algo más de infromación sobre sus familiares.
 	<color=lightblue>Deiv I.D.:</color> Vamos a ver si tengo algo de suerte.
-<<elseif $CompletaCamino eq 2>>
+<<elseif $CompletaCamino eq 3>>
 	<color=lightblue>Deiv I.D.:</color> ¿En serio? ¿Tampoco encuentro más información sobre {$SuspectName}?
 	<color=lightblue>Deiv I.D.:</color> Supongo que tendré que volver a revisar todo lo que he obtenido sobre [select {$SuspectIsMale} True="él" False="ella"].
 	<color=lightblue>Deiv I.D.:</color> Esto de no poder salir a la calle a investigar me está matando.
@@ -21,7 +22,6 @@ tags: PreGame
 
 <color=lightblue>Deiv I.D.:</color> <color=silver>-Dándose palmaditas en la cara-</color> Vamos, <color=lightblue>Deiv</color>, que tú puedes.
 
-<<set $CompletaCamino to $CompletaCamino+1>>
 <<set $ContinueMode to "Button">>
 <color=orange>Gira las partes de los caminos para llevar la suposición inicial hasta la conclusión y poder descubrir una nueva pista sobre {$SuspectName}.</color>
 ===
