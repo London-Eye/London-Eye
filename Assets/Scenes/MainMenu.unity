@@ -3353,6 +3353,37 @@ PrefabInstance:
       propertyPath: m_Text
       value: Sospechosos
       objectReference: {fileID: 0}
+    - target: {fileID: 3323268401168792792, guid: 68f01693af15f014e841892ba837812e,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 3d346607d4ef83c48b9e62a5a00b66ec,
+        type: 3}
+    - target: {fileID: 3323268401168792792, guid: 68f01693af15f014e841892ba837812e,
+        type: 3}
+      propertyPath: m_FontData.m_FontStyle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3323268401168792792, guid: 68f01693af15f014e841892ba837812e,
+        type: 3}
+      propertyPath: m_FontData.m_MaxSize
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3323268401168792792, guid: 68f01693af15f014e841892ba837812e,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.1981132
+      objectReference: {fileID: 0}
+    - target: {fileID: 3323268401168792792, guid: 68f01693af15f014e841892ba837812e,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.1981132
+      objectReference: {fileID: 0}
+    - target: {fileID: 3323268401168792792, guid: 68f01693af15f014e841892ba837812e,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.1981132
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68f01693af15f014e841892ba837812e, type: 3}
 --- !u!224 &961306818 stripped
@@ -4871,7 +4902,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Acusar a...
+          m_StringArgument: "Acusaci\xF3n"
           m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 734213966}
