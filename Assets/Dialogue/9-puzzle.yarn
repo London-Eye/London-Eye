@@ -53,10 +53,10 @@ tags: PostGame
 
 <<set $ContinueMode to "Button">>
 <<if $SuspectEvidencesFound eq 0>>
-	<color=lightblue>Deiv I.D.:</color> Por la forma en que {$RandomName} escribe sobre {$SuspectName}, es fácil deducir que es <b>{$SuspectRelation}</b> de la víctima ({$VictimName}).
+	<color=lightblue>Deiv I.D.:</color> Por la forma en que {$RandomName} escribe sobre {$SuspectName}, es fácil deducir que es <b>{$SuspectRelation}</b> de la víctima.
 	<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
 <<elseif $SuspectEvidencesFound eq 1>>
-	<color=lightblue>Deiv I.D.:</color> Curiosamente lo que parecía un nombre cualquiera, en realidad, es la firma. Por lo tanto, viendo el tono de la carta, claramente, {$SuspectName} <b>{$SuspectEmotion}</b> la víctima ({$VictimName}).
+	<color=lightblue>Deiv I.D.:</color> Curiosamente lo que parecía un nombre cualquiera, en realidad, es la firma. Por lo tanto, viendo el tono de la carta, claramente, {$SuspectName} <b>{$SuspectEmotion}</b> la víctima.
 	<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
 <<elseif $SuspectEvidencesFound eq 2>>
 	<color=lightblue>Deiv I.D.:</color> Esto despeja mis dudas, el contenido de la carta claramente confirma que {$SuspectName} <b>{$SuspectHasAlibiAsString}</b> tiene coartada válida para el crimen.

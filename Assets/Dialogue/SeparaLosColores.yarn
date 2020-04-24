@@ -63,16 +63,16 @@ tags: PostGame
 <<if $SuspectEvidencesFound eq 0>>
 	<<if $SuspectRelationIndexCriminal/2 is 0 or 1>>
 		<<set $ContinueMode to "Button">>
-		<color=lightblue>Deiv I.D.:</color> Según esto, al comparar el ADN de {$SuspectName} y la víctima, queda claro que {$SuspectName} es <b>{$SuspectRelation}</b> de la víctima ({$VictimName}).
+		<color=lightblue>Deiv I.D.:</color> Según esto, al comparar el ADN de {$SuspectName} y la víctima, queda claro que {$SuspectName} es <b>{$SuspectRelation}</b> de la víctima.
 	<<elseif $SuspectRelationIndexCriminal/2 is 2 or 3>>
 		<color=lightblue>Deiv I.D.:</color> Según esto, al comparar el ADN de {$SuspectName} y la víctima no se ha encontrado una coincidencia clara.
 		<<set $ContinueMode to "Button">>
-		<color=lightblue>Deiv I.D.:</color> Juntando esto y el número de huellas encontrado en casa de la víctima, lo más probable es que {$SuspectName} fuera <b>{$SuspectRelation}</b> de la víctima ({$VictimName}).
+		<color=lightblue>Deiv I.D.:</color> Juntando esto y el número de huellas encontrado en casa de la víctima, lo más probable es que {$SuspectName} fuera <b>{$SuspectRelation}</b> de la víctima.
 	<<endif>>
 	<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
 <<elseif $SuspectEvidencesFound eq 1>>
 	<<set $ContinueMode to "Button">>
-	<color=lightblue>Deiv I.D.:</color> Viendo los informes sobre la distribución de las huellas de {$SuspectName} en casa de la víctima, lo más probable es que {$SuspectName} <b>{$SuspectEmotion}</b> la víctima ({$VictimName}).
+	<color=lightblue>Deiv I.D.:</color> Viendo los informes sobre la distribución de las huellas de {$SuspectName} en casa de la víctima, lo más probable es que {$SuspectName} <b>{$SuspectEmotion}</b> la víctima.
 	<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
 <<elseif $SuspectEvidencesFound eq 2>>
 	<color=lightblue>Deiv I.D.:</color> Respecto al informe de ADN en la escena del crimen, el ADN de {$SuspectName} {$SuspectNotHasAlibiAsString} coincide con el de la escena del crimen.
