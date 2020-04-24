@@ -174,7 +174,7 @@ public class SceneController : MonoBehaviour
     {
         if (recalculate || !currentScoreRank.HasValue)
         {
-            if (_score >= MaxScore / 1.2) currentScoreRank = GoodRank;
+            if (true) currentScoreRank = GoodRank;
             else if (_score < MaxScore / 2) currentScoreRank = BadRank;
             else currentScoreRank = NormalRank;
         }

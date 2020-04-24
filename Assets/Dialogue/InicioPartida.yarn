@@ -151,13 +151,13 @@ tags: Relacion
 title: Walkie-Emocion
 tags: Emocion
 ---
-<<if $CriminalEmotionIndexCriminal is 0 or 1>>
+<<if $CriminalEmotionIndexCriminal is 0 or $CriminalEmotionIndexCriminal is 1>>
     <color=cyan>Policía:</color> La víctima murió por múltiples contusiones en la parte posterior de la cabeza. Quien lo realizó probablemente tenía sentimientos negativos muy fuertes hacia [select {$VictimIsMale} True="él" False="ella"].
-<<elseif $CriminalEmotionIndexCriminal is 2 or 3>>
+<<elseif $CriminalEmotionIndexCriminal is 2 or $CriminalEmotionIndexCriminal is 3>>
     <color=cyan>Policía:</color> Mataron a la víctima de un tiro en la cabeza desde la nuca. Quien [select {$VictimIsMale} True="lo" False="la"] mató seguramente tenía sentimientos negativos hacia la víctima, pero no suficientemente fuertes como para ensañarse.
-<<elseif $CriminalEmotionIndexCriminal is 4 or 5>>
+<<elseif $CriminalEmotionIndexCriminal is 4 or $CriminalEmotionIndexCriminal is 5>>
     <color=cyan>Policía:</color> La víctima tenia un cuchillo clavado en el corazón, esa era su única herida. Lo más seguro es que quien lo hizo sentía algo por la víctima.
-<<elseif $CriminalEmotionIndexCriminal is 6 or 7>>
+<<elseif $CriminalEmotionIndexCriminal is 6 or $CriminalEmotionIndexCriminal is 7>>
     <color=cyan>Policía:</color> El motivo de la muerte es una sola contusión en la cabeza. Parece más un accidente que un asesinato premeditado.
 <<endif>>
 ===
