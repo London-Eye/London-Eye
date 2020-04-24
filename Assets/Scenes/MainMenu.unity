@@ -3445,6 +3445,7 @@ GameObject:
   - component: {fileID: 1276836354}
   - component: {fileID: 1276836357}
   - component: {fileID: 1276836353}
+  - component: {fileID: 1276836359}
   - component: {fileID: 1276836351}
   - component: {fileID: 1276836355}
   - component: {fileID: 1276836352}
@@ -3471,7 +3472,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowReset: 0
   persistStorageOnReset: 0
-  Storage: {fileID: 0}
+  Storage: {fileID: 1276836352}
   textAsset: {fileID: 4900000, guid: 91a40575f01d3c049bcb61de9cd0aa7f, type: 3}
   NameValuesSeparator: '---'
   PoolSeparator: ===
@@ -3537,9 +3538,11 @@ MonoBehaviour:
   murdererKey: Criminal
   randomNameKey: RandomName
   numberOfSuspectsKey: NumberOfSuspects
+  VariableStorage: {fileID: 1276836359}
   FallbackVariableStorage: {fileID: 1276836358}
   characterVariableStorage: {fileID: 1276836355}
-  randomNamePoolSource: {fileID: 1276836352}
+  randomPoolSource: {fileID: 1276836352}
+  randomTextPoolSource: {fileID: 1276836351}
 --- !u!4 &1276836354
 Transform:
   m_ObjectHideFlags: 0
@@ -3701,6 +3704,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultVariables: []
   debugTextView: {fileID: 0}
+--- !u!114 &1276836359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1276836350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f501e10f3c11e145ba4d161178eaef3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allowReset: 0
+  persistStorageOnReset: 0
+  Storage: {fileID: 0}
+  sources:
+  - {fileID: 1276836355}
+  - {fileID: 1276836352}
+  logSetKnownErrors: 0
 --- !u!1 &1337070644
 GameObject:
   m_ObjectHideFlags: 0
