@@ -2,7 +2,7 @@ title: InicioPartida
 tags: Inicio
 ---
 <<StartNewGame GameManager>>
-<color=cyan>Policía:</color> <color=silver>(Soy Deiv I.D., un aclamado investigador que trabaja para la policía)</color>
+<color=lightblue>???:</color> <color=silver>(Soy Deiv I.D., un aclamado investigador que trabaja para la policía)</color>
 <color=lightblue>Deiv I.D.:</color> <color=silver>(Normalmente me envían a resolver los casos más difíciles, esos que la policía no puede resolver)</color>
 <color=lightblue>Deiv I.D.:</color> <color=silver>(En este último caso me han enviado a Londres)</color>
 <color=lightblue>Deiv I.D.:</color> <color=silver>(Parece un caso cualquiera que la policía debería poder resolver, pero hay algo más)</color>
@@ -109,7 +109,7 @@ tags: General
 <<set $CurrentRandomInt to $RandomIntPool>>
 
 <<if $CurrentRandomInt eq 0>>
-    <color=lightblue>Deiv I.D.:</color> Si me atasco en un puzzle puedo dejarlo para más tarde. Pero no podré seguir investigando a ese sospechoso hasta que lo completes.
+    <color=lightblue>Deiv I.D.:</color> Si me atasco en un puzzle puedo dejarlo para más tarde. Pero no podré seguir investigando a ese sospechoso hasta que lo complete.
 <<elseif $CurrentRandomInt eq 1>>
     <color=lightblue>Deiv I.D.:</color> Si no recojo información sobre la víctima, las pistas que consiga me servirán de poco.
 <<elseif $CurrentRandomInt eq 2>>
@@ -142,7 +142,7 @@ title: Walkie-Relacion
 tags: Relacion
 ---
 <<if $CriminalRelationIndexCriminal < 4>>
-    <color=cyan>Policía:</color> La víctima parece estar relajada y tranquila. probablemente, quien [select {$VictimIsMale} True="lo" False="la"] mató fue algún conocido cercano de [select {$VictimIsMale} True="este" False="esta"].
+    <color=cyan>Policía:</color> La víctima parece estar relajada y tranquila. Probablemente, quien [select {$VictimIsMale} True="lo" False="la"] mató fue algún conocido cercano de [select {$VictimIsMale} True="este" False="esta"].
 <<elseif $CriminalRelationIndexCriminal > 3>>
     <color=cyan>Policía:</color> Aunque no parece que se lo viera venir, ya que no hay signos de que se haya defendido, la víctima no está relajada del todo así que en la comisaría pensamos que quien mató a la víctima no era cercano a esta.
 <<endif>>
@@ -152,7 +152,7 @@ title: Walkie-Emocion
 tags: Emocion
 ---
 <<if $CriminalEmotionIndexCriminal is 0 or 1>>
-    <color=cyan>Policía:</color> La víctima murió por múltiples contusiones en la parte posterior de la cabeza. Quien lo realizó proabblemente tenía sentimientos negativos muy fuertes hacia [select {$VictimIsMale} True="él" False="ella"].
+    <color=cyan>Policía:</color> La víctima murió por múltiples contusiones en la parte posterior de la cabeza. Quien lo realizó probablemente tenía sentimientos negativos muy fuertes hacia [select {$VictimIsMale} True="él" False="ella"].
 <<elseif $CriminalEmotionIndexCriminal is 2 or 3>>
     <color=cyan>Policía:</color> Mataron a la víctima de un tiro en la cabeza desde la nuca. Quien [select {$VictimIsMale} True="lo" False="la"] mató seguramente tenía sentimientos negativos hacia la víctima, pero no suficientemente fuertes como para ensañarse.
 <<elseif $CriminalEmotionIndexCriminal is 4 or 5>>
