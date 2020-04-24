@@ -79,7 +79,7 @@ public class ProbetasGameController : PuzzleSetter
         }
 
         tubes = FindObjectsOfType<InitiallyFullTube>();
-        int empty_tubes = tubes.Length - this.c.Length / 4;
+        int empty_tubes = tubes.Length - c.Length / 4;
         Debug.Log(c.Length);
         Debug.Log(tubes.Length);
         for (int i = 0; i < empty_tubes; i++)
