@@ -40,21 +40,15 @@ public class CharacterCreation : MonoBehaviour
     public void NewGame()
     {
         characterVariableStorage.ResetToDefaultsForce();
+        randomPoolSource.ResetToDefaultsForce();
+        randomTextPoolSource.ResetToDefaultsForce();
 
         InitializePools();
 
         CreateVictim();
 
-        randomNamePoolSource.ResetToDefaultsForce();
-
-        VariableStorageGroup variableStorage = gameObject.AddComponent<VariableStorageGroup>();
-        variableStorage.sources = new List<VariableStorageBehaviour>() { characterVariableStorage, randomNamePoolSource };
-
         VariableStorageGroup variableStorageWithFallback = gameObject.AddComponent<VariableStorageGroup>();
-        variableStorageWithFallback.sources = new List<VariableStorageBehaviour>() { variableStorage, FallbackVariableStorage };
-
-        if (VariableStorage != null) Destroy(VariableStorage.gameObject);
-        VariableStorage = variableStorage;
+        variableStorageWithFallback.sources = new List<VariableStorageBehaviour>() { VariableStorage, FallbackVariableStorage };
 
         if (VariableStorageWithFallback != null) Destroy(VariableStorageWithFallback.gameObject);
         VariableStorageWithFallback = variableStorageWithFallback;
@@ -101,7 +95,7 @@ public class CharacterCreation : MonoBehaviour
     private HashSet<Suspect> suspects;
     public IReadOnlyCollection<Suspect> Suspects => suspects;
 
-    public VariableStorageBehaviour VariableStorage { get; private set; }
+    public VariableStorageGroup VariableStorage;
     public VariableStorageBehaviour VariableStorageWithFallback { get; private set; }
 
     public VariableStorageBehaviour FallbackVariableStorage;
@@ -115,7 +109,8 @@ public class CharacterCreation : MonoBehaviour
     private SelectorPool<int> mEmotion, fEmotion;
     private SelectorPool<int> mImages, fImages;
 
-    public PoolVariableStorage randomNamePoolSource;
+    public PoolVariableStorage randomPoolSource;
+    public TextAssetPoolVariableStorage randomTextPoolSource;
 
     internal Dictionary<System.Type, SelectorPool<int>> PuzzleCombinationPools { get; set; }
 
@@ -301,6 +296,6 @@ public class CharacterCreation : MonoBehaviour
             randomNamePool.Pool.Add(femaleCharacterStats.characterName[fNames.Select()]);
         }
 
-        randomNamePoolSource.SelectorPools[randomNameKey] = randomNamePool;
+        randomPoolSource.SelectorPools[randomNameKey] = randomNamePool;
     }
 }
