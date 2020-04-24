@@ -41,7 +41,6 @@ public class SceneController : MonoBehaviour
     [YarnCommand("StartCardGame")]
     public void StartCardGame()
     {
-        PutCardsOnTable();
         GameRunning = true;
 
         scoreLabel.gameObject.SetActive(true);
@@ -50,13 +49,14 @@ public class SceneController : MonoBehaviour
         movesLabel.gameObject.SetActive(true);
         StartCoroutine(CheckMoves());
 
-        layout.SetActive(true);
+        
 
         OnStartCardGame.Invoke();
     }
 
-    private void PutCardsOnTable()
+    public void PutCardsOnTable()
     {
+        layout.SetActive(true);
         int[] ids = new int[gridRows * gridCols];
         for (int i = 0; i < ids.Length; i++)
         {
