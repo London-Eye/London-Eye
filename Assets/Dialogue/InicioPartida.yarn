@@ -55,6 +55,7 @@ tags: Return
 title: Policia-PistasJuego
 tags: PistasJuego
 ---
+<<set $AllowSkip to true>>
 <<set $ContinueMode to "skip">>
 <color=lightblue>Deiv I.D.:</color> <color=silver>-Abriendo su diário personal-</color> ¿Sobre qué deberia consultar información en mis notas?
 <<set $ContinueMode to "time">>
@@ -114,7 +115,7 @@ tags: General
     <color=lightblue>Deiv I.D.:</color> Si no recojo información sobre la víctima, las pistas que consiga me servirán de poco.
 <<elseif $CurrentRandomInt eq 2>>
     <color=lightblue>Deiv I.D.:</color> Puedo acelerar el texto con <color=orange>Espacio</color> o saltarlo con <color=orange>Enter</color>.
-<<elseif $CurrentRandomInt eq 4>>
+<<elseif $CurrentRandomInt eq 3>>
     <color=lightblue>Deiv I.D.:</color> Tengo un número limitado de investigaciones sobre los sospechosos, tendré con cuidado.
 <<endif>>
 ===
