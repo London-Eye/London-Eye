@@ -31,7 +31,7 @@ tags: PreGame
 <<elseif $MoveTheBlock eq 4>>
 	<color=lightblue>Deiv I.D.:</color> <color=silver>-Llamando por teléfono-</color> ¿<color=lime>Tsudo</color>? Soy <color=lightblue>Deiv</color> otra vez.
 	<color=lime>Tsudo P.C.:</color> ¿Alguien más que tenga que escudriñar?
-	<color=lightblue>Deiv I.D.:</color> Sí, esta vez se llama {$SuspectName}.
+	<color=lightblue>Deiv I.D.:</color> Sí, esta vez se trata de {$SuspectName}.
 	<color=lightblue>Deiv I.D.:</color> Por cierto, gracias por el aviso anterior, me ha venido de perlas.
 	<color=lime>Tsudo P.C.:</color> De nada, voy a ver qué saco sobre [select {$SuspectIsMale} True="este" False="esta"].
 <<endif>>
@@ -39,7 +39,6 @@ tags: PreGame
 <color=lightblue>Deiv I.D.:</color> Gracias <color=silver>-Cuelga-</color>
 <color=lightblue>Deiv I.D.:</color> A ver qué consigue encontrar.
 
-<<set $ContinueMode to "Button">>
 <color=orange>Mueve los bloques del <b>cortafuegos</b> para poder introducir el archivo con el <b>virus</b> en su ordenador.</color>
 <<StartGame MoveTheBlockController>>
 ===
@@ -49,7 +48,6 @@ tags: PostGame
 ---
 <<EndGame MoveTheBlockController>>
 <<CompletePuzzle GameManager>>
-<<set $ContinueMode to "Time">>
 
 <<if $MoveTheBlock eq 1>>
 	<color=lightblue>Deiv I.D.:</color> Vamos a ver los datos que me ha enviado <color=lime>Tsudo</color>
@@ -63,18 +61,15 @@ tags: PostGame
 
 <<if $SuspectEvidencesFound eq 0>>
 	<color=lightblue>Deiv I.D.:</color> Al parecer ha entrado en su correo electrónico y... ¡bingo!
-	<<set $ContinueMode to "Button">>
 	<color=lightblue>Deiv I.D.:</color> Según estos mensajes, {$SuspectName} es <b>{$SuspectRelation}</b> de la víctima.
 	<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
 <<elseif $SuspectEvidencesFound eq 1>>
-	<color=lightblue>Deiv I.D.:</color> Así que donde ha encontrado información útil es en su, ejem, <color=green>aplicación de mensajería instantánea</color>...
-	<<set $ContinueMode to "Button">>
-	<color=lightblue>Deiv I.D.:</color> Entiendo, por los mensajes que se ha enviado con {$RandomName}, {$SuspectName} <b>{$SuspectEmotion}</b> la víctima.
+	<color=lightblue>Deiv I.D.:</color> Así que donde ha encontrado información útil es en su WhatsApp, curioso...
+	<color=lightblue>Deiv I.D.:</color> Entiendo, por los mensajes que se ha enviado con {$RandomName}, parece que {$SuspectName} <b>{$SuspectEmotion}</b> la víctima.
 	<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
 <<elseif $SuspectEvidencesFound eq 2>>
-	<color=lightblue>Deiv I.D.:</color> Yendo directo a por sus cuentas, eh, vieja pícara...
-	<<set $ContinueMode to "Button">>
-	<color=lightblue>Deiv I.D.:</color> Según sus facturas, la coartada de {$SuspectName} <b>{$SuspectHasAlibiAsString}</b> es válida.
+	<color=lightblue>Deiv I.D.:</color> Yendo directo a por sus cuentas, eh, viej pícaro...
+	<color=lightblue>Deiv I.D.:</color> Según sus facturas, la coartada de {$SuspectName} <b>{$SuspectHasAlibiAsString}</b> que parece válida.
 	<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
 <<endif>>
 

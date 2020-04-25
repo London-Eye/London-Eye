@@ -2,32 +2,31 @@ title: Acusacion-SinPruebas
 tags: SinPruebas
 ---
 <<if $SuspectName eq $CriminalName and $PuzzlesResueltos eq 12>>
-    <color=yellow>Juez:</color> Ya se han presentadp las pocas pruebas que se han podido encontrar en contra [select {$SuspectIsMale} True="del acusado" False="de la acusada"], {$SuspectName}.
+    <color=yellow>Juez:</color> Ya se han presentadp las pocas pruebas que se han podido encontrar en contra [select {$SuspectIsMale} True="del acusado" False="de la acusada"].
     <color=yellow>Juez:</color> Ahora, el jurado, deliberará sobre el caso del asesinato de {$VictimName} y emitirá su veredicto.
     <color=yellow>Jurado:</color> <color=silver>-Deliberando-</color>
-    <color=yellow>Juez:</color> Finalmente el jurado emitirá su veredicto.
+    <color=yellow>Juez:</color> Ahora, el jurado, emitirá su veredicto.
     <color=yellow>Juez:</color> Jurado, proceda.
 
     <<set $Inocent to false>>
     <<set $Ending to 2>>
     [[Jurado]]
 <<else>>
-    <color=yellow>Juez:</color> Ya se han presentadp las pocas pruebas que se han podido encontrar en contra [select {$SuspectIsMale} True="del acusado" False="de la acusada"] {$SuspectName}.
+    <color=yellow>Juez:</color> Ya se han presentadp las pocas pruebas que se han podido encontrar en contra [select {$SuspectIsMale} True="del acusado" False="de la acusada"].
     <color=yellow>Juez:</color> Ahora, el jurado, deliberará sobre el caso del asesinato de {$VictimName} y emitirá su veredicto.
     <color=yellow>Jurado:</color> <color=silver>-Deliberando-</color>
-    <color=yellow>Jurado:</color> Juez, el jurado ha dictaminado que no tenemos suficientes pruebas para formar una opinión clara [select {$SuspectIsMale} True="el acusado" False="la acusada"].
-    <color=yellow>Juez:</color> Bien, con esto declaro este juicio nulo y, [select {$SuspectIsMale} True="el acusado" False="la acusada"] {$SuspectName} queda libre de todos los cargos.
+    <color=yellow>Jurado:</color> Juez, el jurado ha dictaminado que no tenemos suficientes pruebas para formar una opinión clara sobre [select {$SuspectIsMale} True="el acusado" False="la acusada"].
+    <color=yellow>Juez:</color> Bien, con esto declaro este juicio nulo y, [select {$SuspectIsMale} True="el acusado" False="la acusada"] queda libre de todos los cargos.
     <color=magenta>Diana:</color> <color=silver>-Saliendo de la sala-</color> ¿Como se te ocurre acusar a alguien sin tener pruebas?
     <color=lightblue>Deiv I.D.:</color> Porque estoy seguro de que {$SuspectName} es quien ha cometido el asesinato.
     <color=magenta>Diana:</color> ¿Y que más da eso? Si no tienes pruebas un jurado no aceptará tu acusación.
     <color=magenta>Diana:</color> Que no vuelva a pasar esto <color=lightblue>Deiv</color>.
     <color=lightblue>Deiv I.D.:</color> Tranquila jefa, no volverá a pasar.
-    <color=magenta>Diana:</color> De momento quedas suspendido de forma temporal hasta que yo diga lo contrario.
-    <color=magenta>Diana:</color> Ahora vuelve a tu casa y no salgas, te recuerdo que estamos en mitad de una pandémia.
+    <color=magenta>Diana:</color> De momento, quedas suspendido hasta que yo diga lo contrario.
+    <color=magenta>Diana:</color> Ahora, vuelve a tu casa y no salgas, te recuerdo que estamos en mitad de una pandémia.
     <color=lightblue>Deiv I.D.:</color> De acuerdo jefa, y una vez más, lo siento.
 
-    <<set $ContinueMode to "Button">>
-    <color=orange>La única forma que te acepten un sospechoso sin pruebas, es que hayas agotado todas las vías de investigación.</color>
+    <color=orange>La única forma que el jurado acepte un sospechoso, sin pruebas, es que hayas agotado todas las vías de investigación.</color>
     <<set $SuspectEnding to 2>>
 <<endif>>
 ===
@@ -39,10 +38,10 @@ tags: SinPruebas
 title: Acusacion-Inocente
 tags: Inocente
 ---
-<color=yellow>Juez:</color> Se han presentado las pruebas contra [select {$SuspectIsMale} True="el acusado" False="la acusada"], {$SuspectName}.
+<color=yellow>Juez:</color> Se han presentado las pruebas contra [select {$SuspectIsMale} True="el acusado" False="la acusada"].
 <color=yellow>Juez:</color> El jurado procederá a deliberar.
 <color=yellow>Jurado:</color> <color=silver>-Deliberando-</color>
-<color=yellow>Juez:</color> Finalmente el jurado emitirá su veredicto.
+<color=yellow>Juez:</color> Ahora, el jurado, emitirá su veredicto.
 <color=yellow>Juez:</color> Jurado, proceda.
 
 <<set $Inocent to true>>
@@ -57,10 +56,10 @@ tags: Inocente
 title:Acusacion-Criminal
 tags: Criminal
 ---
-<color=yellow>Juez:</color> Se han presentado las pruebas contra [select {$SuspectIsMale} True="el acusado" False="la acusada"], {$SuspectName}.
+<color=yellow>Juez:</color> Se han presentado las pruebas contra [select {$SuspectIsMale} True="el acusado" False="la acusada"].
 <color=yellow>Juez:</color> El jurado procederá a deliberar.
 <color=yellow>Jurado:</color> <color=silver>-Deliberando-</color>
-<color=yellow>Juez:</color> Finalmente el jurado emitirá su veredicto.
+<color=yellow>Juez:</color> Ahora, el jurado, emitirá su veredicto.
 <color=yellow>Juez:</color> Jurado, proceda.
 
 <<set $Inocent to false>>
@@ -78,7 +77,7 @@ tags: Jurado
 <<set $RandomIntMax to 3>>
 <<set $CurrentRandomInt to $RandomInt>>
 
-
+<<set $ContinueMode to "Time">>
 <<if $Inocent>>
     <<if $CurrentRandomInt eq 0>>
         <<set $ContinueTime to 0.5>>
@@ -89,7 +88,6 @@ tags: Jurado
         <color=yellow>Jurado 5:</color> Inocente
         <color=yellow>Jurado 6:</color> Inocente
         <color=yellow>Jurado 7:</color> Inocente
-        <<set $ContinueTime to 1.5>>
     <<elseif $CurrentRandomInt eq 1>>
         <<set $ContinueTime to 0.5>>
         <color=yellow>Jurado 1:</color> Inocente
@@ -99,7 +97,6 @@ tags: Jurado
         <color=yellow>Jurado 5:</color> Inocente
         <color=yellow>Jurado 6:</color> Culpable
         <color=yellow>Jurado 7:</color> Inocente
-        <<set $ContinueTime to 1.5>>
     <<elseif $CurrentRandomInt eq 2>>
         <<set $ContinueTime to 0.5>>
         <color=yellow>Jurado 1:</color> Culpable
@@ -109,7 +106,6 @@ tags: Jurado
         <color=yellow>Jurado 5:</color> Culpable
         <color=yellow>Jurado 6:</color> Culpable
         <color=yellow>Jurado 7:</color> Inocente
-        <<set $ContinueTime to 1.5>>
     <<endif>>
 <<else>>
     <<if $CurrentRandomInt eq 0>>
@@ -121,7 +117,6 @@ tags: Jurado
         <color=yellow>Jurado 5:</color> Culpable
         <color=yellow>Jurado 6:</color> Culpable
         <color=yellow>Jurado 7:</color> Culpable
-        <<set $ContinueTime to 1.5>>
     <<elseif $CurrentRandomInt eq 1>>
         <<set $ContinueTime to 0.5>>
         <color=yellow>Jurado 1:</color> Inocente
@@ -131,7 +126,6 @@ tags: Jurado
         <color=yellow>Jurado 5:</color> Culpable
         <color=yellow>Jurado 6:</color> Inocente
         <color=yellow>Jurado 7:</color> Culpable
-        <<set $ContinueTime to 1.5>>
     <<elseif $CurrentRandomInt eq 1>>
         <<set $ContinueTime to 0.5>>
         <color=yellow>Jurado 1:</color> Culpable
@@ -141,9 +135,10 @@ tags: Jurado
         <color=yellow>Jurado 5:</color> Culpable
         <color=yellow>Jurado 6:</color> Culpable
         <color=yellow>Jurado 7:</color> Culpable
-        <<set $ContinueTime to 1.5>>
     <<endif>>
 <<endif>>
+
+<<set $ContinueMode to "Button">>
 
 <<if $Ending eq 0>>
     [[Ending-NormalWin]]
@@ -163,18 +158,17 @@ tag: NormalWin
 <color=yellow>Juez:</color> Condeno a {$SuspectName} a {$RandomInt*5} años de cárcel.
 <color=magenta>Diana:</color> <color=silver>-Saliendo de la sala-</color> Muy buen trabajo <color=lightblue>Deiv</color>.
 <color=lightblue>Deiv I.D.:</color> Gracias, te dije que podias confiar en mi.
-<color=magenta>Diana:</color> Ya lo veo. ¿Te ha sido muy dificil compaginarlo con no poder salir de casa?
+<color=magenta>Diana:</color> Ya lo veo. ¿Te ha sido muy difícil compaginarlo con no poder salir de casa?
 <color=lightblue>Deiv I.D.:</color> Algo, pero me las he apañado bien.
 <color=lightblue>Deiv I.D.:</color> Tengo mis recursos, algo así no va a pararme.
-<color=magenta>Diana:</color> Bien bien. Además este caso ha servido para mejorar la recutación del departamento en estos tiempos difíciles.
+<color=magenta>Diana:</color> Bien bien. Además este caso ha servido para mejorar la reputación del departamento en estos tiempos difíciles.
 <color=magenta>Diana:</color> Una vez más, <color=lightblue>Deiv</color>, buen trabajo.
 <color=magenta>Diana:</color> Espero no tener que necesitar de tu destreza en un tiempo próximo, pero me tranquiliza saber que puedo contar contigo.
-<color=lightblue>Deiv I.D.:</color> Me alagan sus palabras, oficial.
+<color=lightblue>Deiv I.D.:</color> Me halagan sus palabras, oficial.
 <color=magenta>Diana:</color> Ahora vuelve a tu casa, disfruta de la tranquilidad de poder estar en casa durante la cuarentena.
 <color=magenta>Diana:</color> Te has ganado un buen descanso.
 
-<<set $ContinueMode to "Button">>
-<color=orange>Has atrapado al criminal y con ello has aumentado tu reputación como investigador.</color>
+<color=orange>Has atrapado al criminal y, con ello, has aumentado tu reputación como investigador.</color>
 <<set $SuspectEnding to 1>>
 ===
 
@@ -184,19 +178,18 @@ tag: Lose
 <color=yellow>Juez:</color> El jurado ha declarado a {$SuspectName} inocente del asesinato de {$VictimName}.
 <color=yellow>Juez:</color> Con esto, declaro a {$SuspectName} libre de todos los cargos de los que se le acusa.
 <color=yellow>Juez:</color> Pueden irse a casa.
-<color=magenta>Diana:</color> <color=silver>-Saliendo de la sala visiblemente furiosa-</color> ¿Pero como se te ocurre?
+<color=magenta>Diana:</color> <color=silver>-Saliendo de la sala, visiblemente furiosa-</color> ¿Pero como se te ocurre?
 <color=lightblue>Deiv I.D.:</color> Estaba casi seguro de que era [select {$SuspectIsMale} True="el asesino" False="la asesina"].
 <color=magenta>Diana:</color> ¿Como que "casi seguro"? ¿No te recalqué la importancia de este caso antes de empezarlo?
 <color=lightblue>Deiv I.D.:</color> Si, jefa.
-<color=magenta>Diana:</color> No puedo creer que acusaras a [select {$SuspectIsMale} True="uun" False="una"] inocente.
+<color=magenta>Diana:</color> No puedo creer que acusaras a [select {$SuspectIsMale} True="un" False="una"] inocente.
 <color=magenta>Diana:</color> Y encima en un caso tan delicado. ¿No se suponia que eras el mejor para estas cosas?
 <color=lightblue>Deiv I.D.:</color> Así es, se me habrá pasado algo, no se que puede haber sido, lo siento.
 <color=magenta>Diana:</color> Y más que lo vas a sentir. Quedas relegado de tus funciones hasta nuevo aviso.
 <color=magenta>Diana:</color> Ahora vuelve a tu casa y no salgas, te recuerdo que estamos en mitad de una pandémia.
 <color=lightblue>Deiv I.D.:</color> De acuerdo, jefa.
 
-<<set $ContinueMode to "Button">>
-<color=orange>Has usado recursos públicos (además, en una situación social donde son escasos) en un inocente...esto va a hacer mella a tu reputación.</color>
+<color=orange>Has usado recursos públicos (además, en una situación social donde son escasos) en un inocente...esto va a dejar mella a tu reputación.</color>
 <<set $SuspectEnding to 2>>
 ===
 
@@ -209,7 +202,7 @@ tag: DeductionWin
 
 <color=yellow>Juez:</color> El jurado ha declarado a {$SuspectName} culpable del asesinato de {$VictimName}.
 <color=yellow>Juez:</color> Condeno a {$SuspectName} a {$RandomInt*5} años de cárcel.
-<color=magenta>Diana:</color> <color=silver>-Saliendo de la sala-</color> ¿Como sabias que era [select {$SuspectIsMale} True="él" False="ella"]? A penas tenias pruebas.
+<color=magenta>Diana:</color> <color=silver>-Saliendo de la sala-</color> ¿Como sabias que era [select {$SuspectIsMale} True="él" False="ella"]? A penas tenias pistas.
 <color=lightblue>Deiv I.D.:</color> Una corazonada.
 <color=magenta>Diana:</color> <color=silver>-Visiblemente furiosa-</color> ¿Has basado un caso tan importante en una corazonada?
 <color=lightblue>Deiv I.D.:</color> Más o menos.
@@ -220,9 +213,8 @@ tag: DeductionWin
 <color=lightblue>Deiv I.D.:</color> Imposible, era alguien a quien la víctima conocía, el crímen lo decía a gritos.
 <color=magenta>Diana:</color> <color=silver>-Aun enfadada pero más tranquila-</color> No se como sigo confiando en ti para estos casos.
 <color=lightblue>Deiv I.D.:</color> Porque sabes que soy el mejor.
-<color=magenta>Diana:</color> Puede. Ahora vuelve a casa y no salgas, te recuerdo que estamos luchando contra una pandemia.
+<color=magenta>Diana:</color> Puede. Ahora vuelve a casa y no salgas, te recuerdo que estamos luchando contra una pandémia.
 
-<<set $ContinueMode to "Button">>
 <color=orange>Bien hecho pero la próxima vez intenta apuntar mejor en tus investigaciones sobre los sospechosos.</color>
 <<set $SuspectEnding to 1>>
 ===
