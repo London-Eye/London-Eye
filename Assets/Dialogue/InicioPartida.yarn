@@ -12,7 +12,7 @@ tags: Inicio
 <color=maroon>Teléfono:</color> *Sonidos de vibración*
 <color=silver>-Descolgando el teléfono-</color> <color=lightblue>Deiv I.D.:</color> Sí, dígame.
 <color=maroon>Teléfono:</color> ¿<color=lightblue>Deiv</color>? Tenemos que hablar sobre el caso.
-<color=lightblue>Deiv I.D.:</color> <color=silver><i>La chica que llama es </i></color><color=magenta><i>Diana</i></color><color=silver><i>, mi superior</i></color> Por fin, ya era hora de que me informara de algo.
+<color=lightblue>Deiv I.D.:</color> <color=silver><i>(La chica que llama es </i></color><color=magenta><i>Diana</i></color><color=silver><i>, mi superior)</i></color> Por fin, ya era hora de que me informara de algo.
 <color=magenta>Diana:</color> [select {$VictimIsMale} True="El chico" False="La chica"] que ha muerto se llamaba {$VictimName}.
 <color=magenta>Diana:</color> Trabajaba en el supermercado como [select {$VictimIsMale} True="reponedor" False="reponedora"] y [select {$VictimIsMale} True="lo" False="la"] mataron días antes del confinamiento.
 <color=lightblue>Deiv I.D.:</color> <color=silver>-Tomando apuntes en un diario-</color> ¿Dónde [select {$VictimIsMale} True="lo" False="la"] mataron? ¿En el propio supermercado?
@@ -79,6 +79,7 @@ tags: PistasJuego
 title: Pistas-MenuPrincipal
 tags: MenuPrincipal
 ---
+<<set $ContinueMode to "Button">>
 <color=lightblue>Deiv I.D.:</color> Puedo acceder a los sospechosos desde el tablón de la pared.
 <color=lightblue>Deiv I.D.:</color> En el archivador puedo encontrar los puzzles que me he dejado a medias.
 <color=lightblue>Deiv I.D.:</color> En el ordenador de la derecha puedo llevar a juicio al sospechoso que creo que es el asesino.
@@ -88,6 +89,7 @@ tags: MenuPrincipal
 title: Pistas-AcusarSospechoso
 tags: AcusarSospechoso
 ---
+<<set $ContinueMode to "Button">>
 <color=lightblue>Deiv I.D.:</color> Si acuso a un sospechoso con menos de 2 pistas es muy probable que no den el juicio como válido.
 <color=lightblue>Deiv I.D.:</color> Solo puedo acusar a un sospechoso, tendré que elegir con cuidado.
 <color=lightblue>Deiv I.D.:</color> Si he investigado todo lo posible, y he elegido al sospechoso por descarte, es posible que den el juicio como válido.
@@ -96,6 +98,7 @@ tags: AcusarSospechoso
 title: Pistas-General
 tags: General
 ---
+<<set $ContinueMode to "Button">>
 <color=lightblue>Deiv I.D.:</color> Si me atasco en un puzzle puedo dejarlo para más tarde. Pero no podré seguir investigando a ese sospechoso hasta que lo complete.
 <color=lightblue>Deiv I.D.:</color> Si no recojo información sobre la víctima, las pistas que consiga me servirán de poco.
 <color=lightblue>Deiv I.D.:</color> Puedo completar y pasar una linia de texto con <color=orange><b>Enter</b></color> o saltar el bloque entero con la tecla <color=orange><b>S</b></color>.
