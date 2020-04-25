@@ -112,7 +112,7 @@ tags: InvestigarVictima
 ---
 <<set $AllowSkip to true>>
 <<set $ContinueMode to "skip">>
-<color=cyan>Policía:</color> Buenas señor <color=lightblue>I.D.</color>. ¿Que quiere saber sobre el crímen?
+<color=cyan>Policía:</color> Buenas señor <color=lightblue>I.D.</color> ¿Que quiere saber sobre el crímen?
 
 ->¿Alguna pista sobre la relación del asesino y la víctima?
     [[Walkie-Relacion]]
@@ -125,6 +125,7 @@ tags: InvestigarVictima
 title: Walkie-Relacion
 tags: Relacion
 ---
+<<set $ContinueMode to "Button">>
 <<if $CriminalRelationIndexCriminal < 4>>
     <color=cyan>Policía:</color> La víctima parece estar relajada y tranquila. Probablemente, quien [select {$VictimIsMale} True="lo" False="la"] mató fue algún conocido cercano de [select {$VictimIsMale} True="este" False="esta"].
 <<elseif $CriminalRelationIndexCriminal > 3>>
@@ -135,6 +136,7 @@ tags: Relacion
 title: Walkie-Emocion
 tags: Emocion
 ---
+<<set $ContinueMode to "Button">>
 <<if $CriminalEmotionIndexCriminal is 0 or $CriminalEmotionIndexCriminal is 1>>
     <color=cyan>Policía:</color> La víctima murió por múltiples contusiones en la parte posterior de la cabeza. Quien lo realizó probablemente tenía sentimientos negativos muy fuertes hacia [select {$VictimIsMale} True="él" False="ella"].
 <<elseif $CriminalEmotionIndexCriminal is 2 or $CriminalEmotionIndexCriminal is 3>>
