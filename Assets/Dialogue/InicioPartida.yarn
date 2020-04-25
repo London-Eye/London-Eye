@@ -2,7 +2,9 @@ title: InicioPartida
 tags: Inicio
 ---
 <<StartNewGame GameManager>>
+<<set $HintsVisible to true>>
 <color=lightblue>???:</color> <color=silver><i>Soy Deiv I.D., un aclamado investigador que trabaja para la policía.</i></color>
+<<set $HintsVisible to false>>
 <color=lightblue>Deiv I.D.:</color> <color=silver><i>Normalmente me envían a resolver los casos más difíciles, esos que la policía no puede resolver.</i></color>
 <color=lightblue>Deiv I.D.:</color> <color=silver><i>En este último caso me han enviado a Londres.</i></color>
 <color=lightblue>Deiv I.D.:</color> <color=silver><i>Parece un caso cualquiera que la policía debería poder resolver, pero hay algo más.</i></color>
