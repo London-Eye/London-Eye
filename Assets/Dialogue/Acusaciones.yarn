@@ -138,7 +138,7 @@ tags: Jurado
     <<endif>>
 <<endif>>
 
-<<set $ContinueMode to "Button">>
+<<set $ContinueMode to "Click">>
 
 <<if $Ending eq 0>>
     [[Ending-NormalWin]]

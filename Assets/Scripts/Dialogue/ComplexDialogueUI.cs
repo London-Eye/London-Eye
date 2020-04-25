@@ -309,6 +309,19 @@ namespace Assets.Scripts.Dialogue
         }
         #endregion
 
+        #region Hints
+        [Header("Hints")]
+        public TMPro.TextMeshProUGUI hintsText;
+
+        [YarnAccess]
+        public bool HintsVisible
+        {
+            get => hintsText.gameObject.activeSelf;
+            set => hintsText.gameObject.SetActive(value);
+        }
+
+        
+        #endregion
 
         private void RunLineLogger(Exception ex)
         {

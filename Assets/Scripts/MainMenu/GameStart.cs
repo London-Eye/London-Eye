@@ -3,8 +3,14 @@ using UnityEngine.SceneManagement;
 
 public class GameStart : MonoBehaviour
 {
-    public void StartGame() {
-        SceneManager.LoadScene("MainMenu");
+    private void Start()
+    {
+        if (CharacterCreation.Instance != null)
+        {
+            Destroy(CharacterCreation.Instance.gameObject);
+        }
     }
+
+    public void StartGame() => SceneManager.LoadScene(1);
     public void ExitGame() => PauseController.Exit();
 }
