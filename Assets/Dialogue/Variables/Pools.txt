@@ -24,7 +24,7 @@ La cantante
 La chica del tiempo
 Nuestra amiga
 La mujer del presidente
-Mi vecina del 5º
+Mi vecina del 5to
 ===
 
 ProfesionMasculina
@@ -34,5 +34,5 @@ El cantante
 El chico del tiempo
 Nuestro amigo
 El hombre de la presidenta
-Mi vecino del 3º
+Mi vecino del 3ro
 ===

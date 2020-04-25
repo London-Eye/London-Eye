@@ -84,7 +84,7 @@ tags: PostGame
 	<color=lightblue>Deiv I.D.:</color> Entiendo, por los mensajes que se ha enviado con {$RandomName}, parece que {$SuspectName} <b>{$SuspectEmotion}</b> la víctima.
 	<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
 <<elseif $SuspectEvidencesFound eq 2>>
-	<color=lightblue>Deiv I.D.:</color> Yendo directo a por sus cuentas, eh, viej pícaro...
+	<color=lightblue>Deiv I.D.:</color> Yendo directo a por sus cuentas, eh, viejo pícaro...
 	<color=lightblue>Deiv I.D.:</color> Según sus facturas, la coartada de {$SuspectName} <b>{$SuspectHasAlibiAsString}</b> que parece válida.
 	<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
 <<endif>>
