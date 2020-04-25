@@ -66,7 +66,7 @@ tags: PistasJuego
 <<set $AllowSkip to true>>
 <<set $ContinueMode to "skip">>
 <color=lightblue>Deiv I.D.:</color> <color=silver>-Abriendo su diario personal-</color> ¿Sobre qué deberia consultar información en mis notas?
-
+<<set $ContinueMode to "click">>
 ->Sobre la funcionalidad de algo en la oficina.
     [[Pistas-MenuPrincipal]]
 ->Sobre acusar a uno de los sospechosos.
@@ -79,7 +79,6 @@ tags: PistasJuego
 title: Pistas-MenuPrincipal
 tags: MenuPrincipal
 ---
-<<set $ContinueMode to "Button">>
 <color=lightblue>Deiv I.D.:</color> Puedo acceder a los sospechosos desde el tablón de la pared.
 <color=lightblue>Deiv I.D.:</color> En el archivador puedo encontrar los puzzles que me he dejado a medias.
 <color=lightblue>Deiv I.D.:</color> En el ordenador de la derecha puedo llevar a juicio al sospechoso que creo que es el asesino.
@@ -89,7 +88,6 @@ tags: MenuPrincipal
 title: Pistas-AcusarSospechoso
 tags: AcusarSospechoso
 ---
-<<set $ContinueMode to "Button">>
 <color=lightblue>Deiv I.D.:</color> Si acuso a un sospechoso con menos de 2 pistas es muy probable que no den el juicio como válido.
 <color=lightblue>Deiv I.D.:</color> Solo puedo acusar a un sospechoso, tendré que elegir con cuidado.
 <color=lightblue>Deiv I.D.:</color> Si he investigado todo lo posible, y he elegido al sospechoso por descarte, es posible que den el juicio como válido.
@@ -98,7 +96,6 @@ tags: AcusarSospechoso
 title: Pistas-General
 tags: General
 ---
-<<set $ContinueMode to "Button">>
 <color=lightblue>Deiv I.D.:</color> Si me atasco en un puzzle puedo dejarlo para más tarde. Pero no podré seguir investigando a ese sospechoso hasta que lo complete.
 <color=lightblue>Deiv I.D.:</color> Si no recojo información sobre la víctima, las pistas que consiga me servirán de poco.
 <color=lightblue>Deiv I.D.:</color> Puedo completar y pasar una linia de texto con <color=orange><b>Enter</b></color> o saltar el bloque entero con la tecla <color=orange><b>S</b></color>.
@@ -116,6 +113,7 @@ tags: InvestigarVictima
 <<set $AllowSkip to true>>
 <<set $ContinueMode to "skip">>
 <color=cyan>Policía:</color> Buenas señor <color=lightblue>I.D.</color> ¿Que quiere saber sobre el crímen?
+<<set $ContinueMode to "click">>
 
 ->¿Alguna pista sobre la relación del asesino y la víctima?
     [[Walkie-Relacion]]
@@ -128,7 +126,6 @@ tags: InvestigarVictima
 title: Walkie-Relacion
 tags: Relacion
 ---
-<<set $ContinueMode to "Button">>
 <<if $CriminalRelationIndexCriminal < 4>>
     <color=cyan>Policía:</color> La víctima parece estar relajada y tranquila. Probablemente, quien [select {$VictimIsMale} True="lo" False="la"] mató fue algún conocido cercano de [select {$VictimIsMale} True="este" False="esta"].
 <<elseif $CriminalRelationIndexCriminal > 3>>
@@ -139,7 +136,6 @@ tags: Relacion
 title: Walkie-Emocion
 tags: Emocion
 ---
-<<set $ContinueMode to "Button">>
 <<if $CriminalEmotionIndexCriminal is 0 or $CriminalEmotionIndexCriminal is 1>>
     <color=cyan>Policía:</color> La víctima murió por múltiples contusiones en la parte posterior de la cabeza. Quien lo realizó probablemente tenía sentimientos negativos muy fuertes hacia [select {$VictimIsMale} True="él" False="ella"].
 <<elseif $CriminalEmotionIndexCriminal is 2 or $CriminalEmotionIndexCriminal is 3>>
