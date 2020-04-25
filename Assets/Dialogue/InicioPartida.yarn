@@ -51,6 +51,8 @@ tags: Return
 <color=orange>Clicando sobre el tablón encontrarás la lista de sospechosos, ahí podrás empezar a investigar cosas sobre ellos.</color>
 <color=orange>Clicando sobre el ordenador puedes elegir a uno de los sospechosos para enviarlo a juicio.</color>
 <color=orange>Clicando sobre el Walkie-Talkie tendrás la opción de recibir información sobre la escena del crímen y el asesino.</color>
+<color=orange>Accede al menú de pausa presionando la tecla <b>Esc</b>.</color>
+<color=orange>Pasa el texto clicando sobre <b>Continuar</b> o presionando la tecla <b>Enter</b>. Salta el bloque de texto entero presionando la tecla <b>S</b></color>
 <color=orange>Clica sobre la imagen de</color> <color=lightblue>Deiv I.D.</color> <color=orange>para encontrar esta información de nuevo o otra información útil.</color>
 ===
 
@@ -96,7 +98,8 @@ tags: General
 ---
 <color=lightblue>Deiv I.D.:</color> Si me atasco en un puzzle puedo dejarlo para más tarde. Pero no podré seguir investigando a ese sospechoso hasta que lo complete.
 <color=lightblue>Deiv I.D.:</color> Si no recojo información sobre la víctima, las pistas que consiga me servirán de poco.
-<color=lightblue>Deiv I.D.:</color> Puedo acelerar el texto con <color=orange>Espacio</color> o saltarlo con <color=orange>Enter</color>.
+<color=lightblue>Deiv I.D.:</color> Puedo completar y pasar una linia de texto con <color=orange><b>Enter</b></color> o saltar el bloque entero con la tecla <color=orange><b>S</b></color>.
+<color=lightblue>Deiv I.D.:</color> Puedo acceder al menú de pausa presionando la tecla <color=orange><b>Esc</b></color>.
 <color=lightblue>Deiv I.D.:</color> Tengo un número limitado de investigaciones sobre los sospechosos (12), tendré que investigar con cuidado.
 ===
 
@@ -205,4 +208,20 @@ tags:Back
     <<endif>>
 <<endif>>
 <<set $FromPuzzle to false>>
+===
+
+
+
+
+
+title: ComingFrom-Archive
+tag: Redistribute
+---
+<<set $FirstTime to false>>
+===
+
+title: ComingFrom-Board
+tag: Redistribute
+---
+<<set $FirstTime to true>>
 ===

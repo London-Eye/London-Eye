@@ -1,5 +1,17 @@
 title: probetas-PreGame
-tags: PreGame
+tags: Distribute
+---
+<<if $FirstTime>>
+	[[probetas-Dialogue]]
+<<else>>
+	<color=orange>Mueve las bolas entre las probetas para que cada probeta se quede con un solo color. <i>Solo puedes mover las bolas si las colocas en una probeta vacía o sobre una bola de su mismo color.</i></color>
+<<endif>>
+===
+
+
+
+title: probetas-Dialogue
+tag: PreGame
 ---
 <<set $SeparaColores to $SeparaColores+1>>
 <<if $SeparaColores eq 1>>
@@ -40,6 +52,8 @@ tags: PreGame
 
 <color=orange>Mueve las bolas entre las probetas para que cada probeta se quede con un solo color. <i>Solo puedes mover las bolas si las colocas en una probeta vacía o sobre una bola de su mismo color.</i></color>
 ===
+
+
 
 title: probetas-PostGame
 tags: PostGame

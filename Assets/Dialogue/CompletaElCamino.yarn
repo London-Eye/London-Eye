@@ -1,4 +1,16 @@
 title: CompletaElCamino-PreGame
+tags: Distribute
+---
+<<if $FirstTime>>
+	[[CompletaElCamino-Dialogue]]
+<<else>>
+	<color=orange>Gira las partes de los caminos para que la suposición inicial (una bolita) los atraviese y llegue desde el cerebro hasta la bombilla.</color>
+<<endif>>
+===
+
+
+
+title: CompletaElCamino-Dialogue
 tags: PreGame
 ---
 <<set $CompletaCamino to $CompletaCamino+1>>
@@ -24,6 +36,8 @@ tags: PreGame
 
 <color=orange>Gira las partes de los caminos para que la suposición inicial (una bolita) los atraviese y llegue desde el cerebro hasta la bombilla.</color>
 ===
+
+
 
 title: CompletaElCamino-PostGame
 tags: PostGame

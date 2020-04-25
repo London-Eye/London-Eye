@@ -1,5 +1,18 @@
 title: MoveTheBlock-PreGame
-tags: PreGame
+tags: Distribute
+---
+<<if $FirstTime>>
+	[[MoveTheBlock-Dialogue]]
+<<else>>
+	<color=orange>Mueve los bloques del <b>cortafuegos</b> para poder introducir el archivo con el <b>virus</b> en su ordenador.</color>
+	<<StartGame MoveTheBlockController>>
+<<endif>>
+===
+
+
+
+title: MoveTheBlock-Dialogue
+tag: PreGame
 ---
 <<set $MoveTheBlock to $MoveTheBlock+1>>
 <<if $MoveTheBlock eq 1>>
@@ -42,6 +55,8 @@ tags: PreGame
 <color=orange>Mueve los bloques del <b>cortafuegos</b> para poder introducir el archivo con el <b>virus</b> en su ordenador.</color>
 <<StartGame MoveTheBlockController>>
 ===
+
+
 
 title: MoveTheBlock-PostGame
 tags: PostGame

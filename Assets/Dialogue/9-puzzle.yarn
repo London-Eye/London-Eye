@@ -1,4 +1,16 @@
 title: 9-puzzle-PreGame
+tags: Distribute
+---
+<<if $FirstTime>>
+	[[9-puzzle-Dialogue]]
+<<else>>
+	<color=orange>Intercambia las piezas de posición hasta que estén en el orden correcto, para poder completar la nota.</color>
+<<endif>>
+===
+
+
+
+title: 9-puzzle-Dialogue
 tags: PreGame
 ---
 <<set $NinePuzzle to $NinePuzzle+1>>
@@ -31,9 +43,10 @@ tags: PreGame
 
 <color=lightblue>Deiv I.D.:</color> Hora de investigar por qué el nombre '{$SuspectName}' aparece en esta nota.
 
-<<set $ContinueMode to "Button">>
 <color=orange>Intercambia las piezas de posición hasta que estén en el orden correcto, para poder completar la nota.</color>
 ===
+
+
 
 title: 9-puzzle-PostGame
 tags: PostGame
