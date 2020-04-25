@@ -23,7 +23,7 @@ tags: SinPruebas
     <color=magenta>Diana:</color> Que no vuelva a pasar esto <color=lightblue>Deiv</color>.
     <color=lightblue>Deiv I.D.:</color> Tranquila jefa, no volverá a pasar.
     <color=magenta>Diana:</color> De momento, quedas suspendido hasta que yo diga lo contrario.
-    <color=magenta>Diana:</color> Ahora, vuelve a tu casa y no salgas, te recuerdo que estamos en mitad de una pandémia.
+    <color=magenta>Diana:</color> Ahora, vuelve a tu casa y no salgas, te recuerdo que estamos en mitad de una pandemia.
     <color=lightblue>Deiv I.D.:</color> De acuerdo jefa, y una vez más, lo siento.
 
     <color=orange>La única forma que el jurado acepte un sospechoso, sin pruebas, es que hayas agotado todas las vías de investigación.</color>
@@ -154,10 +154,14 @@ tags: Jurado
 title: Ending-NormalWin
 tag: NormalWin
 ---
+<<set $RandomIntMin to 6>>
+<<set $RandomIntMax to 18>>
+<<set $CurrentRandomInt to $RandomInt>>
+
 <color=yellow>Juez:</color> El jurado ha declarado a {$SuspectName} culpable del asesinato de {$VictimName}.
 <color=yellow>Juez:</color> Condeno a {$SuspectName} a {$RandomInt*5} años de cárcel.
 <color=magenta>Diana:</color> <color=silver>-Saliendo de la sala-</color> Muy buen trabajo <color=lightblue>Deiv</color>.
-<color=lightblue>Deiv I.D.:</color> Gracias, te dije que podias confiar en mi.
+<color=lightblue>Deiv I.D.:</color> Gracias, te dije que podías confiar en mi.
 <color=magenta>Diana:</color> Ya lo veo. ¿Te ha sido muy difícil compaginarlo con no poder salir de casa?
 <color=lightblue>Deiv I.D.:</color> Algo, pero me las he apañado bien.
 <color=lightblue>Deiv I.D.:</color> Tengo mis recursos, algo así no va a pararme.
@@ -186,7 +190,7 @@ tag: Lose
 <color=magenta>Diana:</color> Y encima en un caso tan delicado. ¿No se suponia que eras el mejor para estas cosas?
 <color=lightblue>Deiv I.D.:</color> Así es, se me habrá pasado algo, no se que puede haber sido, lo siento.
 <color=magenta>Diana:</color> Y más que lo vas a sentir. Quedas relegado de tus funciones hasta nuevo aviso.
-<color=magenta>Diana:</color> Ahora vuelve a tu casa y no salgas, te recuerdo que estamos en mitad de una pandémia.
+<color=magenta>Diana:</color> Ahora vuelve a tu casa y no salgas, te recuerdo que estamos en mitad de una pandemia.
 <color=lightblue>Deiv I.D.:</color> De acuerdo, jefa.
 
 <color=orange>Has usado recursos públicos (además, en una situación social donde son escasos) en un inocente...esto va a dejar mella a tu reputación.</color>
@@ -213,7 +217,7 @@ tag: DeductionWin
 <color=lightblue>Deiv I.D.:</color> Imposible, era alguien a quien la víctima conocía, el crímen lo decía a gritos.
 <color=magenta>Diana:</color> <color=silver>-Aun enfadada pero más tranquila-</color> No se como sigo confiando en ti para estos casos.
 <color=lightblue>Deiv I.D.:</color> Porque sabes que soy el mejor.
-<color=magenta>Diana:</color> Puede. Ahora vuelve a casa y no salgas, te recuerdo que estamos luchando contra una pandémia.
+<color=magenta>Diana:</color> Puede. Ahora vuelve a casa y no salgas, te recuerdo que estamos luchando contra una pandemia.
 
 <color=orange>Bien hecho pero la próxima vez intenta apuntar mejor en tus investigaciones sobre los sospechosos.</color>
 <<set $SuspectEnding to 1>>

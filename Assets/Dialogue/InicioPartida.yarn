@@ -3,7 +3,7 @@ tags: Inicio
 ---
 <<StartNewGame GameManager>>
 <color=lightblue>???:</color> <color=silver><i>Soy Deiv I.D., un aclamado investigador que trabaja para la policía.</i></color>
-<color=lightblue>Deiv I.D.:</color> <color=silver><i>Normalmente me envían a resolver los casos más difíciles, esos que la policía no puede resolver.</i></color>
+<color=lightblue>Deiv I.D.:</color> <color=silver><i>Normalmente me envían a solucionar los casos más difíciles, esos que la policía no puede resolver.</i></color>
 <color=lightblue>Deiv I.D.:</color> <color=silver><i>En este último caso me han enviado a Londres.</i></color>
 <color=lightblue>Deiv I.D.:</color> <color=silver><i>Parece un caso cualquiera que la policía debería poder resolver, pero hay algo más.</i></color>
 <color=lightblue>Deiv I.D.:</color> <color=silver><i>La ciudad se ha visto azotada por una pandemia.</i></color>
@@ -179,7 +179,7 @@ tags:Back
         <color=lightblue>Deiv I.D.:</color> Bastante bien jefa.
         <color=lightblue>Deiv I.D.:</color> Acabo de terminar de investigar tres fuentes de información
         <color=magenta>Diana:</color> Me alegro que vaya bien.
-        <color=magenta>Diana:</color> Recuerda que estamos en una pandémia así que no puedes salir de casa.
+        <color=magenta>Diana:</color> Recuerda que estamos en una pandemia así que no puedes salir de casa.
         <color=lightblue>Deiv I.D.:</color> Si jefa, lo tengo en cuenta.
         <color=maroon>Teléfono:</color> <color=silver>-Cuelga-</color>
     <<elseif $PuzzlesResueltos eq 6>>
@@ -195,7 +195,7 @@ tags:Back
         <color=silver>-Descolgando el teléfono-</color> <color=lightblue>Deiv I.D.:</color> Sí, dígame.
         <color=magenta>Diana:</color> <color=lightblue>Deiv</color>, espero resultados.
         <color=lightblue>Deiv I.D.:</color> Estoy sobre la pista pero necesito más tiempo.
-        <color=magenta>Diana:</color> Aun te queda algo de tiempo pero se te termina.
+        <color=magenta>Diana:</color> Aún te queda algo de tiempo pero se te termina.
         <color=magenta>Diana:</color> La próxima vez que te llame será la última, así que apresúrate.
         <color=lightblue>Deiv I.D.:</color> De acuerdo.
         <color=maroon>Teléfono:</color> <color=silver>-Cuelga-</color>

@@ -94,3 +94,11 @@ tags: PostGame
 <<set $FromPuzzle to true>>
 <<BackToMainMenu GameDialogue>>
 ===
+
+
+
+title: ComingFrom-Restart
+tag: Redistribute
+---
+<<set $FirstTime to false>>
+===

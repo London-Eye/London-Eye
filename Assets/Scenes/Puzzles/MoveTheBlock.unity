@@ -4193,6 +4193,41 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 9031774544038136891, guid: 274056581bb348747b9caedd2437fce0,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9031774544038136891, guid: 274056581bb348747b9caedd2437fce0,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9031774544038136891, guid: 274056581bb348747b9caedd2437fce0,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9031774544038136891, guid: 274056581bb348747b9caedd2437fce0,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1954342738305847922}
+    - target: {fileID: 9031774544038136891, guid: 274056581bb348747b9caedd2437fce0,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: StartDialogue
+      objectReference: {fileID: 0}
+    - target: {fileID: 9031774544038136891, guid: 274056581bb348747b9caedd2437fce0,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 9031774544038136891, guid: 274056581bb348747b9caedd2437fce0,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
+      value: ComingFrom-Restart
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 274056581bb348747b9caedd2437fce0, type: 3}
 --- !u!224 &1639826646 stripped
@@ -4980,6 +5015,18 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 1788309105, guid: f9cf9ff9943921943bbb41cab3390a11, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f9cf9ff9943921943bbb41cab3390a11, type: 3}
+--- !u!114 &1954342738305847922 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5296080504864627357, guid: f9cf9ff9943921943bbb41cab3390a11,
+    type: 3}
+  m_PrefabInstance: {fileID: 1954342738305847921}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bec29c0a230741bdac901dba8da47ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4518250470072943194
 PrefabInstance:
   m_ObjectHideFlags: 0

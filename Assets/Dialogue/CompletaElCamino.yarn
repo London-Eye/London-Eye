@@ -59,7 +59,7 @@ tags: PostGame
 	<color=lightblue>Deiv I.D.:</color> Pero después de todo el esfuerzo puedo decir que {$SuspectName} es <b>{$SuspectRelation}</b> de la víctima.
 	<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
 <<elseif $SuspectEvidencesFound eq 1>>
-	<color=lightblue>Deiv I.D.:</color> Resulta que la respuesta estaba delante mía después de todo.
+	<color=lightblue>Deiv I.D.:</color> Resulta que la respuesta estaba delante de mi después de todo.
 	<color=lightblue>Deiv I.D.:</color> Estas fotos junto a la víctima y sus conversaciones demuestran que {$SuspectName} <b>{$SuspectEmotion}</b> la víctima.
 	<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
 <<elseif $SuspectEvidencesFound eq 2>>
@@ -71,4 +71,12 @@ tags: PostGame
 <<set $PuzzlesResueltos to $PuzzlesResueltos+1>>
 <<set $FromPuzzle to true>>
 <<BackToMainMenu GameDialogue>>
+===
+
+
+
+title: ComingFrom-Restart
+tag: Redistribute
+---
+<<set $FirstTime to false>>
 ===

@@ -85,11 +85,19 @@ tags: PostGame
 	<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
 <<elseif $SuspectEvidencesFound eq 2>>
 	<color=lightblue>Deiv I.D.:</color> Yendo directo a por sus cuentas, eh, viejo pícaro...
-	<color=lightblue>Deiv I.D.:</color> Según sus facturas, la coartada de {$SuspectName} <b>{$SuspectHasAlibiAsString}</b> que parece válida.
+	<color=lightblue>Deiv I.D.:</color> Según sus facturas, la coartada de {$SuspectName} <b>{$SuspectHasAlibiAsString}</b> parece válida.
 	<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
 <<endif>>
 
 <<set $PuzzlesResueltos to $PuzzlesResueltos+1>>
 <<set $FromPuzzle to true>>
 <<BackToMainMenu GameDialogue>>
+===
+
+
+
+title: ComingFrom-Restart
+tag: Redistribute
+---
+<<set $FirstTime to false>>
 ===
