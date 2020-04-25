@@ -23,6 +23,8 @@ public class SuspectManager : MonoBehaviour, IComparable<SuspectManager>
 
     public TMPro.TextMeshProUGUI suspectInfoUp, suspectInfoMiddle, suspectInfoDown;
 
+    public Image menuPanel;
+
     private int Id => transform.parent.GetSiblingIndex();
 
     private Suspect suspect;
@@ -117,7 +119,11 @@ public class SuspectManager : MonoBehaviour, IComparable<SuspectManager>
         CharacterCreation.Instance.SetCurrentSuspect(Suspect);
     }
 
-    public void SetIsInAccusationMenu(bool value) => IsInAccusationMenu = value;
+    public void SetIsInAccusationMenu(bool value)
+    {
+        IsInAccusationMenu = value;
+        if (menuPanel != null) menuPanel.color = value ? Color.red : Color.white;
+    }
 
     public void LoadPuzzleOrAccuse()
     {
