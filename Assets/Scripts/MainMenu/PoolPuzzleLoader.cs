@@ -21,12 +21,12 @@ public class PoolPuzzleLoader : MonoBehaviour
     internal int GetCurrentPuzzleCombination(System.Type puzzleType) => CurrentPuzzleCombinations[puzzleType];
 
     public List<string> puzzles;
+    public List<string> puzzleNames;
     public List<Sprite> puzzleMiniatures;
 
-    internal Sprite GetPuzzleMiniature(string puzzleName)
-    {
-        return puzzleMiniatures[puzzles.IndexOf(puzzleName)];
-    }
+    internal Sprite GetPuzzleMiniature(string puzzle) => puzzleMiniatures[puzzles.IndexOf(puzzle)];
+
+    internal string GetPuzzleName(string puzzle) => puzzleNames[puzzles.IndexOf(puzzle)];
 
     internal readonly Dictionary<Suspect, PuzzleLoader> activeSuspects = new Dictionary<Suspect, PuzzleLoader>();
 

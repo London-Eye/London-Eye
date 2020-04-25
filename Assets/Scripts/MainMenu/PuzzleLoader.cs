@@ -18,7 +18,8 @@ public class PuzzleLoader : MonoBehaviour
             suspect = value;
             if (suspect != null)
             {
-                puzzleText.text = $"{suspect.Puzzle} ({suspect.cname})";
+                string puzzleName = CharacterCreation.Instance.PoolPuzzleLoader.GetPuzzleName(suspect.Puzzle);
+                puzzleText.text = $"{puzzleName} {suspect.cname}";
                 puzzleImage.sprite = CharacterCreation.Instance.PoolPuzzleLoader.GetPuzzleMiniature(suspect.Puzzle);
             }
         }
