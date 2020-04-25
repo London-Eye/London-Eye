@@ -1,15 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Failed : MonoBehaviour
+public class BallController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] public FreezePipes container;
+
     private Vector3 initialPos;
     private Vector3 prevPos;
     private Vector3 actualPos;
-    [SerializeField] public FreezePipes container;
-    int cont = 0;
+
+    private Rigidbody2D rb;
+    
+    private int cont = 0;
+
+    // Start is called before the first frame update
     void Start()
     {
         initialPos = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
@@ -23,7 +26,7 @@ public class Failed : MonoBehaviour
         {
             actualPos = gameObject.transform.position;
 
-            if (isOutOfBounds(actualPos) || (actualPos.x == prevPos.x && actualPos.y == prevPos.y))
+            if (IsOutOfBounds(actualPos) || (actualPos.x == prevPos.x && actualPos.y == prevPos.y))
             {
                 container.pipeFreezer();
                 gameObject.transform.position = new Vector3(initialPos.x, initialPos.y, initialPos.z);
@@ -35,11 +38,12 @@ public class Failed : MonoBehaviour
         }
         cont++;
     }
-    private bool isOutOfBounds(Vector3 pos) {
-        if (gameObject.transform.position.y < -15 || gameObject.transform.position.y > 10 || gameObject.transform.position.x < -10 || gameObject.transform.position.x > 10)
-        {
-            return true;
-        }
-        else { return false; }
+
+    public void Unfreeze()
+    {
+        if (rb == null) rb = GetComponent<Rigidbody2D>();
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
+
+    private bool IsOutOfBounds(Vector3 pos) => pos.y < -15 || pos.y > 10 || pos.x < -10 || pos.x > 10;
 }

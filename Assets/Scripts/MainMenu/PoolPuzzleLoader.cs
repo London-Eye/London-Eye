@@ -28,6 +28,8 @@ public class PoolPuzzleLoader : MonoBehaviour
         return puzzleMiniatures[puzzles.IndexOf(puzzleName)];
     }
 
+    internal readonly Dictionary<Suspect, PuzzleLoader> activeSuspects = new Dictionary<Suspect, PuzzleLoader>();
+
     private SelectorPool<string> puzzlePool;
 
     // Start is called before the first frame update
@@ -52,10 +54,10 @@ public class PoolPuzzleLoader : MonoBehaviour
     public void CompletePuzzle(Suspect suspect)
     {
         suspect.Puzzle = null;
-        if (SuspectManager.activeSuspects.ContainsKey(suspect))
+        if (activeSuspects.ContainsKey(suspect))
         {
-            Destroy(SuspectManager.activeSuspects[suspect]);
-            SuspectManager.activeSuspects.Remove(suspect);
+            Destroy(activeSuspects[suspect]);
+            activeSuspects.Remove(suspect);
         }
     }
 }
