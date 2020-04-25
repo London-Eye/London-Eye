@@ -29,6 +29,8 @@ public class SuspectManager : MonoBehaviour, IComparable<SuspectManager>
 
     private Suspect suspect;
 
+    private Color AcuseColor =  new Color(1, (float) 0.6353, (float) 0.6706);
+
     public Suspect Suspect
     {
         get => suspect;
@@ -122,7 +124,7 @@ public class SuspectManager : MonoBehaviour, IComparable<SuspectManager>
     public void SetIsInAccusationMenu(bool value)
     {
         IsInAccusationMenu = value;
-        if (menuPanel != null) menuPanel.color = value ? Color.red : Color.white;
+        if (menuPanel != null) menuPanel.color = value ? AcuseColor : Color.white;
     }
 
     public void LoadPuzzleOrAccuse()
