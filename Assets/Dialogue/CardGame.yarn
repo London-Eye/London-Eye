@@ -2,7 +2,6 @@ title: CardGame-PreGame
 tags: PreGame
 ---
 <<StartCardGame CardGameController>>
-
 <color=maroon>Teléfono:</color> <color=silver>*Sonidos de vibración*</color>
 <color=silver>-Descolgando el teléfono-</color> <color=lightblue>Deiv I.D.:</color> Sí, dígame.
 <color=cyan>Policía:</color> Hola <color=lightblue>Deiv I.D.</color>, te llamo de la comisaría.
@@ -13,7 +12,7 @@ tags: PreGame
 <color=cyan>Policía:</color> Dicho esto, mucha suerte con tu investigación.
 <color=lightblue>Deiv I.D.:</color> Gracias por todo. <color=silver>-Cuelga el teléfono-</color>
 <color=lightblue>Deiv I.D.:</color> <color=silver>-Encendiendo el PC para ver el correo-</color> A ver si puedo descartar algunos así de primeras, así me ahorro trabajo en el futuro.
-<<set $ContinueMode to "Button">>
+
 <color=orange>Empareja los retratos de personas para descartar posibles sospechosos.</color>
 <<PutCardsOnTable CardGameController>>
 ===
@@ -21,8 +20,6 @@ tags: PreGame
 title: CardGame-PostGame
 tags: PostGame
 ---
-
-
 <<set $RandomIntMin to 0>>
 <<set $RandomIntMax to 2>>
 <<set $CurrentRandomInt to $RandomInt>>
@@ -37,7 +34,7 @@ tags: PostGame
 	<<if $CurrentRandomInt is 0>>
 			<color=lightblue>Deiv I.D.:</color> No he podido quitarme muchos pero, al menos, algunos sí.
 	<<elseif $CurrentRandomInt is 1>>
-			<color=lightblue>Deiv I.D.:</color> Podría haberme salido peor, tengo menos trabajo, algo es algo.
+			<color=lightblue>Deiv I.D.:</color> Podría haberme salido peor, tengo algo menos de trabajo, algo es algo.
 	<<endif>>
 <<elseif $NumberOfSuspects == 6>>
 	<<if $CurrentRandomInt is 0>>
@@ -46,7 +43,7 @@ tags: PostGame
 			<color=lightblue>Deiv I.D.:</color> No he podido quitarme casi ninguno, no sé si me renta con el tiempo que he usado.
 	<<endif>>
 <<endif>>
-<<set $ContinueMode to "Button">>
+
 <color=lightblue>Deiv I.D.:</color> Al final, <i>me he quedado con <color={$ScoreColor}>{$NumberOfSuspects}</color> sospechosos.</i>
 <color=lightblue>Deiv I.D.:</color> Hora de investigar más profundamente a la víctima y a los sospechosos para encontrar al culpable.
 ===

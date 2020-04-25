@@ -11,14 +11,6 @@ namespace Assets.Scripts.Characters
     {
         public const string AffirmativeAlibi = "sí", NegativeAlibi = "no";
 
-        public static readonly Tag
-            affirmativeTag = Utilities.CreateColorTag("green"),
-            negativeTag = Utilities.CreateColorTag("red");
-
-        public static readonly string
-            AffirmativeAlibiColored = new DialogueTaggedText(affirmativeTag, AffirmativeAlibi).FullText,
-            NegativeAlibiColored = new DialogueTaggedText(negativeTag, NegativeAlibi).FullText;
-
         [YarnAccess]
         public const int NumberOfEvidences = 3;
 
@@ -34,10 +26,10 @@ namespace Assets.Scripts.Characters
         private int evidencesFound;
 
         [YarnAccess]
-        public string HasAlibiAsString => HasAlibi ? affirmativeTag.GetTaggedText(AffirmativeAlibi) : negativeTag.GetTaggedText(NegativeAlibi);
+        public string HasAlibiAsString => HasAlibi ? AffirmativeAlibi : NegativeAlibi;
 
         [YarnAccess]
-        public string NotHasAlibiAsString => HasAlibi ? affirmativeTag.GetTaggedText(NegativeAlibi) : negativeTag.GetTaggedText(AffirmativeAlibi);
+        public string NotHasAlibiAsString => HasAlibi ? NegativeAlibi : AffirmativeAlibi;
 
         [YarnAccess]
         public int EvidencesFound

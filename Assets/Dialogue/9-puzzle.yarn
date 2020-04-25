@@ -4,7 +4,7 @@ tags: PreGame
 <<set $NinePuzzle to $NinePuzzle+1>>
 <<if $NinePuzzle eq 1>>
 	<color=lightblue>Deiv I.D.:</color> <color=silver>-Revisando las fotografías de la escena del crimen-</color> ¿Qué tenemos aqui? Parece una nota con el nombre '{$SuspectName}' en ella.
-	<color=lightblue>Deiv I.D.:</color> <color=silver>-Revisa la fotografía más de cerca-</color> No parece estar entera, pero con un poco de suerte, habrá más trozos en distintas fotos.
+	<color=lightblue>Deiv I.D.:</color> <color=silver>-Revisando la fotografía más de cerca-</color> No parece estar entera, pero con un poco de suerte, habrá más trozos en distintas fotos.
 	<color=lightblue>Deiv I.D.:</color> <color=silver>-Tras haberlas revisado todas-</color> Así es, por desgracia hay algunas en las que prácticamente no se ve nada.
 	<color=lightblue>Deiv I.D.:</color> Pero con suficientes fotografías podré completar la nota entera.
 <<elseif $NinePuzzle eq 2>>
@@ -32,7 +32,7 @@ tags: PreGame
 <color=lightblue>Deiv I.D.:</color> Hora de investigar por qué el nombre '{$SuspectName}' aparece en esta nota.
 
 <<set $ContinueMode to "Button">>
-<color=orange>Intercambia las piezas de posición hasta que estén en el orden correcto, para poder leer la nota.</color>
+<color=orange>Intercambia las piezas de posición hasta que estén en el orden correcto, para poder completar la nota.</color>
 ===
 
 title: 9-puzzle-PostGame
@@ -51,12 +51,11 @@ tags: PostGame
 	<color=lightblue>Deiv I.D.:</color> Menos mal que ya lo resuelvo rápido, si no, esto sería un suplicio.
 <<endif>>
 
-<<set $ContinueMode to "Button">>
 <<if $SuspectEvidencesFound eq 0>>
-	<color=lightblue>Deiv I.D.:</color> Por la forma en que {$RandomName} escribe sobre {$SuspectName}, es fácil deducir que es <b>{$SuspectRelation}</b> de la víctima ({$VictimName}).
+	<color=lightblue>Deiv I.D.:</color> Por la forma en que {$RandomName} escribe sobre {$SuspectName}, es fácil deducir que es <b>{$SuspectRelation}</b> de la víctima.
 	<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
 <<elseif $SuspectEvidencesFound eq 1>>
-	<color=lightblue>Deiv I.D.:</color> Curiosamente lo que parecía un nombre cualquiera, en realidad, es la firma. Por lo tanto, viendo el tono de la carta, claramente, {$SuspectName} <b>{$SuspectEmotion}</b> la víctima ({$VictimName}).
+	<color=lightblue>Deiv I.D.:</color> Curiosamente lo que parecía un nombre cualquiera, en realidad, es la firma. Por lo tanto, viendo el tono de la carta, claramente, {$SuspectName} <b>{$SuspectEmotion}</b> la víctima.
 	<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
 <<elseif $SuspectEvidencesFound eq 2>>
 	<color=lightblue>Deiv I.D.:</color> Esto despeja mis dudas, el contenido de la carta claramente confirma que {$SuspectName} <b>{$SuspectHasAlibiAsString}</b> tiene coartada válida para el crimen.

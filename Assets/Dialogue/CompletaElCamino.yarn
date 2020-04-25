@@ -22,8 +22,7 @@ tags: PreGame
 
 <color=lightblue>Deiv I.D.:</color> <color=silver>-Dándose palmaditas en la cara-</color> Vamos, <color=lightblue>Deiv</color>, que tú puedes.
 
-<<set $ContinueMode to "Button">>
-<color=orange>Gira las partes de los caminos para llevar la suposición inicial hasta la conclusión y poder descubrir una nueva pista sobre {$SuspectName}.</color>
+<color=orange>Gira las partes de los caminos para que la suposición inicial (una bolita) los atraviese y llegue desde el cerebro hasta la bombilla.</color>
 ===
 
 title: CompletaElCamino-PostGame
@@ -43,18 +42,15 @@ tags: PostGame
 <<if $SuspectEvidencesFound eq 0>>
 	<color=lightblue>Deiv I.D.:</color> A ver qué he sacado en claro....
 	<color=lightblue>Deiv I.D.:</color> Es una persona misteriosa, por algo me ha costado tanto encontrar cosas.
-	<<set $ContinueMode to "Button">>
-	<color=lightblue>Deiv I.D.:</color> Pero después de todo el esfuerzo puedo decir que {$SuspectName} es <b>{$SuspectRelation}</b> de la víctima ({$VictimName}).
+	<color=lightblue>Deiv I.D.:</color> Pero después de todo el esfuerzo puedo decir que {$SuspectName} es <b>{$SuspectRelation}</b> de la víctima.
 	<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
 <<elseif $SuspectEvidencesFound eq 1>>
 	<color=lightblue>Deiv I.D.:</color> Resulta que la respuesta estaba delante mía después de todo.
-	<<set $ContinueMode to "Button">>
-	<color=lightblue>Deiv I.D.:</color> Estas fotos junto a la víctima y sus conversaciones demuestran que {$SuspectName} <b>{$SuspectEmotion}</b> la víctima ({$VictimName}).
+	<color=lightblue>Deiv I.D.:</color> Estas fotos junto a la víctima y sus conversaciones demuestran que {$SuspectName} <b>{$SuspectEmotion}</b> la víctima.
 	<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
 <<elseif $SuspectEvidencesFound eq 2>>
 	<color=lightblue>Deiv I.D.:</color> Después de revisar publicaciones, horas y lugares, está todo claro.
-	<<set $ContinueMode to "Button">>
-	<color=lightblue>Deiv I.D.:</color> Una vez cotejado con el crimen, resulta claro que {$SuspectName} <b>{$SuspectHasAlibiAsString}</b> coartada válida para el crimen.
+	<color=lightblue>Deiv I.D.:</color> Una vez cotejado con el crimen, resulta claro que {$SuspectName} <b>{$SuspectHasAlibiAsString}</b> tiene una coartada válida para el crimen.
 	<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
 <<endif>>
 

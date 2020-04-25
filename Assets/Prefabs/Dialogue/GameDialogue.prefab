@@ -116,7 +116,7 @@ MonoBehaviour:
   AllowSkip: 1
   SkipKey: 115
   FastForwardKey: 32
-  continueMode: 0
+  continueMode: 1
   ContinueButton: {fileID: 8642892209297188790}
   ContinueKey: 13
   ContinueTime: 1.5
