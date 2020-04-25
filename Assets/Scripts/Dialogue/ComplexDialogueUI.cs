@@ -208,7 +208,7 @@ namespace Assets.Scripts.Dialogue
         }
 
         #region Continue Mode
-        public enum ContinueMode { Click, Button, Skip }
+        public enum ContinueMode { Click, Button, Time, Skip }
 
         [Header("Continue Modes")]
         public ContinueMode continueMode = ContinueMode.Click;
@@ -225,6 +225,10 @@ namespace Assets.Scripts.Dialogue
         public bool ContinueOnKey = true;
 
         public KeyCode ContinueKey = KeyCode.Return;
+
+        [Tooltip("Time between the line end and continuing to the next (only when ContinueMode is set to 'Time'")]
+        [YarnAccess]
+        public float ContinueTime = 2.5f;
 
         public void LineFinishDisplaying()
         {
@@ -245,6 +249,10 @@ namespace Assets.Scripts.Dialogue
             if (continueMode == ContinueMode.Skip)
             {
                 MarkLineComplete();
+            }
+            else if (continueMode == ContinueMode.Time)
+            {
+                yield return ContinueAfter(ContinueTime);
             }
 
             // Wait for user to release the continue key
@@ -292,6 +300,12 @@ namespace Assets.Scripts.Dialogue
                     yield return new WaitForEndOfFrame();
                 }
             }
+        }
+
+        private IEnumerator ContinueAfter(float seconds)
+        {
+            yield return new WaitForSeconds(seconds);
+            MarkLineComplete();
         }
         #endregion
 
