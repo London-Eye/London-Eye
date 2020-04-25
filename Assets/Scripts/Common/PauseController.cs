@@ -23,6 +23,13 @@ public class PauseController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             IsPaused = !IsPaused;
+            if (IsPaused)
+            {
+                Time.timeScale = 0;
+            }
+            else {
+                Time.timeScale = 1;
+            }
         }
     }
 
