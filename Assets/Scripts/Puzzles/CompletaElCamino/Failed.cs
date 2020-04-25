@@ -8,6 +8,7 @@ public class Failed : MonoBehaviour
     private Vector3 initialPos;
     private Vector3 prevPos;
     private Vector3 actualPos;
+    [SerializeField] public FreezePipes container;
     int cont = 0;
     void Start()
     {
@@ -22,14 +23,23 @@ public class Failed : MonoBehaviour
         {
             actualPos = gameObject.transform.position;
 
-            if (gameObject.transform.position.y < -15 || (actualPos.x == prevPos.x && actualPos.y == prevPos.y))
+            if (isOutOfBounds(actualPos) || (actualPos.x == prevPos.x && actualPos.y == prevPos.y))
             {
+                container.pipeFreezer();
                 gameObject.transform.position = new Vector3(initialPos.x, initialPos.y, initialPos.z);
                 gameObject.SetActive(false);
+                
             }
             prevPos = actualPos;
             cont = 0;
         }
         cont++;
+    }
+    private bool isOutOfBounds(Vector3 pos) {
+        if (gameObject.transform.position.y < -15 || gameObject.transform.position.y > 10 || gameObject.transform.position.x < -10 || gameObject.transform.position.x > 10)
+        {
+            return true;
+        }
+        else { return false; }
     }
 }
