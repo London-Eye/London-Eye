@@ -118,6 +118,9 @@ namespace Assets.Scripts.Dialogue
             onLineEnd?.Invoke();
         }
 
+        [Header("Finish Displaying Line")]
+        public bool finishDisplayingLineOnClick;
+
         public void LineUpdate(string text)
         {
             CheckSkipButton();
@@ -125,6 +128,13 @@ namespace Assets.Scripts.Dialogue
             if (Input.GetKey(ContinueKey))
             {
                 MarkLineComplete();
+                stillPressingContinueKey = true;
+            }
+
+            if (finishDisplayingLineOnClick && Input.GetMouseButton(0))
+            {
+                MarkLineComplete();
+                stillPressingContinueClick = true;
             }
 
             if (Input.GetKey(FastForwardKey))
@@ -198,10 +208,10 @@ namespace Assets.Scripts.Dialogue
         }
 
         #region Continue Mode
-        public enum ContinueMode { Button, Time, Skip }
+        public enum ContinueMode { Click, Button, Time, Skip }
 
         [Header("Continue Modes")]
-        public ContinueMode continueMode = ContinueMode.Button;
+        public ContinueMode continueMode = ContinueMode.Click;
 
         [YarnAccess(name = nameof(ContinueMode))]
         public string ContinueModeAsString
@@ -211,6 +221,8 @@ namespace Assets.Scripts.Dialogue
         }
 
         public Button ContinueButton;
+
+        public bool ContinueOnKey = true;
 
         public KeyCode ContinueKey = KeyCode.Return;
 
@@ -230,26 +242,21 @@ namespace Assets.Scripts.Dialogue
             onLineFinishDisplaying?.Invoke();
         }
 
+        private bool stillPressingContinueKey, stillPressingContinueClick;
+
         private IEnumerator CheckContinue()
         {
-            switch (continueMode)
+            if (continueMode == ContinueMode.Skip)
             {
-                case ContinueMode.Button:
-                    yield return ContinueOnKey(ContinueKey);
-                    break;
-                case ContinueMode.Time:
-                    yield return ContinueAfter(ContinueTime);
-                    break;
-                case ContinueMode.Skip:
-                    MarkLineComplete();
-                    break;
+                MarkLineComplete();
             }
-        }
+            else if (continueMode == ContinueMode.Time)
+            {
+                yield return ContinueAfter(ContinueTime);
+            }
 
-        private IEnumerator ContinueOnKey(KeyCode key)
-        {
             // Wait for user to release the continue key
-            while (Input.GetKey(key))
+            while (Input.GetKey(ContinueKey))
             {
                 yield return null;
             }
@@ -257,11 +264,38 @@ namespace Assets.Scripts.Dialogue
             while (!proceedToNextLine)
             {
                 // Continue when the user presses the continue key
-                if (Input.GetKey(key))
+                if (ContinueOnKey)
                 {
-                    MarkLineComplete();
+                    if (Input.GetKey(ContinueKey))
+                    {
+                        if (!stillPressingContinueKey)
+                        {
+                            MarkLineComplete();
+                            stillPressingContinueKey = true;
+                        }
+                    }
+                    else if (stillPressingContinueKey)
+                    {
+                        stillPressingContinueKey = false;
+                    }
                 }
-                else if (!CheckSkipButton())
+                // Continue when the user clicks the mouse button
+                if (continueMode == ContinueMode.Click)
+                {
+                    if (Input.GetMouseButton(0))
+                    {
+                        if (!stillPressingContinueClick)
+                        {
+                            MarkLineComplete();
+                            stillPressingContinueClick = true;
+                        }
+                    }
+                    else if (stillPressingContinueClick)
+                    {
+                        stillPressingContinueClick = false;
+                    }
+                }
+                if (!proceedToNextLine && !CheckSkipButton())
                 {
                     yield return new WaitForEndOfFrame();
                 }
