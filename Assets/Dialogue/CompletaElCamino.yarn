@@ -4,7 +4,7 @@ tags: Distribute
 <<if $FirstTime>>
 	[[CompletaElCamino-Dialogue]]
 <<else>>
-	<color=orange>Gira las partes de los caminos para que la suposición inicial (una bolita) los atraviese y llegue desde el cerebro hasta la bombilla.</color>
+	<color=orange>Gira las partes de los caminos para que la suposición inicial los atraviese y llegue desde el cerebro hasta la bombilla.</color>
 <<endif>>
 ===
 
@@ -34,7 +34,7 @@ tags: PreGame
 
 <color=lightblue>Deiv I.D.:</color> <color=silver>-Dándose palmaditas en la cara-</color> Vamos, <color=lightblue>Deiv</color>, que tú puedes.
 
-<color=orange>Gira las partes de los caminos para que la suposición inicial (una bolita) los atraviese y llegue desde el cerebro hasta la bombilla.</color>
+<color=orange>Gira las partes de los caminos para que la suposición inicial los atraviese y llegue desde el cerebro hasta la bombilla.</color>
 ===
 
 
