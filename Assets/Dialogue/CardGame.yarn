@@ -11,7 +11,7 @@ tags: PreGame
 <color=cyan>Policía:</color> Debido a la situación actual no hemos podido investigar a ninguno de los sospechosos.
 <color=cyan>Policía:</color> Dicho esto, mucha suerte con tu investigación.
 <color=lightblue>Deiv I.D.:</color> Gracias por todo. <color=silver>-Cuelga el teléfono-</color>
-<color=lightblue>Deiv I.D.:</color> <color=silver>-Encendiendo el PC para ver el correo-</color> A ver si puedo descartar algunos así de primeras, así me ahorro trabajo en el futuro.
+<color=lightblue>Deiv I.D.:</color> <color=silver>-Encendiendo el PC para revisar el correo-</color> A ver si puedo descartar algunos y así me ahorro trabajo en el futuro.
 
 <color=orange>Empareja los retratos de personas para descartar posibles sospechosos.</color>
 <<PutCardsOnTable CardGameController>>
