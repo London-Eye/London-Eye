@@ -41,6 +41,7 @@ public class PauseController : MonoBehaviour
     public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Time.timeScale = 1;
     }
 
     public void GoToMenu() => GoToMainMenu();
@@ -49,6 +50,7 @@ public class PauseController : MonoBehaviour
 
     public static void GoToMainMenu()
     {
+        Time.timeScale = 1;
         AsyncOperation loadSceneOperation = SceneManager.LoadSceneAsync(1); // Load Main Menu
         loadSceneOperation.completed += op =>
         {

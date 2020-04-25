@@ -4,6 +4,7 @@ public class Impulser : MonoBehaviour
 {
     public Rigidbody2D objectToImpulse;
     public Vector2 force;
+    [SerializeField] GameObject container;
 
     public void Impulse() => Impulse(force);
 
