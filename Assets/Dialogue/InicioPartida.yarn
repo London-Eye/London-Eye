@@ -63,8 +63,8 @@ tags: PistasJuego
 ---
 <<set $AllowSkip to true>>
 <<set $ContinueMode to "skip">>
-<color=lightblue>Deiv I.D.:</color> <color=silver>-Abriendo su diário personal-</color> ¿Sobre qué deberia consultar información en mis notas?
-<<set $ContinueMode to "Button">>
+<color=lightblue>Deiv I.D.:</color> <color=silver>-Abriendo su diario personal-</color> ¿Sobre qué deberia consultar información en mis notas?
+
 ->Sobre la funcionalidad de algo en la oficina.
     [[Pistas-MenuPrincipal]]
 ->Sobre acusar a uno de los sospechosos.
@@ -110,7 +110,7 @@ tags: InvestigarVictima
 <<set $AllowSkip to true>>
 <<set $ContinueMode to "skip">>
 <color=cyan>Policía:</color> Buenas señor <color=lightblue>I.D.</color>. ¿Que quiere saber sobre el crímen?
-<<set $ContinueMode to "Button">>
+
 ->¿Alguna pista sobre la relación del asesino y la víctima?
     [[Walkie-Relacion]]
 ->¿Teneis información sobre los posibles sentimientos del asesino hacia la víctima?

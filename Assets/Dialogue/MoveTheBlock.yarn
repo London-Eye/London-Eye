@@ -49,6 +49,7 @@ tags: PostGame
 <<EndGame MoveTheBlockController>>
 <<CompletePuzzle GameManager>>
 
+
 <<if $MoveTheBlock eq 1>>
 	<color=lightblue>Deiv I.D.:</color> Vamos a ver los datos que me ha enviado <color=lime>Tsudo</color>
 <<elseif $MoveTheBlock eq 2>>

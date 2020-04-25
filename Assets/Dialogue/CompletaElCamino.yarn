@@ -30,6 +30,7 @@ tags: PostGame
 ---
 <<CompletePuzzle GameManager>>
 
+
 <<if $CompletaCamino eq 1>>
 	<color=lightblue>Deiv I.D.:</color> Curiosamente estaba más a la vista de lo que esperaba.
 <<elseif $CompletaCamino eq 2>>

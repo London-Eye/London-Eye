@@ -129,7 +129,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1788309106, guid: f9cf9ff9943921943bbb41cab3390a11, type: 3}
       propertyPath: onDialogueStart.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1788309106, guid: f9cf9ff9943921943bbb41cab3390a11, type: 3}
       propertyPath: onDialogueEnd.m_PersistentCalls.m_Calls.Array.size
@@ -202,6 +202,26 @@ PrefabInstance:
     - target: {fileID: 1788309106, guid: f9cf9ff9943921943bbb41cab3390a11, type: 3}
       propertyPath: onDialogueEnd.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1788309106, guid: f9cf9ff9943921943bbb41cab3390a11, type: 3}
+      propertyPath: onDialogueStart.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1614335390}
+    - target: {fileID: 1788309106, guid: f9cf9ff9943921943bbb41cab3390a11, type: 3}
+      propertyPath: onDialogueStart.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 1788309106, guid: f9cf9ff9943921943bbb41cab3390a11, type: 3}
+      propertyPath: onDialogueStart.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1788309106, guid: f9cf9ff9943921943bbb41cab3390a11, type: 3}
+      propertyPath: onDialogueStart.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1788309106, guid: f9cf9ff9943921943bbb41cab3390a11, type: 3}
+      propertyPath: onDialogueStart.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2552118832597424446, guid: f9cf9ff9943921943bbb41cab3390a11,
         type: 3}

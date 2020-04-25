@@ -40,6 +40,7 @@ tags: PostGame
 ---
 <<CompletePuzzle GameManager>>
 
+
 <<if $NinePuzzle eq 1>>
 	<color=lightblue>Deiv I.D.:</color> Al fin he conseguido reconstruir la nota. Me ha costado más de lo que esperaba.
 <<elseif $NinePuzzle eq 2>>

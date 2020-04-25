@@ -46,6 +46,7 @@ tags: PostGame
 ---
 <<CompletePuzzle GameManager>>
 
+
 <<if $SeparaColores eq 0>>
 	<color=lightblue>Deiv I.D.:</color> A ver qué dicen los resultados de la investigación de la científica.
 <<elseif $SeparaColores eq 1>>
