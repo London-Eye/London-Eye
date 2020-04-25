@@ -49,7 +49,7 @@ tags: PostGame
 ---
 <<EndGame MoveTheBlockController>>
 <<CompletePuzzle GameManager>>
-<<set $ContinueMode to "Time">>
+
 
 <<if $MoveTheBlock eq 1>>
 	<color=lightblue>Deiv I.D.:</color> Vamos a ver los datos que me ha enviado <color=lime>Tsudo</color>

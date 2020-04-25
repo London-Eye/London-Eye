@@ -39,7 +39,7 @@ title: 9-puzzle-PostGame
 tags: PostGame
 ---
 <<CompletePuzzle GameManager>>
-<<set $ContinueMode to "Time">>
+
 
 <<if $NinePuzzle eq 1>>
 	<color=lightblue>Deiv I.D.:</color> Al fin he conseguido reconstruir la nota. Me ha costado más de lo que esperaba.

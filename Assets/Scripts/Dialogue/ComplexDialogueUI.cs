@@ -23,7 +23,7 @@ namespace Assets.Scripts.Dialogue
         [YarnAccess]
         public bool AllowSkip;
 
-        public KeyCode SkipKey = KeyCode.Return;
+        public KeyCode SkipKey = KeyCode.S;
 
         public KeyCode FastForwardKey = KeyCode.Space;
         private float originalTextSpeed = 0;
@@ -34,18 +34,13 @@ namespace Assets.Scripts.Dialogue
 
             if (skipDialogue)
             {
-                if (!AllowSkip || continueMode == ContinueMode.Button)
+                if (AllowSkip)
                 {
-                    SkipDialogueEnd();
-
-                    if (AllowSkip && continueMode == ContinueMode.Button)
-                    {
-                        MarkLineComplete();
-                    }
+                    return Yarn.Dialogue.HandlerExecutionType.ContinueExecution;
                 }
                 else
                 {
-                    return Yarn.Dialogue.HandlerExecutionType.ContinueExecution;
+                    SkipDialogueEnd();
                 }
             }
 
@@ -119,21 +114,17 @@ namespace Assets.Scripts.Dialogue
 
         private void LineEnd()
         {
+            Input.ResetInputAxes();
             onLineEnd?.Invoke();
         }
 
         public void LineUpdate(string text)
         {
-            if (!skipDialogue && Input.GetKey(SkipKey))
+            CheckSkipButton();
+
+            if (Input.GetKey(ContinueKey))
             {
-                if (AllowSkip)
-                {
-                    SkipDialogue();
-                }
-                else
-                {
-                    MarkLineComplete();
-                }
+                MarkLineComplete();
             }
 
             if (Input.GetKey(FastForwardKey))
@@ -147,6 +138,23 @@ namespace Assets.Scripts.Dialogue
             }
 
             onLineUpdate?.Invoke(text);
+        }
+
+        private bool CheckSkipButton()
+        {
+            if (!skipDialogue && Input.GetKey(SkipKey))
+            {
+                if (AllowSkip)
+                {
+                    SkipDialogue();
+                }
+                else
+                {
+                    MarkLineComplete();
+                }
+                return true;
+            }
+            return false;
         }
 
         public new void MarkLineComplete()
@@ -169,15 +177,12 @@ namespace Assets.Scripts.Dialogue
 
         public void SkipDialogue()
         {
-            if (continueMode != ContinueMode.Button)
-            {
-                skipDialogue = true;
+            skipDialogue = true;
 
-                originalContinueMode = continueMode;
-                continueMode = ContinueMode.Skip;
+            originalContinueMode = continueMode;
+            continueMode = ContinueMode.Skip;
 
-                onOptionsStart.AddListener(SkipDialogueEnd);
-            }
+            onOptionsStart.AddListener(SkipDialogueEnd);
 
             MarkLineComplete();
         }
@@ -193,10 +198,10 @@ namespace Assets.Scripts.Dialogue
         }
 
         #region Continue Mode
-        public enum ContinueMode { Time, Button, Skip }
+        public enum ContinueMode { Button, Time, Skip }
 
         [Header("Continue Modes")]
-        public ContinueMode continueMode = ContinueMode.Time;
+        public ContinueMode continueMode = ContinueMode.Button;
 
         [YarnAccess(name = nameof(ContinueMode))]
         public string ContinueModeAsString
@@ -219,7 +224,6 @@ namespace Assets.Scripts.Dialogue
             {
                 case ContinueMode.Button:
                     ContinueButton.gameObject.SetActive(true);
-                    if (skipDialogue) SkipDialogueEnd();
                     break;
             }
 
@@ -257,7 +261,7 @@ namespace Assets.Scripts.Dialogue
                 {
                     MarkLineComplete();
                 }
-                else
+                else if (!CheckSkipButton())
                 {
                     yield return new WaitForEndOfFrame();
                 }

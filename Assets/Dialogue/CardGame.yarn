@@ -2,7 +2,7 @@ title: CardGame-PreGame
 tags: PreGame
 ---
 <<StartCardGame CardGameController>>
-<<set $ContinueMode to "Time">>
+
 <color=maroon>Teléfono:</color> <color=silver>*Sonidos de vibración*</color>
 <color=silver>-Descolgando el teléfono-</color> <color=lightblue>Deiv I.D.:</color> Sí, dígame.
 <color=cyan>Policía:</color> Hola <color=lightblue>Deiv I.D.</color>, te llamo de la comisaría.
@@ -21,7 +21,7 @@ tags: PreGame
 title: CardGame-PostGame
 tags: PostGame
 ---
-<<set $ContinueMode to "Time">>
+
 
 <<set $RandomIntMin to 0>>
 <<set $RandomIntMax to 2>>
