@@ -116,10 +116,11 @@ MonoBehaviour:
   AllowSkip: 1
   SkipKey: 115
   FastForwardKey: 32
+  finishDisplayingLineOnClick: 1
   continueMode: 0
   ContinueButton: {fileID: 8642892209297188790}
+  ContinueOnKey: 1
   ContinueKey: 13
-  ContinueTime: 2.5
 --- !u!114 &3385787636333580402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -755,6 +756,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9020856951131138864, guid: 4ec3df5875e7347beb6176b545b8fb39,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5935829475398715334, guid: 4ec3df5875e7347beb6176b545b8fb39, type: 3}
