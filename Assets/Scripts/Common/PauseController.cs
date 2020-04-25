@@ -12,7 +12,7 @@ public class PauseController : MonoBehaviour
         get => _isPaused;
         set
         {
-            Time.timeScale = 1;
+            Time.timeScale = IsPaused ? 0f : 1f;
             _isPaused = value;
             ShowPauseMenu(value);
         }
@@ -24,13 +24,6 @@ public class PauseController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             IsPaused = !IsPaused;
-            if (IsPaused)
-            {
-                Time.timeScale = 0;
-            }
-            else {
-                Time.timeScale = 1;
-            }
         }
     }
 
@@ -41,13 +34,17 @@ public class PauseController : MonoBehaviour
 
     public void Restart()
     {
+        IsPaused = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        Time.timeScale = 1;
     }
 
     public void GoToMenu() => GoToMainMenu();
     public void GoToStart() => GoToStartMenu();
-    public void ExitGame() => Exit();
+    public void ExitGame()
+    {
+        IsPaused = false;
+        Exit();
+    }
 
     public static void GoToMainMenu()
     {

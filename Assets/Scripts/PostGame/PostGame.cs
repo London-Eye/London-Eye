@@ -30,9 +30,6 @@ public class PostGame : MonoBehaviour
         }
     }
 
-    public void GoToTittle() {
-        GameObject.Destroy(GameObject.Find("GameManager"));
-        SceneManager.LoadScene("Portada");
-    }
+    public void GoToTitle() => SceneManager.LoadScene(0);
     
 }
