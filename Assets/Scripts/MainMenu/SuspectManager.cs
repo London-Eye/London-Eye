@@ -17,8 +17,6 @@ public class SuspectManager : MonoBehaviour, IComparable<SuspectManager>
     // This is able to persist the suspects references, and restore them in the appropiate instances
     private static readonly Dictionary<int, Suspect> suspectSafe = new Dictionary<int, Suspect>();
 
-    internal static readonly Dictionary<Suspect, PuzzleLoader> activeSuspects = new Dictionary<Suspect, PuzzleLoader>();
-
     public Image suspectImage;
 
     public Text suspectText;
@@ -103,9 +101,9 @@ public class SuspectManager : MonoBehaviour, IComparable<SuspectManager>
         {
             Suspect = suspect;
 
-            if (activeSuspects.ContainsKey(suspect))
+            if (CharacterCreation.Instance.PoolPuzzleLoader.activeSuspects.ContainsKey(suspect))
             {
-                activeSuspects[suspect] = InstantiatePuzzleLoader(suspect);
+                CharacterCreation.Instance.PoolPuzzleLoader.activeSuspects[suspect] = InstantiatePuzzleLoader(suspect);
             }
         }
         else
@@ -129,27 +127,20 @@ public class SuspectManager : MonoBehaviour, IComparable<SuspectManager>
 
     public void LoadPuzzle()
     {
-        if (!Suspect.HasFoundAllEvidences)
+        if (!Suspect.HasFoundAllEvidences && !CharacterCreation.Instance.PoolPuzzleLoader.activeSuspects.ContainsKey(Suspect))
         {
-            if (activeSuspects.ContainsKey(Suspect))
+            try
             {
-                activeSuspects[Suspect].LoadPuzzle();
+                CharacterCreation.Instance.PoolPuzzleLoader.SelectPuzzle(Suspect);
+
+                PuzzleLoader puzzleLoader = InstantiatePuzzleLoader(Suspect);
+                CharacterCreation.Instance.PoolPuzzleLoader.activeSuspects[Suspect] = puzzleLoader;
+
+                puzzleLoader.LoadPuzzle();
             }
-            else
+            catch (SelectLimitExceededException)
             {
-                try
-                {
-                    CharacterCreation.Instance.PoolPuzzleLoader.SelectPuzzle(Suspect);
-
-                    PuzzleLoader puzzleLoader = InstantiatePuzzleLoader(Suspect);
-                    activeSuspects[Suspect] = puzzleLoader;
-
-                    puzzleLoader.LoadPuzzle();
-                }
-                catch (SelectLimitExceededException)
-                {
-                    FindObjectOfType<DialogueRunner>().StartDialogue("Puzzle-Limit-Exceeded");
-                }
+                FindObjectOfType<DialogueRunner>().StartDialogue("Puzzle-Limit-Exceeded");
             }
         }
     }
