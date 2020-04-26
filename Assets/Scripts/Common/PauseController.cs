@@ -12,8 +12,8 @@ public class PauseController : MonoBehaviour
         get => _isPaused;
         set
         {
-            Time.timeScale = IsPaused ? 0f : 1f;
             _isPaused = value;
+            Time.timeScale = value ? 0f : 1f;
             ShowPauseMenu(value);
         }
     }
