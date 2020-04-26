@@ -29,7 +29,7 @@ public class SuspectManager : MonoBehaviour, IComparable<SuspectManager>
 
     private Suspect suspect;
 
-    private Color AcuseColor =  new Color(1, (float) 0.6353, (float) 0.6706);
+    private static readonly Color AcuseColor =  new Color(1, 0.6353f, 0.6706f);
 
     public Suspect Suspect
     {
