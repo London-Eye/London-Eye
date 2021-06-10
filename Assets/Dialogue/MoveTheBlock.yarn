@@ -35,7 +35,7 @@ tag: PreGame
 	<color=lightblue>Deiv I.D.:</color> No, es otra persona.
 	<color=lime>Tsudo P.C.:</color> Sin problema entonces.
 <<elseif $MoveTheBlock eq 3>>
-	<color=maroon>Teléfono:</color> <color=silver>*Sonidos de vibración*</color>
+	<color=maroon>Teléfono:</color> <color=silver>-Llamada entrante-</color>
 	<color=lightblue>Deiv I.D.:</color> ¿Qué pasa <color=lime>Tsudo</color>?
 	<color=lime>Tsudo P.C.:</color> Revisando la lista de sospechosos que me mandaste, he visto cosas que no me cuadran con {$SuspectName}.
 	<color=lime>Tsudo P.C.:</color> ¿Te importaría que le eche un vistazo?

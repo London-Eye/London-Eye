@@ -11,7 +11,7 @@ tags: Inicio
 <color=lightblue>Deiv I.D.:</color> <color=silver><i>La ciudad se ha visto azotada por una pandemia.</i></color>
 <color=lightblue>Deiv I.D.:</color> <color=silver><i>Lo que significa que la policía no tiene recursos suficientes ahora mismo.</i></color>
 <color=lightblue>Deiv I.D.:</color> <color=silver><i>Y por si fuera poco, la ciudad está en cuarentena, por lo que no puedo salir a investigar.</i></color>
-<color=maroon>Teléfono:</color> *Sonidos de vibración*
+<color=maroon>Teléfono:</color> <color=silver>-Llamada entrante-</color>
 <color=silver>-Descolgando el teléfono-</color> <color=lightblue>Deiv I.D.:</color> Sí, dígame.
 <color=maroon>Teléfono:</color> ¿<color=lightblue>Deiv</color>? Tenemos que hablar sobre el caso.
 <color=lightblue>Deiv I.D.:</color> <color=silver><i>(La chica que llama es </i></color><color=magenta><i>Diana</i></color><color=silver><i>, mi superior)</i></color> Por fin, ya era hora de que me informara de algo.
@@ -171,7 +171,7 @@ tags:Back
 ---
 <<if $FromPuzzle>>
     <<if $PuzzlesResueltos eq 3>>
-        <color=maroon>Teléfono:</color> <color=silver>*Sonidos de vibración*</color>
+        <color=maroon>Teléfono:</color> <color=silver>-Llamada entrante-</color>
         <color=silver>-Descolgando el teléfono-</color> <color=lightblue>Deiv I.D.:</color> Sí, dígame.
         <color=magenta>Diana:</color> <color=lightblue>Deiv</color>, ¿como llevas el caso?
         <color=lightblue>Deiv I.D.:</color> Bastante bien jefa.
@@ -181,7 +181,7 @@ tags:Back
         <color=lightblue>Deiv I.D.:</color> Si jefa, lo tengo en cuenta.
         <color=maroon>Teléfono:</color> <color=silver>-Cuelga-</color>
     <<elseif $PuzzlesResueltos eq 6>>
-        <color=maroon>Teléfono:</color> *Sonidos de vibración*
+        <color=maroon>Teléfono:</color> <color=silver>-Llamada entrante-</color>
         <color=silver>-Descolgando el teléfono-</color> <color=lightblue>Deiv I.D.:</color> Sí, dígame.
         <color=magenta>Diana:</color> <color=lightblue>Deiv</color>, ¿estas avanzando?
         <color=lightblue>Deiv I.D.:</color> Si, jefa, poco a poco.
@@ -189,7 +189,7 @@ tags:Back
         <color=lightblue>Deiv I.D.:</color> Lo recuerdo, sin problema.
         <color=maroon>Teléfono:</color> <color=silver>-Cuelga-</color>
     <<elseif $PuzzlesResueltos eq 9>>
-        <color=maroon>Teléfono:</color> *Sonidos de vibración*
+        <color=maroon>Teléfono:</color> <color=silver>-Llamada entrante-</color>
         <color=silver>-Descolgando el teléfono-</color> <color=lightblue>Deiv I.D.:</color> Sí, dígame.
         <color=magenta>Diana:</color> <color=lightblue>Deiv</color>, espero resultados.
         <color=lightblue>Deiv I.D.:</color> Estoy sobre la pista pero necesito más tiempo.
@@ -198,7 +198,7 @@ tags:Back
         <color=lightblue>Deiv I.D.:</color> De acuerdo.
         <color=maroon>Teléfono:</color> <color=silver>-Cuelga-</color>
     <<elseif $PuzzlesResueltos eq 12>>
-        <color=maroon>Teléfono:</color> *Sonidos de vibración*
+        <color=maroon>Teléfono:</color> <color=silver>-Llamada entrante-</color>
         <color=silver>-Descolgando el teléfono-</color> <color=lightblue>Deiv I.D.:</color> Sí, dígame.
         <color=magenta>Diana:</color> <color=lightblue>Deiv</color>, como te dije, ya no hay tiempo.
         <color=magenta>Diana:</color> Tienes que presentar a juicio a uno de los sospechosos.

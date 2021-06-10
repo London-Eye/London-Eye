@@ -15,14 +15,14 @@ tag: PreGame
 ---
 <<set $SeparaColores to $SeparaColores+1>>
 <<if $SeparaColores eq 1>>
-	<color=maroon>Teléfono:</color> <color=silver>*Sonidos de vibración*</color>
+	<color=maroon>Teléfono:</color> <color=silver>-Llamada entrante-</color>
 	<color=silver>-Descolgando el teléfono-</color> <color=lightblue>Deiv I.D.:</color> Sí, dígame.
 	<color=maroon>Teléfono:</color> Buenas tardes señor <color=lightblue>I.D.</color>, somos del departamento de investigación científica de la policía.
 	<color=cyan>Policía:</color> Hemos encontrado restos de huellas y ADN de {$SuspectName} en casa de la víctima.
 	<color=cyan>Policía:</color> Le informamos que cuando estén los resultados se los enviaremos a su correo electrónico.
 	<color=lightblue>Deiv I.D.:</color> De acuerdo, gracias por la información<color=silver>-Cuelga el teléfono-</color>.
 <<elseif $SeparaColores eq 2>>
-	<color=maroon>Teléfono:</color> <color=silver>*Sonidos de vibración*</color>
+	<color=maroon>Teléfono:</color> <color=silver>-Llamada entrante-</color>
 	<color=silver>-Descolgando el teléfono-</color> <color=lightblue>Deiv I.D.:</color> Sí, dígame.
 	<color=maroon>Teléfono:</color> Buenas tardes señor <color=lightblue>I.D.</color>, volvemos a llamar desde la policía científica.
 	<color=cyan>Policía:</color> Nuevos resultados han sacado a relucir la presencia [select {$SuspectIsMale} True="del sospechoso" False="de la sospechosa"] de nombre {$SuspectName} en casa de la víctima.

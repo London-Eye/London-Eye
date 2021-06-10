@@ -2,7 +2,7 @@ title: CardGame-PreGame
 tags: PreGame
 ---
 <<StartCardGame CardGameController>>
-<color=maroon>Teléfono:</color> <color=silver>*Sonidos de vibración*</color>
+<color=maroon>Teléfono:</color> <color=silver>-Llamada entrante-</color>
 <color=silver>-Descolgando el teléfono-</color> <color=lightblue>Deiv I.D.:</color> Sí, dígame.
 <color=cyan>Policía:</color> Hola <color=lightblue>Deiv I.D.</color>, te llamo de la comisaría.
 <color=cyan>Policía:</color> La oficial <color=magenta>Diana</color> me ha pedido que te pase la lista de sospechosos, así que te la he enviado a tu correo electrónico.
