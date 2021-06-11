@@ -3,6 +3,7 @@
 public class BallController : MonoBehaviour
 {
     [SerializeField] public FreezePipes container;
+    public UnityEngine.UI.Button checkButton;
 
     private Vector3 initialPos;
     private Vector3 prevPos;
@@ -31,7 +32,7 @@ public class BallController : MonoBehaviour
                 container.pipeFreezer();
                 gameObject.transform.position = new Vector3(initialPos.x, initialPos.y, initialPos.z);
                 gameObject.SetActive(false);
-                
+                checkButton.gameObject.SetActive(true);
             }
             prevPos = actualPos;
             cont = 0;
