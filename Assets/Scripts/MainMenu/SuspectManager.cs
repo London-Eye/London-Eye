@@ -105,7 +105,7 @@ public class SuspectManager : MonoBehaviour, IComparable<SuspectManager>
         {
             Suspect = suspect;
 
-            if (CharacterCreation.Instance.PoolPuzzleLoader.activeSuspects.ContainsKey(suspect))
+            if (suspect != null && CharacterCreation.Instance.PoolPuzzleLoader.activeSuspects.ContainsKey(suspect))
             {
                 CharacterCreation.Instance.PoolPuzzleLoader.activeSuspects[suspect] = InstantiatePuzzleLoader(suspect);
             }
