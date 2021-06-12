@@ -10,7 +10,7 @@ tags: Inicio
 <color=lightblue>Deiv I.D.:</color> <color=silver><i>Parece un caso cualquiera que la policía debería poder resolver, pero hay algo más.</i></color>
 <color=lightblue>Deiv I.D.:</color> <color=silver><i>La ciudad se ha visto azotada por una pandemia.</i></color>
 <color=lightblue>Deiv I.D.:</color> <color=silver><i>Lo que significa que la policía no tiene recursos suficientes ahora mismo.</i></color>
-<color=lightblue>Deiv I.D.:</color> <color=silver><i>Y por si fuera poco, la ciudad está en cuarentena, por lo que no puedo salir a investigar.</i></color>
+<color=lightblue>Deiv I.D.:</color> <color=silver><i>Y, por si fuera poco, la ciudad está en cuarentena; por lo que no puedo salir a investigar.</i></color>
 <color=maroon>Teléfono:</color> <color=silver>-Llamada entrante-</color>
 <color=silver>-Descolgando el teléfono-</color> <color=lightblue>Deiv I.D.:</color> Sí, dígame.
 <color=maroon>Teléfono:</color> ¿<color=lightblue>Deiv</color>? Tenemos que hablar sobre el caso.
@@ -20,13 +20,13 @@ tags: Inicio
 <color=lightblue>Deiv I.D.:</color> <color=silver>-Tomando apuntes en un diario-</color> ¿Dónde [select {$VictimIsMale} True="lo" False="la"] mataron? ¿En el propio supermercado?
 <color=magenta>Diana:</color> No, la escena del crimen es su casa, [select {$VictimIsMale} True="lo" False="la"] mataron allí.
 <color=lightblue>Deiv I.D.:</color> <color=silver>-Terminando de tomar apuntes-</color> De acuerdo. ¿Algo más, jefa?
-<color=magenta>Diana:</color> Sí, el departamento te enviará una lista de sospechosos iniciales; a partir de ahí empezará tu trabajo.
+<color=magenta>Diana:</color> Sí, el departamento te enviará una lista de sospechosos iniciales; a partir de ahí, empezará tu trabajo.
 <color=lightblue>Deiv I.D.:</color> <color=silver>-Cerrando el diario-</color> Yo me ocupo jefa, como hago siempre.
 <color=magenta>Diana:</color> Ten en cuenta que este es un caso especial.
 <color=magenta>Diana:</color> La gente tiene los nervios a flor de piel y nosotros no tenemos recursos para investigar estas cosas.
 <color=magenta>Diana:</color> Además, los conservadores presionan al gobierno para que termine la cuarentena.
 <color=magenta>Diana:</color> Que pase impune un crimen hacia [select {$VictimIsMale} True="un trabajador" False="una trabajadora"] esencial podría crear más caos del que ya hay.
-<color=magenta>Diana:</color> Por si fuera poco, tenemos a la prensa echándose a nuestros cuellos.
+<color=magenta>Diana:</color> Y por si fuera poco, tenemos a la prensa echándose a nuestros cuellos.
 <color=magenta>Diana:</color> Resuelve esto, y resuélvelo rápido <color=lightblue>Deiv</color>, solo tenemos una oportunidad.
 <color=lightblue>Deiv I.D.:</color> Lo sé jefa, déjalo en mis manos.
 <color=maroon>Teléfono:</color> <color=silver>-Cuelga-</color>
@@ -50,12 +50,12 @@ tags: Return
 <color=lightblue>Deiv I.D.:</color> Aunque no estaría de más saber algo más sobre los sospechosos.
 <color=lightblue>Deiv I.D.:</color> Pero tengo que tener en cuenta el tiempo limitado con el que trabajo.
 <color=lightblue>Deiv I.D.:</color> Como mucho, creo que me dará tiempo a investigar unas <b>12</b> pistas.
-<color=orange>Clicando sobre el tablón encontrarás la lista de sospechosos, ahí podrás empezar a investigar cosas sobre ellos.</color>
-<color=orange>Clicando sobre el ordenador puedes elegir a uno de los sospechosos para enviarlo a juicio.</color>
-<color=orange>Clicando sobre el Walkie-Talkie tendrás la opción de recibir información sobre la escena del crímen y el asesino.</color>
+<color=orange>En el <b>tablón</b> encontrarás la lista de sospechosos, ahí podrás empezar a investigar cosas sobre ellos.</color>
+<color=orange>Desde el <b>ordenador</b> puedes elegir a uno de los sospechosos para enviarlo a juicio.</color>
+<color=orange>Haciendo clic sobre el <b><i>walkie-talkie</i></b> tendrás la opción de recibir información sobre la escena del crimen y el asesino.</color>
 <color=orange>Accede al menú de pausa presionando la tecla <b>Esc</b>.</color>
-<color=orange>Pasa el texto clicando sobre <b>Continuar</b> o presionando la tecla <b>Enter</b>. Salta el bloque de texto entero presionando la tecla <b>S</b></color>
-<color=orange>Clica sobre la imagen de</color> <color=lightblue>Deiv I.D.</color> <color=orange>para encontrar esta información de nuevo u otra información útil.</color>
+<color=orange>Para avanzar el diálogo, puedes hacer clic en cualquier punto de la pantalla o presionar la tecla <b>Enter</b>. También puedes saltar el bloque de texto entero presionando la tecla <b>S</b></color>
+<color=orange>Haz clic sobre la imagen de</color> <color=lightblue>Deiv I.D.</color> <color=orange>para encontrar esta información de nuevo u otra información útil.</color>
 ===
 
 
@@ -67,7 +67,7 @@ tags: PistasJuego
 ---
 <<set $AllowSkip to true>>
 <<set $ContinueMode to "skip">>
-<color=lightblue>Deiv I.D.:</color> <color=silver>-Abriendo su diario personal-</color> ¿Sobre qué deberia consultar información en mis notas?
+<color=lightblue>Deiv I.D.:</color> <color=silver>-Abriendo su diario personal-</color> ¿Sobre qué debería consultar información en mis notas?
 <<set $ContinueMode to "click">>
 ->Sobre la funcionalidad de algo en la oficina.
     [[Pistas-MenuPrincipal]]
@@ -81,16 +81,16 @@ tags: PistasJuego
 title: Pistas-MenuPrincipal
 tags: MenuPrincipal
 ---
-<color=lightblue>Deiv I.D.:</color> Puedo acceder a los sospechosos desde el tablón de la pared.
-<color=lightblue>Deiv I.D.:</color> En el archivador puedo encontrar los puzzles que me he dejado a medias.
-<color=lightblue>Deiv I.D.:</color> En el ordenador de la derecha puedo llevar a juicio al sospechoso que creo que es el asesino.
-<color=lightblue>Deiv I.D.:</color> En el Walkie-Talkie que está encima del archivador puedo encontrar información útil sobre la víctima y la escena del crimen.
+<color=lightblue>Deiv I.D.:</color> Puedo investigar a los sospechosos o ver los datos que he descubierto sobre ellos echando un vistazo al <b>tablón</b> de la pared.
+<color=lightblue>Deiv I.D.:</color> En el <b>archivador</b> puedo encontrar los puzzles que me he dejado a medias.
+<color=lightblue>Deiv I.D.:</color> Usando el <b>ordenador</b> de la derecha, puedo llevar a juicio al sospechoso que crea que es el asesino.
+<color=lightblue>Deiv I.D.:</color> En el <b><i>walkie-talkie</i></b> que está encima del archivador puedo encontrar información útil sobre la víctima y la escena del crimen.
 ===
 
 title: Pistas-AcusarSospechoso
 tags: AcusarSospechoso
 ---
-<color=lightblue>Deiv I.D.:</color> Si acuso a un sospechoso con menos de 2 pistas es muy probable que no den el juicio como válido.
+<color=lightblue>Deiv I.D.:</color> Si acuso a un sospechoso con menos de 2 pistas, es muy probable que no den el juicio como válido.
 <color=lightblue>Deiv I.D.:</color> Solo puedo acusar a un sospechoso, tendré que elegir con cuidado.
 <color=lightblue>Deiv I.D.:</color> Si he investigado todo lo posible, y he elegido al sospechoso por descarte, es posible que den el juicio como válido.
 ===
@@ -114,12 +114,12 @@ tags: InvestigarVictima
 ---
 <<set $AllowSkip to true>>
 <<set $ContinueMode to "skip">>
-<color=cyan>Policía:</color> Buenas señor <color=lightblue>I.D.</color> ¿Que quiere saber sobre el crímen?
+<color=cyan>Policía:</color> Buenas señor <color=lightblue>I.D.</color> ¿Qué quiere saber sobre el crimen?
 <<set $ContinueMode to "click">>
 
 ->¿Alguna pista sobre la relación del asesino y la víctima?
     [[Walkie-Relacion]]
-->¿Teneis información sobre los posibles sentimientos del asesino hacia la víctima?
+->¿Tenéis información sobre los posibles sentimientos del asesino hacia la víctima?
     [[Walkie-Emocion]]
 ->Ahora mismo nada, gracias.
     <color=cyan>Policía:</color> Llámenos si necesita algo.
@@ -130,7 +130,7 @@ tags: Relacion
 ---
 <<if $CriminalRelationIndexCriminal < 4>>
     <color=cyan>Policía:</color> La víctima parece estar relajada y tranquila. Probablemente, quien [select {$VictimIsMale} True="lo" False="la"] mató fue algún conocido cercano de [select {$VictimIsMale} True="este" False="esta"].
-<<elseif $CriminalRelationIndexCriminal > 3>>
+<<else>>
     <color=cyan>Policía:</color> Aunque no parece que se lo viera venir, ya que no hay signos de que se haya defendido, la víctima no está relajada del todo así que en la comisaría pensamos que quien mató a la víctima no era cercano a esta.
 <<endif>>
 ===
@@ -158,9 +158,9 @@ tags: Warning
 ---
 <color=lightblue>Deiv I.D.:</color> Parece que me he quedado sin tiempo, la prensa está presionando al departamento.
 <color=lightblue>Deiv I.D.:</color> Debería revisar las pruebas que he obtenido.
-<color=lightblue>Deiv I.D.:</color> Con esto, además de la información sobre la víctima y la escena del crímen, debería ser capaz de realizar una acusación.
-<color=lightblue>Deiv I.D.:</color> Debería volver a echarle un vistazo a esa información. Por si a caso.
-<color=lightblue>Deiv I.D.:</color> Puede que llame a la comisaria con el Walkie para que me refresquen la memória.
+<color=lightblue>Deiv I.D.:</color> Con esto, además de la información sobre la víctima y la escena del crimen, debería ser capaz de realizar una acusación.
+<color=lightblue>Deiv I.D.:</color> Debería volver a echarle un vistazo a esa información. Por si acaso.
+<color=lightblue>Deiv I.D.:</color> Puede que llame a la comisaría con el <i>walkie</i> para que me refresquen la memoria.
 ===
 
 
@@ -173,19 +173,19 @@ tags:Back
     <<if $PuzzlesResueltos eq 3>>
         <color=maroon>Teléfono:</color> <color=silver>-Llamada entrante-</color>
         <color=silver>-Descolgando el teléfono-</color> <color=lightblue>Deiv I.D.:</color> Sí, dígame.
-        <color=magenta>Diana:</color> <color=lightblue>Deiv</color>, ¿como llevas el caso?
+        <color=magenta>Diana:</color> <color=lightblue>Deiv</color>, ¿cómo llevas el caso?
         <color=lightblue>Deiv I.D.:</color> Bastante bien jefa.
-        <color=lightblue>Deiv I.D.:</color> Acabo de terminar de investigar tres fuentes de información
-        <color=magenta>Diana:</color> Me alegro que vaya bien.
-        <color=magenta>Diana:</color> Recuerda que estamos en una pandemia así que no puedes salir de casa.
-        <color=lightblue>Deiv I.D.:</color> Si jefa, lo tengo en cuenta.
+        <color=lightblue>Deiv I.D.:</color> Acabo de terminar de investigar tres fuentes de información.
+        <color=magenta>Diana:</color> Me alegro de que vaya bien.
+        <color=magenta>Diana:</color> Recuerda que estamos en una pandemia, así que no puedes salir de casa.
+        <color=lightblue>Deiv I.D.:</color> Sí jefa, lo tengo en cuenta.
         <color=maroon>Teléfono:</color> <color=silver>-Cuelga-</color>
     <<elseif $PuzzlesResueltos eq 6>>
         <color=maroon>Teléfono:</color> <color=silver>-Llamada entrante-</color>
         <color=silver>-Descolgando el teléfono-</color> <color=lightblue>Deiv I.D.:</color> Sí, dígame.
-        <color=magenta>Diana:</color> <color=lightblue>Deiv</color>, ¿estas avanzando?
-        <color=lightblue>Deiv I.D.:</color> Si, jefa, poco a poco.
-        <color=magenta>Diana:</color> Pues date prisa, tenemos una fecha máxima, recuérdalo.
+        <color=magenta>Diana:</color> <color=lightblue>Deiv</color>, ¿estás avanzando?
+        <color=lightblue>Deiv I.D.:</color> Sí jefa, poco a poco.
+        <color=magenta>Diana:</color> Pues date prisa, recuerda que tenemos una fecha límite.
         <color=lightblue>Deiv I.D.:</color> Lo recuerdo, sin problema.
         <color=maroon>Teléfono:</color> <color=silver>-Cuelga-</color>
     <<elseif $PuzzlesResueltos eq 9>>
