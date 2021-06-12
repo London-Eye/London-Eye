@@ -15,14 +15,14 @@ tags: PreGame
 ---
 <<set $NinePuzzle to $NinePuzzle+1>>
 <<if $NinePuzzle eq 1>>
-	<color=lightblue>Deiv I.D.:</color> <color=silver>-Revisando las fotografías de la escena del crimen-</color> ¿Qué tenemos aqui? Parece una nota con el nombre '{$SuspectName}' en ella.
+	<color=lightblue>Deiv I.D.:</color> <color=silver>-Revisando las fotografías de la escena del crimen-</color> ¿Qué tenemos aquí? Parece una nota con el nombre '{$SuspectName}' en ella.
 	<color=lightblue>Deiv I.D.:</color> <color=silver>-Revisando la fotografía más de cerca-</color> No parece estar entera, pero con un poco de suerte, habrá más trozos en distintas fotos.
 	<color=lightblue>Deiv I.D.:</color> <color=silver>-Tras haberlas revisado todas-</color> Así es, por desgracia hay algunas en las que prácticamente no se ve nada.
 	<color=lightblue>Deiv I.D.:</color> Pero con suficientes fotografías podré completar la nota entera.
 <<elseif $NinePuzzle eq 2>>
 	<color=lightblue>Deiv I.D.:</color> <color=silver>-Llamando por teléfono-</color> Hola, soy <color=lightblue>Deiv I.D.</color>, ¿podría pasarme con el departamento de pruebas?
 	<color=maroon>Teléfono:</color> Claro, un segundo.
-	<color=maroon>Teléfono:</color> ...
+	<color=maroon>Teléfono:</color> <color=silver>(...)</color>
 	<color=cyan>Policía:</color> ¿En qué podemos ayudarle?
 	<color=lightblue>Deiv I.D.:</color> Hola, entre las fotos que me mandasteis de la escena del crimen, he encontrado una nota.
 	<color=lightblue>Deiv I.D.:</color> Por desgracia, no está completa.
@@ -31,7 +31,7 @@ tags: PreGame
 	<color=lightblue>Deiv I.D.:</color> Gracias. <color=silver>-Cuelga el teléfono-</color>
 <<elseif $NinePuzzle eq 3>>
 	<color=lightblue>Deiv I.D.:</color> <color=silver>-Hablando por teléfono-</color> Hola, llamo otra vez ya que he encontrado otra nota parcial.
-	<color=lightblue>Deiv I.D.:</color> Disculpad las molestias, pero acabo de encontrar la nota entre las fotos de la residencia de la víctima.
+	<color=lightblue>Deiv I.D.:</color> Disculpen las molestias, pero acabo de encontrar la nota entre las fotos de la residencia de la víctima.
 	<color=lightblue>Deiv I.D.:</color> ¿Les importaría enviarme más fotos sobre ese sitio?
 	<color=cyan>Policía:</color> Claro, enseguida las tendrá en su correo señor <color=lightblue>I.D.</color>
 	<color=lightblue>Deiv I.D.:</color> Gracias otra vez. <color=silver>-Cuelga el teléfono-</color>
@@ -59,16 +59,16 @@ tags: PostGame
 <<elseif $NinePuzzle eq 2>>
 	<color=lightblue>Deiv I.D.:</color> A pesar de ser la segunda vez me ha vuelto a costar bastante, pero al fin lo he conseguido.
 <<elseif $NinePuzzle eq 3>>
-	<color=lightblue>Deiv I.D.:</color> Lo he conseguido, y esta vez más rápido, parece que la práctica hace al maestro.
+	<color=lightblue>Deiv I.D.:</color> Lo he conseguido, y esta vez más rápido; parece que la práctica hace al maestro.
 <<elseif $NinePuzzle eq 4>>
-	<color=lightblue>Deiv I.D.:</color> Menos mal que ya lo resuelvo rápido, si no, esto sería un suplicio.
+	<color=lightblue>Deiv I.D.:</color> Menos mal que ya lo resuelvo rápido; si no, esto sería un suplicio.
 <<endif>>
 
 <<if $SuspectEvidencesFound eq 0>>
 	<color=lightblue>Deiv I.D.:</color> Por la forma en que {$RandomName} escribe sobre {$SuspectName}, es fácil deducir que es <b>{$SuspectRelation}</b> de la víctima.
 	<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
 <<elseif $SuspectEvidencesFound eq 1>>
-	<color=lightblue>Deiv I.D.:</color> Curiosamente lo que parecía un nombre cualquiera, en realidad, es la firma. Por lo tanto, viendo el tono de la carta, claramente, {$SuspectName} <b>{$SuspectEmotion}</b> la víctima.
+	<color=lightblue>Deiv I.D.:</color> Curiosamente, lo que parecía un nombre cualquiera es en realidad la firma. Por lo tanto, viendo el tono de la carta, claramente {$SuspectName} <b>{$SuspectEmotion}</b> la víctima.
 	<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
 <<elseif $SuspectEvidencesFound eq 2>>
 	<color=lightblue>Deiv I.D.:</color> Esto despeja mis dudas, el contenido de la carta claramente confirma que {$SuspectName} <b>{$SuspectHasAlibiAsString}</b> tiene coartada válida para el crimen.
