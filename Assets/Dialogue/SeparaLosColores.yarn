@@ -30,14 +30,14 @@ tag: PreGame
 <<elseif $SeparaColores eq 3>>
 	<color=lightblue>Deiv I.D.:</color> <color=silver>-Llamando por teléfono-</color> Hola, soy <color=lightblue>Deiv I.D.</color>, ¿podría pasarme con la científica?
 	<color=maroon>Teléfono:</color> Claro, un segundo.
-	<color=maroon>Teléfono:</color> ...
+	<color=maroon>Teléfono:</color> <color=silver>(...)</color>
 	<color=cyan>Policía:</color> ¿En qué podemos ayudarle?
 	<color=lightblue>Deiv I.D.:</color> Me gustaría que hicieran un repaso a las muestras que tienen, por si hubiera alguna coincidencia con {$SuspectName}, [select {$SuspectIsMale} True="uno de los sospechosos" False="una de las sospechosas"].
 	<color=cyan>Policía:</color> Le echaremos un vistazo señor <color=lightblue>I.D.</color>.
 <<elseif $SeparaColores eq 4>>
 	<color=lightblue>Deiv I.D.:</color> <color=silver>-Llamando por teléfono-</color> Hola, soy <color=lightblue>Deiv I.D.</color>. Póngame con la científica, por favor.
 	<color=maroon>Teléfono:</color> Claro, un segundo.
-	<color=maroon>Teléfono:</color> ...
+	<color=maroon>Teléfono:</color> <color=silver>(...)</color>
 	<color=cyan>Policía:</color> ¿En qué podemos ayudarle?
 	<color=lightblue>Deiv I.D.:</color> Me gustaría que volvieran a revisar el caso, por si encuentran algo de información extra sobre {$SuspectName}.
 	<color=cyan>Policía:</color> De acuerdo señor <color=lightblue>I.D.</color>, pero tenga en cuenta que es la cuarta vez que revisamos el caso y puede que no encontremos nada.
