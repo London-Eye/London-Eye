@@ -19,7 +19,7 @@ tag: PreGame
 	<color=lightblue>Deiv I.D.:</color> <color=silver>-Llamando por teléfono-</color> Odio tener que recurrir a esto, pero tendré que hacerlo para poder continuar.
 	<color=maroon>Teléfono:</color> Aquí <color=lime>Tsudo P.C.</color>, ¿quién llama?
 	<color=lightblue>Deiv I.D.:</color> <color=lime>Tsudo</color>, soy <color=lightblue>Deiv</color>, necesito un favor.
-	<color=lime>Tsudo P.C.:</color> Claro, viejo amigo, dime.
+	<color=lime>Tsudo P.C.:</color> Claro viejo amigo, dime.
 	<color=lightblue>Deiv I.D.:</color> Estoy investigando un caso, pero no puedo salir de casa.
 	<color=lightblue>Deiv I.D.:</color> Así que necesito que me encuentres toda la información posible sobre {$SuspectName}.
 	<color=lime>Tsudo P.C.:</color> Sin problema, pásame su información y te envío todo lo que encuentre.
@@ -30,7 +30,7 @@ tag: PreGame
 	<<if $SuspectIsMale>>
 		<color=lime>Tsudo P.C.:</color> ¿{$ProfesionMasculina}?
 	<<else>>
-		<color=lime>Tsudo P.C.:</color> ¿{$PofesionFemenina}?
+		<color=lime>Tsudo P.C.:</color> ¿{$ProfesionFemenina}?
 	<<endif>>
 	<color=lightblue>Deiv I.D.:</color> No, es otra persona.
 	<color=lime>Tsudo P.C.:</color> Sin problema entonces.
@@ -80,7 +80,7 @@ tags: PostGame
 	<color=lightblue>Deiv I.D.:</color> Según estos mensajes, {$SuspectName} es <b>{$SuspectRelation}</b> de la víctima.
 	<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
 <<elseif $SuspectEvidencesFound eq 1>>
-	<color=lightblue>Deiv I.D.:</color> Así que donde ha encontrado información útil es en su WhatsApp, curioso...
+	<color=lightblue>Deiv I.D.:</color> Así que donde ha encontrado información útil es en su <i>WhatsApp</i>, curioso...
 	<color=lightblue>Deiv I.D.:</color> Entiendo, por los mensajes que se ha enviado con {$RandomName}, parece que {$SuspectName} <b>{$SuspectEmotion}</b> la víctima.
 	<<set $SuspectEvidencesFound to $SuspectEvidencesFound + 1>>
 <<elseif $SuspectEvidencesFound eq 2>>
