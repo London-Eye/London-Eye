@@ -35,16 +35,14 @@ public class PauseController : MonoBehaviour
     public void Restart()
     {
         IsPaused = false;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-
-        // If we are in the main menu, delete the current game
-        if (currentSceneIndex == 1)
-        {
-            GameStart.DeleteGame();
-        }
-
-        SceneManager.LoadScene(currentSceneIndex);
+    public void RestartGame()
+    {
+        IsPaused = false;
+        DeleteGame();
+        StartGame();
     }
 
     public void GoToMenu() => GoToMainMenu();
@@ -67,6 +65,16 @@ public class PauseController : MonoBehaviour
         };
     }
     public static void GoToStartMenu() => SceneManager.LoadScene(0);
+
+    public static void DeleteGame()
+    {
+        if (CharacterCreation.Instance != null)
+        {
+            Destroy(CharacterCreation.Instance.gameObject);
+        }
+    }
+
+    public static void StartGame() => SceneManager.LoadScene(1);
     public static void Exit()
     {
 #if UNITY_EDITOR

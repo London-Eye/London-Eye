@@ -1,21 +1,8 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class GameStart : MonoBehaviour
 {
-    private void Start()
-    {
-        DeleteGame();
-    }
-
-    public static void DeleteGame()
-    {
-        if (CharacterCreation.Instance != null)
-        {
-            Destroy(CharacterCreation.Instance.gameObject);
-        }
-    }
-
-    public void StartGame() => SceneManager.LoadScene(1);
+    private void Start() => PauseController.DeleteGame();
+    public void StartGame() => PauseController.StartGame();
     public void ExitGame() => PauseController.Exit();
 }
