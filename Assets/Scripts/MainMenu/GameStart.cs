@@ -5,6 +5,11 @@ public class GameStart : MonoBehaviour
 {
     private void Start()
     {
+        DeleteGame();
+    }
+
+    public static void DeleteGame()
+    {
         if (CharacterCreation.Instance != null)
         {
             Destroy(CharacterCreation.Instance.gameObject);

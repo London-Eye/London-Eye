@@ -29,7 +29,7 @@ public class SuspectManager : MonoBehaviour, IComparable<SuspectManager>
 
     private Suspect suspect;
 
-    private static readonly Color AcuseColor =  new Color(1, 0.6353f, 0.6706f);
+    private static readonly Color AcuseColor = new Color(1, 0.6353f, 0.6706f);
 
     public Suspect Suspect
     {
@@ -79,7 +79,7 @@ public class SuspectManager : MonoBehaviour, IComparable<SuspectManager>
                     suspectInfoMiddle.gameObject.SetActive(true);
 
                     suspectInfoDown.gameObject.SetActive(false);
-                } 
+                }
                 #endregion
             }
 
@@ -105,7 +105,10 @@ public class SuspectManager : MonoBehaviour, IComparable<SuspectManager>
         {
             Suspect = suspect;
 
-            if (suspect != null && CharacterCreation.Instance.PoolPuzzleLoader.activeSuspects.ContainsKey(suspect))
+            if (suspect != null
+                && CharacterCreation.Instance != null
+                && CharacterCreation.Instance.PoolPuzzleLoader != null
+                && CharacterCreation.Instance.PoolPuzzleLoader.activeSuspects.ContainsKey(suspect))
             {
                 CharacterCreation.Instance.PoolPuzzleLoader.activeSuspects[suspect] = InstantiatePuzzleLoader(suspect);
             }

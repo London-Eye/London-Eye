@@ -3938,6 +3938,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1845138208}
     m_Modifications:
+    - target: {fileID: 5825173376620155101, guid: 274056581bb348747b9caedd2437fce0,
+        type: 3}
+      propertyPath: m_Text
+      value: Reiniciar
+      objectReference: {fileID: 0}
     - target: {fileID: 6895628644845847438, guid: 274056581bb348747b9caedd2437fce0,
         type: 3}
       propertyPath: m_Text
@@ -4076,7 +4081,12 @@ PrefabInstance:
     - target: {fileID: 9031774544038136889, guid: 274056581bb348747b9caedd2437fce0,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9031774544038136891, guid: 274056581bb348747b9caedd2437fce0,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Restart
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 274056581bb348747b9caedd2437fce0, type: 3}

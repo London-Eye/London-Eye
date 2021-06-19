@@ -35,7 +35,16 @@ public class PauseController : MonoBehaviour
     public void Restart()
     {
         IsPaused = false;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+
+        // If we are in the main menu, delete the current game
+        if (currentSceneIndex == 1)
+        {
+            GameStart.DeleteGame();
+        }
+
+        SceneManager.LoadScene(currentSceneIndex);
     }
 
     public void GoToMenu() => GoToMainMenu();
