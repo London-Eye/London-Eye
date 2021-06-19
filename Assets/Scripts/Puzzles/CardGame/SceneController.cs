@@ -19,6 +19,7 @@ public class SceneController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI scoreLabel;
     [SerializeField] private TextMeshProUGUI movesLabel;
     [SerializeField] private GameObject layout;
+    [SerializeField] private PauseController pauseController;
 
     public string ScoreColorName;
 
@@ -49,8 +50,6 @@ public class SceneController : MonoBehaviour
         movesLabel.gameObject.SetActive(true);
         StartCoroutine(CheckMoves());
 
-        
-
         OnStartCardGame.Invoke();
     }
 
@@ -74,7 +73,7 @@ public class SceneController : MonoBehaviour
         {
             for (int i = 0; i < gridCols; i++)
             {
-                MemoryCard card = Instantiate(originalCard) as MemoryCard;
+                MemoryCard card = Instantiate(originalCard);
                 int index = j * gridCols + i;
                 int id = ids[index];
                 card.SetCard(id, images[id]);
@@ -93,7 +92,7 @@ public class SceneController : MonoBehaviour
         }
     }
 
-    public bool CanReveal => _secondRevealed == null && _movimientos < MaxMoves && GameRunning;
+    public bool CanReveal => GameRunning && !pauseController.IsPaused && _secondRevealed == null && _movimientos < MaxMoves;
 
     public void CardRevealed(MemoryCard card)
     {

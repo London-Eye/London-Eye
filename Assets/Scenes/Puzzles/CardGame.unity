@@ -1730,6 +1730,7 @@ MonoBehaviour:
   scoreLabel: {fileID: 645761192}
   movesLabel: {fileID: 901682993}
   layout: {fileID: 404390507}
+  pauseController: {fileID: 1981721337}
   ScoreColorName: ScoreColor
   OnStartCardGame:
     m_PersistentCalls:
@@ -2075,6 +2076,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1981721335}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1981721337 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1299109806529538700, guid: c9fe3d38aad63d94191e9cf325196e48,
+    type: 3}
+  m_PrefabInstance: {fileID: 1981721335}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4327028516d7d454cbd2008dd9079840, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2139445342
 GameObject:
   m_ObjectHideFlags: 0
