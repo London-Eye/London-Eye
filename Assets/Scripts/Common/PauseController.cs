@@ -64,7 +64,11 @@ public class PauseController : MonoBehaviour
             dialogueRunner.startAutomatically = true;
         };
     }
-    public static void GoToStartMenu() => SceneManager.LoadScene(0);
+    public static void GoToStartMenu()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(0);
+    }
 
     public static void DeleteGame()
     {
